@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 07, 2024 alle 21:42
+-- Creato il: Apr 07, 2024 alle 21:56
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -541,11 +541,11 @@ CREATE TABLE `personaggio` (
   `Iniziativa` decimal(1,0) NOT NULL,
   `Punti_Esperienza` decimal(10,0) NOT NULL,
   `ID_Utente` decimal(10,0) NOT NULL,
-  `Ha__Nome` varchar(10) NOT NULL,
-  `Equ_Nome` varchar(10) NOT NULL,
-  `Equ_Nome_1` varchar(10) NOT NULL,
-  `Car_Nome` varchar(20) NOT NULL,
-  `App_Nome` varchar(20) NOT NULL
+  `Nome_Origine` varchar(10) NOT NULL,
+  `Armatura_Equipaggiata` varchar(10) NOT NULL,
+  `Arma_Equipaggiata` varchar(10) NOT NULL,
+  `Nome_Allineamento` varchar(20) NOT NULL,
+  `Nome_Razza` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1157,11 +1157,12 @@ ALTER TABLE `personaggio`
   ADD PRIMARY KEY (`ID_Personaggio`),
   ADD UNIQUE KEY `ID_PERSONAGGIO_IND` (`ID_Personaggio`),
   ADD KEY `FKPossiede_IND` (`ID_Utente`),
-  ADD KEY `FKHa_Origine_IND` (`Ha__Nome`),
-  ADD KEY `FKEquipaggia_armatura_IND` (`Equ_Nome`),
-  ADD KEY `FKEquipaggia_arma_IND` (`Equ_Nome_1`),
-  ADD KEY `FKCaratterizza_IND` (`Car_Nome`),
-  ADD KEY `FKAppartiene_IND` (`App_Nome`);
+  ADD KEY `FKHa_Origine_IND` (`Nome_Origine`),
+  ADD KEY `FKEquipaggia_armatura_IND` (`Armatura_Equipaggiata`),
+  ADD KEY `FKEquipaggia_arma_IND` (`Arma_Equipaggiata`),
+  ADD KEY `FKCaratterizza_IND` (`Nome_Allineamento`),
+  ADD KEY `FKAppartiene_IND` (`Nome_Razza`),
+  ADD KEY `FKTiene_IND` (`ID_Borsa`);
 
 --
 -- Indici per le tabelle `possiede`
@@ -1532,12 +1533,13 @@ ALTER TABLE `origine_migliora`
 -- Limiti per la tabella `personaggio`
 --
 ALTER TABLE `personaggio`
-  ADD CONSTRAINT `FKAppartiene_FK` FOREIGN KEY (`App_Nome`) REFERENCES `razza` (`Nome`),
-  ADD CONSTRAINT `FKCaratterizza_FK` FOREIGN KEY (`Car_Nome`) REFERENCES `allineamento` (`Nome`),
-  ADD CONSTRAINT `FKEquipaggia_arma_FK` FOREIGN KEY (`Equ_Nome_1`) REFERENCES `oggetto` (`Nome`),
-  ADD CONSTRAINT `FKEquipaggia_armatura_FK` FOREIGN KEY (`Equ_Nome`) REFERENCES `oggetto` (`Nome`),
-  ADD CONSTRAINT `FKHa_Origine_FK` FOREIGN KEY (`Ha__Nome`) REFERENCES `origine` (`Nome`),
-  ADD CONSTRAINT `FKPossiede_FK` FOREIGN KEY (`ID_Utente`) REFERENCES `utente` (`ID_Utente`);
+  ADD CONSTRAINT `FKAppartiene_FK` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`),
+  ADD CONSTRAINT `FKCaratterizza_FK` FOREIGN KEY (`Nome_Allineamento`) REFERENCES `allineamento` (`Nome`),
+  ADD CONSTRAINT `FKEquipaggia_arma_FK` FOREIGN KEY (`Arma_Equipaggiata`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `FKEquipaggia_armatura_FK` FOREIGN KEY (`Armatura_Equipaggiata`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `FKHa_Origine_FK` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`),
+  ADD CONSTRAINT `FKPossiede_FK` FOREIGN KEY (`ID_Utente`) REFERENCES `utente` (`ID_Utente`),
+  ADD CONSTRAINT `FKTiene_FK`FOREIGN KEY (`ID_Borsa`) REFERENCES `borsa` (`ID_Borsa`);
 
 --
 -- Limiti per la tabella `proprieta_arma`
