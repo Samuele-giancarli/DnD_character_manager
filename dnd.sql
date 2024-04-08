@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `abilita` (
-  `Nome` varchar(10) NOT NULL,
-  `Caratteristica_Associata` varchar(10) NOT NULL
+  `Nome` varchar(20) NOT NULL,
+  `Caratteristica_Associata` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -39,9 +39,9 @@ CREATE TABLE `abilita` (
 --
 
 CREATE TABLE `abilita_personaggio` (
-  `ID_Personaggio` decimal(10,0) NOT NULL,
-  `Nome_Abilita` varchar(10) NOT NULL,
-  `Valore` decimal(2,0) NOT NULL
+  `ID_Personaggio` int NOT NULL,
+  `Nome_Abilita` varchar(20) NOT NULL,
+  `Valore` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -61,8 +61,8 @@ CREATE TABLE `allineamento` (
 --
 
 CREATE TABLE `appartiene` (
-  `ID_Personaggio` decimal(10,0) NOT NULL,
-  `Nome_Razza` varchar(10) NOT NULL
+  `ID_Personaggio` int NOT NULL,
+  `Nome_Razza` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -72,11 +72,11 @@ CREATE TABLE `appartiene` (
 --
 
 CREATE TABLE `barbaro` (
-  `ID_Barbaro` char(1) NOT NULL,
-  `Utilizzi_Rabbia_Giornalieri` varchar(10) NOT NULL,
-  `Bonus_Rabbia` decimal(1,0) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL
+  `ID_Barbaro` int NOT NULL,
+  `Utilizzi_Rabbia_Giornalieri` int NOT NULL,
+  `Bonus_Rabbia` int NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -86,10 +86,10 @@ CREATE TABLE `barbaro` (
 --
 
 CREATE TABLE `bardo` (
-  `ID_Bardo` char(1) NOT NULL,
-  `Dado_Ispirazione_Bardica` varchar(10) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL
+  `ID_Bardo` int NOT NULL,
+  `Dado_Ispirazione_Bardica` varchar(20) NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -99,14 +99,14 @@ CREATE TABLE `bardo` (
 --
 
 CREATE TABLE `borsa` (
-  `ID_Borsa` varchar(100) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL,
-  `Peso_Trasportabile` decimal(10,0) NOT NULL,
-  `Monete_Rame` decimal(10,0) NOT NULL,
-  `Monete_Argento` decimal(10,0) NOT NULL,
-  `Monete_Electrum` decimal(10,0) NOT NULL,
-  `Monete_Oro` decimal(10,0) NOT NULL,
-  `Monete_Platino` decimal(10,0) NOT NULL
+  `ID_Borsa` int NOT NULL,
+  `ID_Personaggio` int NOT NULL,
+  `Peso_Trasportabile` int NOT NULL,
+  `Monete_Rame` int NOT NULL,
+  `Monete_Argento` int NOT NULL,
+  `Monete_Electrum` int NOT NULL,
+  `Monete_Oro` int NOT NULL,
+  `Monete_Platino` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -116,12 +116,12 @@ CREATE TABLE `borsa` (
 --
 
 CREATE TABLE `capacita_di_classe` (
-  `Nome` varchar(10) NOT NULL,
+  `Nome` varchar(30) NOT NULL,
   `Descrizione` varchar(1000) NOT NULL,
-  `Aum_Nome_Caratteristica` char(1) DEFAULT NULL,
-  `Aum_Valore_Aggiuntivo` char(1) DEFAULT NULL,
-  `Caratteristica_Incantatore` char(1) DEFAULT NULL,
-  `Utilizzo_Giornaliero` char(1) DEFAULT NULL
+  `Aum_Nome_Caratteristica` varchar(20) DEFAULT NULL,
+  `Aum_Valore_Aggiuntivo` int DEFAULT NULL,
+  `Caratteristica_Incantatore` varchar(10) DEFAULT NULL,
+  `Utilizzo_Giornaliero` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -131,7 +131,7 @@ CREATE TABLE `capacita_di_classe` (
 --
 
 CREATE TABLE `capacita_di_sottoclasse` (
-  `Nome` varchar(10) NOT NULL,
+  `Nome` varchar(30) NOT NULL,
   `Descrizione` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -142,8 +142,8 @@ CREATE TABLE `capacita_di_sottoclasse` (
 --
 
 CREATE TABLE `caratterizza` (
-  `Nome_Allineamento` varchar(10) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `Nome_Allineamento` varchar(20) NOT NULL,
+  `ID_Personaggio`int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -153,10 +153,10 @@ CREATE TABLE `caratterizza` (
 --
 
 CREATE TABLE `classe` (
-  `Nome` varchar(10) NOT NULL,
-  `Bonus_Competenza` decimal(10,0) NOT NULL,
-  `Dado_Vita` varchar(10) NOT NULL,
-  `Livello` decimal(5,0) NOT NULL
+  `Nome` varchar(20) NOT NULL,
+  `Bonus_Competenza` int NOT NULL,
+  `Dado_Vita` varchar(20) NOT NULL,
+  `Livello` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -166,9 +166,9 @@ CREATE TABLE `classe` (
 --
 
 CREATE TABLE `classe_migliora` (
-  `Nome_Abilita` varchar(10) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL
+  `Nome_Abilita` varchar(20) NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -178,9 +178,9 @@ CREATE TABLE `classe_migliora` (
 --
 
 CREATE TABLE `competenza` (
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `Nome_TiroSalvezza` varchar(10) NOT NULL
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `Nome_TiroSalvezza` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -190,9 +190,9 @@ CREATE TABLE `competenza` (
 --
 
 CREATE TABLE `competenza_della_classe_in_armature` (
-  `Nome_Armatura` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL
+  `Nome_Armatura` varchar(30) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -202,9 +202,9 @@ CREATE TABLE `competenza_della_classe_in_armature` (
 --
 
 CREATE TABLE `competenza_della_classe_in_armi` (
-  `Nome_Arma` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL
+  `Nome_Arma` varchar(30) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -214,9 +214,9 @@ CREATE TABLE `competenza_della_classe_in_armi` (
 --
 
 CREATE TABLE `competenza_della_classe_in_strumenti` (
-  `Nome_Strumento` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL
+  `Nome_Strumento` varchar(30) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -226,8 +226,8 @@ CREATE TABLE `competenza_della_classe_in_strumenti` (
 --
 
 CREATE TABLE `competenza_dell_origine_in_strumenti` (
-  `Nome_Origine` varchar(10) NOT NULL,
-  `Nome_Strumento` varchar(10) NOT NULL
+  `Nome_Origine` varchar(30) NOT NULL,
+  `Nome_Strumento` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -237,8 +237,8 @@ CREATE TABLE `competenza_dell_origine_in_strumenti` (
 --
 
 CREATE TABLE `competenze_abilita` (
-  `Nome_Abilita` varchar(10) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `Nome_Abilita` varchar(20) NOT NULL,
+  `ID_Personaggio` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -248,8 +248,8 @@ CREATE TABLE `competenze_abilita` (
 --
 
 CREATE TABLE `concede` (
-  `Nome_Origine` varchar(10) NOT NULL,
-  `Nome_Privilegio` varchar(10) NOT NULL
+  `Nome_Origine` varchar(30) NOT NULL,
+  `Nome_Privilegio` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -259,8 +259,8 @@ CREATE TABLE `concede` (
 --
 
 CREATE TABLE `conosce` (
-  `Nome_Incantesimo` varchar(10) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `Nome_Incantesimo` varchar(30) NOT NULL,
+  `ID_Personaggio` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -270,9 +270,9 @@ CREATE TABLE `conosce` (
 --
 
 CREATE TABLE `contiene` (
-  `ID_Borsa` varchar(100) NOT NULL,
-  `Nome_Oggetto` varchar(10) NOT NULL,
-  `Quantita` decimal(10,0) NOT NULL
+  `ID_Borsa` int NOT NULL,
+  `Nome_Oggetto` varchar(30) NOT NULL,
+  `Quantita` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -282,8 +282,8 @@ CREATE TABLE `contiene` (
 --
 
 CREATE TABLE `equipaggia_arma` (
-  `Nome_Arma` varchar(10) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `Nome_Arma` varchar(30) NOT NULL,
+  `ID_Personaggio` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -293,8 +293,8 @@ CREATE TABLE `equipaggia_arma` (
 --
 
 CREATE TABLE `equipaggia_armatura` (
-  `Nome_Armatura` varchar(10) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `Nome_Armatura` varchar(30) NOT NULL,
+  `ID_Personaggio` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -304,8 +304,8 @@ CREATE TABLE `equipaggia_armatura` (
 --
 
 CREATE TABLE `ha_origine` (
-  `Nome_Origine` varchar(10) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `Nome_Origine` varchar(30) NOT NULL,
+  `ID_Personaggio` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -315,8 +315,8 @@ CREATE TABLE `ha_origine` (
 --
 
 CREATE TABLE `identifica` (
-  `Nome_Razza` varchar(10) NOT NULL,
-  `Nome_Sottorazza` varchar(10) NOT NULL
+  `Nome_Razza` varchar(20) NOT NULL,
+  `Nome_Sottorazza` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -326,9 +326,9 @@ CREATE TABLE `identifica` (
 --
 
 CREATE TABLE `impara_classe` (
-  `Nome_Capacita` varchar(10) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL
+  `Nome_Capacita` varchar(30) NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -338,9 +338,9 @@ CREATE TABLE `impara_classe` (
 --
 
 CREATE TABLE `impara_sottoclasse` (
-  `Nome_Capacita` varchar(10) NOT NULL,
-  `Nome_Sottoclasse` varchar(10) NOT NULL,
-  `Livello_Sottoclasse` decimal(2,0) NOT NULL
+  `Nome_Capacita` varchar(30) NOT NULL,
+  `Nome_Sottoclasse` varchar(30) NOT NULL,
+  `Livello_Sottoclasse` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -350,16 +350,16 @@ CREATE TABLE `impara_sottoclasse` (
 --
 
 CREATE TABLE `incantesimo` (
-  `Nome` varchar(10) NOT NULL,
-  `Livello` decimal(2,0) NOT NULL,
-  `Scuola` varchar(10) NOT NULL,
-  `Tempo_di_Lancio` varchar(10) NOT NULL,
-  `Distanza` varchar(10) NOT NULL,
-  `Durata` varchar(10) NOT NULL,
-  `Componenti` varchar(10) NOT NULL,
-  `Rituale` char(1) NOT NULL,
-  `ID_Mago` char(1) DEFAULT NULL,
-  `ID_Bardo` char(1) DEFAULT NULL
+  `Nome` varchar(30) NOT NULL,
+  `Livello`int NOT NULL,
+  `Scuola` varchar(30) NOT NULL,
+  `Tempo_di_Lancio` varchar(20) NOT NULL,
+  `Distanza` varchar(20) NOT NULL,
+  `Durata` varchar(20) NOT NULL,
+  `Componenti` varchar(100) NOT NULL,
+  `Rituale` boolean NOT NULL,
+  `ID_Mago` int DEFAULT NULL,
+  `ID_Bardo` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -369,10 +369,10 @@ CREATE TABLE `incantesimo` (
 --
 
 CREATE TABLE `ladro` (
-  `ID_Ladro` char(1) NOT NULL,
+  `ID_Ladro` int NOT NULL,
   `Bonus_Attacco_Furtivo` varchar(10) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -382,9 +382,9 @@ CREATE TABLE `ladro` (
 --
 
 CREATE TABLE `lancia_bardo` (
-  `ID_Bardo` char(1) NOT NULL,
-  `Livello_Slot` decimal(2,0) NOT NULL,
-  `Quantita` decimal(2,0) NOT NULL
+  `ID_Bardo` int NOT NULL,
+  `Livello_Slot` int NOT NULL,
+  `Quantita` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -394,9 +394,9 @@ CREATE TABLE `lancia_bardo` (
 --
 
 CREATE TABLE `lancia_mago` (
-  `ID_Mago` char(1) NOT NULL,
-  `Livello_Slot` decimal(2,0) NOT NULL,
-  `Quantita` decimal(2,0) NOT NULL
+  `ID_Mago` int NOT NULL,
+  `Livello_Slot` int NOT NULL,
+  `Quantita` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -406,8 +406,8 @@ CREATE TABLE `lancia_mago` (
 --
 
 CREATE TABLE `lingue` (
-  `Nome` varchar(10) NOT NULL,
-  `Descrizione` varchar(100) NOT NULL
+  `Nome` varchar(20) NOT NULL,
+  `Descrizione` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -417,8 +417,8 @@ CREATE TABLE `lingue` (
 --
 
 CREATE TABLE `lingue_aggiuntive` (
-  `Nome_Lingua` varchar(10) NOT NULL,
-  `Nome_Origine` varchar(10) NOT NULL
+  `Nome_Lingua` varchar(20) NOT NULL,
+  `Nome_Origine` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -428,8 +428,8 @@ CREATE TABLE `lingue_aggiuntive` (
 --
 
 CREATE TABLE `lingue_conosciute` (
-  `Nome_Lingua` varchar(10) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `Nome_Lingua` varchar(20) NOT NULL,
+  `ID_Personaggio` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -439,7 +439,7 @@ CREATE TABLE `lingue_conosciute` (
 --
 
 CREATE TABLE `lingue_della_razza` (
-  `Nome_Lingua` varchar(10) NOT NULL,
+  `Nome_Lingua` varchar(20) NOT NULL,
   `Nome_Razza` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -450,9 +450,9 @@ CREATE TABLE `lingue_della_razza` (
 --
 
 CREATE TABLE `mago` (
-  `ID_Mago` char(1) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL
+  `ID_Mago` int NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -462,8 +462,8 @@ CREATE TABLE `mago` (
 --
 
 CREATE TABLE `oggetti_dell_origine` (
-  `Nome_Oggetto` varchar(10) NOT NULL,
-  `Nome_Origine` varchar(10) NOT NULL
+  `Nome_Oggetto` varchar(30) NOT NULL,
+  `Nome_Origine` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -473,9 +473,9 @@ CREATE TABLE `oggetti_dell_origine` (
 --
 
 CREATE TABLE `oggetti_di_classe` (
-  `Nome_Oggetto` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `Nome_Classe` varchar(10) NOT NULL
+  `Nome_Oggetto` varchar(30) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -485,16 +485,16 @@ CREATE TABLE `oggetti_di_classe` (
 --
 
 CREATE TABLE `oggetto` (
-  `Peso` decimal(5,0) NOT NULL,
-  `Valore` decimal(10,0) NOT NULL,
-  `Nome` varchar(10) NOT NULL,
-  `Descrizione` char(1) DEFAULT NULL,
-  `Contenuto` char(1) DEFAULT NULL,
-  `Danno` char(1) DEFAULT NULL,
-  `Tipo_Danno` char(1) DEFAULT NULL,
-  `Classe_Armatura` char(1) DEFAULT NULL,
-  `Forza_Necessaria` char(1) DEFAULT NULL,
-  `Svantaggio_Furtivita` char(1) DEFAULT NULL
+  `Peso` int NOT NULL,
+  `Valore` int NOT NULL,
+  `Nome` varchar(30) NOT NULL,
+  `Descrizione` varchar(1000) DEFAULT NULL,
+  `Contenuto` varchar(200) DEFAULT NULL,
+  `Danno` varchar(30) DEFAULT NULL,
+  `Tipo_Danno` varchar(30) DEFAULT NULL,
+  `Classe_Armatura` varchar(30) DEFAULT NULL,
+  `Forza_Necessaria` int DEFAULT NULL,
+  `Svantaggio_Furtivita` boolean DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -504,9 +504,9 @@ CREATE TABLE `oggetto` (
 --
 
 CREATE TABLE `origine` (
-  `Nome` varchar(10) NOT NULL,
-  `Descrizione` char(1) NOT NULL,
-  `Con_Nome` varchar(10) NOT NULL
+  `Nome` varchar(30) NOT NULL,
+  `Descrizione` varchar(1000) NOT NULL,
+  `Nome_Privilegio` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -516,8 +516,8 @@ CREATE TABLE `origine` (
 --
 
 CREATE TABLE `origine_migliora` (
-  `Nome_Abilita` varchar(10) NOT NULL,
-  `Nome_Origine` varchar(10) NOT NULL
+  `Nome_Abilita` varchar(20) NOT NULL,
+  `Nome_Origine` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -527,26 +527,26 @@ CREATE TABLE `origine_migliora` (
 --
 
 CREATE TABLE `personaggio` (
-  `ID_Personaggio` decimal(10,0) NOT NULL,
-  `Car_Forza` char(1) NOT NULL,
-  `Car_Destrezza` char(1) NOT NULL,
-  `Car_Costituzione` char(1) NOT NULL,
-  `Car_Intelligenza` char(1) NOT NULL,
-  `Car_Saggezza` char(1) NOT NULL,
-  `Car_Carisma` char(1) NOT NULL,
-  `Punti_Ferita` decimal(10,0) NOT NULL,
-  `Nome` varchar(100) NOT NULL,
+  `ID_Personaggio` int NOT NULL,
+  `Car_Forza` int NOT NULL,
+  `Car_Destrezza` int NOT NULL,
+  `Car_Costituzione` int NOT NULL,
+  `Car_Intelligenza` int NOT NULL,
+  `Car_Saggezza` int NOT NULL,
+  `Car_Carisma` int NOT NULL,
+  `Punti_Ferita` int NOT NULL,
+  `Nome` varchar(50) NOT NULL,
   `Descrizione_Aspetto` varchar(1000) NOT NULL,
-  `Classe_Armatura` decimal(2,0) NOT NULL,
-  `Iniziativa` decimal(1,0) NOT NULL,
-  `Punti_Esperienza` decimal(10,0) NOT NULL,
-  `ID_Utente` decimal(10,0) NOT NULL,
-  `Nome_Origine` varchar(10) NOT NULL,
-  `Armatura_Equipaggiata` varchar(10) NOT NULL,
-  `Arma_Equipaggiata` varchar(10) NOT NULL,
-  `Nome_Allineamento` varchar(20) NOT NULL,
+  `Classe_Armatura` int NOT NULL,
+  `Iniziativa` int NOT NULL,
+  `Punti_Esperienza` int NOT NULL,
+  `ID_Utente` int NOT NULL,
+  `Nome_Origine` varchar(30) NOT NULL,
+  `Armatura_Equipaggiata` varchar(30) NOT NULL,
+  `Arma_Equipaggiata` varchar(30) NOT NULL,
+  `Nome_Allineamento` varchar(30) NOT NULL,
   `Nome_Razza` varchar(20) NOT NULL,
-  `ID_Borsa` varchar(100) NOT NULL
+  `ID_Borsa` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -556,8 +556,8 @@ CREATE TABLE `personaggio` (
 --
 
 CREATE TABLE `possiede` (
-  `ID_Utente` decimal(10,0) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `ID_Utente` int NOT NULL,
+  `ID_Personaggio`int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -567,7 +567,7 @@ CREATE TABLE `possiede` (
 --
 
 CREATE TABLE `privilegio` (
-  `Nome` varchar(10) NOT NULL,
+  `Nome` varchar(30) NOT NULL,
   `Descrizione` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -578,8 +578,8 @@ CREATE TABLE `privilegio` (
 --
 
 CREATE TABLE `proprieta` (
-  `Nome` varchar(10) NOT NULL,
-  `Descrizione` varchar(1000) NOT NULL
+  `Nome` varchar(30) NOT NULL,
+  `Descrizione` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -589,8 +589,8 @@ CREATE TABLE `proprieta` (
 --
 
 CREATE TABLE `proprieta_arma` (
-  `Nome_Proprieta` varchar(10) NOT NULL,
-  `Nome_Arma` varchar(10) NOT NULL
+  `Nome_Proprieta` varchar(30) NOT NULL,
+  `Nome_Arma` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -602,11 +602,11 @@ CREATE TABLE `proprieta_arma` (
 CREATE TABLE `razza` (
   `Descrizione` varchar(1000) NOT NULL,
   `Nome` varchar(20) NOT NULL,
-  `Aum_Nome_Caratteristica` varchar(10) NOT NULL,
-  `Aum_Valore_Aggiuntivo` decimal(1,0) NOT NULL,
-  `Eta` decimal(3,0) NOT NULL,
-  `Taglia` varchar(10) NOT NULL,
-  `Velocita` varchar(10) NOT NULL
+  `Aum_Nome_Caratteristica` varchar(20) NOT NULL,
+  `Aum_Valore_Aggiuntivo` int NOT NULL,
+  `Eta` int NOT NULL,
+  `Taglia` varchar(20) NOT NULL,
+  `Velocita` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -616,8 +616,8 @@ CREATE TABLE `razza` (
 --
 
 CREATE TABLE `sblocca_bardo` (
-  `ID_Bardo` decimal(10,0) NOT NULL,
-  `Nome_Incantesimo` varchar(10) NOT NULL
+  `ID_Bardo` int NOT NULL,
+  `Nome_Incantesimo` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -627,8 +627,8 @@ CREATE TABLE `sblocca_bardo` (
 --
 
 CREATE TABLE `sblocca_mago` (
-  `ID_Mago` decimal(10,0) NOT NULL,
-  `Nome_Incantesimo` varchar(10) NOT NULL
+  `ID_Mago` int NOT NULL,
+  `Nome_Incantesimo` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -638,9 +638,9 @@ CREATE TABLE `sblocca_mago` (
 --
 
 CREATE TABLE `scelta_barbaro` (
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `ID_Barbaro` decimal(10,0) NOT NULL
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `ID_Barbaro` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -650,9 +650,9 @@ CREATE TABLE `scelta_barbaro` (
 --
 
 CREATE TABLE `scelta_bardo` (
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `ID_Bardo` decimal(10,0) NOT NULL
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `ID_Bardo` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -662,9 +662,9 @@ CREATE TABLE `scelta_bardo` (
 --
 
 CREATE TABLE `scelta_classe` (
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `ID_Personaggio` decimal(10,0) NOT NULL
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `ID_Personaggio` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -674,9 +674,9 @@ CREATE TABLE `scelta_classe` (
 --
 
 CREATE TABLE `scelta_ladro` (
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `ID_Ladro` decimal(10,0) NOT NULL
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `ID_Ladro` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -686,9 +686,9 @@ CREATE TABLE `scelta_ladro` (
 --
 
 CREATE TABLE `scelta_mago` (
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `ID_Mago` decimal(10,0) NOT NULL
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `ID_Mago` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -698,9 +698,9 @@ CREATE TABLE `scelta_mago` (
 --
 
 CREATE TABLE `scelta_sottoclasse` (
-  `ID_Personaggio` decimal(10,0) NOT NULL,
-  `Nome_Sottoclasse` varchar(10) NOT NULL,
-  `Livello_Sottoclasse` decimal(2,0) NOT NULL
+  `ID_Personaggio` int NOT NULL,
+  `Nome_Sottoclasse` varchar(30) NOT NULL,
+  `Livello_Sottoclasse` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -710,7 +710,7 @@ CREATE TABLE `scelta_sottoclasse` (
 --
 
 CREATE TABLE `slot_incantesimo` (
-  `Livello_Slot` decimal(2,0) NOT NULL
+  `Livello_Slot` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -720,10 +720,10 @@ CREATE TABLE `slot_incantesimo` (
 --
 
 CREATE TABLE `sottoclasse` (
-  `Nome` varchar(10) NOT NULL,
-  `Livello` decimal(2,0) NOT NULL,
-  `Spe_Nome` varchar(10) NOT NULL,
-  `Spe_Livello` decimal(2,0) NOT NULL
+  `Nome` varchar(30) NOT NULL,
+  `Livello` int NOT NULL,
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -733,11 +733,11 @@ CREATE TABLE `sottoclasse` (
 --
 
 CREATE TABLE `sottorazza` (
-  `Aum_Nome_Caratteristica` varchar(10) NOT NULL,
-  `Aum_Valore_Aggiuntivo` decimal(1,0) NOT NULL,
-  `Nome` varchar(100) NOT NULL,
+  `Aum_Nome_Caratteristica` varchar(20) NOT NULL,
+  `Aum_Valore_Aggiuntivo` int NOT NULL,
+  `Nome` varchar(40) NOT NULL,
   `Descrizione` varchar(1000) NOT NULL,
-  `Ind_Nome` varchar(20) NOT NULL
+  `Nome_Razza` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -747,10 +747,10 @@ CREATE TABLE `sottorazza` (
 --
 
 CREATE TABLE `specializzazione` (
-  `Nome_Classe` varchar(10) NOT NULL,
-  `Livello_Classe` decimal(2,0) NOT NULL,
-  `Nome_Sottoclasse` varchar(10) NOT NULL,
-  `Livello_Sottoclasse` decimal(2,0) NOT NULL
+  `Nome_Classe` varchar(20) NOT NULL,
+  `Livello_Classe` int NOT NULL,
+  `Nome_Sottoclasse` varchar(30) NOT NULL,
+  `Livello_Sottoclasse` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -760,8 +760,8 @@ CREATE TABLE `specializzazione` (
 --
 
 CREATE TABLE `tiene` (
-  `ID_Personaggio` decimal(10,0) NOT NULL,
-  `ID_Borsa` varchar(100) NOT NULL
+  `ID_Personaggio` int NOT NULL,
+  `ID_Borsa` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -771,8 +771,8 @@ CREATE TABLE `tiene` (
 --
 
 CREATE TABLE `tiri_salvezza_personaggio` (
-  `ID_Personaggio` decimal(10,0) NOT NULL,
-  `Nome_Caratteristica` varchar(10) NOT NULL
+  `ID_Personaggio` int NOT NULL,
+  `Nome_Caratteristica` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -782,7 +782,7 @@ CREATE TABLE `tiri_salvezza_personaggio` (
 --
 
 CREATE TABLE `tiro_salvezza` (
-  `Nome_Caratteristica` varchar(10) NOT NULL
+  `Nome_Caratteristica` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -793,7 +793,7 @@ CREATE TABLE `tiro_salvezza` (
 
 CREATE TABLE `tratti_della_razza` (
   `Nome_Razza` varchar(20) NOT NULL,
-  `Nome_Tratto` varchar(10) NOT NULL
+  `Nome_Tratto` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -803,8 +803,8 @@ CREATE TABLE `tratti_della_razza` (
 --
 
 CREATE TABLE `tratti_della_sottorazza` (
-  `Nome_Sottorazza` varchar(100) NOT NULL,
-  `Nome_Tratto` varchar(10) NOT NULL
+  `Nome_Sottorazza` varchar(40) NOT NULL,
+  `Nome_Tratto` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -814,7 +814,7 @@ CREATE TABLE `tratti_della_sottorazza` (
 --
 
 CREATE TABLE `tratti_razziali` (
-  `Nome` varchar(10) NOT NULL,
+  `Nome` varchar(30) NOT NULL,
   `Descrizione` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -825,7 +825,7 @@ CREATE TABLE `tratti_razziali` (
 --
 
 CREATE TABLE `utente` (
-  `ID_Utente` decimal(10,0) NOT NULL,
+  `ID_Utente` int NOT NULL,
   `Password` varchar(100) NOT NULL,
   `E_mail` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -884,7 +884,7 @@ ALTER TABLE `bardo`
 --
 ALTER TABLE `borsa`
   ADD PRIMARY KEY (`ID_Borsa`),
-  ADD UNIQUE KEY `FKTiene_ID` (`ID_Personaggio`),
+  ADD UNIQUE KEY `FKTiene_IND` (`ID_Personaggio`),
   ADD UNIQUE KEY `ID_BORSA_IND` (`ID_Borsa`);
 
 --
@@ -1140,7 +1140,7 @@ ALTER TABLE `oggetto`
 ALTER TABLE `origine`
   ADD PRIMARY KEY (`Nome`),
   ADD UNIQUE KEY `ID_ORIGINE_IND` (`Nome`),
-  ADD KEY `FKConcede_IND` (`Con_Nome`);
+  ADD KEY `FKConcede_IND` (`Nome_Privilegio`);
 
 --
 -- Indici per le tabelle `origine_migliora`
@@ -1272,7 +1272,7 @@ ALTER TABLE `slot_incantesimo`
 ALTER TABLE `sottoclasse`
   ADD PRIMARY KEY (`Nome`,`Livello`),
   ADD UNIQUE KEY `ID_SOTTOCLASSE_IND` (`Nome`,`Livello`),
-  ADD KEY `FKSpecializzazione_IND` (`Spe_Nome`,`Spe_Livello`);
+  ADD KEY `FKSpecializzazione_IND` (`Nome_Classe`,`Livello_Classe`);
 
 --
 -- Indici per le tabelle `sottorazza`
@@ -1280,7 +1280,7 @@ ALTER TABLE `sottoclasse`
 ALTER TABLE `sottorazza`
   ADD PRIMARY KEY (`Nome`),
   ADD UNIQUE KEY `ID_SOTTORAZZA_IND` (`Nome`),
-  ADD KEY `FKIdentifica_IND` (`Ind_Nome`);
+  ADD KEY `FKIdentifica_IND` (`Nome_Razza`);
 
 --
 -- Indici per le tabelle `specializzazione`
@@ -1520,7 +1520,7 @@ ALTER TABLE `oggetti_di_classe`
 -- Limiti per la tabella `origine`
 --
 ALTER TABLE `origine`
-  ADD CONSTRAINT `FKConcede_FK` FOREIGN KEY (`Con_Nome`) REFERENCES `privilegio` (`Nome`);
+  ADD CONSTRAINT `FKConcede_FK` FOREIGN KEY (`Nome_Privilegio`) REFERENCES `privilegio` (`Nome`);
 
 --
 -- Limiti per la tabella `origine_migliora`
