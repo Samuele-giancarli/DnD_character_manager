@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 07, 2024 alle 21:56
+-- Creato il: Apr 08, 2024 alle 12:54
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -545,7 +545,8 @@ CREATE TABLE `personaggio` (
   `Armatura_Equipaggiata` varchar(10) NOT NULL,
   `Arma_Equipaggiata` varchar(10) NOT NULL,
   `Nome_Allineamento` varchar(20) NOT NULL,
-  `Nome_Razza` varchar(20) NOT NULL
+  `Nome_Razza` varchar(20) NOT NULL,
+  `ID_Borsa` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -760,7 +761,7 @@ CREATE TABLE `specializzazione` (
 
 CREATE TABLE `tiene` (
   `ID_Personaggio` decimal(10,0) NOT NULL,
-  `ID_Borsa` decimal(10,0) NOT NULL
+  `ID_Borsa` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -884,8 +885,7 @@ ALTER TABLE `bardo`
 ALTER TABLE `borsa`
   ADD PRIMARY KEY (`ID_Borsa`),
   ADD UNIQUE KEY `FKTiene_ID` (`ID_Personaggio`),
-  ADD UNIQUE KEY `ID_BORSA_IND` (`ID_Borsa`),
-  ADD UNIQUE KEY `FKTiene_IND` (`ID_Personaggio`);
+  ADD UNIQUE KEY `ID_BORSA_IND` (`ID_Borsa`);
 
 --
 -- Indici per le tabelle `capacita_di_classe`
@@ -1530,70 +1530,11 @@ ALTER TABLE `origine_migliora`
   ADD CONSTRAINT `FKOri_ORI_FK` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`);
 
 --
--- Limiti per la tabella `personaggio`
---
-ALTER TABLE `personaggio`
-  ADD CONSTRAINT `FKAppartiene_FK` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`),
-  ADD CONSTRAINT `FKCaratterizza_FK` FOREIGN KEY (`Nome_Allineamento`) REFERENCES `allineamento` (`Nome`),
-  ADD CONSTRAINT `FKEquipaggia_arma_FK` FOREIGN KEY (`Arma_Equipaggiata`) REFERENCES `oggetto` (`Nome`),
-  ADD CONSTRAINT `FKEquipaggia_armatura_FK` FOREIGN KEY (`Armatura_Equipaggiata`) REFERENCES `oggetto` (`Nome`),
-  ADD CONSTRAINT `FKHa_Origine_FK` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`),
-  ADD CONSTRAINT `FKPossiede_FK` FOREIGN KEY (`ID_Utente`) REFERENCES `utente` (`ID_Utente`),
-  ADD CONSTRAINT `FKTiene_FK`FOREIGN KEY (`ID_Borsa`) REFERENCES `borsa` (`ID_Borsa`);
-
---
 -- Limiti per la tabella `proprieta_arma`
 --
 ALTER TABLE `proprieta_arma`
   ADD CONSTRAINT `FKPro_OGG` FOREIGN KEY (`Nome_Arma`) REFERENCES `oggetto` (`Nome`),
   ADD CONSTRAINT `FKPro_PRO_FK` FOREIGN KEY (`Nome_Proprieta`) REFERENCES `proprieta` (`Nome`);
-
---
--- Limiti per la tabella `scelta_classe`
---
-ALTER TABLE `scelta_classe`
-  ADD CONSTRAINT `FKSce_CLA` FOREIGN KEY (`Nome_Classe`,`Livello_Classe`) REFERENCES `classe` (`Nome`, `Livello`),
-  ADD CONSTRAINT `FKSce_PER_1_FK` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`);
-
---
--- Limiti per la tabella `scelta_sottoclasse`
---
-ALTER TABLE `scelta_sottoclasse`
-  ADD CONSTRAINT `FKSce_PER_FK` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
-  ADD CONSTRAINT `FKSce_SOT` FOREIGN KEY (`Nome_Sottoclasse`,`Livello_Sottoclasse`) REFERENCES `sottoclasse` (`Nome`, `Livello`);
-
---
--- Limiti per la tabella `sottoclasse`
---
-ALTER TABLE `sottoclasse`
-  ADD CONSTRAINT `FKSpecializzazione_FK` FOREIGN KEY (`Spe_Nome`,`Spe_Livello`) REFERENCES `classe` (`Nome`, `Livello`);
-
---
--- Limiti per la tabella `sottorazza`
---
-ALTER TABLE `sottorazza`
-  ADD CONSTRAINT `FKIdentifica_FK` FOREIGN KEY (`Ind_Nome`) REFERENCES `razza` (`Nome`);
-
---
--- Limiti per la tabella `tiri_salvezza_personaggio`
---
-ALTER TABLE `tiri_salvezza_personaggio`
-  ADD CONSTRAINT `FKTir_PER_FK` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
-  ADD CONSTRAINT `FKTir_TIR` FOREIGN KEY (`Nome_Caratteristica`) REFERENCES `tiro_salvezza` (`Nome_Caratteristica`);
-
---
--- Limiti per la tabella `tratti_della_razza`
---
-ALTER TABLE `tratti_della_razza`
-  ADD CONSTRAINT `FKTra_RAZ_FK` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`),
-  ADD CONSTRAINT `FKTra_TRA_1` FOREIGN KEY (`Nome_Tratto`) REFERENCES `tratti_razziali` (`Nome`);
-
---
--- Limiti per la tabella `tratti_della_sottorazza`
---
-ALTER TABLE `tratti_della_sottorazza`
-  ADD CONSTRAINT `FKTra_SOT` FOREIGN KEY (`Nome_Sottorazza`) REFERENCES `sottorazza` (`Nome`),
-  ADD CONSTRAINT `FKTra_TRA_FK` FOREIGN KEY (`Nome_Tratto`) REFERENCES `tratti_razziali` (`Nome`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
