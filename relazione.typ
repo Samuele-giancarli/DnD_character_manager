@@ -60,6 +60,131 @@ Le caratteristiche sono 6 e sono:
 - CARISMA
 Il loro valore può variare da 0 a 20. In base al valore ognuna di queste genera un “modificatore” intero che varia da -5 a +5. I modificatori influenzeranno le azioni del personaggio e le sue abilità.
 
+/ Abilità:
+Le abilità sono in totale 18. Ogni personaggio le possiede tutte -in misure diverse-.
+Le abilità rappresentano sfumature più specifiche dei Punti caratteristica sopra citati, e l’essere competenti in un’abilità permette di ottenere un bonus competenza per la stessa. Il bonus risultante per ciascuna abilità si calcola infine come modificatore della caratteristica + eventuale bonus competenza. 
+
+Qui di seguito le 18 abilità del gioco, in ordine alfabetico, con le caratteristiche associate:
+- Acrobazia (Destrezza)
+- Addestrare animali (Saggezza)
+- Arcano (Intelligenza)
+- Atletica (Forza)
+- Furtività (Destrezza)
+- Indagare (Intelligenza)
+- Inganno (Carisma)
+- Intimidire (Carisma)
+- Intrattenere (Carisma)
+- Intuizione (Saggezza)
+- Medicina (Saggezza)
+- Natura (Intelligenza)
+- Percezione (Saggezza)
+- Persuasione (Carisma)
+- Rapidità di mano (Destrezza)
+- Religione (Intelligenza)
+- Sopravvivenza (Saggezza)
+- Storia (Intelligenza)
+
+/ Razze:
+La razza rappresenta il popolo di un personaggio. La razza influenza in un personaggio: taglia, età di vita massima, velocità di movimento, lingue native, tratti razziali standard, incremento di abilità.
+
+/ Sottorazze:
+Una scelta ancora più specifica fatta a partire dalla razza selezionata, rappresenta l’etnia di un personaggio. La sottorazza concede a sua volta dei tratti razziali aggiuntivi.
+
+/ Tratti razziali:
+Una lista di capacità specifiche che vengono concesse al personaggio secondo la sua razza e sottorazza.
+
+/ Lingue:
+La razza e le origini di un personaggio permettono di conoscere e poter parlare e leggere fluentemente una o più lingue del mondo di DnD.
+
+/ Origini:
+Le origini in DnD definiscono il passato di un personaggio. Influiscono sulle lingue conosciute, e concedono dei privilegi, qualità che possono tornare utili durante l’avventura e nelle interazioni con oggetti e persone. Permettono l’utilizzo di strumenti specifici, l’acquisizione in partenza di un determinato equipaggiamento (oggetti), e danno competenza in due abilità.
+
+/ Privilegi:
+Un privilegio dipende dall’origine di un personaggio e rappresenta la possibilità di effettuare azioni o stabilire contatti fuori dalle comuni capacità di gioco. Come esempio pratico, chi ha avuto un passato come Criminale avrà acquisito contatti affidabili nella sua rete criminale e la possibilità di scambiare messaggi tramite mezzi insoliti.
+
+/ Borsa:
+Il contenuto della borsa comprende semplicemente gli oggetti che il personaggio porta con sé come inventario. In generale tutti gli oggetti hanno un peso, un valore, un nome. Gli oggetti sono divisi in categorie quali: Armi e munizioni, armature, cianfrusaglie (trinkets), strumenti (tools), pozioni e veleni, valute, gemme. C’è un limite di peso trasportabile nella borsa.
+
+/ Armi:
+Le armi sono il mezzo attraverso cui si provoca danno ai nemici. Si dividono in 2 macro tipi: ravvicinate e a distanza, alcune di queste utilizzano munizioni. Le armi ravvicinate e le armi a distanza a loro volta si dividono in armi semplici e armi avanzate. Tutte le armi hanno come attributi il danno (il dado che va tirato), il tipo di danno (per esempio una spada farà danno tagliente, mentre una mazza farà danno contundente), e altre proprietà .
+
+/ Proprietà:
+Le proprietà delle armi sono l’effetto che queste producono una volta colpito il bersaglio. E’ possibile per esempio avvelenare l’avversario, o incendiarlo.
+
+/ Munizioni:
+Le munizioni sono i proiettili necessari ad azionare un’arma.
+
+/ Armature:
+Le armature determinano la resistenza di un personaggio ai danni. Hanno come attributi:
+la tipologia, che le classifica in armature leggere, armature medie, armature pesanti
+la classe armatura, che per armature leggere e medie è influenzata dalla destrezza del personaggio
+la forza necessaria per il loro utilizzo, che può essere nulla, cioè quanto un personaggio deve essere forte per indossare un’armatura agilmente
+la caratteristica di svantaggio nella furtività, quanto un’armatura può fare rumore o rendere il personaggio visibile durante le azioni furtive
+
+
+/ Strumenti e pacchetti:
+I pacchetti inglobano del contenuto, che è banalmente la lista degli oggetti contenuti in essi. Gli strumenti e i pacchetti sono delle dotazioni che permettono di svolgere delle attività concrete nel mondo di gioco, per esempio di cucina o artigianato, e l’efficienza nel loro utilizzo dipende dalle origini del personaggio.
+
+/ Cianfrusaglie:
+Qualunque tipo di oggetti di valore simbolico ma senza un possibile utilizzo da parte del giocatore.
+
+/ Pozioni e veleni:
+Fluidi contenuti in fiale. La tipologia definisce come questi vengono assunti, per esempio se sono pozioni liquide da bere oppure unguenti da applicare.
+Le pozioni producono un effetto generalmente benefico, come il recupero di punti salute, o il poter respirare sott’acqua. Similarmente, i veleni producono un effetto che sarà sempre di malus rispetto al proprio giocatore.
+
+/ Valute:
+Nel mondo di D&D ci sono 5 diverse valute: rame, argento, electrum, oro e platino.
+Una moneta d’oro vale 100 monete di rame, 10 monete di argento, 2 monete di electrum. Una moneta di platino vale 10 monete d’oro.
+
+/ Gemme:
+Le gemme sono beni preziosi e possono essere scambiate nei negozi per monete.
+
+/ Classe:
+La classe definisce il modus operandi del personaggio, e in particolare il suo modo di combattere. E’ una parte fondamentale dell’identità dell’eroe, pertanto influisce sulle sue debolezze, resistenze e punti di forza. All'aumentare del livello, un giocatore può decidere di spendere questo livello in una classe: 
+- se la classe scelta è già conosciuta allora il personaggio otterrà le Capacità di classe di quello specifico livello
+- se la classe non è conosciuta il giocatore manterrà i progressi delle classi che già conosce, e otterrà le Capacità della classe e le Competenze della nuova classe scelta, a partire dal livello uno. 
+- arrivato a un determinato livello, il giocatore sceglierà una Sottoclasse, che concederà nel suo percorso l’acquisizione di abilità aggiuntive. 
+
+La classe stabilisce: il Dado della vita del personaggio, l’Equipaggiamento di partenza, le Sottoclassi disponibili, le Competenze in armi, le Competenze in armature e le Competenze nei Tiri salvezza.
+
+/ Tiri salvezza:
+I tiri salvezza sono il tentativo fatto dal personaggio per resistere a un evento o affrontare una situazione importante. La formula per calcolare i tiri salvezza è d20 + modificatore caratteristica + bonus competenza.
+
+/ Capacità di classe:
+Si distinguono in 4 tipologie:
+- Miglioramento: incrementano il valore di una o più abilità.
+- Passive: per esempio di tipologia difensiva, oppure percettive.
+- Attive: possono essere nuove tecniche offensive, con un limite di utilizzo giornaliero
+- Spellcasting: la caratteristica da utilizzare per il calcolo di danno e messa a segno degli incantesimi.
+
+
+/ Sottoclasse:
+A partire da un determinato livello, un eroe può specializzarsi in una Sottoclasse e acquisire capacità inedite aumentando di livello.
+
+/ Capacità di sottoclasse:
+Come le capacità di classe, danno vantaggi specifici nel combattimento e nell’esplorazione.
+
+/ Principali classi:
+- Ladro: in aggiunta alle sue capacità di classe, ha un bonus all’attacco furtivo
+- Barbaro: giocare il barbaro ruota attorno a un bonus di rabbia, utilizzabile un tot di volte al giorno nel combattimento
+- Bardo: ha un dado aggiuntivo di ispirazione utile al gruppo di gioco, può utilizzare incantesimi
+- Mago: può utilizzare incantesimi
+
+/ Incantesimi:
+Gli incantesimi sono una capacità di classe. Sono divisi secondo il livello di incantesimo che varia da 0 a 9. Gli incantesimi di livello zero sono tendenzialmente noti come trucchetti e possono essere utilizzati senza spendere alcuno slot incantesimo. 
+
+Tutti gli incantesimi, oltre ad avere un livello, presentano anche una scuola di appartenenza, un tempo di lancio, una distanza (dall’utilizzatore), una durata, delle componenti di evocazione e  la possibilità o no di essere lanciati come rituali (lanciare un incantesimo come rituale allunga il tempo di lancio a 10 minuti).
+Le componenti di un incantesimo sono 3: Somatiche (i gesti fatti), Vocali (le parole pronunciate) e Materiali (gli oggetti che catalizzano la magia), ogni incantesimo deve avere almeno una componente vocale o somatica.
+
+/ Slot incantesimo:
+Gli slot incantesimo sono la quantità di incantesimi di un determinato livello che un personaggio può usare nell’arco di un giorno, e dipendono dalla specifica classe del personaggio.
+
+Esempio: un mago di livello 1 ha 2 slot  incantesimo di livello 1. In totale conoscerà 3 trucchetti/incantesimi di livello 0 e n incantesimi di livello 1, dove n è Modificatore INTELLIGENZA + Livello della classe mago. 
+
+/ Allineamento:
+Determina la morale del personaggio e la sua inclinazione verso azioni considerate generalmente positive, neutrali o negative.
+
+
 
 #pagebreak();
 == Tabella dei concetti chiave
