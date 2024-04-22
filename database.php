@@ -14,16 +14,11 @@ class DatabaseHelper{
         $query = "INSERT INTO utente (E_mail, Password) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $email, $password);
-        $stmt->execute();
-        
-        try {
-            if (!$stmt->execute()) {
-                return null;
-            } 
-        } catch(mysqli_sql_exception $e) {
+        if ($stmt->execute()) {
+            return $this->db->insert_id;
+        } else {
             return null;
         }
-        return $this->db->insert_id;
     }
 
     public function rimuoviUtente($ID){
