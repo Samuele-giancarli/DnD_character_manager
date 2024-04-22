@@ -43,7 +43,8 @@
                 <div class="card">
                     <div class="card-header">User Registration</div>
                     <div class="card-body">
-                        <form method="post" action="process_registration.php">
+
+                        <form method="post" action="register.php">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
@@ -54,6 +55,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Register</button>
                         </form>
+
                     </div>
                 </div>
             </div>
