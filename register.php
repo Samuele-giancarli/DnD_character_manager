@@ -1,5 +1,11 @@
 <?php
     require_once("bootstrap.php");
+
+    if(isset($_POST["e_mail"]) && isset($_POST["password"])) {
+        $email = $_POST["e_mail"];
+        $password = $_POST["password"];
+        $dbh->aggiungiUtente($email, $password);
+    }
 ?>
 
 <!DOCTYPE html>
