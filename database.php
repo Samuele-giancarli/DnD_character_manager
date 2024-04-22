@@ -11,7 +11,7 @@ class DatabaseHelper{
     }
 
     public function aggiungiUtente($email, $password){
-        $query = "insert into utente (E_mail, Password) values (?, ?)";
+        $query = "INSERT INTO utente (E_mail, Password) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
@@ -27,13 +27,10 @@ class DatabaseHelper{
     }
 
     public function rimuoviUtente($ID){
-        $query = "SELECT COUNT(*) as num_following FROM follow WHERE ID_Seguace = ?";
+        $query = "DELETE FROM utente WHERE ID_UTENTE = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $ID);
         $stmt->execute();
-        $result = $stmt->get_result();
-        
-        return $result->fetch_assoc();
     }
 }
 
