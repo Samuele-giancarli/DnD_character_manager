@@ -41,7 +41,20 @@ class DatabaseHelper{
         }else{
             return $row["ID_Utente"];
         }
-}
+    }
+
+    public function characterList($ID){
+        $query="SELECT * FROM personaggio WHERE ID_Utente=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $characters = array();
+        while($row = $result->fetch_assoc()){
+            $characters[] = $row;
+        }
+        return $characters;
+    }
 }
 
 ?>
