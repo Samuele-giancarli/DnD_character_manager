@@ -43,7 +43,7 @@ class DatabaseHelper{
         } else {
             return false;
         }
-}
+    }
 }
 
 ?>

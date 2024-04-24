@@ -2,7 +2,10 @@
     session_start();
     require_once("bootstrap.php");
 
-    
+    if($dbh->loginUtente($_POST['username'], $_POST['password'])){
+        $_SESSION['username'] = $_POST['username'];
+        header("Location: index.php");
+    }
 ?>
 
 <!DOCTYPE html>
