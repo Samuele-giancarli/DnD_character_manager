@@ -4,14 +4,15 @@
 
     require_once("bootstrap.php");
 
-    if(isset($_POST["email"]) && isset($_POST["password"])) {
+    if(isset($_POST["email"]) && isset($_POST["password"])&&isset($_POST["username"])) {
         $email = $_POST["email"];
         $password = $_POST["password"];
+        $username = $_POST["username"];
 
-        var_dump($email);
-        var_dump($password);
+       // var_dump($email);
+       // var_dump($password);
 
-        $dbh->aggiungiUtente($email, $password);
+        $dbh->aggiungiUtente($email, $password, $username);
     }
 ?>
 
@@ -54,6 +55,10 @@
                     <div class="card-body">
 
                         <form method="post" action="registerForm.php">
+                        <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
+                            </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">

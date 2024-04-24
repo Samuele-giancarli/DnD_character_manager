@@ -10,10 +10,10 @@ class DatabaseHelper{
         }
     }
 
-    public function aggiungiUtente($email, $password){
-        $query = "INSERT INTO utente (E_mail, Password) VALUES (?, ?)";
+    public function aggiungiUtente($email, $password, $username){
+        $query = "INSERT INTO utente (E_mail, Password, Username) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ss", $email, $password);
+        $stmt->bind_param("sss", $email, $password, $username);
         if ($stmt->execute()) {
             return $this->db->insert_id;
         } else {
