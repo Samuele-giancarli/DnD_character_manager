@@ -2,6 +2,10 @@
     if(isset($_POST["email"]) && isset($_POST["password"])) {
         $email = $_POST["email"];
         $password = $_POST["password"];
+
+        var_dump($email);
+        var_dump($password);
+
         $dbh->aggiungiUtente($email, $password);
     }
 ?>
@@ -44,7 +48,7 @@
                     <div class="card-header">User Registration</div>
                     <div class="card-body">
 
-                        <form method="post" action="register.php">
+                        <form method="post" action="registerForm.php">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
