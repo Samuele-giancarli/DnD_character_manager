@@ -91,6 +91,7 @@
                             $idutente=$dbh->loginUtente($username, $password);
                             if (!is_null($idutente)){
                             $mess="Login success";
+                            header("Location: index.php");
                             $_SESSION["ID"]=$idutente;
                         }else{
                             $mess="Login failed";
