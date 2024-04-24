@@ -26,6 +26,7 @@
         $character_experience, $character_origin, $character_equipped_armor, $character_equipped_weapon, $character_alignment, $charater_race, $character_bag_id, $character_user_id);
     } else {
         echo "Errore";
+        var_dump($_SERVER["REQUEST_METHOD"]);
     }
 ?>
 
@@ -90,7 +91,7 @@
             <div class="card">
                 <div class="card-header">Crea Personaggio Dungeons and Dragons</div>
                 <div class="card-body">
-                    <form>
+                    <form method="post">
                         <div class="form-group">
                             <label for="character_name">Nome</label>
                             <input type="text" class="form-control" id="character_name" name="character_name" placeholder="Inserisci il nome del personaggio">
