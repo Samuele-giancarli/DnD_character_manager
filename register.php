@@ -59,7 +59,7 @@
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="loginForm.php">Login</a>
+        <a class="nav-link" href="login.php">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Create</a>
@@ -78,7 +78,7 @@
                     <div class="card-header">User Registration</div>
                     <div class="card-body">
 
-                        <form method="post" action="registerForm.php">
+                        <form method="post" action="register.php">
                         <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
@@ -95,7 +95,7 @@
                         </form>
                     </div>
                 </div>
-                <p class="mt-3 text-center">Sei già registrato? <a title="accedi" class="link-primary" href="loginForm.php">Accedi</a></p>
+                <p class="mt-3 text-center">Sei già registrato? <a title="accedi" class="link-primary" href="login.php">Accedi</a></p>
 
             </div>
         </div>
