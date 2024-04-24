@@ -57,7 +57,7 @@ class DatabaseHelper{
     }
 
     public function addCharacter($Forza, $Destrezza, $Costituzione, $Intelligenza, $Saggezza, $Carisma, $Punti_Ferita, $Nome, $Descrizione,$Classe_Armatura, $Iniziativa, $Punti_esperienza, $Nome_Origine, $Armatura_equipaggiata, $Arma_equipaggiata, $Nome_allineamento, $Nome_razza, $ID_Borsa, $ID){
-        $query = "INSERT INTO personaggio (Forza, Destrezza, Costituzione, Intelligenza, Saggezza, Carisma, Punti_Ferita, Nome, Descrizione, Classe_Armatura, Iniziativa, Punti_esperienza, Nome_Origine, Armatura_equipaggiata, Arma_equipaggiata, Nome_allineamento, Nome_razza, ID_Borsa, ID_Utente)
+        $query = "INSERT INTO personaggio (Car_Forza, Car_Destrezza, Car_Costituzione, Car_Intelligenza, Car_Saggezza, Car_Carisma, Punti_Ferita, Nome, Descrizione_Aspetto, Classe_Armatura, Iniziativa, Punti_Esperienza, Nome_Origine, Armatura_Equipaggiata, Arma_equipaggiata, Nome_Allineamento, Nome_Razza, ID_Borsa, ID_Utente)
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("iiiiiiisssiiisssii", $Forza, $Destrezza, $Costituzione, $Intelligenza, $Saggezza, $Carisma, $Punti_Ferita, $Nome, $Descrizione,$Classe_Armatura, $Iniziativa, $Punti_esperienza, $Nome_Origine, $Armatura_equipaggiata, $Arma_equipaggiata, $Nome_allineamento, $Nome_razza, $ID_Borsa, $ID);
