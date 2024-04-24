@@ -22,11 +22,22 @@ class DatabaseHelper{
     }
 
     public function rimuoviUtente($ID){
-        $query = "DELETE FROM utente WHERE ID_UTENTE = ?";
+        $query = "DELETE FROM utente WHERE ID_Utente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $ID);
         $stmt->execute();
     }
+
+
+    public function loginUtente($username, $password){
+        $query="SELECT * FROM utente WHERE Username=? AND Password=?";
+        $stmt=$this->db->prepare($query);
+        $stmt=$this->bind_param("ss", $username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $db->close();
+}
 }
 
 ?>
