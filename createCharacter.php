@@ -1,5 +1,29 @@
 <?php
     require_once("bootstrap.php");
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $character_name = $_POST["character_name"];
+        $character_strength = $_POST["character_strength"];
+        $character_dexterity = $_POST["character_dexterity"];
+        $character_constitution = $_POST["character_constitution"];
+        $character_intelligence = $_POST["character_intelligence"];
+        $character_wisdom = $_POST["character_wisdom"];
+        $character_charisma = $_POST["character_charisma"];
+        $character_hitpoints = $_POST["character_hitpoints"];
+        $character_description = $_POST["character_description"];
+        $character_armorclass = $_POST["character_armorclass"];
+        $character_initiative = $_POST["character_initiative"];
+        $character_experience = $_POST["character_experience"];
+        $character_origin = $_POST["character_origin"];
+        $character_equipped_armor = $_POST["character_equipped_armor"];
+        $character_equipped_weapon = $_POST["character_equipped_weapon"];
+        $character_alignment = $_POST["character_alignment"];
+        $charater_race = $_POST["character_race"];
+        $character_bag_id = $_POST["character_bag_id"];
+        $character_user_id = $_SESSION["ID_Utente"];
+        $dbh->addCharacter($character_strength, $character_dexterity, $character_constitution, $character_intelligence, $character_wisdom, $character_charisma, $character_hitpoints, $character_name, $character_description, $character_armorclass, $character_initiative,
+        $character_experience, $character_origin, $character_equipped_armor, $character_equipped_weapon, $character_alignment, $charater_race, $character_bag_id, $character_user_id);
+    }
 ?>
 
 <!DOCTYPE html>
