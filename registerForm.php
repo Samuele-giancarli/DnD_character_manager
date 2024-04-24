@@ -69,9 +69,10 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Register</button>
                         </form>
-
                     </div>
                 </div>
+                <p class="mt-3 text-center">Sei già registrato? <a title="accedi" class="link-primary" href="loginForm.php">Accedi</a></p>
+
             </div>
         </div>
     </div>
