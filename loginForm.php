@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once("bootstrap.php");
+    $mess=null;
 ?>
 
 <!DOCTYPE html>
@@ -76,9 +77,31 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Login</button>
                         </form>
+
+                        <?php 
+                        if(isset($_SESSION["ID"])) {
+                            ?>
+                            <a style="color:black" href="logout.php">Un utente è già loggato. Wanna logout?</a>
+                            <?php
+                            ?>
+                            <?php
+                        }else if (isset($_POST["username"])&&isset($_POST["password"])){
+                            $username=$_POST["username"];
+                            $password=$_POST["password"];
+                            $idutente=$dbh->loginUtente($username, $password);
+                            if (!is_null($idutente)){
+                            $mess="Login success";
+                            $_SESSION["ID"]=$idutente;
+                        }else{
+                            $mess="Login failed";
+                        }
+                    }
+                        echo $mess;
+                        ?>
+
                     </div>
                 </div>
-                <p class="mt-3 text-center">Non sei ancora registato? <a title="registrati" class="link-primary" href="registerForm.php">Registrati</a></p>
+                <p class="mt-3 text-center">Non sei ancora registrato? <a title="registrati" class="link-primary" href="registerForm.php">Registrati</a></p>
             </div>
         </div>
     </div>
