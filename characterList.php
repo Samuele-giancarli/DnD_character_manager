@@ -72,7 +72,7 @@
                     <div class="card-header"><?php echo $character["Nome"]; ?></div>
                     <div class="card-body">
                         <p class="card-text">Altre informazioni sul personaggio qui...</p>
-                        <a href="character.php?ID=<?php echo $character["ID_Personaggio"]; ?>" class="btn btn-primary">Dettagli</a>
+                        <a href="index.php?ID=<?php echo $character["ID_Personaggio"]; ?>" class="btn btn-primary">Dettagli</a>
                     </div>
                 </div>
             </div>

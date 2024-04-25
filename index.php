@@ -1,5 +1,31 @@
 <?php
     require_once("bootstrap.php");
+
+    if(isset($_GET['ID'])) {
+        $character_id = $_GET['ID'];
+        $raceName = $dbh->getRaceName($character_id);
+        $originName = $dbh->getOriginName($character_id);
+        $dextrexity = $dbh->getDexterity($character_id);
+        $strength = $dbh->getStrength($character_id);
+        $constitution = $dbh->getConstitution($character_id);
+        $intelligence = $dbh->getIntelligence($character_id);
+        $wisdom = $dbh->getWisdom($character_id);
+        $charisma = $dbh->getCharisma($character_id);
+        $hitpoints = $dbh->getHitpoints($character_id);
+        $name = $dbh->getName($character_id);
+        $description = $dbh->getDescription($character_id);
+        $armorclass = $dbh->getArmorClass($character_id);
+        $initiative = $dbh->getInitiative($character_id);
+        $experiencepoints = $dbh->getExperiencePoints($character_id);
+        $equippedArmor = $dbh->getEquippedArmor($character_id);
+        $equippedWeapon = $dbh->getEquippedWeapon($character_id);
+        $alignmentName = $dbh->getAlignmentName($character_id);
+        $bagID = $dbh->getBagID($character_id);
+        //$level = $dbh->getLevel($character_id); 
+        //$class = $dbh->getClass($character_id);    
+    } else {
+       var_dump("trovato nulla");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -66,56 +92,34 @@
                     <div class="card-body">
                         <form>
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter character name">
+                                <label for="name">Name: <?php echo htmlspecialchars($name); ?></label>
                             </div>
                             <div class="form-group">
-                                <label for="race">Race</label>
-                                <input type="text" class="form-control" id="race" placeholder="Enter character race">
+                                <label for="race">Race: <?php echo htmlspecialchars($raceName)?> </label>
                             </div>
                             <div class="form-group">
-                                <label for="class">Class</label>
-                                <input type="text" class="form-control" id="class" placeholder="Enter character class">
+                                <label for="class">Class: <?php echo htmlspecialchars($className)?> </label>
                             </div>
                             <div class="form-group">
-                                <label for="level">Level</label>
-                                <input type="number" class="form-control" id="level" placeholder="Enter character level">
+                                <label for="level">Level: <?php echo htmlspecialchars($level)?> </label>
                             </div>
                             <div class="form-group">
-                                <label for="background">Background</label>
-                                <input type="text" class="form-control" id="background" placeholder="Enter character background">
+                                <label for="background">Background: <?php echo htmlspecialchars($originName)?> </label>
                             </div>
                             <div class="form-group">
-                                <label for="alignment">Alignment</label>
-                                <input type="text" class="form-control" id="alignment" placeholder="Enter character alignment">
+                                <label for="alignment">Alignment: <?php echo htmlspecialchars($alignmentName)?> </label>
                             </div>
                             <div class="form-group">
-                                <label for="xp">Experience Points</label>
-                                <input type="number" class="form-control" id="xp" placeholder="Enter character experience points">
+                                <label for="xp">Experience Points: <?php echo htmlspecialchars($experiencepoints)?> </label>
                             </div>
                             <div class="form-group">
-                                <label for="ac">Armor Class</label>
-                                <input type="number" class="form-control" id="ac" placeholder="Enter character armor class">
+                                <label for="ac">Armor Class: <?php echo htmlspecialchars($armorclass)?> </label>
                             </div>
                             <div class="form-group">
-                                <label for="initiative">Initiative</label>
-                                <input type="number" class="form-control" id="initiative" placeholder="Enter character initiative">
-                            </div>
-<div class="form-group">
-                                <label for="speed">Speed</label>
-                                <input type="number" class="form-control" id="speed" placeholder="Enter character speed">
+                                <label for="initiative">Initiative: <?php echo htmlspecialchars($initiative)?> </label>
                             </div>
                             <div class="form-group">
-                                <label for="hitpoints">Hit Points</label>
-                                <input type="number" class="form-control" id="hitpoints" placeholder="Enter character hit points">
-                            </div>
-                            <div class="form-group">
-                                <label for="htemporary">Temporary Hit Points</label>
-                                <input type="number" class="form-control" id="htemporary" placeholder="Enter character temporary hit points">
-                            </div>
-                            <div class="form-group">
-                                <label for="dsaves">Death Saves</label>
-                                <input type="number" class="form-control" id="dsaves" placeholder="Enter character death saves">
+                                <label for="hitpoints">Hit Points: <?php echo htmlspecialchars($hitpoints)?></label>
                             </div>
                             <div class="form-group">
                                 <label for="personality">Personality Traits</label>

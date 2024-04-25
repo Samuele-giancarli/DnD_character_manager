@@ -207,7 +207,6 @@ class DatabaseHelper{
         $row = $result->fetch_assoc();
         return $row["Armatura_Equipaggiata"];
     }
-
     public function getEquippedWeapon($ID){
         $query="SELECT Arma_equipaggiata FROM personaggio WHERE ID_Personaggio=?";
         $stmt=$this->db->prepare($query);
@@ -246,6 +245,26 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         return $row["ID_Borsa"];
+    }
+
+    public function getClass($ID){
+        $query="SELECT Nome_Classe FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Nome_Classe"];
+    }
+
+    public function getLevel($ID){
+        $query="SELECT Livello FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Livello"];
     }
 
     public function removeCharacter($ID){
