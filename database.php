@@ -67,6 +67,193 @@ class DatabaseHelper{
             return null;
         }
     }
+
+    public function getStrength($ID){
+        $query="SELECT Car_Forza FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Car_Forza"];
+    }
+
+    public function getDexterity($ID){
+        $query="SELECT Car_Destrezza FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Car_Destrezza"];
+    }
+
+    public function getConstitution($ID){
+        $query="SELECT Car_Costituzione FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Car_Costituzione"];
+    }
+
+    public function getIntelligence($ID){
+        $query="SELECT Car_Intelligenza FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Car_Intelligenza"];
+    }
+
+    public function getWisdom($ID){
+        $query="SELECT Car_Saggezza FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Car_Saggezza"];
+    }
+
+    public function getCharisma($ID){
+        $query="SELECT Car_Carisma FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Car_Carisma"];
+    }
+
+    public function getHitPoints($ID){
+        $query="SELECT Punti_Ferita FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Punti_Ferita"];
+    }
+
+    public function getName($ID){
+        $query="SELECT Nome FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Nome"];
+    }
+
+    public function getDescription($ID){
+        $query="SELECT Descrizione_Aspetto FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Descrizione_Aspetto"];
+    }
+
+    public function getArmorClass($ID){
+        $query="SELECT Classe_Armatura FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Classe_Armatura"];
+    }
+
+    public function getInitiative($ID){
+        $query="SELECT Iniziativa FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Iniziativa"];
+    }
+
+    public function getExperiencePoints($ID){
+        $query="SELECT Punti_Esperienza FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Punti_Esperienza"];
+    }
+
+    public function getOriginName($ID){
+        $query="SELECT Nome_Origine FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Nome_Origine"];
+    }
+
+    public function getEquippedArmor($ID){
+        $query="SELECT Armatura_Equipaggiata FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Armatura_Equipaggiata"];
+    }
+
+    public function getEquippedWeapon($ID){
+        $query="SELECT Arma_equipaggiata FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Arma_equipaggiata"];
+    }
+
+    public function getAlignmentName($ID){
+        $query="SELECT Nome_Allineamento FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Nome_Allineamento"];
+    }
+
+    public function getRaceName($ID){
+        $query="SELECT Nome_Razza FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Nome_Razza"];
+    }
+
+    public function getBagID($ID){
+        $query="SELECT ID_Borsa FROM personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["ID_Borsa"];
+    }
+
+    public function removeCharacter($ID){
+        $query = "DELETE FROM personaggio WHERE ID_Personaggio = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+    }
 }
 
 ?>
