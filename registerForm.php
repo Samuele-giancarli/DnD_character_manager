@@ -56,14 +56,26 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
 <!-- nella home vedo la lista dei miei personaggi e il pulsante "crea"-->
+<?php
+if (isset($_SESSION["ID"])){
+    ?>
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
+      <?php
+}
+?>
       <li class="nav-item">
         <a class="nav-link" href="loginForm.php">Login</a>
       </li>
+      <?php
+if (isset($_SESSION["ID"])){
+    ?>
       <li class="nav-item">
-        <a class="nav-link" href="#">Create</a>
+        <a class="nav-link" href="create.php">Create</a>
       </li>
+      <?php
+}
+?>
       <li class="nav-item">
         <a class="nav-link" href="#">Guides</a>
       </li>
