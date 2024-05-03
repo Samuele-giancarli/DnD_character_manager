@@ -44,7 +44,7 @@
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="loginForm.php">Login</a>
+        <a class="nav-link" href="login.php">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="create.php">Create</a>
@@ -73,7 +73,7 @@ if (isset($_SESSION["ID"])){
     </div>
 <?php
 }else{
-    header("Location: loginForm.php");
+    header("Location: login.php");
 }
 ?>
 </body>

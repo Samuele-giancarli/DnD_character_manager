@@ -53,7 +53,7 @@ if (isset($_SESSION["ID"])){
 }
 ?>
       <li class="nav-item">
-        <a class="nav-link" href="loginForm.php">Login</a>
+        <a class="nav-link" href="login.php">Login</a>
       </li>
       <?php
 if (isset($_SESSION["ID"])){
@@ -78,7 +78,7 @@ if (isset($_SESSION["ID"])){
                     <div class="card-header">User Login</div>
                     <div class="card-body">
 
-                        <form method="post" action="loginForm.php">
+                        <form method="post" action="login.php">
                         <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="username" class="form-control" id="username" name="username" placeholder="Enter username">
@@ -114,8 +114,11 @@ if (isset($_SESSION["ID"])){
 
                     </div>
                 </div>
-                <p class="mt-3 text-center">Non sei ancora registrato? <a title="registrati" class="link-primary" href="registerForm.php">Registrati</a></p>
-            </div>
+                <?php
+                if (!isset($_SESSION["ID"])){?>
+                <p class="mt-3 text-center">Non sei ancora registrato? <a title="registrati" class="link-primary" href="register.php">Registrati</a></p>
+            <?php }?>
+                </div>
         </div>
     </div>
 </body>
