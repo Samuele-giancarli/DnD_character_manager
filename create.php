@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dungeons and Dragons Character Sheet</title>
+    <title>DND Aider - Crea Personaggio</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         body {
@@ -32,6 +32,27 @@
         }
     </style>
 </head>
+
+
+<script>
+const race=document.getElementById("race").value;
+let subrace=document.getElementById("subrace");
+
+function updateSubrace(){
+subrace.innerText=
+<?php
+$nome_razza=
+$stmt = $dbh->db->prepare("SELECT Nome FROM sottorazza WHERE Nome_Razza=?");
+$stmt->bind_param("s", $nome_razza);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()){
+echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
+}
+?>;
+}
+</script>
+
 <body>
 
 <header><nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -49,10 +70,10 @@
         <a class="nav-link" href="login.php">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Create</a>
+        <a class="nav-link" href="create.php">Crea</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Guides</a>
+        <a class="nav-link" href="#">Guide</a>
       </li>
     </ul>
   </div>
@@ -64,130 +85,41 @@
                 <div class="card">
                     <div class="card-header">Dungeons and Dragons Character Sheet</div>
                     <div class="card-body">
-                        <form>
+                        <form id="creapg">
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter character name">
-                            </div>
-                            <div class="form-group">
-                                <label for="race">Race</label>
-                                <input type="text" class="form-control" id="race" placeholder="Enter character race">
-                            </div>
-                            <div class="form-group">
-                                <label for="class">Class</label>
-                                <input type="text" class="form-control" id="class" placeholder="Enter character class">
-                            </div>
-                            <div class="form-group">
-                                <label for="level">Level</label>
-                                <input type="number" class="form-control" id="level" placeholder="Enter character level">
-                            </div>
-                            <div class="form-group">
-                                <label for="background">Background</label>
-                                <input type="text" class="form-control" id="background" placeholder="Enter character background">
-                            </div>
-                            <div class="form-group">
-                                <label for="alignment">Alignment</label>
-                                <input type="text" class="form-control" id="alignment" placeholder="Enter character alignment">
-                            </div>
-                            <div class="form-group">
-                                <label for="xp">Experience Points</label>
-                                <input type="number" class="form-control" id="xp" placeholder="Enter character experience points">
-                            </div>
-                            <div class="form-group">
-                                <label for="ac">Armor Class</label>
-                                <input type="number" class="form-control" id="ac" placeholder="Enter character armor class">
-                            </div>
-                            <div class="form-group">
-                                <label for="initiative">Initiative</label>
-                                <input type="number" class="form-control" id="initiative" placeholder="Enter character initiative">
-                            </div>
-<div class="form-group">
-                                <label for="speed">Speed</label>
-                                <input type="number" class="form-control" id="speed" placeholder="Enter character speed">
-                            </div>
-                            <div class="form-group">
-                                <label for="hitpoints">Hit Points</label>
-                                <input type="number" class="form-control" id="hitpoints" placeholder="Enter character hit points">
-                            </div>
-                            <div class="form-group">
-                                <label for="htemporary">Temporary Hit Points</label>
-                                <input type="number" class="form-control" id="htemporary" placeholder="Enter character temporary hit points">
-                            </div>
-                            <div class="form-group">
-                                <label for="dsaves">Death Saves</label>
-                                <input type="number" class="form-control" id="dsaves" placeholder="Enter character death saves">
-                            </div>
-                            <div class="form-group">
-                                <label for="personality">Personality Traits</label>
-                                <textarea class="form-control" id="personality" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="ideals">Ideals</label>
-                                <textarea class="form-control" id="ideals" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="attacks">Attacks</label>
-                                <textarea class="form-control" id="attacks" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="spellcasting">Spellcasting</label>
-                                <textarea class="form-control" id="spellcasting" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="inventory">Inventory</label>
-                                <textarea class="form-control" id="inventory" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="features">Features</label>
-                                <textarea class="form-control" id="features" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="skills">Skills</label>
-                                <textarea class="form-control" id="skills" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="abilities">Abilities</label>
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Ability</th>
-                                            <th>Score</th>
-                                            <th>Modifier</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Strength</td>
-                                            <td><input type="number" class="form-control" id="strscore"></td>
-                                            <td><input type="number" class="form-control" id="strmod" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dexterity</td>
-                                            <td><input type="number" class="form-control" id="dexscore"></td>
-                                            <td><input type="number" class="form-control" id="dexmod" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Constitution</td>
-                                            <td><input type="number" class="form-control" id="conscore"></td>
-                                            <td><input type="number" class="form-control" id="conmod" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Intelligence</td>
-                                            <td><inputtype="number" class="form-control" id="intscore"></td>
-                                            <td><input type="number" class="form-control" id="intmod" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Wisdom</td>
-                                            <td><input type="number" class="form-control" id="wisscore"></td>
-                                            <td><input type="number" class="form-control" id="wismod" readonly></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Charisma</td>
-                                            <td><input type="number" class="form-control" id="charscore"></td>
-                                            <td><input type="number" class="form-control" id="charmod" readonly></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <ol>
+                                <li><label for="name">Scegli un nome:</label>
+                                <input type="text" class="form-control" id="name" placeholder="Quale sarà il suo nome?"></li>
+                                <br>
+                                <li>
+                                <label for="race"> Scegli una razza:  </label>
+                                 <select class="form-control" id="races" name="race" form="creapg" onchange="updateSubrace()">
+
+                                <?php
+                                $stmt = $dbh->db->prepare("SELECT Nome FROM razza");
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                while ($row = $result->fetch_assoc()){
+                                    echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
+                                }
+                                ?>
+                                </select>  </li>
+                                <br>
+
+                                <li><label for="subrace"> Scegli una sottorazza:  </label>
+                                <select class="form-control" id="subraces" name="subrace" form="creapg">
+                                <?php
+                                $stmt = $dbh->db->prepare("SELECT Nome FROM sottorazza");
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                while ($row = $result->fetch_assoc()){
+                                    echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
+                                }
+                                ?>
+                                </select>  </li>
+                            </li>
+
+                                </ol>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

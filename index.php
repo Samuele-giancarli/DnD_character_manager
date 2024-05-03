@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dungeons and Dragons Character Sheet</title>
+    <title>DND Aider - Dungeons and Dragons Character Sheet</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         body {
@@ -47,10 +47,10 @@
         <a class="nav-link" href="login.php">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="create.php">Create</a>
+        <a class="nav-link" href="create.php">Crea</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Guides</a>
+        <a class="nav-link" href="#">Guide</a>
       </li>
     </ul>
   </div>
@@ -63,7 +63,7 @@ if (isset($_SESSION["ID"])){
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Your Characters</div>
+                    <div class="card-header">I tuoi personaggi</div>
                     <div class="card-body">
                         
                     </div>

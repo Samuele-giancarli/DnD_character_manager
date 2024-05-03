@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
+    <title>DND Aider - Login Utente</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         body {
@@ -59,13 +59,13 @@ if (isset($_SESSION["ID"])){
 if (isset($_SESSION["ID"])){
     ?>
       <li class="nav-item">
-        <a class="nav-link" href="create.php">Create</a>
+        <a class="nav-link" href="create.php">Crea</a>
       </li>
       <?php
 }
 ?>
       <li class="nav-item">
-        <a class="nav-link" href="#">Guides</a>
+        <a class="nav-link" href="#">Guide</a>
       </li>
     </ul>
   </div>
@@ -75,7 +75,7 @@ if (isset($_SESSION["ID"])){
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">User Login</div>
+                    <div class="card-header">Login Utente</div>
                     <div class="card-body">
 
                         <form method="post" action="login.php">
@@ -93,7 +93,7 @@ if (isset($_SESSION["ID"])){
                         <?php 
                         if(isset($_SESSION["ID"])) {
                             ?>
-                            <a style="color:black" href="logout.php">Un utente è già loggato. Wanna logout?</a>
+                            <a style="color:black" href="logout.php">Un utente è già loggato. Vuoi fare il logout?</a>
                             <?php
                             ?>
                             <?php

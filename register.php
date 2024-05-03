@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
+    <title>DND Aider - Registrati </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         body {
@@ -71,13 +71,13 @@ if (isset($_SESSION["ID"])){
 if (isset($_SESSION["ID"])){
     ?>
       <li class="nav-item">
-        <a class="nav-link" href="create.php">Create</a>
+        <a class="nav-link" href="create.php">Crea</a>
       </li>
       <?php
 }
 ?>
       <li class="nav-item">
-        <a class="nav-link" href="#">Guides</a>
+        <a class="nav-link" href="#">Guide</a>
       </li>
     </ul>
   </div>
@@ -86,7 +86,7 @@ if (isset($_SESSION["ID"])){
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">User Registration</div>
+                    <div class="card-header">Registrazione Utente</div>
                     <div class="card-body">
 
                         <form method="post" action="register.php">
@@ -102,7 +102,7 @@ if (isset($_SESSION["ID"])){
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                             </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
+                            <button type="submit" class="btn btn-primary">Registrati</button>
                         </form>
                     </div>
                 </div>
