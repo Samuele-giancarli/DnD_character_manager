@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 04, 2024 alle 13:02
+-- Creato il: Mag 04, 2024 alle 18:26
 -- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.0.30
+-- Versione PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -112,11 +112,37 @@ CREATE TABLE `appartiene` (
 
 CREATE TABLE `barbaro` (
   `ID_Barbaro` int(11) NOT NULL,
-  `Utilizzi_Rabbia_Giornalieri` int(11) NOT NULL,
-  `Bonus_Rabbia` int(11) NOT NULL,
+  `Livello_Classe` int(11) NOT NULL,
   `Nome_Classe` varchar(20) NOT NULL,
-  `Livello_Classe` int(11) NOT NULL
+  `Utilizzi_Rabbia_Giornalieri` int(11) NOT NULL,
+  `Bonus_Rabbia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `barbaro`
+--
+
+INSERT INTO `barbaro` (`ID_Barbaro`, `Livello_Classe`, `Nome_Classe`, `Utilizzi_Rabbia_Giornalieri`, `Bonus_Rabbia`) VALUES
+(1, 1, 'Barbaro', 2, 2),
+(2, 2, 'Barbaro', 2, 2),
+(3, 3, 'Barbaro', 3, 2),
+(4, 4, 'Barbaro', 3, 2),
+(5, 5, 'Barbaro', 3, 2),
+(6, 6, 'Barbaro', 4, 2),
+(7, 7, 'Barbaro', 4, 2),
+(8, 8, 'Barbaro', 4, 2),
+(9, 9, 'Barbaro', 4, 3),
+(10, 10, 'Barbaro', 4, 3),
+(11, 11, 'Barbaro', 4, 3),
+(12, 12, 'Barbaro', 5, 3),
+(13, 13, 'Barbaro', 5, 3),
+(14, 14, 'Barbaro', 5, 3),
+(15, 15, 'Barbaro', 5, 3),
+(16, 16, 'Barbaro', 5, 4),
+(17, 17, 'Barbaro', 5, 4),
+(18, 18, 'Barbaro', 5, 4),
+(19, 19, 'Barbaro', 5, 4),
+(20, 20, 'Barbaro', -1, 4);
 
 -- --------------------------------------------------------
 
@@ -126,10 +152,36 @@ CREATE TABLE `barbaro` (
 
 CREATE TABLE `bardo` (
   `ID_Bardo` int(11) NOT NULL,
-  `Dado_Ispirazione_Bardica` varchar(20) NOT NULL,
+  `Livello_Classe` int(11) NOT NULL,
   `Nome_Classe` varchar(20) NOT NULL,
-  `Livello_Classe` int(11) NOT NULL
+  `Dado_Ispirazione_Bardica` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `bardo`
+--
+
+INSERT INTO `bardo` (`ID_Bardo`, `Livello_Classe`, `Nome_Classe`, `Dado_Ispirazione_Bardica`) VALUES
+(1, 1, 'Bardo', '1d6'),
+(2, 2, 'Bardo', '1d6'),
+(3, 3, 'Bardo', '1d6'),
+(4, 4, 'Bardo', '1d6'),
+(5, 5, 'Bardo', '1d8'),
+(6, 6, 'Bardo', '1d8'),
+(7, 7, 'Bardo', '1d8'),
+(8, 8, 'Bardo', '1d8'),
+(9, 9, 'Bardo', '1d8'),
+(10, 10, 'Bardo', '1d10'),
+(11, 11, 'Bardo', '1d10'),
+(12, 12, 'Bardo', '1d10'),
+(13, 13, 'Bardo', '1d10'),
+(14, 14, 'Bardo', '1d10'),
+(15, 15, 'Bardo', '1d12'),
+(16, 16, 'Bardo', '1d12'),
+(17, 17, 'Bardo', '1d12'),
+(18, 18, 'Bardo', '1d12'),
+(19, 19, 'Bardo', '1d12'),
+(20, 20, 'Bardo', '1d12');
 
 -- --------------------------------------------------------
 
@@ -197,6 +249,92 @@ CREATE TABLE `classe` (
   `Dado_Vita` varchar(20) NOT NULL,
   `Livello` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `classe`
+--
+
+INSERT INTO `classe` (`Nome`, `Bonus_Competenza`, `Dado_Vita`, `Livello`) VALUES
+('Barbaro', 2, '1d12', 1),
+('Barbaro', 2, '1d12', 2),
+('Barbaro', 2, '1d12', 3),
+('Barbaro', 2, '1d12', 4),
+('Barbaro', 3, '1d12', 5),
+('Barbaro', 3, '1d12', 6),
+('Barbaro', 3, '1d12', 7),
+('Barbaro', 3, '1d12', 8),
+('Barbaro', 4, '1d12', 9),
+('Barbaro', 4, '1d12', 10),
+('Barbaro', 4, '1d12', 11),
+('Barbaro', 4, '1d12', 12),
+('Barbaro', 5, '1d12', 13),
+('Barbaro', 5, '1d12', 14),
+('Barbaro', 5, '1d12', 15),
+('Barbaro', 5, '1d12', 16),
+('Barbaro', 6, '1d12', 17),
+('Barbaro', 6, '1d12', 18),
+('Barbaro', 6, '1d12', 19),
+('Barbaro', 6, '1d12', 20),
+('Bardo', 2, '1d8', 1),
+('Bardo', 2, '1d8', 2),
+('Bardo', 2, '1d8', 3),
+('Bardo', 2, '1d8', 4),
+('Bardo', 3, '1d8', 5),
+('Bardo', 3, '1d8', 6),
+('Bardo', 3, '1d8', 7),
+('Bardo', 3, '1d8', 8),
+('Bardo', 4, '1d8', 9),
+('Bardo', 4, '1d8', 10),
+('Bardo', 4, '1d8', 11),
+('Bardo', 4, '1d8', 12),
+('Bardo', 5, '1d8', 13),
+('Bardo', 5, '1d8', 14),
+('Bardo', 5, '1d8', 15),
+('Bardo', 5, '1d8', 16),
+('Bardo', 6, '1d8', 17),
+('Bardo', 6, '1d8', 18),
+('Bardo', 6, '1d8', 19),
+('Bardo', 6, '1d8', 20),
+('Ladro', 2, '1d8', 1),
+('Ladro', 2, '1d8', 2),
+('Ladro', 2, '1d8', 3),
+('Ladro', 2, '1d8', 4),
+('Ladro', 3, '1d8', 5),
+('Ladro', 3, '1d8', 6),
+('Ladro', 3, '1d8', 7),
+('Ladro', 3, '1d8', 8),
+('Ladro', 4, '1d8', 9),
+('Ladro', 4, '1d8', 10),
+('Ladro', 4, '1d8', 11),
+('Ladro', 4, '1d8', 12),
+('Ladro', 5, '1d8', 13),
+('Ladro', 5, '1d8', 14),
+('Ladro', 5, '1d8', 15),
+('Ladro', 5, '1d8', 16),
+('Ladro', 6, '1d8', 17),
+('Ladro', 6, '1d8', 18),
+('Ladro', 6, '1d8', 19),
+('Ladro', 6, '1d8', 20),
+('Mago', 2, '1d6', 1),
+('Mago', 2, '1d6', 2),
+('Mago', 2, '1d6', 3),
+('Mago', 2, '1d6', 4),
+('Mago', 3, '1d6', 5),
+('Mago', 3, '1d6', 6),
+('Mago', 3, '1d6', 7),
+('Mago', 3, '1d6', 8),
+('Mago', 4, '1d6', 9),
+('Mago', 4, '1d6', 10),
+('Mago', 4, '1d6', 11),
+('Mago', 4, '1d6', 12),
+('Mago', 5, '1d6', 13),
+('Mago', 5, '1d6', 14),
+('Mago', 5, '1d6', 15),
+('Mago', 5, '1d6', 16),
+('Mago', 6, '1d6', 17),
+('Mago', 6, '1d6', 18),
+('Mago', 6, '1d6', 19),
+('Mago', 6, '1d6', 20);
 
 -- --------------------------------------------------------
 
@@ -410,10 +548,36 @@ CREATE TABLE `incantesimo` (
 
 CREATE TABLE `ladro` (
   `ID_Ladro` int(11) NOT NULL,
-  `Bonus_Attacco_Furtivo` varchar(10) NOT NULL,
+  `Livello_Classe` int(11) NOT NULL,
   `Nome_Classe` varchar(20) NOT NULL,
-  `Livello_Classe` int(11) NOT NULL
+  `Bonus_Attacco_Furtivo` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `ladro`
+--
+
+INSERT INTO `ladro` (`ID_Ladro`, `Livello_Classe`, `Nome_Classe`, `Bonus_Attacco_Furtivo`) VALUES
+(1, 1, 'Ladro', '1d6'),
+(2, 2, 'Ladro', '1d6'),
+(3, 3, 'Ladro', '2d6'),
+(4, 4, 'Ladro', '2d6'),
+(5, 5, 'Ladro', '3d6'),
+(6, 6, 'Ladro', '3d6'),
+(7, 7, 'Ladro', '4d6'),
+(8, 8, 'Ladro', '4d6'),
+(9, 9, 'Ladro', '5d6'),
+(10, 10, 'Ladro', '5d6'),
+(11, 11, 'Ladro', '6d6'),
+(12, 12, 'Ladro', '6d6'),
+(13, 13, 'Ladro', '7d6'),
+(14, 14, 'Ladro', '7d6'),
+(15, 15, 'Ladro', '8d6'),
+(16, 16, 'Ladro', '8d6'),
+(17, 17, 'Ladro', '9d6'),
+(18, 18, 'Ladro', '9d6'),
+(19, 19, 'Ladro', '10d6'),
+(20, 20, 'Ladro', '10d6');
 
 -- --------------------------------------------------------
 
@@ -506,6 +670,32 @@ CREATE TABLE `mago` (
   `Nome_Classe` varchar(20) NOT NULL,
   `Livello_Classe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `mago`
+--
+
+INSERT INTO `mago` (`ID_Mago`, `Nome_Classe`, `Livello_Classe`) VALUES
+(1, 'Mago', 1),
+(2, 'Mago', 2),
+(3, 'Mago', 3),
+(4, 'Mago', 4),
+(5, 'Mago', 5),
+(6, 'Mago', 6),
+(7, 'Mago', 7),
+(8, 'Mago', 8),
+(9, 'Mago', 9),
+(10, 'Mago', 10),
+(11, 'Mago', 11),
+(12, 'Mago', 12),
+(13, 'Mago', 13),
+(14, 'Mago', 14),
+(15, 'Mago', 15),
+(16, 'Mago', 16),
+(17, 'Mago', 17),
+(18, 'Mago', 18),
+(19, 'Mago', 19),
+(20, 'Mago', 20);
 
 -- --------------------------------------------------------
 
@@ -1615,6 +1805,30 @@ ALTER TABLE `utente`
 --
 -- AUTO_INCREMENT per le tabelle scaricate
 --
+
+--
+-- AUTO_INCREMENT per la tabella `barbaro`
+--
+ALTER TABLE `barbaro`
+  MODIFY `ID_Barbaro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT per la tabella `bardo`
+--
+ALTER TABLE `bardo`
+  MODIFY `ID_Bardo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT per la tabella `ladro`
+--
+ALTER TABLE `ladro`
+  MODIFY `ID_Ladro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT per la tabella `mago`
+--
+ALTER TABLE `mago`
+  MODIFY `ID_Mago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`
