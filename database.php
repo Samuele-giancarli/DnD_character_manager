@@ -43,6 +43,56 @@ class DatabaseHelper{
         }
     }
 
+    public function getRaces(){
+        $query="SELECT * FROM razza";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $races=array();
+        while ($row = $result->fetch_assoc()){
+            $races[]=$row;
+        }
+        return $races;
+    }
+
+    public function getSubracesForRace($race){
+        $query="SELECT * FROM sottorazza WHERE Nome_Razza=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $race);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $subraces=array();
+        while ($row = $result->fetch_assoc()){
+            $subraces[]=$row;
+        }
+        return $subraces;
+    }
+
+    public function getClassByLevel($level){
+        $query="SELECT * FROM classe WHERE Livello=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $level);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $subraces=array();
+        while ($row = $result->fetch_assoc()){
+            $classes[]=$row;
+        }
+        return $classes;
+    }
+
+    public function getBackgrounds(){
+        $query="SELECT * FROM origine";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $backgrounds=array();
+        while ($row = $result->fetch_assoc()){
+            $backgrounds[]=$row;
+        }
+        return $backgrounds;
+    }
+
     public function characterList($ID){
         $query="SELECT * FROM personaggio WHERE ID_Utente=?";
         $stmt=$this->db->prepare($query);

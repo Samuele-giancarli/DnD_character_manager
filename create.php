@@ -1,5 +1,9 @@
 <?php
     require_once("bootstrap.php");
+    if (!isset($_SESSION["ID"])){
+        header("Location: login.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,23 +37,17 @@
     </style>
 </head>
 
-
 <script>
-const race=document.getElementById("race").value;
-let subrace=document.getElementById("subrace");
-
-function updateSubrace(){
-subrace.innerText=
-<?php
-$nome_razza=
-$stmt = $dbh->db->prepare("SELECT Nome FROM sottorazza WHERE Nome_Razza=?");
-$stmt->bind_param("s", $nome_razza);
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()){
-echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
-}
-?>;
+function raceSelected(e){
+    const razza = e.value;
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("subraces").innerHTML = xhr.responseText;
+        }
+    };
+    xhr.open("GET", `conditionalselect.php?step=sottorazza&razza=${razza}`);
+    xhr.send();
 }
 </script>
 
@@ -91,15 +89,14 @@ echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
                                 <li><label for="name">Scegli un nome:</label>
                                 <input type="text" class="form-control" id="name" placeholder="Quale sarà il suo nome?"></li>
                                 <br>
+
                                 <li>
                                 <label for="race"> Scegli una razza:  </label>
-                                 <select class="form-control" id="races" name="race" form="creapg" onchange="updateSubrace()">
-
+                                 <select class="form-control" id="races" name="race" form="creapg" onchange="raceSelected(this);">
+                                 <option disabled selected value></option> 
                                 <?php
-                                $stmt = $dbh->db->prepare("SELECT Nome FROM razza");
-                                $stmt->execute();
-                                $result = $stmt->get_result();
-                                while ($row = $result->fetch_assoc()){
+                                $races=$dbh->getRaces();
+                                foreach ($races as $row){
                                     echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
                                 }
                                 ?>
@@ -108,16 +105,35 @@ echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
 
                                 <li><label for="subrace"> Scegli una sottorazza:  </label>
                                 <select class="form-control" id="subraces" name="subrace" form="creapg">
+                                </select>  </li>
+                                <br>
+
+                                <li>
+                                <label for="race"> Scegli le tue origini:  </label>
+                                 <select class="form-control" id="backgrounds" name="background" form="creapg">
+                                 <option disabled selected value></option> 
                                 <?php
-                                $stmt = $dbh->db->prepare("SELECT Nome FROM sottorazza");
-                                $stmt->execute();
-                                $result = $stmt->get_result();
-                                while ($row = $result->fetch_assoc()){
+                                $backgrounds=$dbh->getBackgrounds();
+                                foreach ($backgrounds as $row){
                                     echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
                                 }
                                 ?>
                                 </select>  </li>
-                            </li>
+                                <br>
+
+                                <li>
+                                <label for="class"> Scegli una classe:  </label>
+                                 <select class="form-control" id="class" name="class" form="creapg">
+                                 <option disabled selected value></option> 
+                                <?php
+                                $classes=$dbh->getClassByLevel(1);
+                                foreach ($classes as $row){
+                                    echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
+                                }
+                                ?>
+                                </select>  </li>
+                                <br>
+    
 
                                 </ol>
                             </div>
