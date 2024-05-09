@@ -64,9 +64,21 @@ function raceSelected(e){
 <!-- nella home vedo la lista dei miei personaggi e il pulsante "crea"-->
         <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
+      <?php
+      if (isset($_SESSION["ID"])){
+      ?>
+       <li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a>
+      </li>
+      <?php
+      }else{
+      ?>
       <li class="nav-item">
         <a class="nav-link" href="login.php">Login</a>
       </li>
+      <?php
+    }
+    ?>
       <li class="nav-item">
         <a class="nav-link" href="create.php">Crea</a>
       </li>
@@ -86,6 +98,7 @@ function raceSelected(e){
                         <form id="creapg">
                             <div class="form-group">
                                 <ol>
+                                <legend>La sua storia</legend>
                                 <li><label for="name">Scegli un nome:</label>
                                 <input type="text" class="form-control" id="name" placeholder="Quale sarà il suo nome?"></li>
                                 <br>
@@ -109,7 +122,7 @@ function raceSelected(e){
                                 <br>
 
                                 <li>
-                                <label for="race"> Scegli le tue origini:  </label>
+                                <label for="background"> Scegli le tue origini:  </label>
                                  <select class="form-control" id="backgrounds" name="background" form="creapg">
                                  <option disabled selected value></option> 
                                 <?php
@@ -133,8 +146,24 @@ function raceSelected(e){
                                 ?>
                                 </select>  </li>
                                 <br>
-    
-
+                                <li>
+                                    <label for="descrizione_aspetto">Come appare?</label>
+                                <textarea name="descrizione_aspetto" placeholder="Descrivi il suo aspetto"></textarea>
+                            </li>
+                                <legend>Punteggi Caratteristica</legend>
+                                <label for="forza">Forza: </label>
+                                <input name="forza" type="number"><br>
+                                <label for="destrezza">Destrezza: </label>
+                                <input name="destrezza" type="number"><br>
+                                <label for="costituzione">Costituzione: </label>
+                                <input name="costituzione" type="number"><br>
+                                <label for="intelligenza">Intelligenza: </label>
+                                <input name="intelligenza" type="number"><br>
+                                <label for="saggezza">Saggezza: </label>
+                                <input name="saggezza" type="number"><br>
+                                <label for="carisma">Carisma: </label>
+                                <input name="carisma" type="number">
+                            
                                 </ol>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>

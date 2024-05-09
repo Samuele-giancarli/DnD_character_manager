@@ -10,6 +10,20 @@ class DatabaseHelper{
         }
     }
 
+    public function getObject($tabella, $keyname, $keytype, $key) {
+        $query="SELECT * FROM ".$tabella." WHERE ".$keyname."=?";
+        $stmt=$this->db->prepare($query);   
+        $stmt->bind_param($keytype, $key);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if (is_null($row)){
+            die("Cannot find ".$key." as ".$keyname." in ".$tabella);
+        }else{
+            return $row;
+        }
+    }
+
     public function aggiungiUtente($email, $password, $username){
         $query = "INSERT INTO utente (E_mail, Password, Username) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
