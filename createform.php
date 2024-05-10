@@ -16,12 +16,6 @@ function parseDie($dado){
 }
 
 $gold=0;
-$modstr=intdiv($str, 2)-5;
-$modcon=intdiv($con, 2)-5;
-$moddex=intdiv($dex, 2)-5;
-$modint=intdiv($int, 2)-5;
-$modwis=intdiv($wis, 2)-5;
-$modcha=intdiv($cha, 2)-5;
 
 $classe=$_GET["class"];
 $str=$_GET["forza"];
@@ -30,6 +24,14 @@ $dex=$_GET["destrezza"];
 $int=$_GET["intelligenza"];
 $wis=$_GET["saggezza"];
 $cha=$_GET["carisma"];
+
+$modstr=intdiv($str, 2)-5;
+$modcon=intdiv($con, 2)-5;
+$moddex=intdiv($dex, 2)-5;
+$modint=intdiv($int, 2)-5;
+$modwis=intdiv($wis, 2)-5;
+$modcha=intdiv($cha, 2)-5;
+
 $nome=$_GET["name"];
 $descrizione_aspetto=$_GET["descrizione_aspetto"];
 $origine=$_GET["background"];
@@ -41,17 +43,17 @@ $classearmatura=10+$moddex;
 $iniziativa=$dex;
 $razza=$_GET["race"];
 
-switch ($class){
-    case "barbaro":
+switch ($classe){
+    case "Barbaro":
         $gold=roll(4,2)*10;
         break;
-    case "bardo":
+    case "Bardo":
         $gold=roll(4,5)*10;
         break;
-    case "ladro":
+    case "Ladro":
         $gold=roll(4,4)*10;
         break;
-    case "mago":
+    case "Mago":
         $gold=roll(4,3)*10;
         break;
     default:
@@ -65,6 +67,9 @@ $reference=array(8,10,12,13,14,15);
 sort($myvalues);
 if ($myvalues==$reference){
     $idborsa=$dbh->addInventory($peso_borsa, $gold);
-    $idpersonaggio=$dbh->addCharacter($str, $dex, $con, $int, $wis, $cha, $hitpoints, $name,$descrizione_aspetto,$classearmatura,$iniziativa,0,$origine, null, null, $allineamento, $razza,$idborsa, $_SESSION["ID"]);
+    $idpersonaggio=$dbh->addCharacter($str, $dex, $con, $int, $wis, $cha, $hitpoints, $nome,$descrizione_aspetto,$classearmatura,$iniziativa,0,$origine, null, null, $allineamento, $razza,$idborsa, $_SESSION["ID"]);
+    header("Location: index.php");
+}else{
+    header("Location: create.php");
 }
 ?>

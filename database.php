@@ -120,9 +120,9 @@ class DatabaseHelper{
     }
 
     public function addInventory($peso, $oro){
-        $query="INSERT INTO borsa(Peso_Trasportabile, Monete_Rame, Monete_Argento, Monete_Electrum, Monete_Oro, Monete_Platino) VALUES(??????)";
+        $query="INSERT INTO borsa(Peso_Trasportabile, Monete_Rame, Monete_Argento, Monete_Electrum, Monete_Oro, Monete_Platino) VALUES(?,0,0,0,?,0)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("iiiiii", $peso, 0,0,0,$oro,0);
+        $stmt->bind_param("ii", $peso,$oro);
         $stmt->execute();
         $result=$this->db->insert_id;
         return $result;

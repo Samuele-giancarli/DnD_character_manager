@@ -76,7 +76,13 @@ if (isset($_SESSION["ID"])){
                 <div class="card">
                     <div class="card-header">I tuoi personaggi</div>
                     <div class="card-body">
-                        
+                      <?php
+                      $characters=$dbh->characterList($_SESSION["ID"]);
+                      foreach($characters as $character){
+                        echo htmlentities($character["Nome"]);
+                        echo "<br>";
+                      }
+                      ?>
                     </div>
                 </div>
             </div>
