@@ -191,7 +191,6 @@ INSERT INTO `bardo` (`ID_Bardo`, `Livello_Classe`, `Nome_Classe`, `Dado_Ispirazi
 
 CREATE TABLE `borsa` (
   `ID_Borsa` int(11) NOT NULL,
-  `ID_Personaggio` int(11) NOT NULL,
   `Peso_Trasportabile` int(11) NOT NULL,
   `Monete_Rame` int(11) NOT NULL,
   `Monete_Argento` int(11) NOT NULL,
@@ -450,28 +449,6 @@ CREATE TABLE `contiene` (
   `ID_Borsa` int(11) NOT NULL,
   `Nome_Oggetto` varchar(30) NOT NULL,
   `Quantita` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `equipaggia_arma`
---
-
-CREATE TABLE `equipaggia_arma` (
-  `Nome_Arma` varchar(30) NOT NULL,
-  `ID_Personaggio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `equipaggia_armatura`
---
-
-CREATE TABLE `equipaggia_armatura` (
-  `Nome_Armatura` varchar(30) NOT NULL,
-  `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -868,8 +845,8 @@ CREATE TABLE `personaggio` (
   `Punti_Esperienza` int(11) NOT NULL,
   `ID_Utente` int(11) NOT NULL,
   `Nome_Origine` varchar(30) NOT NULL,
-  `Armatura_Equipaggiata` varchar(30) NOT NULL,
-  `Arma_Equipaggiata` varchar(30) NOT NULL,
+  `Armatura_Equipaggiata` varchar(30),
+  `Arma_Equipaggiata` varchar(30),
   `Nome_Allineamento` varchar(30) NOT NULL,
   `Nome_Razza` varchar(20) NOT NULL,
   `ID_Borsa` int(11) NOT NULL
@@ -1176,17 +1153,6 @@ CREATE TABLE `specializzazione` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `tiene`
---
-
-CREATE TABLE `tiene` (
-  `ID_Personaggio` int(11) NOT NULL,
-  `ID_Borsa` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `tiri_salvezza_personaggio`
 --
 
@@ -1344,7 +1310,6 @@ ALTER TABLE `bardo`
 --
 ALTER TABLE `borsa`
   ADD PRIMARY KEY (`ID_Borsa`),
-  ADD UNIQUE KEY `FKTiene_IND` (`ID_Personaggio`),
   ADD UNIQUE KEY `ID_BORSA_IND` (`ID_Borsa`);
 
 --
@@ -1453,20 +1418,6 @@ ALTER TABLE `contiene`
   ADD PRIMARY KEY (`Nome_Oggetto`,`ID_Borsa`),
   ADD UNIQUE KEY `ID_Contiene_IND` (`Nome_Oggetto`,`ID_Borsa`),
   ADD KEY `FKCon_BOR_IND` (`ID_Borsa`);
-
---
--- Indici per le tabelle `equipaggia_arma`
---
-ALTER TABLE `equipaggia_arma`
-  ADD PRIMARY KEY (`Nome_Arma`,`ID_Personaggio`),
-  ADD KEY `Nome_Arma` (`Nome_Arma`,`ID_Personaggio`);
-
---
--- Indici per le tabelle `equipaggia_armatura`
---
-ALTER TABLE `equipaggia_armatura`
-  ADD PRIMARY KEY (`Nome_Armatura`,`ID_Personaggio`),
-  ADD KEY `Nome_Armatura` (`Nome_Armatura`,`ID_Personaggio`);
 
 --
 -- Indici per le tabelle `ha_origine`
@@ -1749,12 +1700,6 @@ ALTER TABLE `specializzazione`
   ADD PRIMARY KEY (`Nome_Classe`,`Livello_Classe`,`Nome_Sottoclasse`,`Livello_Sottoclasse`),
   ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`Nome_Sottoclasse`,`Livello_Sottoclasse`);
 
---
--- Indici per le tabelle `tiene`
---
-ALTER TABLE `tiene`
-  ADD PRIMARY KEY (`ID_Personaggio`,`ID_Borsa`),
-  ADD KEY `ID_Personaggio` (`ID_Personaggio`,`ID_Borsa`);
 
 --
 -- Indici per le tabelle `tiri_salvezza_personaggio`
@@ -1862,8 +1807,6 @@ ALTER TABLE `bardo`
 --
 -- Limiti per la tabella `borsa`
 --
-ALTER TABLE `borsa`
-  ADD CONSTRAINT `FKTiene_FK` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`);
 
 --
 -- Limiti per la tabella `classe_migliora`

@@ -95,12 +95,12 @@ function raceSelected(e){
                 <div class="card">
                     <div class="card-header">Dungeons and Dragons Character Sheet</div>
                     <div class="card-body">
-                        <form id="creapg">
+                        <form id="creapg" method="get" action="createform.php">
                             <div class="form-group">
                                 <ol>
                                 <legend>La sua storia</legend>
                                 <li><label for="name">Scegli un nome:</label>
-                                <input type="text" class="form-control" id="name" placeholder="Quale sarà il suo nome?"></li>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Quale sarà il suo nome?"></li>
                                 <br>
 
                                 <li>
@@ -144,13 +144,31 @@ function raceSelected(e){
                                     echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
                                 }
                                 ?>
-                                </select>  </li>
-                                <br>
+                                </select>  </li><br>
+
                                 <li>
-                                    <label for="descrizione_aspetto">Come appare?</label>
+                                <label for="alignment"> Scegli un allineamento:  </label>
+                                 <select class="form-control" id="alignment" name="alignment" form="creapg">
+                                 <option disabled selected value></option> 
+                                 <?php
+                                $alignments=$dbh->getAlignments();
+                                foreach ($alignments as $row){
+                                    echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
+                                }
+                                ?>
+                                </select></li><br>
+                            
+
+                            <li>
+                                <label for="descrizione_aspetto">Come appare?</label>
+                                <br>
                                 <textarea name="descrizione_aspetto" placeholder="Descrivi il suo aspetto"></textarea>
                             </li>
+                                </ol>
+
+
                                 <legend>Punteggi Caratteristica</legend>
+                                <p style="color:red">Assegna UNA SOLA VOLTA ciascuno di questi valori: [15, 14, 13, 12, 10, 8]</p>
                                 <label for="forza">Forza: </label>
                                 <input name="forza" type="number"><br>
                                 <label for="destrezza">Destrezza: </label>
@@ -163,8 +181,11 @@ function raceSelected(e){
                                 <input name="saggezza" type="number"><br>
                                 <label for="carisma">Carisma: </label>
                                 <input name="carisma" type="number">
-                            
-                                </ol>
+                                
+
+    
+
+                    
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

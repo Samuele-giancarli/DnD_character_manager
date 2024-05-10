@@ -69,6 +69,18 @@ class DatabaseHelper{
         return $races;
     }
 
+    public function getAlignments(){
+        $query="SELECT * FROM allineamento";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $alignments=array();
+        while ($row = $result->fetch_assoc()){
+            $alignments[]=$row;
+        }
+        return $alignments;
+    }
+
     public function getSubracesForRace($race){
         $query="SELECT * FROM sottorazza WHERE Nome_Razza=?";
         $stmt = $this->db->prepare($query);
@@ -107,6 +119,24 @@ class DatabaseHelper{
         return $backgrounds;
     }
 
+    public function addInventory($peso, $oro){
+        $query="INSERT INTO borsa(Peso_Trasportabile, Monete_Rame, Monete_Argento, Monete_Electrum, Monete_Oro, Monete_Platino) VALUES(??????)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iiiiii", $peso, 0,0,0,$oro,0);
+        $stmt->execute();
+        $result=$this->db->insert_id;
+        return $result;
+    }
+
+    public function getDiceFromClass($nomeclasse){
+        $query="SELECT * FROM classe WHERE Nome=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("s", $nomeclasse);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Dado_Vita"];
+    }
     public function characterList($ID){
         $query="SELECT * FROM personaggio WHERE ID_Utente=?";
         $stmt=$this->db->prepare($query);
