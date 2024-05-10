@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 04, 2024 alle 18:26
+-- Creato il: Mag 10, 2024 alle 12:21
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -198,6 +198,16 @@ CREATE TABLE `borsa` (
   `Monete_Oro` int(11) NOT NULL,
   `Monete_Platino` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `borsa`
+--
+
+INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
+(1, 225, 0, 0, 0, 70, 0),
+(2, 225, 0, 0, 0, 60, 0),
+(3, 225, 0, 0, 0, 70, 0),
+(4, 225, 0, 0, 0, 70, 0);
 
 -- --------------------------------------------------------
 
@@ -845,12 +855,19 @@ CREATE TABLE `personaggio` (
   `Punti_Esperienza` int(11) NOT NULL,
   `ID_Utente` int(11) NOT NULL,
   `Nome_Origine` varchar(30) NOT NULL,
-  `Armatura_Equipaggiata` varchar(30),
-  `Arma_Equipaggiata` varchar(30),
+  `Armatura_Equipaggiata` varchar(30) DEFAULT NULL,
+  `Arma_Equipaggiata` varchar(30) DEFAULT NULL,
   `Nome_Allineamento` varchar(30) NOT NULL,
   `Nome_Razza` varchar(20) NOT NULL,
   `ID_Borsa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `personaggio`
+--
+
+INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `ID_Borsa`) VALUES
+(1, 15, 14, 13, 12, 10, 8, 7, 'bob', 'bello', 12, 14, 0, 1, 'Criminale', NULL, NULL, 'Caotico', 'Elfo', 2);
 
 -- --------------------------------------------------------
 
@@ -1700,7 +1717,6 @@ ALTER TABLE `specializzazione`
   ADD PRIMARY KEY (`Nome_Classe`,`Livello_Classe`,`Nome_Sottoclasse`,`Livello_Sottoclasse`),
   ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`Nome_Sottoclasse`,`Livello_Sottoclasse`);
 
-
 --
 -- Indici per le tabelle `tiri_salvezza_personaggio`
 --
@@ -1764,6 +1780,12 @@ ALTER TABLE `bardo`
   MODIFY `ID_Bardo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT per la tabella `borsa`
+--
+ALTER TABLE `borsa`
+  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT per la tabella `ladro`
 --
 ALTER TABLE `ladro`
@@ -1774,6 +1796,12 @@ ALTER TABLE `ladro`
 --
 ALTER TABLE `mago`
   MODIFY `ID_Mago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT per la tabella `personaggio`
+--
+ALTER TABLE `personaggio`
+  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`
@@ -1803,10 +1831,6 @@ ALTER TABLE `barbaro`
 --
 ALTER TABLE `bardo`
   ADD CONSTRAINT `FKScelta_Bardo_FK` FOREIGN KEY (`Nome_Classe`,`Livello_Classe`) REFERENCES `classe` (`Nome`, `Livello`);
-
---
--- Limiti per la tabella `borsa`
---
 
 --
 -- Limiti per la tabella `classe_migliora`
