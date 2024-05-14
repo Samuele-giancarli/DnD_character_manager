@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 10, 2024 alle 16:54
+-- Creato il: Mag 14, 2024 alle 08:27
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -217,12 +217,62 @@ INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Ar
 
 CREATE TABLE `capacita_di_classe` (
   `Nome` varchar(30) NOT NULL,
-  `Descrizione` varchar(1000) NOT NULL,
+  `Descrizione` varchar(5000) NOT NULL,
   `Aum_Nome_Caratteristica` varchar(20) DEFAULT NULL,
   `Aum_Valore_Aggiuntivo` int(11) DEFAULT NULL,
-  `Caratteristica_Incantatore` varchar(10) DEFAULT NULL,
+  `Caratteristica_Incantatore` varchar(15) DEFAULT NULL,
   `Utilizzo_Giornaliero` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `capacita_di_classe`
+--
+
+INSERT INTO `capacita_di_classe` (`Nome`, `Descrizione`, `Aum_Nome_Caratteristica`, `Aum_Valore_Aggiuntivo`, `Caratteristica_Incantatore`, `Utilizzo_Giornaliero`) VALUES
+('Archetipo Ladro', 'Al 3° livello, scegli un archetipo che emuli nell\'esercizio delle tue capacità da ladro. La tua scelta dell\'archetipo ti garantisce privilegi al 3° livello e poi di nuovo al 9°, 13° e 17° livello.', NULL, NULL, NULL, NULL),
+('Attacco Extra', 'A partire dal 5° livello, puoi attaccare due volte, anziché una, ogni volta che esegui l\'azione Attacco nel tuo turno.', NULL, NULL, NULL, NULL),
+('Attacco Furtivo', 'A partire dal 1° livello, sai come colpire astutamente e sfruttare la distrazione del nemico. Una volta per turno, puoi infliggere 1d6 danni extra a una creatura colpita con un attacco se hai vantaggio sul tiro per colpire. L\'attacco deve utilizzare un\'arma fine o a distanza.\r\n\r\nNon hai bisogno di vantaggio al tiro per colpire se un altro nemico del bersaglio si trova entro 1,5 piedi da esso, quel nemico non è incapacitato e non hai svantaggio al tiro per colpire.\r\n\r\nL\'ammontare del danno extra aumenta man mano che guadagni livelli in questa classe, come mostrato nella colonna Attacco Furtivo della tabella Ladro.', NULL, NULL, NULL, NULL),
+('Attacco Spericolato', 'A partire dal 2° livello, puoi mettere da parte ogni preoccupazione per la difesa per attaccare con feroce disperazione. Quando effettui il tuo primo attacco nel tuo turno, puoi decidere di attaccare in modo avventato. Ciò ti dà vantaggio sui tiri per colpire con armi da mischia usando la Forza durante questo turno, ma i tiri per colpire contro di te hanno vantaggio fino al tuo turno successivo.', NULL, NULL, NULL, NULL),
+('Aumento Barbaro', '', 'Forza', 2, NULL, NULL),
+('Aumento Bardo', '', 'Carisma', 2, NULL, NULL),
+('Aumento Ladro', '', 'Destrezza', 2, NULL, NULL),
+('Aumento Mago', '', 'Intelligenza', 2, NULL, NULL),
+('Azione Astuta', 'A partire dal 2° livello, la tua rapidità di pensiero e la tua agilità ti permettono di muoverti e agire rapidamente. Puoi effettuare un\'azione bonus in ciascuno dei tuoi turni di combattimento. Questa azione può essere utilizzata solo per eseguire l\'azione Scattare, Disingaggiarsi o Nascondersi.', NULL, NULL, NULL, NULL),
+('Campione Primordiale', 'Al 20° livello, incarni il potere delle terre selvagge. I tuoi punteggi di Forza e Costituzione aumentano di 4. Il tuo massimo per questi punteggi è ora 24.', NULL, NULL, NULL, NULL),
+('Canto di riposo', 'A partire dal 2° livello, puoi usare musica rilassante o orazioni per aiutare a rivitalizzare i tuoi alleati feriti durante un breve riposo. Se tu o qualsiasi creatura amica che può sentire la tua esibizione recuperate punti ferita alla fine del riposo breve spendendo uno o più Dadi Vita, ciascuna di quelle creature recupera 1d6 punti ferita extra.\r\n\r\nI Punti Ferita extra aumentano quando si raggiungono determinati livelli in questa classe: a 1d8 al 9° livello, a 1d10 al 13° livello e a 1d12 al 17° livello.', NULL, NULL, NULL, 1),
+('Collegio Bardo', 'Al 3° livello, approfondisci le tecniche avanzate di un college bardico di tua scelta. La tua scelta ti garantisce privilegi al 3° livello e di nuovo al 6° e 14° livello.', NULL, NULL, NULL, NULL),
+('Colpo di fortuna', 'Al 20° livello, possiedi una straordinaria abilità nel riuscire quando necessario. Se il tuo attacco manca un bersaglio nel raggio d\'azione, puoi trasformare il mancato attacco in un colpo a segno. In alternativa, se fallisci una prova di abilità, puoi considerare il tiro del d20 come un 20.\r\n\r\nUna volta utilizzata questa capacità, non è possibile utilizzarla nuovamente finché non si termina un riposo breve o lungo.', NULL, NULL, NULL, NULL),
+('Competenza1 Bardo', 'Al 3° livello, scegli due delle tue competenze in Abilità. Il tuo bonus di competenza viene raddoppiato per qualsiasi prova di caratteristica effettuata che utilizzi una delle competenze scelte.', NULL, NULL, NULL, NULL),
+('Competenza1 Ladro', 'Al 1° livello, scegli due delle tue competenze in Abilità, oppure una delle tue competenze in Abilità e la tua competenza con gli strumenti da ladro. Il tuo bonus di competenza viene raddoppiato per qualsiasi prova di caratteristica effettuata che utilizzi una delle competenze scelte.', NULL, NULL, NULL, NULL),
+('Competenza2 Bardo', 'Al 10° livello, puoi scegliere altre due competenze in Abilità per ottenere questo beneficio', NULL, NULL, NULL, NULL),
+('Competenza2 Ladro', 'Al 6° livello, puoi scegliere altre due delle tue competenze (nelle abilità o con gli strumenti da ladro) per ottenere questo beneficio.', NULL, NULL, NULL, NULL),
+('Controfascino', 'Al 6° livello, ottieni la capacità di usare note musicali o parole di potere per interrompere gli effetti di influenza mentale. Con un\'azione, puoi iniziare un\'esibizione che dura fino alla fine del tuo turno successivo. Durante questo periodo, tu e qualsiasi creatura amica entro 9 metri da te avete vantaggio ai tiri salvezza contro l\'essere spaventati o affascinati. Una creatura deve essere in grado di sentirti per ottenere questo beneficio. La performance termina anticipatamente se sei incapace o messo a tacere o se la interrompi volontariamente (non è richiesta alcuna azione).', NULL, NULL, NULL, NULL),
+('Critico brutale', 'A partire dal 9° livello, puoi lanciare un dado aggiuntivo per i danni dell\'arma quando determini il danno extra per un colpo critico con un attacco in mischia.\r\n\r\nCiò aumenta a due dadi aggiuntivi al 13° livello e tre dadi aggiuntivi al 17° livello.', NULL, NULL, NULL, NULL),
+('Difesa senza armatura', 'Mentre non indossi alcuna armatura, la tua classe armatura è pari a 10 + il tuo modificatore di Destrezza + il tuo modificatore di Costituzione. Puoi usare uno scudo e ottenere comunque questo beneficio.', NULL, NULL, NULL, NULL),
+('Evasione', 'A partire dal 7° livello, puoi schivare agilmente alcuni effetti ad area, come il soffio infuocato di un drago rosso o un incantesimo Tempesta di ghiaccio . Quando sei soggetto a un effetto che ti consente di effettuare un tiro salvezza su Destrezza per subire solo la metà dei danni, non subisci invece alcun danno se riesci nel tiro salvezza e solo la metà dei danni se fallisci.', NULL, NULL, NULL, NULL),
+('Fonte di ispirazione', 'A partire da quando raggiungi il 5° livello, recuperi tutti gli usi spesi di Ispirazione Bardica quando termini un riposo breve o lungo.', NULL, NULL, NULL, NULL),
+('Gergo Ladresco', 'Durante il tuo addestramento da ladro hai imparato il gergo dei ladri, un mix segreto di dialetto, gergo e codice che ti consente di nascondere messaggi in conversazioni apparentemente normali. Solo un\'altra creatura che conosce l\'idiozia dei ladri non può comprendere tali messaggi. Ci vuole quattro volte più tempo per trasmettere un messaggio del genere che per esprimere chiaramente la stessa idea.\r\n\r\nInoltre, comprendi una serie di segni e simboli segreti utilizzati per trasmettere messaggi brevi e semplici, ad esempio se un\'area è pericolosa o il territorio di una gilda di ladri, se il bottino è nelle vicinanze o se le persone in un\'area sono facili segna o fornirà un rifugio ai ladri in fuga.', NULL, NULL, NULL, NULL),
+('Inafferrabile', 'A partire dal 18° livello, sei così evasivo che gli attaccanti raramente prendono il sopravvento contro di te. Nessun tiro per colpire ha vantaggio contro di te finché non sei incapace.', NULL, NULL, NULL, NULL),
+('Incantesimi Bardo', 'Hai imparato a districare e rimodellare il tessuto della realtà in armonia con i tuoi desideri e la tua musica. I tuoi incantesimi fanno parte del tuo vasto repertorio, magie che puoi adattare a diverse situazioni.', NULL, NULL, 'Carisma', NULL),
+('Incantesimi caratteristici', 'Quando raggiungi il 20° livello, acquisisci la padronanza di due potenti incantesimi e puoi lanciarli con poco sforzo. Scegli due incantesimi da mago di 3° livello nel tuo libro degli incantesimi come incantesimi distintivi. Hai sempre questi incantesimi preparati, non contano nel numero di incantesimi che hai preparato e puoi lanciarli ciascuno una volta al 3° livello senza spendere uno slot incantesimo. Quando lo fai, non puoi farlo di nuovo finché non finisci un riposo breve o lungo.\r\n\r\nSe vuoi lanciare uno degli incantesimi a un livello più alto, devi spendere uno slot incantesimo normalmente.', NULL, NULL, NULL, NULL),
+('Incantesimi Mago', 'Come studente di magia arcana, hai un libro degli incantesimi contenente incantesimi che mostrano i primi barlumi del tuo vero potere.', NULL, NULL, 'Intelligenza', NULL),
+('Ispirazione bardica', 'Puoi ispirare gli altri attraverso parole o musica emozionanti. Per fare ciò, usi un\'azione bonus nel tuo turno per scegliere una creatura diversa da te entro 60 piedi da te che possa sentirti. Quella creatura ottiene un dado di Ispirazione Bardica, un d6.\r\n\r\nUna volta entro i successivi 10 minuti, la creatura può lanciare il dado e aggiungere il numero ottenuto a una prova di caratteristica, tiro per colpire o tiro salvezza effettuato. La creatura può aspettare fino a dopo aver tirato il d20 prima di decidere di usare il dado di Ispirazione Bardica, ma deve decidere prima che il DM dica se il tiro ha successo o fallisce. Una volta lanciato il dado Ispirazione Bardica, questo viene perso. Una creatura può avere un solo dado di Ispirazione Bardica alla volta.\r\n\r\nPuoi utilizzare questa capacità un numero di volte pari al tuo modificatore di Carisma (minimo una volta). Recuperi tutti gli usi spesi quando termini un riposo lungo.\r\n\r\nIl tuo dado di Ispirazione Bardica cambia quando raggiungi determinati livelli in questa classe. Il dado diventa un d8 al 5° livello, un d10 al 10° livello e un d12 al 15° livello.', NULL, NULL, NULL, NULL),
+('Ispirazione superiore', 'Al 20° livello, quando tiri l\'iniziativa e non hai più usi di Ispirazione Bardica, ne recuperi un uso.', NULL, NULL, NULL, NULL),
+('Istinto Ferale', 'Al 7° livello, il tuo istinto è così affinato che hai vantaggio sui tiri di iniziativa.\r\n\r\nInoltre, se sei sorpreso all\'inizio del combattimento e non sei inabile, puoi agire normalmente nel tuo primo turno, ma solo se entri in ira prima di fare qualsiasi altra cosa in quel turno.', NULL, NULL, NULL, NULL),
+('Movimento veloce', 'A partire dal 5° livello, la tua velocità aumenta di 3 metri mentre non indossi un\'armatura pesante.\r\n\r\n', NULL, NULL, NULL, NULL),
+('Padronanza degli incantesimi', 'Al 18° livello, hai raggiunto una tale padronanza su alcuni incantesimi che puoi lanciarli a piacimento. Scegli un incantesimo da mago di 1° livello e un incantesimo da mago di 2° livello presenti nel tuo libro degli incantesimi. Puoi lanciare quegli incantesimi al loro livello più basso senza spendere uno slot incantesimo quando li hai preparati. Se vuoi lanciare uno degli incantesimi a un livello più alto, devi spendere uno slot incantesimo normalmente.', NULL, NULL, NULL, NULL),
+('Potenza indomabile', 'A partire dal 18° livello, se il totale di una prova di Forza è inferiore al tuo punteggio di Forza, puoi usare quel punteggio al posto del totale.', NULL, NULL, NULL, NULL),
+('Rabbia', 'In battaglia combatti con ferocia primordiale. Durante il tuo turno, puoi entrare in ira come azione bonus.\n\nMentre sei in ira, ottieni i seguenti benefici se non indossi un\'armatura pesante:\n\nHai vantaggio alle prove di Forza e ai tiri salvezza su Forza.\nQuando effettui un attacco con un\'arma da mischia usando la Forza, ottieni un bonus al tiro per i danni che aumenta man mano che guadagni livelli come barbaro, come mostrato nella colonna Danni di Furia della tabella Barbaro.\nHai resistenza ai danni contundenti, perforanti e taglienti.\nSe sei in grado di lanciare incantesimi, non puoi lanciarli o concentrarti su di essi mentre sei in ira.\n\nLa tua rabbia dura 1 minuto. Termina presto se perdi i sensi o se il tuo turno termina e non hai attaccato una creatura ostile dal tuo ultimo turno o non hai subito danni da allora. Puoi anche porre fine alla tua ira durante il tuo turno come azione bonus.\n\nUna volta che sei andato in ira per il numero di volte indicato per il tuo livello da barbaro nella colonna Ira della tabella Barbaro, devi terminare un riposo lungo prima di poter entrare di nuovo in ira.', NULL, NULL, NULL, NULL),
+('Rabbia Implacabile', 'A partire dall\'11° livello, la tua rabbia può farti continuare a combattere nonostante le ferite gravi. Se scendi a 0 punti ferita mentre sei in ira e non muori sul colpo, puoi effettuare un tiro salvezza su Costituzione con CD 10. Se ci riesci, scendi invece a 1 punto ferita.\r\n\r\nOgni volta che usi questo privilegio dopo il primo, la CD aumenta di 5. Quando termini un riposo breve o lungo, la CD viene ripristinata a 10.', NULL, NULL, NULL, NULL),
+('Rabbia Persistente', 'A partire dal 15° livello, la tua rabbia è così feroce che termina presto solo se perdi i sensi o se scegli di porvi fine.', NULL, NULL, NULL, NULL),
+('Recupero Arcano', 'Hai imparato a riacquistare parte della tua energia magica studiando il tuo libro degli incantesimi. Una volta al giorno, quando termini un riposo breve, puoi scegliere gli slot incantesimo spesi da recuperare. Gli slot incantesimo possono avere un livello combinato pari o inferiore alla metà del tuo livello da mago (arrotondato per eccesso) e nessuno degli slot può essere di 6° livello o superiore.\r\n\r\nAd esempio, se sei un mago di 4° livello, puoi recuperare slot incantesimo per un valore massimo di due livelli. Puoi recuperare uno slot incantesimo di 2° livello o due slot incantesimo di 1° livello.', NULL, NULL, NULL, NULL),
+('Schiavata Inquietante', 'A partire dal 5° livello, quando un attaccante che puoi vedere ti colpisce con un attacco, puoi usare la tua reazione per dimezzare il danno dell\'attacco contro di te.', NULL, NULL, NULL, NULL),
+('Senso cieco', 'A partire dal 14° livello, se sei in grado di udire, sei consapevole della posizione di qualsiasi creatura nascosta o invisibile entro 3 metri da te.', NULL, NULL, NULL, NULL),
+('Senso del Pericolo', 'Al 2° livello, acquisisci la straordinaria sensazione di quando le cose nelle vicinanze non sono come dovrebbero essere, dandoti un vantaggio quando schivi il pericolo. Hai vantaggio sui tiri salvezza di Destrezza contro gli effetti che puoi vedere, come trappole e incantesimi. Per ottenere questo beneficio non è possibile essere accecati, assordati o incapacitati.', NULL, NULL, NULL, NULL),
+('Sentiero Primordiale', 'Al 3° livello, scegli un percorso che modella la natura della tua ira. La tua scelta ti garantisce privilegi al 3° livello e di nuovo al 6°, 10° e 14° livello.', NULL, NULL, NULL, NULL),
+('Talento affidabile', 'All\'11° livello, hai affinato le abilità scelte finché non si avvicinano alla perfezione. Ogni volta che effettui una prova di caratteristica che ti consente di aggiungere il tuo bonus di competenza, puoi considerare un tiro del d20 pari a 9 o inferiore come un 10.', NULL, NULL, NULL, NULL),
+('Tradizione Arcana', 'Quando raggiungi il 2° livello, scegli una tradizione arcana, modellando la tua pratica della magia attraverso una delle seguenti scuole. La tua scelta ti garantisce privilegi al 2° livello e di nuovo al 6°, 10° e 14° livello.', NULL, NULL, NULL, NULL),
+('Tuttofare', 'A partire dal 2° livello, puoi aggiungere metà del tuo bonus di competenza, arrotondato per difetto, a qualsiasi prova di caratteristica effettuata che non includa già il tuo bonus di competenza.', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -232,7 +282,7 @@ CREATE TABLE `capacita_di_classe` (
 
 CREATE TABLE `capacita_di_sottoclasse` (
   `Nome` varchar(30) NOT NULL,
-  `Descrizione` varchar(1000) NOT NULL
+  `Descrizione` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -357,6 +407,23 @@ CREATE TABLE `classe_migliora` (
   `Livello_Classe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `classe_migliora`
+--
+
+INSERT INTO `classe_migliora` (`Nome_Abilita`, `Nome_Classe`, `Livello_Classe`) VALUES
+('Acrobazia', 'Ladro', 1),
+('Arcano', 'Mago', 1),
+('Atletica', 'Barbaro', 1),
+('Furtività', 'Ladro', 1),
+('Inganno', 'Bardo', 1),
+('Inganno', 'Ladro', 1),
+('Intimidire', 'Barbaro', 1),
+('Intrattenere', 'Bardo', 1),
+('Intuizione', 'Mago', 1),
+('Persuasione', 'Bardo', 1),
+('Rapidità Di Mano', 'Ladro', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -368,6 +435,20 @@ CREATE TABLE `competenza` (
   `Livello_Classe` int(11) NOT NULL,
   `Nome_TiroSalvezza` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `competenza`
+--
+
+INSERT INTO `competenza` (`Nome_Classe`, `Livello_Classe`, `Nome_TiroSalvezza`) VALUES
+('Bardo', 1, 'Carisma'),
+('Barbaro', 1, 'Costituzione'),
+('Bardo', 1, 'Destrezza'),
+('Ladro', 1, 'Destrezza'),
+('Barbaro', 1, 'Forza'),
+('Ladro', 1, 'Intelligenza'),
+('Mago', 1, 'Intelligenza'),
+('Mago', 1, 'Saggezza');
 
 -- --------------------------------------------------------
 
@@ -381,6 +462,24 @@ CREATE TABLE `competenza_della_classe_in_armature` (
   `Nome_Classe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `competenza_della_classe_in_armature`
+--
+
+INSERT INTO `competenza_della_classe_in_armature` (`Nome_Armatura`, `Livello_Classe`, `Nome_Classe`) VALUES
+('Armatura Di Pelle', 1, 'Barbaro'),
+('Armatura Di Pelle', 1, 'Bardo'),
+('Armatura Di Pelle', 1, 'Ladro'),
+('Armatura Di Pelle Borchiata', 1, 'Barbaro'),
+('Armatura Di Pelle Borchiata', 1, 'Bardo'),
+('Armatura Di Pelle Borchiata', 1, 'Ladro'),
+('Armatura Imbottita', 1, 'Barbaro'),
+('Armatura Imbottita', 1, 'Bardo'),
+('Armatura Imbottita', 1, 'Ladro'),
+('Corazza A Scaglie', 1, 'Barbaro'),
+('Cotta Di Maglia', 1, 'Barbaro'),
+('Mezza Piastra', 1, 'Barbaro');
+
 -- --------------------------------------------------------
 
 --
@@ -392,6 +491,35 @@ CREATE TABLE `competenza_della_classe_in_armi` (
   `Livello_Classe` int(11) NOT NULL,
   `Nome_Classe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `competenza_della_classe_in_armi`
+--
+
+INSERT INTO `competenza_della_classe_in_armi` (`Nome_Arma`, `Livello_Classe`, `Nome_Classe`) VALUES
+('Arco Corto', 1, 'Barbaro'),
+('Arco Corto', 1, 'Bardo'),
+('Arco Corto', 1, 'Ladro'),
+('Arco Lungo', 1, 'Barbaro'),
+('Ascia', 1, 'Barbaro'),
+('Ascia', 1, 'Bardo'),
+('Ascia', 1, 'Ladro'),
+('Balestra Leggera', 1, 'Barbaro'),
+('Balestra Leggera', 1, 'Bardo'),
+('Balestra Leggera', 1, 'Ladro'),
+('Balestra Leggera', 1, 'Mago'),
+('Balestra Pesante', 1, 'Barbaro'),
+('Martello Da Guerra', 1, 'Barbaro'),
+('Mazza', 1, 'Barbaro'),
+('Mazza', 1, 'Bardo'),
+('Mazza', 1, 'Ladro'),
+('Pugnale', 1, 'Barbaro'),
+('Pugnale', 1, 'Bardo'),
+('Pugnale', 1, 'Ladro'),
+('Pugnale', 1, 'Mago'),
+('Spada Lunga', 1, 'Barbaro'),
+('Spada Lunga', 1, 'Bardo'),
+('Spadone', 1, 'Barbaro');
 
 -- --------------------------------------------------------
 
@@ -405,6 +533,15 @@ CREATE TABLE `competenza_della_classe_in_strumenti` (
   `Nome_Classe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `competenza_della_classe_in_strumenti`
+--
+
+INSERT INTO `competenza_della_classe_in_strumenti` (`Nome_Strumento`, `Livello_Classe`, `Nome_Classe`) VALUES
+('Flauto Dolce', 1, 'Bardo'),
+('Lira', 1, 'Bardo'),
+('Pacchetto Da Scassinatore', 1, 'Ladro');
+
 -- --------------------------------------------------------
 
 --
@@ -415,6 +552,20 @@ CREATE TABLE `competenza_dell_origine_in_strumenti` (
   `Nome_Origine` varchar(30) NOT NULL,
   `Nome_Strumento` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `competenza_dell_origine_in_strumenti`
+--
+
+INSERT INTO `competenza_dell_origine_in_strumenti` (`Nome_Origine`, `Nome_Strumento`) VALUES
+('Accolito', 'Pacchetto Da Sacerdote'),
+('Archeologo', 'Pacchetto Da Esploratore'),
+('Cavaliere', 'Pacchetto Da Diplomatico'),
+('Cavaliere', 'Utensili Da Fabbro'),
+('Criminale', 'Pacchetto Da Esploratore'),
+('Criminale', 'Set Di Carte Da Gioco'),
+('Marinaio', 'Set Di Carte Da Gioco'),
+('Marinaio', 'Utensili Da Cucina');
 
 -- --------------------------------------------------------
 
@@ -494,6 +645,89 @@ CREATE TABLE `impara_classe` (
   `Nome_Classe` varchar(20) NOT NULL,
   `Livello_Classe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `impara_classe`
+--
+
+INSERT INTO `impara_classe` (`Nome_Capacita`, `Nome_Classe`, `Livello_Classe`) VALUES
+('Difesa senza armatura', 'Barbaro', 1),
+('Rabbia', 'Barbaro', 1),
+('Attacco Spericolato', 'Barbaro', 2),
+('Senso del Pericolo', 'Barbaro', 2),
+('Sentiero Primordiale', 'Barbaro', 3),
+('Aumento Barbaro', 'Barbaro', 4),
+('Attacco Extra', 'Barbaro', 5),
+('Movimento veloce', 'Barbaro', 5),
+('Sentiero Primordiale', 'Barbaro', 6),
+('Istinto Ferale', 'Barbaro', 7),
+('Aumento Barbaro', 'Barbaro', 8),
+('Critico brutale', 'Barbaro', 9),
+('Sentiero Primordiale', 'Barbaro', 10),
+('Rabbia Implacabile', 'Barbaro', 11),
+('Aumento Barbaro', 'Barbaro', 12),
+('Difesa senza armatura', 'Barbaro', 13),
+('Sentiero Primordiale', 'Barbaro', 14),
+('Rabbia Persistente', 'Barbaro', 15),
+('Aumento Barbaro', 'Barbaro', 16),
+('Critico brutale', 'Barbaro', 17),
+('Potenza indomabile', 'Barbaro', 18),
+('Aumento Barbaro', 'Barbaro', 19),
+('Campione Primordiale', 'Barbaro', 20),
+('Incantesimi Bardo', 'Bardo', 1),
+('Ispirazione bardica', 'Bardo', 1),
+('Canto di riposo', 'Bardo', 2),
+('Tuttofare', 'Bardo', 2),
+('Collegio Bardo', 'Bardo', 3),
+('Competenza1 Bardo', 'Bardo', 3),
+('Aumento Bardo', 'Bardo', 4),
+('Fonte di ispirazione', 'Bardo', 5),
+('Collegio Bardo', 'Bardo', 6),
+('Controfascino', 'Bardo', 6),
+('Aumento Bardo', 'Bardo', 8),
+('Canto di riposo', 'Bardo', 9),
+('Competenza2 Bardo', 'Bardo', 10),
+('Aumento Bardo', 'Bardo', 12),
+('Canto di riposo', 'Bardo', 13),
+('Collegio Bardo', 'Bardo', 14),
+('Aumento Bardo', 'Bardo', 16),
+('Canto di riposo', 'Bardo', 17),
+('Aumento Bardo', 'Bardo', 19),
+('Ispirazione superiore', 'Bardo', 20),
+('Attacco Furtivo', 'Ladro', 1),
+('Competenza1 Ladro', 'Ladro', 1),
+('Gergo Ladresco', 'Ladro', 1),
+('Azione Astuta', 'Ladro', 2),
+('Archetipo Ladro', 'Ladro', 3),
+('Aumento Ladro', 'Ladro', 4),
+('Schiavata Inquietante', 'Ladro', 5),
+('Competenza2 Ladro', 'Ladro', 6),
+('Evasione', 'Ladro', 7),
+('Aumento Ladro', 'Ladro', 8),
+('Archetipo Ladro', 'Ladro', 9),
+('Aumento Ladro', 'Ladro', 10),
+('Talento affidabile', 'Ladro', 11),
+('Aumento Ladro', 'Ladro', 12),
+('Archetipo Ladro', 'Ladro', 13),
+('Senso cieco', 'Ladro', 14),
+('Aumento Ladro', 'Ladro', 16),
+('Archetipo Ladro', 'Ladro', 17),
+('Inafferrabile', 'Ladro', 18),
+('Aumento Ladro', 'Ladro', 19),
+('Colpo di fortuna', 'Ladro', 20),
+('Incantesimi Mago', 'Mago', 1),
+('Recupero Arcano', 'Mago', 1),
+('Tradizione Arcana', 'Mago', 2),
+('Aumento Mago', 'Mago', 4),
+('Tradizione Arcana', 'Mago', 6),
+('Aumento Mago', 'Mago', 8),
+('Tradizione Arcana', 'Mago', 10),
+('Aumento Mago', 'Mago', 12),
+('Tradizione Arcana', 'Mago', 14),
+('Aumento Mago', 'Mago', 16),
+('Padronanza degli incantesimi', 'Mago', 18),
+('Aumento Mago', 'Mago', 19),
+('Incantesimi caratteristici', 'Mago', 20);
 
 -- --------------------------------------------------------
 
@@ -670,6 +904,120 @@ CREATE TABLE `lancia_bardo` (
   `Quantita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `lancia_bardo`
+--
+
+INSERT INTO `lancia_bardo` (`ID_Bardo`, `Livello_Slot`, `Quantita`) VALUES
+(1, 1, 2),
+(2, 1, 3),
+(3, 1, 4),
+(3, 2, 2),
+(4, 1, 4),
+(4, 2, 3),
+(5, 1, 4),
+(5, 2, 3),
+(5, 3, 2),
+(6, 1, 4),
+(6, 2, 3),
+(6, 3, 3),
+(7, 1, 4),
+(7, 2, 3),
+(7, 3, 3),
+(7, 4, 1),
+(8, 1, 4),
+(8, 2, 3),
+(8, 3, 3),
+(8, 4, 2),
+(9, 1, 4),
+(9, 2, 3),
+(9, 3, 3),
+(9, 4, 3),
+(9, 5, 1),
+(10, 1, 4),
+(10, 2, 3),
+(10, 3, 3),
+(10, 4, 3),
+(10, 5, 2),
+(11, 1, 4),
+(11, 2, 3),
+(11, 3, 3),
+(11, 4, 3),
+(11, 5, 2),
+(11, 6, 1),
+(12, 1, 4),
+(12, 2, 3),
+(12, 3, 3),
+(12, 4, 3),
+(12, 5, 2),
+(12, 6, 1),
+(13, 1, 4),
+(13, 2, 3),
+(13, 3, 3),
+(13, 4, 3),
+(13, 5, 2),
+(13, 6, 1),
+(13, 7, 1),
+(14, 1, 4),
+(14, 2, 3),
+(14, 3, 3),
+(14, 4, 3),
+(14, 5, 2),
+(14, 6, 1),
+(14, 7, 1),
+(15, 1, 4),
+(15, 2, 3),
+(15, 3, 3),
+(15, 4, 3),
+(15, 5, 2),
+(15, 6, 1),
+(15, 7, 1),
+(15, 8, 1),
+(16, 1, 4),
+(16, 2, 3),
+(16, 3, 3),
+(16, 4, 3),
+(16, 5, 2),
+(16, 6, 1),
+(16, 7, 1),
+(16, 8, 1),
+(17, 1, 4),
+(17, 2, 3),
+(17, 3, 3),
+(17, 4, 3),
+(17, 5, 2),
+(17, 6, 1),
+(17, 7, 1),
+(17, 8, 1),
+(17, 9, 1),
+(18, 1, 4),
+(18, 2, 3),
+(18, 3, 3),
+(18, 4, 3),
+(18, 5, 3),
+(18, 6, 1),
+(18, 7, 1),
+(18, 8, 1),
+(18, 9, 1),
+(19, 1, 4),
+(19, 2, 3),
+(19, 3, 3),
+(19, 4, 3),
+(19, 5, 3),
+(19, 6, 2),
+(19, 7, 1),
+(19, 8, 1),
+(19, 9, 1),
+(20, 1, 4),
+(20, 2, 3),
+(20, 3, 3),
+(20, 4, 3),
+(20, 5, 3),
+(20, 6, 2),
+(20, 7, 2),
+(20, 8, 1),
+(20, 9, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -681,6 +1029,120 @@ CREATE TABLE `lancia_mago` (
   `Livello_Slot` int(11) NOT NULL,
   `Quantita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `lancia_mago`
+--
+
+INSERT INTO `lancia_mago` (`ID_Mago`, `Livello_Slot`, `Quantita`) VALUES
+(1, 1, 2),
+(2, 1, 3),
+(3, 1, 4),
+(3, 2, 2),
+(4, 1, 4),
+(4, 2, 3),
+(5, 1, 4),
+(5, 2, 3),
+(5, 3, 2),
+(6, 1, 4),
+(6, 2, 3),
+(6, 3, 3),
+(7, 1, 4),
+(7, 2, 3),
+(7, 3, 3),
+(7, 4, 1),
+(8, 1, 4),
+(8, 2, 3),
+(8, 3, 3),
+(8, 4, 2),
+(9, 1, 4),
+(9, 2, 3),
+(9, 3, 3),
+(9, 4, 2),
+(9, 5, 1),
+(10, 1, 4),
+(10, 2, 3),
+(10, 3, 3),
+(10, 4, 3),
+(10, 5, 2),
+(11, 1, 4),
+(11, 2, 3),
+(11, 3, 3),
+(11, 4, 3),
+(11, 5, 2),
+(11, 6, 1),
+(12, 1, 4),
+(12, 2, 3),
+(12, 3, 3),
+(12, 4, 3),
+(12, 5, 2),
+(12, 6, 1),
+(13, 1, 4),
+(13, 2, 3),
+(13, 3, 3),
+(13, 4, 3),
+(13, 5, 2),
+(13, 6, 1),
+(13, 7, 1),
+(14, 1, 4),
+(14, 2, 3),
+(14, 3, 3),
+(14, 4, 3),
+(14, 5, 2),
+(14, 6, 1),
+(14, 7, 1),
+(15, 1, 4),
+(15, 2, 3),
+(15, 3, 3),
+(15, 4, 3),
+(15, 5, 2),
+(15, 6, 1),
+(15, 7, 1),
+(15, 8, 1),
+(16, 1, 4),
+(16, 2, 3),
+(16, 3, 3),
+(16, 4, 3),
+(16, 5, 2),
+(16, 6, 1),
+(16, 7, 1),
+(16, 8, 1),
+(17, 1, 4),
+(17, 2, 3),
+(17, 3, 3),
+(17, 4, 3),
+(17, 5, 2),
+(17, 6, 1),
+(17, 7, 1),
+(17, 8, 1),
+(17, 9, 1),
+(18, 1, 4),
+(18, 2, 3),
+(18, 3, 3),
+(18, 4, 3),
+(18, 5, 3),
+(18, 6, 1),
+(18, 7, 1),
+(18, 8, 1),
+(18, 9, 1),
+(19, 1, 4),
+(19, 2, 3),
+(19, 3, 3),
+(19, 4, 3),
+(19, 5, 3),
+(19, 6, 2),
+(19, 7, 1),
+(19, 8, 1),
+(19, 9, 1),
+(20, 1, 4),
+(20, 2, 3),
+(20, 3, 3),
+(20, 4, 3),
+(20, 5, 3),
+(20, 6, 2),
+(20, 7, 2),
+(20, 8, 1),
+(20, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -716,6 +1178,18 @@ CREATE TABLE `lingue_aggiuntive` (
   `Nome_Origine` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `lingue_aggiuntive`
+--
+
+INSERT INTO `lingue_aggiuntive` (`Nome_Lingua`, `Nome_Origine`) VALUES
+('Elfico', 'Accolito'),
+('Elfico', 'Cavaliere'),
+('Gigantico', 'Archeologo'),
+('Nanico', 'Archeologo'),
+('Orchesco', 'Criminale'),
+('Orchesco', 'Marinaio');
+
 -- --------------------------------------------------------
 
 --
@@ -737,6 +1211,18 @@ CREATE TABLE `lingue_della_razza` (
   `Nome_Lingua` varchar(20) NOT NULL,
   `Nome_Razza` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `lingue_della_razza`
+--
+
+INSERT INTO `lingue_della_razza` (`Nome_Lingua`, `Nome_Razza`) VALUES
+('Comune', 'Elfo'),
+('Comune', 'Nano'),
+('Comune', 'Umano'),
+('Elfico', 'Elfo'),
+('Nanico', 'Nano'),
+('Orchesco', 'Umano');
 
 -- --------------------------------------------------------
 
@@ -787,6 +1273,29 @@ CREATE TABLE `oggetti_dell_origine` (
   `Nome_Origine` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `oggetti_dell_origine`
+--
+
+INSERT INTO `oggetti_dell_origine` (`Nome_Oggetto`, `Nome_Origine`) VALUES
+('Acquamarina', 'Marinaio'),
+('Ametista', 'Accolito'),
+('Ametista', 'Cavaliere'),
+('Ametista', 'Criminale'),
+('Orologio Rotto', 'Archeologo'),
+('Pacchetto Da Diplomatico', 'Cavaliere'),
+('Pacchetto Da Esploratore', 'Archeologo'),
+('Pacchetto Da Esploratore', 'Cavaliere'),
+('Pacchetto Da Esploratore', 'Marinaio'),
+('Pacchetto Da Sacerdote', 'Accolito'),
+('Pugnale', 'Criminale'),
+('Sangue Dell Assassino', 'Criminale'),
+('Set Di Carte Da Gioco', 'Archeologo'),
+('Set Di Carte Da Gioco', 'Criminale'),
+('Set Di Carte Da Gioco', 'Marinaio'),
+('Spada Lunga', 'Cavaliere'),
+('Topazio', 'Archeologo');
+
 -- --------------------------------------------------------
 
 --
@@ -798,6 +1307,30 @@ CREATE TABLE `oggetti_di_classe` (
   `Livello_Classe` int(11) NOT NULL,
   `Nome_Classe` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `oggetti_di_classe`
+--
+
+INSERT INTO `oggetti_di_classe` (`Nome_Oggetto`, `Livello_Classe`, `Nome_Classe`) VALUES
+('Armatura Di Pelle', 1, 'Bardo'),
+('Armatura Di Pelle', 1, 'Ladro'),
+('Balestra Leggera', 1, 'Ladro'),
+('Dardo Balestra (20)', 1, 'Ladro'),
+('Flauto Dolce', 1, 'Bardo'),
+('Martello Da Guerra', 1, 'Barbaro'),
+('Pacchetto Da Diplomatico', 1, 'Mago'),
+('Pacchetto Da Esploratore', 1, 'Barbaro'),
+('Pacchetto Da Esploratore', 1, 'Bardo'),
+('Pacchetto Da Esploratore', 1, 'Ladro'),
+('Pacchetto Da Esploratore', 1, 'Mago'),
+('Pacchetto Da Scassinatore', 1, 'Ladro'),
+('Pugnale', 1, 'Bardo'),
+('Pugnale', 1, 'Ladro'),
+('Pugnale', 1, 'Mago'),
+('Spada Lunga', 1, 'Bardo'),
+('Spada Lunga', 1, 'Ladro'),
+('Spadone', 1, 'Barbaro');
 
 -- --------------------------------------------------------
 
@@ -827,14 +1360,14 @@ INSERT INTO `oggetto` (`Peso`, `Valore`, `Nome`, `Descrizione`, `Contenuto`, `Da
 (0, 500, 'Acquamarina', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (0, 100, 'Ametista', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (1, 25, 'Arco Corto', NULL, NULL, '1d6', 'Perforante', NULL, NULL, NULL, 'Arma Semplice A DIstanza'),
-(1, 50, 'Arco Lungo', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Armi Marziali A DIstanza'),
+(1, 50, 'Arco Lungo', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Arma Marziale A DIstanza'),
 (5, 10, 'Armatura Di Pelle', NULL, NULL, NULL, NULL, '11 + Destrezza', 0, 0, 'Armatura Leggera'),
 (6, 45, 'Armatura Di Pelle Borchiata', NULL, NULL, NULL, NULL, '12 + Destrezza', 0, 0, 'Armatura Leggera'),
 (4, 5, 'Armatura Imbottita', NULL, NULL, NULL, NULL, '11 + Destrezza', 0, 1, 'Armatura Leggera'),
 (1, 5, 'Ascia', NULL, NULL, '1d6', 'Tagliente', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
 (0, 10, 'Azzurrite', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 25, 'Balestra Leggera', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Arma Semplice A Distanza'),
-(8, 50, 'Balestra Pesante', NULL, NULL, '1d10', 'Perforante', NULL, NULL, NULL, 'Armi Marziali A DIstanza'),
+(8, 50, 'Balestra Pesante', NULL, NULL, '1d10', 'Perforante', NULL, NULL, NULL, 'Arma Marziale A DIstanza'),
 (27, 200, 'Corazza', NULL, NULL, NULL, NULL, '17', 15, 1, 'Armatura Pesante'),
 (20, 50, 'Corazza A Scaglie', NULL, NULL, NULL, NULL, '14 + Destrezza', 0, 1, 'Armatura Media'),
 (9, 50, 'Cotta Di Maglia', NULL, NULL, NULL, NULL, '13 + Destrezza', 0, 0, 'Armatura Media'),
@@ -924,6 +1457,22 @@ CREATE TABLE `origine_migliora` (
   `Nome_Abilita` varchar(20) NOT NULL,
   `Nome_Origine` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `origine_migliora`
+--
+
+INSERT INTO `origine_migliora` (`Nome_Abilita`, `Nome_Origine`) VALUES
+('Atletica', 'Marinaio'),
+('Furtività', 'Criminale'),
+('Intimidire', 'Criminale'),
+('Intuizione', 'Accolito'),
+('Percezione', 'Marinaio'),
+('Persuasione', 'Criminale'),
+('Religione', 'Accolito'),
+('Sopravvivenza', 'Archeologo'),
+('Storia', 'Archeologo'),
+('Storia', 'Cavaliere');
 
 -- --------------------------------------------------------
 
