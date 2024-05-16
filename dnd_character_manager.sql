@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 14, 2024 alle 08:27
+-- Creato il: Mag 16, 2024 alle 10:48
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -92,17 +92,6 @@ INSERT INTO `allineamento` (`Nome`) VALUES
 ('Neutrale'),
 ('Neutrale Buono'),
 ('Neutrale Malvagio');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `appartiene`
---
-
-CREATE TABLE `appartiene` (
-  `ID_Personaggio` int(11) NOT NULL,
-  `Nome_Razza` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -581,17 +570,6 @@ CREATE TABLE `competenze_abilita` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `concede`
---
-
-CREATE TABLE `concede` (
-  `Nome_Origine` varchar(30) NOT NULL,
-  `Nome_Privilegio` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `conosce`
 --
 
@@ -610,28 +588,6 @@ CREATE TABLE `contiene` (
   `ID_Borsa` int(11) NOT NULL,
   `Nome_Oggetto` varchar(30) NOT NULL,
   `Quantita` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `ha_origine`
---
-
-CREATE TABLE `ha_origine` (
-  `Nome_Origine` varchar(30) NOT NULL,
-  `ID_Personaggio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `identifica`
---
-
-CREATE TABLE `identifica` (
-  `Nome_Razza` varchar(20) NOT NULL,
-  `Nome_Sottorazza` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -1500,6 +1456,7 @@ CREATE TABLE `personaggio` (
   `Arma_Equipaggiata` varchar(30) DEFAULT NULL,
   `Nome_Allineamento` varchar(30) NOT NULL,
   `Nome_Razza` varchar(20) NOT NULL,
+  `Nome_Sottorazza` varchar(30) NOT NULL,
   `ID_Borsa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -1507,8 +1464,8 @@ CREATE TABLE `personaggio` (
 -- Dump dei dati per la tabella `personaggio`
 --
 
-INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `ID_Borsa`) VALUES
-(1, 15, 14, 13, 12, 10, 8, 7, 'bob', 'bello', 12, 14, 0, 1, 'Criminale', NULL, NULL, 'Caotico', 'Elfo', 2);
+INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `Nome_Sottorazza`, `ID_Borsa`) VALUES
+(1, 15, 14, 13, 12, 10, 8, 7, 'bob', 'bello', 12, 14, 0, 1, 'Criminale', 'Arco Lungo', 'Armatura Di Pelle', 'Caotico Neutrale', 'Elfo', 'Elfo Scuro', 2);
 
 -- --------------------------------------------------------
 
@@ -1941,13 +1898,6 @@ ALTER TABLE `allineamento`
   ADD UNIQUE KEY `ID_ALLINEAMENTO_IND` (`Nome`);
 
 --
--- Indici per le tabelle `appartiene`
---
-ALTER TABLE `appartiene`
-  ADD PRIMARY KEY (`ID_Personaggio`,`Nome_Razza`),
-  ADD KEY `ID_Personaggio` (`ID_Personaggio`,`Nome_Razza`);
-
---
 -- Indici per le tabelle `barbaro`
 --
 ALTER TABLE `barbaro`
@@ -2055,13 +2005,6 @@ ALTER TABLE `competenze_abilita`
   ADD KEY `FKCom_PER_IND` (`ID_Personaggio`);
 
 --
--- Indici per le tabelle `concede`
---
-ALTER TABLE `concede`
-  ADD PRIMARY KEY (`Nome_Origine`,`Nome_Privilegio`),
-  ADD KEY `Nome_Origine` (`Nome_Origine`,`Nome_Privilegio`);
-
---
 -- Indici per le tabelle `conosce`
 --
 ALTER TABLE `conosce`
@@ -2076,20 +2019,6 @@ ALTER TABLE `contiene`
   ADD PRIMARY KEY (`Nome_Oggetto`,`ID_Borsa`),
   ADD UNIQUE KEY `ID_Contiene_IND` (`Nome_Oggetto`,`ID_Borsa`),
   ADD KEY `FKCon_BOR_IND` (`ID_Borsa`);
-
---
--- Indici per le tabelle `ha_origine`
---
-ALTER TABLE `ha_origine`
-  ADD PRIMARY KEY (`Nome_Origine`,`ID_Personaggio`),
-  ADD KEY `Nome_Origine` (`Nome_Origine`,`ID_Personaggio`);
-
---
--- Indici per le tabelle `identifica`
---
-ALTER TABLE `identifica`
-  ADD PRIMARY KEY (`Nome_Razza`,`Nome_Sottorazza`),
-  ADD KEY `Nome_Razza` (`Nome_Razza`,`Nome_Sottorazza`);
 
 --
 -- Indici per le tabelle `impara_classe`
@@ -2230,8 +2159,9 @@ ALTER TABLE `personaggio`
   ADD KEY `FKEquipaggia_armatura_IND` (`Armatura_Equipaggiata`),
   ADD KEY `FKEquipaggia_arma_IND` (`Arma_Equipaggiata`),
   ADD KEY `FKCaratterizza_IND` (`Nome_Allineamento`),
-  ADD KEY `FKAppartiene_IND` (`Nome_Razza`),
-  ADD KEY `FKTiene_IND` (`ID_Borsa`);
+  ADD KEY `FKTiene_IND` (`ID_Borsa`),
+  ADD KEY `FK_Appartiene_IND` (`Nome_Razza`),
+  ADD KEY `FK_Sottorazza_IND` (`Nome_Sottorazza`);
 
 --
 -- Indici per le tabelle `possiede`
@@ -2632,11 +2562,30 @@ ALTER TABLE `origine_migliora`
   ADD CONSTRAINT `FKOri_ORI_FK` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`);
 
 --
+-- Limiti per la tabella `personaggio`
+--
+ALTER TABLE `personaggio`
+  ADD CONSTRAINT `armaequip_FK` FOREIGN KEY (`Arma_Equipaggiata`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `armaturaequip_FK` FOREIGN KEY (`Armatura_Equipaggiata`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `idborsa_FK` FOREIGN KEY (`ID_Borsa`) REFERENCES `borsa` (`ID_Borsa`),
+  ADD CONSTRAINT `idutente_FK_idutente` FOREIGN KEY (`ID_Utente`) REFERENCES `utente` (`ID_Utente`),
+  ADD CONSTRAINT `nomeallineamento_FK_nomeallineamento` FOREIGN KEY (`Nome_Allineamento`) REFERENCES `allineamento` (`Nome`),
+  ADD CONSTRAINT `nomeorigine_FK_nomeorigine` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`),
+  ADD CONSTRAINT `nomerazza_FK` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`),
+  ADD CONSTRAINT `nomesottorazza_FK` FOREIGN KEY (`Nome_Sottorazza`) REFERENCES `sottorazza` (`Nome`);
+
+--
 -- Limiti per la tabella `proprieta_arma`
 --
 ALTER TABLE `proprieta_arma`
   ADD CONSTRAINT `FKPro_OGG` FOREIGN KEY (`Nome_Arma`) REFERENCES `oggetto` (`Nome`),
   ADD CONSTRAINT `FKPro_PRO_FK` FOREIGN KEY (`Nome_Proprieta`) REFERENCES `proprieta` (`Nome`);
+
+--
+-- Limiti per la tabella `sottorazza`
+--
+ALTER TABLE `sottorazza`
+  ADD CONSTRAINT `nomerazza_FK_nomerazza` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
