@@ -1912,11 +1912,8 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`ID_Utente`, `Username`, `Password`, `E_mail`) VALUES
-(1, 'Aisja', 'a', 'a@a.it'),
-(2, 'b', 'b', 'b@b.it'),
-(5, 'c', 'c', 'catia@c.com'),
-(6, 'dani', 'd', 'd@d.net'),
-(7, 'b', 'b', 'b@b.it');
+(1, 'Aisja', 'a', 'a@a.it');
+
 
 --
 -- Indici per le tabelle scaricate
