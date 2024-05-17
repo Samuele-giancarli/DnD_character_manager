@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 17, 2024 alle 16:23
+-- Creato il: Mag 17, 2024 alle 19:17
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -204,6 +204,7 @@ CREATE TABLE `borsa` (
 --
 
 INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
+(0, 225, 0, 0, 0, 150, 0),
 (1, 225, 0, 0, 0, 70, 0),
 (2, 225, 0, 0, 0, 60, 0),
 (3, 225, 0, 0, 0, 70, 0),
@@ -284,6 +285,48 @@ CREATE TABLE `capacita_di_sottoclasse` (
   `Nome` varchar(30) NOT NULL,
   `Descrizione` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `capacita_di_sottoclasse`
+--
+
+INSERT INTO `capacita_di_sottoclasse` (`Nome`, `Descrizione`) VALUES
+('Abituato alla non morte', 'A partire dal 10° livello, hai resistenza ai danni necrotici e i tuoi punti ferita massimi non possono essere ridotti. Hai passato così tanto tempo ad avere a che fare con i non morti e le forze che li animano che ti sei abituato ad alcuni dei loro effetti peggiori.'),
+('Aspetto della Bestia', 'Al 6° livello, ottieni un beneficio magico basato sull\'animale totem di tua scelta. Puoi scegliere lo stesso animale che hai selezionato al 3° livello o uno diverso.\r\n\r\nOrso. Ottieni la potenza di un orso. La tua capacità di carico (inclusi il carico massimo e il sollevamento massimo) è raddoppiata e hai vantaggio alle prove di Forza effettuate per spingere, tirare, sollevare o rompere oggetti.\r\n\r\nAquila. Ottieni la vista di un\'aquila. Puoi vedere fino a 1 miglio di distanza senza difficoltà, e sei in grado di discernere anche i dettagli più piccoli come se guardassi qualcosa a non più di 30 metri di distanza da te. Inoltre, la luce fioca non impone svantaggio alle prove di Saggezza (Percezione).\r\n\r\nAlce. Che tu sia a cavallo o a piedi, la tua velocità di viaggio è raddoppiata, così come la velocità di viaggio di un massimo di dieci compagni mentre si trovano entro 18 metri da te e non sei Incapace. Lo spirito dell\'alce ti aiuta a vagare lontano e veloce.\r\n\r\nTigre. Ottieni competenza in due abilità dal seguente elenco: Atletica, Acrobazia, Furtività e Sopravvivenza. Lo spirito del gatto affina il tuo istinto di sopravvivenza.\r\n\r\nLupo. Ottieni la sensibilità di caccia di un lupo. Puoi tenere traccia delle altre creature mentre viaggi a un ritmo veloce e puoi muoverti furtivamente mentre viaggi a un ritmo normale.'),
+('Assassinare', 'A partire dal 3° livello, diventi più letale quando sbagli i tuoi nemici. Hai vantaggio ai tiri per colpire contro qualsiasi creatura che non abbia ancora effettuato un turno nel combattimento. Inoltre, qualsiasi colpo messo a segno contro una creatura sorpresa è un colpo critico.'),
+('Attacco extra', 'A partire dal 6° livello, puoi attaccare due volte, anziché una, ogni volta che esegui l\'azione Attacco nel tuo turno.'),
+('Cercatore di spiriti', 'Il tuo è un percorso che cerca la sintonia con il mondo naturale, dandoti un\'affinità con le bestie. Al 3° livello, quando si adotta questo percorso, si ottiene la capacità di Parlare con gli animali'),
+('Colpo della morte', 'A partire dal 17° livello, diventi un maestro della morte istantanea. Quando attacchi e colpisci una creatura sorpresa, essa deve effettuare un tiro salvezza su Costituzione (CD 8 + il tuo modificatore di Destrezza + il tuo bonus di competenza). Se fallisci il tiro salvezza, raddoppia il danno del tuo attacco contro la creatura.'),
+('Colpo improvviso', 'A partire dal 17° livello, puoi colpire con velocità mortale. Se effettui l\'azione Attacco durante il tuo turno, puoi effettuare un attacco aggiuntivo come azione bonus. Questo attacco può beneficiare del tuo Attacco Furtivo anche se lo hai già usato in questo turno, ma non puoi usare il tuo Attacco Furtivo contro lo stesso bersaglio più di una volta in un turno.'),
+('Comanda i non morti', 'A partire dal 14° livello, puoi usare la magia per portare i non morti sotto il tuo controllo, anche quelli creati da altri maghi. Come azione, puoi scegliere un non morto che puoi vedere entro 18 metri da te. Quella creatura deve effettuare un tiro salvezza su Carisma contro la CD del tiro salvezza dell\'incantesimo da mago. Se ha successo, non potrai utilizzare nuovamente questa funzionalità. Se fallisce, diventa amichevole con te e obbedisce ai tuoi comandi finché non utilizzi nuovamente questa funzionalità.\r\n\r\nI non morti intelligenti sono più difficili da controllare in questo modo. Se il bersaglio ha un\'Intelligenza pari o superiore a 8, dispone di vantaggio al tiro salvezza. Se fallisce il tiro salvezza e ha un\'Intelligenza pari o superiore a 12, può ripetere il tiro salvezza alla fine di ogni ora finché non riesce e si libera.'),
+('Crescendo creativo', 'Al 14° livello, quando usi la tua capacità Esibizione di Creazione, puoi creare più di un oggetto alla volta. Il numero di oggetti è pari al tuo modificatore di Carisma (minimo due oggetti). Se crei un elemento che supererebbe quel numero, scegli quale degli elementi creati in precedenza scomparirà. Solo uno di questi elementi può avere le dimensioni massime che puoi creare; il resto deve essere Piccolo o Minuscolo.\r\n\r\nNon sei più limitato dal valore in mo quando crei oggetti con Performance of Creation.'),
+('Evocazione Potenziata', 'A partire dal 10° livello, puoi aggiungere il tuo modificatore di Intelligenza (minimo +1) a un tiro per i danni di qualsiasi incantesimo di evocazione da mago che lanci.\r\n\r\n'),
+('Evocazione Savant', 'A partire da quando selezioni questa scuola al 2° livello, l\'oro e il tempo che devi spendere per copiare un incantesimo di Evocazione nel tuo libro degli incantesimi vengono dimezzati.'),
+('Frenesia', 'A partire da quando scegli questo percorso al 3° livello, puoi entrare in frenesia quando sei in preda all\'ira. Se lo fai, per la durata della tua ira puoi effettuare un singolo attacco con arma da mischia come azione bonus in ciascuno dei tuoi turni successivi a questo. Quando la tua rabbia termina, soffri di un livello di esaurimento.'),
+('Granulometria del potenziale', 'Quando ti unisci al Collegio della Creazione al 3° livello, ogni volta che dai a una creatura un dado di Ispirazione Bardica, puoi pronunciare una nota dal Canto della Creazione per creare un Minuscolo granello di potenziale, che orbita entro 1,5 piedi da quella creatura. La pagliuzza è intangibile e invulnerabile e dura finché il dado di Ispirazione Bardica non viene perso. Il granello assomiglia a una nota musicale, una stella, un fiore o un altro simbolo dell\'arte o della vita a tua scelta.\r\nVerifica di abilità. Quando la creatura lancia il dado di Ispirazione Bardica per aggiungerlo a una prova di abilità, la creatura può lanciare nuovamente il dado di Ispirazione Bardica e scegliere quale tiro utilizzare, poiché il granello scoppia ed emette scintille colorate e innocue per un momento.\r\n\r\nTiro d\'attacco. Immediatamente dopo che la creatura ha lanciato il dado di Ispirazione Bardica per aggiungerlo a un tiro per colpire contro un bersaglio, il granello si frantuma fragorosamente. Il bersaglio e ogni creatura a tua scelta che puoi vedere entro 1,5 metri da esso devono riuscire un tiro salvezza su Costituzione contro la tua CD del tiro salvezza dell\'incantesimo o subire danni da tuono pari al numero ottenuto con il dado di Ispirazione Bardica.\r\n\r\nTiro Salvezza. Immediatamente dopo che la creatura ha lanciato il dado di Ispirazione Bardica e lo ha aggiunto a un tiro salvezza, il granello svanisce con il suono di una musica soft, facendo guadagnare alla creatura punti ferita temporanei pari al numero ottenuto dal dado di Ispirazione Bardica più il tuo modificatore di Carisma ( minimo 1 punto ferita temporaneo).'),
+('Impostore', 'Al 13° livello, ottieni la capacità di imitare infallibilmente il linguaggio, la scrittura e il comportamento di un\'altra persona. Devi trascorrere almeno tre ore studiando queste tre componenti del comportamento della persona, ascoltando il discorso, esaminando la scrittura e osservando i manierismi.\r\n\r\nIl tuo stratagemma è impercettibile all\'osservatore casuale. Se una creatura diffidente sospetta che qualcosa non va, hai vantaggio su qualsiasi prova di Carisma (Inganno) effettuata per evitare di essere scoperta.'),
+('Infiltrarsi', 'A partire dal 9° livello, puoi immancabilmente creare false identità per te stesso. È necessario spendere sette giorni e 25 mo per stabilire la storia, la professione e le affiliazioni di un\'identità. Non è possibile stabilire un\'identità che appartenga a qualcun altro. Ad esempio, potresti acquisire abiti adeguati, lettere di presentazione e certificazioni dall\'aspetto ufficiale per affermarti come membro di una casa commerciale di una città remota in modo da poterti insinuare nella compagnia di altri ricchi mercanti.\r\n\r\nSuccessivamente, se adotti la nuova identità come travestimento, le altre creature crederanno che tu sia quella persona finché non verrà data una ragione ovvia per non farlo.'),
+('La fioritura del maestro', 'A partire dal 14° livello, ogni volta che usi un\'opzione Fioritura della Lama, puoi tirare un d6 e usarla invece di spendere un dado di Ispirazione Bardica.'),
+('Lama fiorita', 'Al 3° livello, impari a condurre impressionanti dimostrazioni di abilità marziale e velocità.\r\nFioritura difensiva. Puoi spendere un uso della tua Ispirazione Bardica per far sì che l\'arma infligga danni extra al bersaglio che colpisci. Il danno è pari al numero ottenuto con il dado di Ispirazione Bardica. Aggiungi anche il numero lanciato alla tua AC fino all\'inizio del tuo turno successivo.\r\n\r\nFioritura tagliente. Puoi spendere un uso della tua Ispirazione Bardica per fare in modo che l\'arma infligga danni extra al bersaglio colpito e a qualsiasi altra creatura di tua scelta che puoi vedere entro 1,5 metri da te. Il danno è pari al numero ottenuto con il dado di Ispirazione Bardica.\r\n\r\nFiorire mobile. Puoi spendere un uso della tua Ispirazione Bardica per far sì che l\'arma infligga danni extra al bersaglio che colpisci. Il danno è pari al numero ottenuto con il dado di Ispirazione Bardica. Puoi anche spingere il bersaglio fino a 1,5 metri lontano da te, più un numero di metri pari al numero ottenuto con il dado. Puoi quindi usare immediatamente la tua reazione per muoverti alla tua velocità di camminata verso uno spazio non occupato entro 1,5 metri dal bersaglio.'),
+('Maestro dell\'imboscata', 'A partire dal 13° livello, eccelli nel condurre imboscate e nell\'agire per primo in un combattimento.\r\n\r\nHai vantaggio sui tiri di iniziativa. Inoltre, la prima creatura che colpisci durante il primo round di un combattimento diventa più facile da colpire per te e per gli altri; i tiri per colpire contro quel bersaglio hanno vantaggio fino all\'inizio del tuo turno successivo.'),
+('Mobilità superiore', 'Al 9° livello, la velocità di camminata aumenta di 3 metri. Se hai una velocità di scalata o di nuoto, questo aumento si applica anche a quella velocità.'),
+('Performance di animazione', 'Entro il 6° livello, come azione, puoi animare un oggetto non magico Grande o più piccolo entro 9 metri da te che non venga indossato o trasportato. L\'oggetto animato utilizza il blocco statistiche Oggetto danzante, che utilizza il tuo bonus di competenza (PB). L\'oggetto è amichevole con te e i tuoi compagni e obbedisce ai tuoi comandi. Vive per 1 ora, finché non viene ridotto a 0 punti ferita o finché non muori.\r\n\r\nIn combattimento, l\'oggetto condivide il tuo conteggio di iniziativa, ma svolge il suo turno immediatamente dopo il tuo. Può muoversi e usare la sua reazione da solo, ma l\'unica azione che intraprende nel suo turno è l\'azione Schivare, a meno che tu non effettui un\'azione bonus nel tuo turno per comandargli di eseguire un\'altra azione. Quell\'azione può essere una nel suo blocco statistiche o qualche altra azione. Se sei Incapace, l\'oggetto può compiere qualsiasi azione di sua scelta, non solo Schivare.\r\n\r\nQuando usi la tua capacità di Ispirazione Bardica, puoi comandare l\'oggetto come parte della stessa azione bonus che usi per Ispirazione Bardica.\r\n\r\nUna volta animato un oggetto con questa funzionalità, non è possibile farlo nuovamente finché non si termina un riposo lungo, a meno che non si spenda uno slot incantesimo di 3° livello o superiore per utilizzare nuovamente questa funzionalità. Puoi avere un solo elemento animato da questa funzione alla volta; se usi questa azione e possiedi già un oggetto danzante di questa funzione, il primo diventa immediatamente inanimato.'),
+('Presenza intimidatoria', 'A partire dal 10° livello, puoi usare la tua azione per spaventare qualcuno con la tua presenza minacciosa. Quando lo fai, scegli una creatura che puoi vedere entro 9 metri da te. Se la creatura può vederti o sentirti, deve riuscire un tiro salvezza su Saggezza (CD pari a 8 + il tuo bonus di competenza + il tuo modificatore di Carisma) o avere paura di te fino alla fine del tuo turno successivo. Nei turni successivi, puoi usare la tua azione per estendere la durata di questo effetto sulla creatura spaventata fino alla fine del tuo turno successivo. Questo effetto termina se la creatura termina il suo turno fuori dalla linea di vista o a più di 60 piedi di distanza da te.\r\n\r\nSe la creatura supera il suo tiro salvezza, non puoi usare nuovamente questa capacità su quella creatura per 24 ore.'),
+('Rabbia senza senso', 'A partire dal 6° livello, non puoi essere affascinato o spaventato mentre sei in ira. Se si è affascinati o spaventati quando si entra in ira, l\'effetto è sospeso per la durata dell\'ira.'),
+('Raccolto Triste', 'Al 2° livello, ottieni la capacità di raccogliere energia vitale dalle creature che uccidi con i tuoi incantesimi. Una volta per turno, quando uccidi una o più creature con un incantesimo di 1° livello o superiore, recuperi punti ferita pari al doppio del livello dell\'incantesimo, o tre volte il suo livello se l\'incantesimo appartiene alla Scuola di Necromanzia. Non ottieni questo beneficio uccidendo costrutti o non morti.'),
+('Ritorsione', 'A partire dal 14° livello, quando subisci danni da una creatura che si trova entro 1,5 metri da te, puoi usare la tua reazione per effettuare un attacco con arma da mischia contro quella creatura.'),
+('Sapiente della Necromanzia', 'A partire da quando selezioni questa scuola al 2° livello, l\'oro e il tempo che devi spendere per copiare un incantesimo di Negromanzia nel tuo libro degli incantesimi vengono dimezzati.'),
+('Schermagliatore', 'A partire dal 3° livello, sei difficile da intrappolare durante un combattimento. Puoi muoverti fino alla metà della tua velocità come reazione quando un nemico termina il suo turno entro 1,5 metri da te. Questo movimento non provoca attacchi di opportunità.'),
+('Schiavi non morti', 'Al 6° livello,Ogni volta che crei un non morto usando un incantesimo di negromanzia, ha ulteriori vantaggi:\r\n\r\nI punti ferita massimi della creatura vengono aumentati di un ammontare pari al proprio livello da mago.\r\nLa creatura aggiunge il tuo bonus di competenza ai suoi tiri per i danni con l\'arma.'),
+('Scolpisci incantesimi', 'A partire dal 2° livello, puoi creare sacche di relativa sicurezza entro gli effetti dei tuoi incantesimi di evocazione. Quando lanci un incantesimo di evocazione che influenza altre creature che puoi vedere, puoi sceglierne un numero pari a 1 + il livello dell\'incantesimo. Le creature scelte superano automaticamente i loro tiri salvezza contro l\'incantesimo e non subiscono danni se normalmente subirebbero la metà dei danni in caso di tiro salvezza riuscito.'),
+('Sintonizzazione Totemica', 'Al 14° livello, ottieni un beneficio magico basato su un animale totem di tua scelta. Puoi scegliere lo stesso animale selezionato in precedenza oppure uno diverso.\r\n\r\nOrso. Mentre sei in ira, qualsiasi creatura che ti sia ostile entro 1,5 metri da te subisce svantaggio ai tiri per colpire contro bersagli diversi da te o da un altro personaggio con questa caratteristica. Un nemico è immune a questo effetto se non può vederti o sentirti o se non può essere spaventato.\r\n\r\nAquila. Mentre sei in ira, hai una velocità di volo pari alla tua attuale velocità di camminata. Questo vantaggio funziona solo per brevi periodi; cadi se finisci il tuo turno in aria e nient\'altro ti tiene in alto.\r\n\r\nAlce. Mentre sei in ira, puoi usare un\'azione bonus durante il tuo movimento per attraversare lo spazio di una creatura Grande o più piccola. Quella creatura deve riuscire in un tiro salvezza di Forza (CD 8 + il tuo bonus di Forza + il tuo bonus di competenza) o cadere prona e subire danni contundenti pari a 1d12 + il tuo modificatore di Forza.\r\n\r\nTigre. Mentre sei in ira, se ti muovi di almeno 6 metri in linea retta verso un bersaglio Grande o più piccolo subito prima di effettuare un attacco con un\'arma da mischia contro di esso, puoi utilizzare un\'azione bonus per effettuare un ulteriore attacco con un\'arma da mischia contro di esso.\r\n\r\nLupo. Mentre sei in ira, puoi usare un\'azione bonus nel tuo turno per buttare a terra una creatura di taglia Grande o inferiore quando la colpisci con un attacco con arma da mischia.'),
+('Sopravvissuto', 'Quando scegli questo archetipo al 3° livello, ottieni competenza nelle abilità Natura e Sopravvivenza se non le possiedi già. Il tuo bonus di competenza viene raddoppiato per qualsiasi prova di caratteristica effettuata che utilizzi una di queste competenze.'),
+('Spettacolo della creazione', 'Inoltre al 3° livello, come azione, puoi incanalare la magia del Canto della Creazione per creare un oggetto non magico di tua scelta in uno spazio non occupato entro 3 metri da te. L\'oggetto deve apparire su una superficie o in un liquido che possa sostenerlo. Il valore in mo dell\'oggetto non può essere più di 20 volte il tuo livello da bardo e l\'oggetto deve essere Medio o inferiore. L\'oggetto brilla leggermente e una creatura può sentire debolmente la musica quando lo tocca. L\'oggetto creato scompare dopo un numero di ore pari al tuo bonus di competenza. Per esempi di oggetti che puoi creare, consulta il capitolo sull\'equipaggiamento del Manuale del giocatore .\r\n\r\nUna volta creato un oggetto con questa capacità, non è possibile farlo nuovamente finché non si termina un riposo lungo, a meno che non si spenda uno slot incantesimo di 2° livello o superiore per utilizzare nuovamente questa capacità. Puoi creare un solo elemento alla volta tramite questa funzione; se usi questa azione e hai già un oggetto di questa funzione, il primo svanisce immediatamente.\r\n\r\nLa dimensione dell\'oggetto che puoi creare con questa funzionalità aumenta di una categoria di dimensione quando raggiungi il 6° livello (Grande) e il 14° livello (Enorme).'),
+('Spirito Camminatore', 'Al 10° livello, puoi lanciare l\' incantesimo Comunione con la Natura , ma solo come rituale. Quando lo fai, ti appare una versione spirituale di uno degli animali che hai scelto per lo Spirito Totem o l\'Aspetto della Bestia per trasmetterti le informazioni che cerchi.'),
+('Spirito totemico', 'Al 3° livello, quando si adotta questo percorso, si sceglie uno spirito totem e si ottiene la sua caratteristica. È necessario creare o acquisire un oggetto totem fisico (un amuleto o un ornamento simile) che incorpori pelliccia o piume, artigli, denti o ossa dell\'animale totem. A tua scelta, ottieni anche attributi fisici minori che ricordano il tuo spirito totem. Ad esempio, se hai lo spirito totem di un orso, potresti essere insolitamente peloso e dalla pelle spessa, o se il tuo totem è l\'aquila, i tuoi occhi diventano di un giallo brillante.\r\n\r\nIl tuo animale totem potrebbe essere un animale imparentato con quelli elencati qui ma più appropriato alla tua terra natale. Ad esempio, potresti scegliere un falco o un avvoltoio al posto di un\'aquila.\r\n\r\nOrso. Mentre sei in ira, hai resistenza a tutti i danni tranne quelli psichici. Lo spirito dell\'orso ti rende abbastanza forte da resistere a qualsiasi punizione.\r\n\r\nAquila. Mentre sei in ira e non indossi un\'armatura pesante, le altre creature hanno svantaggio ai tiri per colpire di opportunità contro di te e puoi usare l\'azione Scattare come azione bonus nel tuo turno. Lo spirito dell\'aquila ti trasforma in un predatore che può districarsi nella mischia con facilità.\r\n\r\nAlce. Mentre sei in ira e non indossi un\'armatura pesante, la tua velocità di camminata aumenta di 4,5 piedi. Lo spirito dell\'alce ti rende straordinariamente veloce.\r\n\r\nTigre. Mentre sei in ira, puoi aggiungere 3 metri alla distanza del salto in lungo e 3 piedi alla distanza del salto in alto. Lo spirito della tigre potenzia i tuoi salti.\r\n\r\nLupo. Mentre sei in ira, i tuoi amici hanno vantaggio ai tiri per colpire in mischia contro qualsiasi creatura entro 1,5 metri da te che ti sia ostile. Lo spirito del lupo ti rende un leader dei cacciatori.'),
+('Stile di combattimento', 'Al 3° livello, adotti uno stile di combattimento particolare come tua specialità. Scegli una delle seguenti opzioni. Non puoi scegliere un\'opzione di Stile di Combattimento più di una volta, anche se in seguito potrai sceglierla nuovamente.\r\n\r\nDuello. Quando impugni un\'arma da mischia in una mano e nessun\'altra arma, ottieni bonus +2 ai tiri per i danni con quell\'arma.\r\nCombattimento con due armi. Quando combatti con due armi, puoi aggiungere il tuo modificatore di abilità al danno del secondo attacco.'),
+('Super Canalizzazione', 'A partire dal 14° livello, puoi aumentare la potenza dei tuoi incantesimi più semplici. Quando lanci un incantesimo da mago dal 1° al 5° livello che infligge danni, puoi infliggere il massimo danno con quell\'incantesimo.\r\n\r\nLa prima volta che lo fai, non subisci alcun effetto negativo. Se usi nuovamente questo privilegio prima di terminare un riposo lungo, subisci 2d12 danni necrotici per ogni livello dell\'incantesimo, immediatamente dopo averlo lanciato. Ogni volta che si utilizza nuovamente questo privilegio prima di terminare un riposo lungo, il danno necrotico per livello dell\'incantesimo aumenta di 1d12. Questo danno ignora la resistenza e l\'immunità.'),
+('Trucchetto potente', 'A partire dal 6° livello, i tuoi trucchetti dannosi colpiscono anche le creature che evitano il peso dell\'effetto. Quando una creatura supera un tiro salvezza contro il trucchetto, la creatura subisce la metà dei danni del trucchetto (se presenti) ma non subisce alcun effetto aggiuntivo dal trucchetto.');
 
 -- --------------------------------------------------------
 
@@ -623,6 +666,18 @@ CREATE TABLE `identifica` (
   `Nome_Sottorazza` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `identifica`
+--
+
+INSERT INTO `identifica` (`Nome_Razza`, `Nome_Sottorazza`) VALUES
+('Elfo', 'Elfo Dei Boschi'),
+('Elfo', 'Elfo Scuro'),
+('Nano', 'Nano Delle Colline'),
+('Nano', 'Nano Delle Montagne'),
+('Umano', 'Kessig'),
+('Umano', 'Nephalia');
+
 -- --------------------------------------------------------
 
 --
@@ -729,6 +784,48 @@ CREATE TABLE `impara_sottoclasse` (
   `Nome_Sottoclasse` varchar(30) NOT NULL,
   `Livello_Sottoclasse` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `impara_sottoclasse`
+--
+
+INSERT INTO `impara_sottoclasse` (`Nome_Capacita`, `Nome_Sottoclasse`, `Livello_Sottoclasse`) VALUES
+('Assassinare', 'Assassino', 1),
+('Infiltrarsi', 'Assassino', 2),
+('Impostore', 'Assassino', 3),
+('Colpo della morte', 'Assassino', 4),
+('Frenesia', 'Berserker', 1),
+('Rabbia senza senso', 'Berserker', 2),
+('Presenza intimidatoria', 'Berserker', 3),
+('Ritorsione', 'Berserker', 4),
+('Granulometria del potenziale', 'Collegio della Creazione', 1),
+('Spettacolo della creazione', 'Collegio della Creazione', 1),
+('Performance di animazione', 'Collegio della Creazione', 2),
+('Crescendo creativo', 'Collegio della Creazione', 3),
+('Lama fiorita', 'Collegio delle Spade', 1),
+('Stile di combattimento', 'Collegio delle Spade', 1),
+('Attacco extra', 'Collegio delle Spade', 2),
+('La fioritura del maestro', 'Collegio delle Spade', 3),
+('Cercatore di spiriti', 'Guerriero Totemico', 1),
+('Spirito totemico', 'Guerriero Totemico', 1),
+('Aspetto della Bestia', 'Guerriero Totemico ', 2),
+('Spirito Camminatore', 'Guerriero Totemico', 3),
+('Sintonizzazione Totemica', 'Guerriero Totemico', 4),
+('Schermagliatore', 'Scout', 1),
+('Sopravvissuto', 'Scout', 1),
+('Mobilità superiore', 'Scout', 2),
+('Maestro dell\'imboscata', 'Scout', 3),
+('Colpo improvviso', 'Scout', 4),
+('Evocazione Savant', 'Scuola di Evocazione', 1),
+('Scolpisci incantesimi', 'Scuola di Evocazione', 1),
+('Trucchetto potente', 'Scuola di Evocazione', 2),
+('Evocazione Potenziata', 'Scuola di Evocazione', 3),
+('Super Canalizzazione', 'Scuola di Evocazione', 4),
+('Raccolto Triste', 'Scuola di Necromanzia', 1),
+('Sapiente della Necromanzia', 'Scuola di Necromanzia', 1),
+('Schiavi non morti', 'Scuola di Necromanzia', 2),
+('Abituato alla non morte', 'Scuola di Necromanzia', 3),
+('Comanda i non morti', 'Scuola di Necromanzia', 4);
 
 -- --------------------------------------------------------
 
@@ -1762,8 +1859,36 @@ CREATE TABLE `sottoclasse` (
 --
 
 INSERT INTO `sottoclasse` (`Nome`, `Livello`) VALUES
-('Barbaro Guerriero Totemico', 1),
-('Bardo del Maestro', 1);
+('Assassino', 1),
+('Assassino', 2),
+('Assassino', 3),
+('Assassino', 4),
+('Berserker', 1),
+('Berserker', 2),
+('Berserker', 3),
+('Berserker', 4),
+('Collegio della Creazione', 1),
+('Collegio della Creazione', 2),
+('Collegio della Creazione', 3),
+('Collegio delle Spade', 1),
+('Collegio delle Spade', 2),
+('Collegio delle Spade', 3),
+('Guerriero Totemico', 1),
+('Guerriero Totemico ', 2),
+('Guerriero Totemico ', 3),
+('Guerriero Totemico ', 4),
+('Scout', 1),
+('Scout', 2),
+('Scout', 3),
+('Scout', 4),
+('Scuola di Evocazione', 1),
+('Scuola di Evocazione', 2),
+('Scuola di Evocazione', 3),
+('Scuola di Evocazione', 4),
+('Scuola di Necromanzia', 1),
+('Scuola di Necromanzia', 2),
+('Scuola di Necromanzia', 3),
+('Scuola di Necromanzia', 4);
 
 -- --------------------------------------------------------
 
@@ -1809,8 +1934,36 @@ CREATE TABLE `specializzazione` (
 --
 
 INSERT INTO `specializzazione` (`Nome_Classe`, `Livello_Classe`, `Nome_Sottoclasse`, `Livello_Sottoclasse`) VALUES
-('Barbaro', 3, 'Barbaro Guerriero Totemico', 1),
-('Bardo', 3, 'Bardo del Maestro', 1);
+('Barbaro', 3, 'Berserker', 1),
+('Barbaro', 3, 'Guerriero Totemico', 1),
+('Barbaro', 6, 'Berserker', 2),
+('Barbaro', 6, 'Guerriero Totemico', 2),
+('Barbaro', 10, 'Berserker', 3),
+('Barbaro', 10, 'Guerriero Totemico', 3),
+('Barbaro', 14, 'Berserker', 4),
+('Barbaro', 14, 'Guerriero Totemico', 4),
+('Bardo', 3, 'Collegio della Creazione', 1),
+('Bardo', 3, 'Collegio delle Spade', 1),
+('Bardo', 6, 'Collegio della Creazione', 2),
+('Bardo', 6, 'Collegio delle Spade', 2),
+('Bardo', 14, 'Collegio della Creazione', 3),
+('Bardo', 14, 'Collegio delle Spade', 3),
+('Ladro', 3, 'Assassino', 1),
+('Ladro', 3, 'Scout', 1),
+('Ladro', 9, 'Assassino', 2),
+('Ladro', 9, 'Scout', 2),
+('Ladro', 13, 'Assassino', 3),
+('Ladro', 13, 'Scout', 3),
+('Ladro', 17, 'Assassino', 4),
+('Ladro', 17, 'Scout', 4),
+('Mago', 2, 'Scuola di Evocazione', 1),
+('Mago', 2, 'Scuola di Necromanzia', 1),
+('Mago', 6, 'Scuola di Evocazione', 2),
+('Mago', 6, 'Scuola di Necromanzia', 2),
+('Mago', 10, 'Scuola di Evocazione', 3),
+('Mago', 10, 'Scuola di Necromanzia', 3),
+('Mago', 14, 'Scuola di Evocazione', 4),
+('Mago', 14, 'Scuola di Necromanzia', 4);
 
 -- --------------------------------------------------------
 
@@ -1856,6 +2009,17 @@ CREATE TABLE `tratti_della_razza` (
   `Nome_Tratto` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `tratti_della_razza`
+--
+
+INSERT INTO `tratti_della_razza` (`Nome_Razza`, `Nome_Tratto`) VALUES
+('Elfo', 'Scurovisione'),
+('Elfo', 'Trance'),
+('Nano', 'Astuzia Della Pietra'),
+('Nano', 'Resilienza Nanica'),
+('Nano', 'Scurovisione');
+
 -- --------------------------------------------------------
 
 --
@@ -1866,6 +2030,21 @@ CREATE TABLE `tratti_della_sottorazza` (
   `Nome_Sottorazza` varchar(40) NOT NULL,
   `Nome_Tratto` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `tratti_della_sottorazza`
+--
+
+INSERT INTO `tratti_della_sottorazza` (`Nome_Sottorazza`, `Nome_Tratto`) VALUES
+('Elfo Dei Boschi', 'Maschera Del Selvaggio'),
+('Elfo Dei Boschi', 'Passo Sicuro'),
+('Elfo Scuro', 'Scurovisione Superiore'),
+('Elfo Scuro', 'Sensibilità Alla Luce Del Sole'),
+('Kessig', 'Attacco A Molla'),
+('Kessig', 'Passo Sicuro'),
+('Nano Delle Colline', 'Passo Sicuro'),
+('Nano Delle Montagne', 'Nato Nel Ghiaccio'),
+('Nephalia', 'Maschera Del Selvaggio');
 
 -- --------------------------------------------------------
 
@@ -1912,8 +2091,8 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`ID_Utente`, `Username`, `Password`, `E_mail`) VALUES
-(1, 'Aisja', 'a', 'a@a.it');
-
+(1, 'Aisja', 'a', 'a@a.it'),
+(2, 'Palikko', 'ciao', 'ciao@djhdj.it');
 
 --
 -- Indici per le tabelle scaricate
@@ -2405,6 +2584,7 @@ ALTER TABLE `tiro_salvezza`
 -- Indici per le tabelle `tratti_della_razza`
 --
 ALTER TABLE `tratti_della_razza`
+  ADD PRIMARY KEY (`Nome_Razza`,`Nome_Tratto`),
   ADD KEY `FK_razzatratti` (`Nome_Razza`),
   ADD KEY `FK_trattotratti` (`Nome_Tratto`);
 
@@ -2412,6 +2592,7 @@ ALTER TABLE `tratti_della_razza`
 -- Indici per le tabelle `tratti_della_sottorazza`
 --
 ALTER TABLE `tratti_della_sottorazza`
+  ADD PRIMARY KEY (`Nome_Sottorazza`,`Nome_Tratto`),
   ADD KEY `FK_sottorazzatratti` (`Nome_Sottorazza`),
   ADD KEY `FK_trattotrattis` (`Nome_Tratto`);
 
@@ -2419,13 +2600,25 @@ ALTER TABLE `tratti_della_sottorazza`
 -- Indici per le tabelle `tratti_razziali`
 --
 ALTER TABLE `tratti_razziali`
+  ADD PRIMARY KEY (`Nome`),
   ADD KEY `Nome` (`Nome`);
 
 --
 -- Indici per le tabelle `utente`
 --
 ALTER TABLE `utente`
+  ADD PRIMARY KEY (`Username`),
   ADD KEY `ID_Utente` (`ID_Utente`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `utente`
+--
+ALTER TABLE `utente`
+  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Limiti per le tabelle scaricate
@@ -2560,9 +2753,9 @@ ALTER TABLE `impara_classe`
 -- Limiti per la tabella `impara_sottoclasse`
 --
 ALTER TABLE `impara_sottoclasse`
-  ADD CONSTRAINT `FK_livelloclasseims` FOREIGN KEY (`Livello_Sottoclasse`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_livelloclasseims` FOREIGN KEY (`Livello_Sottoclasse`) REFERENCES `sottoclasse` (`Livello`),
   ADD CONSTRAINT `FK_nomecapacitaims` FOREIGN KEY (`Nome_Capacita`) REFERENCES `capacita_di_sottoclasse` (`Nome`),
-  ADD CONSTRAINT `FK_nomeclasseims` FOREIGN KEY (`Nome_Sottoclasse`) REFERENCES `classe` (`Nome`);
+  ADD CONSTRAINT `FK_nomeclasseims` FOREIGN KEY (`Nome_Sottoclasse`) REFERENCES `sottoclasse` (`Nome`);
 
 --
 -- Limiti per la tabella `incantesimo`
