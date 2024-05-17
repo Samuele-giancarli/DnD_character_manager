@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 17, 2024 alle 15:26
+-- Creato il: Mag 17, 2024 alle 16:23
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -1958,7 +1958,8 @@ ALTER TABLE `appartiene`
 ALTER TABLE `barbaro`
   ADD PRIMARY KEY (`ID_Barbaro`),
   ADD UNIQUE KEY `ID_BARBARO_IND` (`ID_Barbaro`),
-  ADD KEY `FKScelta_Barbaro_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKScelta_Barbaro_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livellocl` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `bardo`
@@ -1966,7 +1967,8 @@ ALTER TABLE `barbaro`
 ALTER TABLE `bardo`
   ADD PRIMARY KEY (`ID_Bardo`),
   ADD UNIQUE KEY `ID_BARDO_IND` (`ID_Bardo`),
-  ADD KEY `FKScelta_Bardo_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKScelta_Bardo_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livelloclassebardo` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `borsa`
@@ -1994,7 +1996,8 @@ ALTER TABLE `capacita_di_sottoclasse`
 --
 ALTER TABLE `caratterizza`
   ADD PRIMARY KEY (`Nome_Allineamento`,`ID_Personaggio`),
-  ADD KEY `Nome_Allineamento` (`Nome_Allineamento`,`ID_Personaggio`);
+  ADD KEY `Nome_Allineamento` (`Nome_Allineamento`,`ID_Personaggio`),
+  ADD KEY `FK_idpersonaggiocara` (`ID_Personaggio`);
 
 --
 -- Indici per le tabelle `classe`
@@ -2011,7 +2014,8 @@ ALTER TABLE `classe`
 ALTER TABLE `classe_migliora`
   ADD PRIMARY KEY (`Nome_Abilita`,`Nome_Classe`,`Livello_Classe`),
   ADD UNIQUE KEY `ID_Classe_Migliora_IND` (`Nome_Abilita`,`Nome_Classe`,`Livello_Classe`),
-  ADD KEY `FKCla_CLA_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKCla_CLA_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livelloclassecm` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `competenza`
@@ -2019,7 +2023,9 @@ ALTER TABLE `classe_migliora`
 ALTER TABLE `competenza`
   ADD PRIMARY KEY (`Nome_TiroSalvezza`,`Nome_Classe`,`Livello_Classe`),
   ADD UNIQUE KEY `ID_Competenza_IND` (`Nome_TiroSalvezza`,`Nome_Classe`,`Livello_Classe`),
-  ADD KEY `FKCom_CLA_3_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKCom_CLA_3_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livelloclassecom` (`Livello_Classe`),
+  ADD KEY `Nome_TiroSalvezza` (`Nome_TiroSalvezza`);
 
 --
 -- Indici per le tabelle `competenza_della_classe_in_armature`
@@ -2027,7 +2033,8 @@ ALTER TABLE `competenza`
 ALTER TABLE `competenza_della_classe_in_armature`
   ADD PRIMARY KEY (`Nome_Armatura`,`Nome_Classe`,`Livello_Classe`),
   ADD UNIQUE KEY `ID_Competenza_della_Classe_in_Armature_IND` (`Nome_Armatura`,`Nome_Classe`,`Livello_Classe`),
-  ADD KEY `FKCom_CLA_2_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKCom_CLA_2_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livelloclassearm` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `competenza_della_classe_in_armi`
@@ -2035,7 +2042,8 @@ ALTER TABLE `competenza_della_classe_in_armature`
 ALTER TABLE `competenza_della_classe_in_armi`
   ADD PRIMARY KEY (`Nome_Arma`,`Nome_Classe`,`Livello_Classe`),
   ADD UNIQUE KEY `ID_Competenza_della_Classe_in_Armi_IND` (`Nome_Arma`,`Nome_Classe`,`Livello_Classe`),
-  ADD KEY `FKCom_CLA_1_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKCom_CLA_1_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livelloclassearma` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `competenza_della_classe_in_strumenti`
@@ -2043,7 +2051,8 @@ ALTER TABLE `competenza_della_classe_in_armi`
 ALTER TABLE `competenza_della_classe_in_strumenti`
   ADD PRIMARY KEY (`Nome_Strumento`,`Nome_Classe`,`Livello_Classe`),
   ADD UNIQUE KEY `ID_Competenza_della_Classe_in_Strumenti_IND` (`Nome_Strumento`,`Nome_Classe`,`Livello_Classe`),
-  ADD KEY `FKCom_CLA_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKCom_CLA_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livelloclassestr` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `competenza_dell_origine_in_strumenti`
@@ -2099,7 +2108,8 @@ ALTER TABLE `identifica`
 ALTER TABLE `impara_classe`
   ADD PRIMARY KEY (`Nome_Classe`,`Livello_Classe`,`Nome_Capacita`),
   ADD UNIQUE KEY `ID_Impara_Classe_IND` (`Nome_Classe`,`Livello_Classe`,`Nome_Capacita`),
-  ADD KEY `FKImp_CAP_1_IND` (`Nome_Capacita`);
+  ADD KEY `FKImp_CAP_1_IND` (`Nome_Capacita`),
+  ADD KEY `FK_livelloclasseim` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `impara_sottoclasse`
@@ -2107,7 +2117,8 @@ ALTER TABLE `impara_classe`
 ALTER TABLE `impara_sottoclasse`
   ADD PRIMARY KEY (`Nome_Sottoclasse`,`Livello_Sottoclasse`,`Nome_Capacita`),
   ADD UNIQUE KEY `ID_Impara_Sottoclasse_IND` (`Nome_Sottoclasse`,`Livello_Sottoclasse`,`Nome_Capacita`),
-  ADD KEY `FKImp_CAP_IND` (`Nome_Capacita`);
+  ADD KEY `FKImp_CAP_IND` (`Nome_Capacita`),
+  ADD KEY `FK_livelloclasseims` (`Livello_Sottoclasse`);
 
 --
 -- Indici per le tabelle `incantesimo`
@@ -2124,7 +2135,8 @@ ALTER TABLE `incantesimo`
 ALTER TABLE `ladro`
   ADD PRIMARY KEY (`ID_Ladro`),
   ADD UNIQUE KEY `ID_LADRO_IND` (`ID_Ladro`),
-  ADD KEY `FKScelta_Ladro_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKScelta_Ladro_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livelloclasseladro` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `lancia_bardo`
@@ -2179,7 +2191,8 @@ ALTER TABLE `lingue_della_razza`
 ALTER TABLE `mago`
   ADD PRIMARY KEY (`ID_Mago`),
   ADD UNIQUE KEY `ID_MAGO_IND` (`ID_Mago`),
-  ADD KEY `FKScelta_Mago_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKScelta_Mago_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livelloclassemago` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `oggetti_dell_origine`
@@ -2196,7 +2209,8 @@ ALTER TABLE `oggetti_dell_origine`
 ALTER TABLE `oggetti_di_classe`
   ADD PRIMARY KEY (`Nome_Oggetto`,`Nome_Classe`,`Livello_Classe`),
   ADD UNIQUE KEY `ID_Oggetti_di_Classe_IND` (`Nome_Oggetto`,`Nome_Classe`,`Livello_Classe`),
-  ADD KEY `FKOgg_CLA_IND` (`Nome_Classe`,`Livello_Classe`);
+  ADD KEY `FKOgg_CLA_IND` (`Nome_Classe`,`Livello_Classe`),
+  ADD KEY `FK_livclasseo` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `oggetto`
@@ -2241,7 +2255,8 @@ ALTER TABLE `personaggio`
 --
 ALTER TABLE `possiede`
   ADD PRIMARY KEY (`ID_Utente`,`ID_Personaggio`),
-  ADD KEY `ID_Utente` (`ID_Utente`,`ID_Personaggio`);
+  ADD KEY `ID_Utente` (`ID_Utente`,`ID_Personaggio`),
+  ADD KEY `FK_personaggiopos` (`ID_Personaggio`);
 
 --
 -- Indici per le tabelle `privilegio`
@@ -2292,14 +2307,18 @@ ALTER TABLE `sblocca_mago`
 --
 ALTER TABLE `scelta_barbaro`
   ADD PRIMARY KEY (`Nome_Classe`,`Livello_Classe`,`ID_Barbaro`),
-  ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`ID_Barbaro`);
+  ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`ID_Barbaro`),
+  ADD KEY `FK_livellosceltabarbaro` (`Livello_Classe`),
+  ADD KEY `FK_idsceltabarbaro` (`ID_Barbaro`);
 
 --
 -- Indici per le tabelle `scelta_bardo`
 --
 ALTER TABLE `scelta_bardo`
   ADD PRIMARY KEY (`Nome_Classe`,`Livello_Classe`,`ID_Bardo`),
-  ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`ID_Bardo`);
+  ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`ID_Bardo`),
+  ADD KEY `FK_livellosceltabardo` (`Livello_Classe`),
+  ADD KEY `FK_idsceltabardo` (`ID_Bardo`);
 
 --
 -- Indici per le tabelle `scelta_classe`
@@ -2307,21 +2326,26 @@ ALTER TABLE `scelta_bardo`
 ALTER TABLE `scelta_classe`
   ADD PRIMARY KEY (`Nome_Classe`,`Livello_Classe`,`ID_Personaggio`),
   ADD UNIQUE KEY `ID_Scelta_Classe_IND` (`Nome_Classe`,`Livello_Classe`,`ID_Personaggio`),
-  ADD KEY `FKSce_PER_1_IND` (`ID_Personaggio`);
+  ADD KEY `FKSce_PER_1_IND` (`ID_Personaggio`),
+  ADD KEY `FK_livelloscelta` (`Livello_Classe`);
 
 --
 -- Indici per le tabelle `scelta_ladro`
 --
 ALTER TABLE `scelta_ladro`
   ADD PRIMARY KEY (`Nome_Classe`,`Livello_Classe`,`ID_Ladro`),
-  ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`ID_Ladro`);
+  ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`ID_Ladro`),
+  ADD KEY `FK_livellosceltaladro` (`Livello_Classe`),
+  ADD KEY `FK_idsceltaladro` (`ID_Ladro`);
 
 --
 -- Indici per le tabelle `scelta_mago`
 --
 ALTER TABLE `scelta_mago`
   ADD PRIMARY KEY (`Nome_Classe`,`Livello_Classe`,`ID_Mago`),
-  ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`ID_Mago`);
+  ADD KEY `Nome_Classe` (`Nome_Classe`,`Livello_Classe`,`ID_Mago`),
+  ADD KEY `FK_livellosceltamago` (`Livello_Classe`),
+  ADD KEY `FK_idsceltamago` (`ID_Mago`);
 
 --
 -- Indici per le tabelle `scelta_sottoclasse`
@@ -2329,7 +2353,8 @@ ALTER TABLE `scelta_mago`
 ALTER TABLE `scelta_sottoclasse`
   ADD PRIMARY KEY (`Nome_Sottoclasse`,`Livello_Sottoclasse`,`ID_Personaggio`),
   ADD UNIQUE KEY `ID_Scelta_Sottoclasse_IND` (`Nome_Sottoclasse`,`Livello_Sottoclasse`,`ID_Personaggio`),
-  ADD KEY `FKSce_PER_IND` (`ID_Personaggio`);
+  ADD KEY `FKSce_PER_IND` (`ID_Personaggio`),
+  ADD KEY `FK_sottoclassesceltalivello` (`Livello_Sottoclasse`);
 
 --
 -- Indici per le tabelle `slot_incantesimo`
@@ -2366,8 +2391,361 @@ ALTER TABLE `specializzazione`
   ADD KEY `FK_NomeS` (`Nome_Sottoclasse`) USING BTREE;
 
 --
+-- Indici per le tabelle `tiri_salvezza_personaggio`
+--
+ALTER TABLE `tiri_salvezza_personaggio`
+  ADD KEY `ID_Personaggio` (`ID_Personaggio`),
+  ADD KEY `Nome_Caratteristica` (`Nome_Caratteristica`);
+
+--
+-- Indici per le tabelle `tiro_salvezza`
+--
+ALTER TABLE `tiro_salvezza`
+  ADD PRIMARY KEY (`Nome_Caratteristica`),
+  ADD KEY `Nome_Caratteristica` (`Nome_Caratteristica`);
+
+--
+-- Indici per le tabelle `tratti_della_razza`
+--
+ALTER TABLE `tratti_della_razza`
+  ADD KEY `FK_razzatratti` (`Nome_Razza`),
+  ADD KEY `FK_trattotratti` (`Nome_Tratto`);
+
+--
+-- Indici per le tabelle `tratti_della_sottorazza`
+--
+ALTER TABLE `tratti_della_sottorazza`
+  ADD KEY `FK_sottorazzatratti` (`Nome_Sottorazza`),
+  ADD KEY `FK_trattotrattis` (`Nome_Tratto`);
+
+--
+-- Indici per le tabelle `tratti_razziali`
+--
+ALTER TABLE `tratti_razziali`
+  ADD KEY `Nome` (`Nome`);
+
+--
+-- Indici per le tabelle `utente`
+--
+ALTER TABLE `utente`
+  ADD KEY `ID_Utente` (`ID_Utente`);
+
+--
 -- Limiti per le tabelle scaricate
 --
+
+--
+-- Limiti per la tabella `abilita_personaggio`
+--
+ALTER TABLE `abilita_personaggio`
+  ADD CONSTRAINT `FK_abilita` FOREIGN KEY (`Nome_Abilita`) REFERENCES `abilita` (`Nome`),
+  ADD CONSTRAINT `FK_idpers` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`);
+
+--
+-- Limiti per la tabella `appartiene`
+--
+ALTER TABLE `appartiene`
+  ADD CONSTRAINT `FK_idpersonaggio_FK` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_nomerazza` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`);
+
+--
+-- Limiti per la tabella `barbaro`
+--
+ALTER TABLE `barbaro`
+  ADD CONSTRAINT `FK_livellocl` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomecl` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `bardo`
+--
+ALTER TABLE `bardo`
+  ADD CONSTRAINT `FK_livelloclassebardo` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomeclassebardo` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `caratterizza`
+--
+ALTER TABLE `caratterizza`
+  ADD CONSTRAINT `FK_idpersonaggiocara` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_nomeallineamentocara` FOREIGN KEY (`Nome_Allineamento`) REFERENCES `allineamento` (`Nome`);
+
+--
+-- Limiti per la tabella `classe_migliora`
+--
+ALTER TABLE `classe_migliora`
+  ADD CONSTRAINT `FK_livelloclassecm` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomeabilitacm` FOREIGN KEY (`Nome_Abilita`) REFERENCES `abilita` (`Nome`),
+  ADD CONSTRAINT `FK_nomeclassecm` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `competenza`
+--
+ALTER TABLE `competenza`
+  ADD CONSTRAINT `FK_livelloclassecom` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomeclassecom` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
+  ADD CONSTRAINT `FK_nometirocompetenza` FOREIGN KEY (`Nome_TiroSalvezza`) REFERENCES `tiro_salvezza` (`Nome_Caratteristica`);
+
+--
+-- Limiti per la tabella `competenza_della_classe_in_armature`
+--
+ALTER TABLE `competenza_della_classe_in_armature`
+  ADD CONSTRAINT `FK_livelloclassearm` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomearmatura` FOREIGN KEY (`Nome_Armatura`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `FK_nomeclassearm` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `competenza_della_classe_in_armi`
+--
+ALTER TABLE `competenza_della_classe_in_armi`
+  ADD CONSTRAINT `FK_livelloclassearma` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomearma` FOREIGN KEY (`Nome_Arma`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `FK_nomeclassearma` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `competenza_della_classe_in_strumenti`
+--
+ALTER TABLE `competenza_della_classe_in_strumenti`
+  ADD CONSTRAINT `FK_livelloclassestr` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomeclassestr` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
+  ADD CONSTRAINT `FK_nomestrumento` FOREIGN KEY (`Nome_Strumento`) REFERENCES `oggetto` (`Nome`);
+
+--
+-- Limiti per la tabella `competenza_dell_origine_in_strumenti`
+--
+ALTER TABLE `competenza_dell_origine_in_strumenti`
+  ADD CONSTRAINT `FK_nomeoriginecom` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`),
+  ADD CONSTRAINT `FK_nomestrumentocom` FOREIGN KEY (`Nome_Strumento`) REFERENCES `oggetto` (`Nome`);
+
+--
+-- Limiti per la tabella `competenze_abilita`
+--
+ALTER TABLE `competenze_abilita`
+  ADD CONSTRAINT `FK_idpersonaggiocom` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_nomeabilitacom` FOREIGN KEY (`Nome_Abilita`) REFERENCES `abilita` (`Nome`);
+
+--
+-- Limiti per la tabella `conosce`
+--
+ALTER TABLE `conosce`
+  ADD CONSTRAINT `FK_idpercon` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_nomeincantesimocon` FOREIGN KEY (`Nome_Incantesimo`) REFERENCES `incantesimo` (`Nome`);
+
+--
+-- Limiti per la tabella `contiene`
+--
+ALTER TABLE `contiene`
+  ADD CONSTRAINT `FK_idborsacon` FOREIGN KEY (`ID_Borsa`) REFERENCES `borsa` (`ID_Borsa`),
+  ADD CONSTRAINT `FK_nomeoggettocon` FOREIGN KEY (`Nome_Oggetto`) REFERENCES `oggetto` (`Nome`);
+
+--
+-- Limiti per la tabella `ha_origine`
+--
+ALTER TABLE `ha_origine`
+  ADD CONSTRAINT `FK_idpersonaggioha` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_nomeorigineha` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`);
+
+--
+-- Limiti per la tabella `identifica`
+--
+ALTER TABLE `identifica`
+  ADD CONSTRAINT `FK_nomerazzaid` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`),
+  ADD CONSTRAINT `FK_nomesottorazzaid` FOREIGN KEY (`Nome_Sottorazza`) REFERENCES `sottorazza` (`Nome`);
+
+--
+-- Limiti per la tabella `impara_classe`
+--
+ALTER TABLE `impara_classe`
+  ADD CONSTRAINT `FK_livelloclasseim` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomecapacitaim` FOREIGN KEY (`Nome_Capacita`) REFERENCES `capacita_di_classe` (`Nome`),
+  ADD CONSTRAINT `FK_nomeclasseim` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `impara_sottoclasse`
+--
+ALTER TABLE `impara_sottoclasse`
+  ADD CONSTRAINT `FK_livelloclasseims` FOREIGN KEY (`Livello_Sottoclasse`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomecapacitaims` FOREIGN KEY (`Nome_Capacita`) REFERENCES `capacita_di_sottoclasse` (`Nome`),
+  ADD CONSTRAINT `FK_nomeclasseims` FOREIGN KEY (`Nome_Sottoclasse`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `incantesimo`
+--
+ALTER TABLE `incantesimo`
+  ADD CONSTRAINT `FK_idbardoinc` FOREIGN KEY (`ID_Bardo`) REFERENCES `bardo` (`ID_Bardo`),
+  ADD CONSTRAINT `FK_idmagoinc` FOREIGN KEY (`ID_Mago`) REFERENCES `mago` (`ID_Mago`);
+
+--
+-- Limiti per la tabella `ladro`
+--
+ALTER TABLE `ladro`
+  ADD CONSTRAINT `FK_livelloclasseladro` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomeclasseladro` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `lancia_bardo`
+--
+ALTER TABLE `lancia_bardo`
+  ADD CONSTRAINT `FK_idbardolanc` FOREIGN KEY (`ID_Bardo`) REFERENCES `lancia_bardo` (`ID_Bardo`),
+  ADD CONSTRAINT `FK_livelloslotb` FOREIGN KEY (`Livello_Slot`) REFERENCES `slot_incantesimo` (`Livello_Slot`);
+
+--
+-- Limiti per la tabella `lancia_mago`
+--
+ALTER TABLE `lancia_mago`
+  ADD CONSTRAINT `FK_idmagolanc` FOREIGN KEY (`ID_Mago`) REFERENCES `mago` (`ID_Mago`),
+  ADD CONSTRAINT `FK_livelloslotlanc` FOREIGN KEY (`Livello_Slot`) REFERENCES `slot_incantesimo` (`Livello_Slot`);
+
+--
+-- Limiti per la tabella `lingue_aggiuntive`
+--
+ALTER TABLE `lingue_aggiuntive`
+  ADD CONSTRAINT `FK_linguaa` FOREIGN KEY (`Nome_Lingua`) REFERENCES `lingue` (`Nome`),
+  ADD CONSTRAINT `FK_nomeoriginea` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`);
+
+--
+-- Limiti per la tabella `lingue_conosciute`
+--
+ALTER TABLE `lingue_conosciute`
+  ADD CONSTRAINT `FK_idpersonaggioc` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_linguac` FOREIGN KEY (`Nome_Lingua`) REFERENCES `lingue` (`Nome`);
+
+--
+-- Limiti per la tabella `lingue_della_razza`
+--
+ALTER TABLE `lingue_della_razza`
+  ADD CONSTRAINT `FK_linguar` FOREIGN KEY (`Nome_Lingua`) REFERENCES `lingue` (`Nome`),
+  ADD CONSTRAINT `FK_nomerazzar` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`);
+
+--
+-- Limiti per la tabella `mago`
+--
+ALTER TABLE `mago`
+  ADD CONSTRAINT `FK_livelloclassemago` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomeclassemago` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
+
+--
+-- Limiti per la tabella `oggetti_dell_origine`
+--
+ALTER TABLE `oggetti_dell_origine`
+  ADD CONSTRAINT `FK_nomeorigineo` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`),
+  ADD CONSTRAINT `FK_oggettoo` FOREIGN KEY (`Nome_Oggetto`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `FK_oggettoori` FOREIGN KEY (`Nome_Oggetto`) REFERENCES `oggetto` (`Nome`);
+
+--
+-- Limiti per la tabella `oggetti_di_classe`
+--
+ALTER TABLE `oggetti_di_classe`
+  ADD CONSTRAINT `FK_livclasseo` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
+  ADD CONSTRAINT `FK_nomeclasseo` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
+  ADD CONSTRAINT `FK_oggettoorigine` FOREIGN KEY (`Nome_Oggetto`) REFERENCES `oggetto` (`Nome`);
+
+--
+-- Limiti per la tabella `origine`
+--
+ALTER TABLE `origine`
+  ADD CONSTRAINT `FK_nomeprivilegio` FOREIGN KEY (`Nome_Privilegio`) REFERENCES `privilegio` (`Nome`);
+
+--
+-- Limiti per la tabella `origine_migliora`
+--
+ALTER TABLE `origine_migliora`
+  ADD CONSTRAINT `FK_abilitaori` FOREIGN KEY (`Nome_Abilita`) REFERENCES `abilita` (`Nome`),
+  ADD CONSTRAINT `FK_originemig` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`);
+
+--
+-- Limiti per la tabella `personaggio`
+--
+ALTER TABLE `personaggio`
+  ADD CONSTRAINT `FK_allineaper` FOREIGN KEY (`Nome_Allineamento`) REFERENCES `allineamento` (`Nome`),
+  ADD CONSTRAINT `FK_armaper` FOREIGN KEY (`Arma_Equipaggiata`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `FK_armaturaper` FOREIGN KEY (`Armatura_Equipaggiata`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `FK_borsaper` FOREIGN KEY (`ID_Borsa`) REFERENCES `borsa` (`ID_Borsa`),
+  ADD CONSTRAINT `FK_origineper` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`),
+  ADD CONSTRAINT `FK_razzaper` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`),
+  ADD CONSTRAINT `FK_sottorazzaper` FOREIGN KEY (`Nome_Sottorazza`) REFERENCES `sottorazza` (`Nome`),
+  ADD CONSTRAINT `FK_utenteper` FOREIGN KEY (`ID_Utente`) REFERENCES `utente` (`ID_Utente`);
+
+--
+-- Limiti per la tabella `possiede`
+--
+ALTER TABLE `possiede`
+  ADD CONSTRAINT `FK_personaggiopos` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_utentepos` FOREIGN KEY (`ID_Utente`) REFERENCES `utente` (`ID_Utente`);
+
+--
+-- Limiti per la tabella `proprieta_arma`
+--
+ALTER TABLE `proprieta_arma`
+  ADD CONSTRAINT `FK_armapro` FOREIGN KEY (`Nome_Arma`) REFERENCES `oggetto` (`Nome`),
+  ADD CONSTRAINT `FK_proprietapro` FOREIGN KEY (`Nome_Proprieta`) REFERENCES `proprieta` (`Nome`);
+
+--
+-- Limiti per la tabella `sblocca_bardo`
+--
+ALTER TABLE `sblocca_bardo`
+  ADD CONSTRAINT `FK_idbardosb` FOREIGN KEY (`ID_Bardo`) REFERENCES `bardo` (`ID_Bardo`),
+  ADD CONSTRAINT `FK_incantesimosb` FOREIGN KEY (`Nome_Incantesimo`) REFERENCES `incantesimo` (`Nome`);
+
+--
+-- Limiti per la tabella `sblocca_mago`
+--
+ALTER TABLE `sblocca_mago`
+  ADD CONSTRAINT `FK_idmagosb` FOREIGN KEY (`ID_Mago`) REFERENCES `mago` (`ID_Mago`),
+  ADD CONSTRAINT `FK_incantesimosbm` FOREIGN KEY (`Nome_Incantesimo`) REFERENCES `incantesimo` (`Nome`);
+
+--
+-- Limiti per la tabella `scelta_barbaro`
+--
+ALTER TABLE `scelta_barbaro`
+  ADD CONSTRAINT `FK_classesceltabarbaro` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
+  ADD CONSTRAINT `FK_idsceltabarbaro` FOREIGN KEY (`ID_Barbaro`) REFERENCES `barbaro` (`ID_Barbaro`),
+  ADD CONSTRAINT `FK_livellosceltabarbaro` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`);
+
+--
+-- Limiti per la tabella `scelta_bardo`
+--
+ALTER TABLE `scelta_bardo`
+  ADD CONSTRAINT `FK_classesceltabardo` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
+  ADD CONSTRAINT `FK_idsceltabardo` FOREIGN KEY (`ID_Bardo`) REFERENCES `bardo` (`ID_Bardo`),
+  ADD CONSTRAINT `FK_livellosceltabardo` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`);
+
+--
+-- Limiti per la tabella `scelta_classe`
+--
+ALTER TABLE `scelta_classe`
+  ADD CONSTRAINT `FK_classescelta` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
+  ADD CONSTRAINT `FK_idscelta` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_livelloscelta` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`);
+
+--
+-- Limiti per la tabella `scelta_ladro`
+--
+ALTER TABLE `scelta_ladro`
+  ADD CONSTRAINT `FK_classesceltaladro` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
+  ADD CONSTRAINT `FK_idsceltaladro` FOREIGN KEY (`ID_Ladro`) REFERENCES `ladro` (`ID_Ladro`),
+  ADD CONSTRAINT `FK_livellosceltaladro` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`);
+
+--
+-- Limiti per la tabella `scelta_mago`
+--
+ALTER TABLE `scelta_mago`
+  ADD CONSTRAINT `FK_classesceltamago` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
+  ADD CONSTRAINT `FK_idsceltamago` FOREIGN KEY (`ID_Mago`) REFERENCES `mago` (`ID_Mago`),
+  ADD CONSTRAINT `FK_livellosceltamago` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`);
+
+--
+-- Limiti per la tabella `scelta_sottoclasse`
+--
+ALTER TABLE `scelta_sottoclasse`
+  ADD CONSTRAINT `FK_sottoclasseidpersonaggio` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
+  ADD CONSTRAINT `FK_sottoclassescelta` FOREIGN KEY (`Nome_Sottoclasse`) REFERENCES `sottoclasse` (`Nome`),
+  ADD CONSTRAINT `FK_sottoclassesceltalivello` FOREIGN KEY (`Livello_Sottoclasse`) REFERENCES `sottoclasse` (`Livello`);
+
+--
+-- Limiti per la tabella `sottorazza`
+--
+ALTER TABLE `sottorazza`
+  ADD CONSTRAINT `FK_nomerazzasotto` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`);
 
 --
 -- Limiti per la tabella `specializzazione`
@@ -2377,6 +2755,27 @@ ALTER TABLE `specializzazione`
   ADD CONSTRAINT `livello_FK_sottoclasse` FOREIGN KEY (`Livello_Sottoclasse`) REFERENCES `sottoclasse` (`Livello`),
   ADD CONSTRAINT `nome_FK_classe` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`),
   ADD CONSTRAINT `nome_FK_sottoclasse` FOREIGN KEY (`Nome_Sottoclasse`) REFERENCES `sottoclasse` (`Nome`);
+
+--
+-- Limiti per la tabella `tiri_salvezza_personaggio`
+--
+ALTER TABLE `tiri_salvezza_personaggio`
+  ADD CONSTRAINT `FK_caratteristicatiri` FOREIGN KEY (`Nome_Caratteristica`) REFERENCES `tiro_salvezza` (`Nome_Caratteristica`),
+  ADD CONSTRAINT `FK_idpersonaggiotiri` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`);
+
+--
+-- Limiti per la tabella `tratti_della_razza`
+--
+ALTER TABLE `tratti_della_razza`
+  ADD CONSTRAINT `FK_razzatratti` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`),
+  ADD CONSTRAINT `FK_trattotratti` FOREIGN KEY (`Nome_Tratto`) REFERENCES `tratti_razziali` (`Nome`);
+
+--
+-- Limiti per la tabella `tratti_della_sottorazza`
+--
+ALTER TABLE `tratti_della_sottorazza`
+  ADD CONSTRAINT `FK_sottorazzatratti` FOREIGN KEY (`Nome_Sottorazza`) REFERENCES `sottorazza` (`Nome`),
+  ADD CONSTRAINT `FK_trattotrattis` FOREIGN KEY (`Nome_Tratto`) REFERENCES `tratti_razziali` (`Nome`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
