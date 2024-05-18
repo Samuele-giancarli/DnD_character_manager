@@ -9,7 +9,8 @@ if ($step=="sottorazza"){
     $razza=$_GET["razza"];
     $sottorazze=$dbh->getSubracesForRace($razza);
     foreach ($sottorazze as $row){
-        echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
+        $encodedAlignment = urlencode($row["Nome"]);
+        echo "<option value=\"$encodedAlignment\">".htmlentities($row["Nome"])."</option>";
     }
 } else {
     die("Invalid step");

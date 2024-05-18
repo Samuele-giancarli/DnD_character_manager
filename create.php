@@ -95,7 +95,7 @@ function raceSelected(e){
                 <div class="card">
                     <div class="card-header">Dungeons and Dragons Character Sheet</div>
                     <div class="card-body">
-                        <form id="creapg" method="get" action="createform.php">
+                        <form id="creapg" method="GET" action="createform.php">
                             <div class="form-group">
                                 <ol>
                                 <legend>La sua storia</legend>
@@ -153,10 +153,11 @@ function raceSelected(e){
                                  <?php
                                 $alignments=$dbh->getAlignments();
                                 foreach ($alignments as $row){
-                                    echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
+                                    $encodedAlignment = urlencode($row["Nome"]);
+                                    echo "<option value=\"$encodedAlignment\">".htmlentities($row["Nome"])."</option>";
                                 }
                                 ?>
-                                </select></li><br>
+                                </select> </li><br>
                             
 
                             <li>
@@ -180,12 +181,7 @@ function raceSelected(e){
                                 <label for="saggezza">Saggezza: </label>
                                 <input name="saggezza" type="number"><br>
                                 <label for="carisma">Carisma: </label>
-                                <input name="carisma" type="number">
-                                
-
-    
-
-                    
+                                <input name="carisma" type="number"> 
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

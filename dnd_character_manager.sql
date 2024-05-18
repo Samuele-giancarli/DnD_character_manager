@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 17, 2024 alle 19:17
+-- Creato il: Mag 18, 2024 alle 10:51
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -204,11 +204,8 @@ CREATE TABLE `borsa` (
 --
 
 INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
-(0, 225, 0, 0, 0, 150, 0),
-(1, 225, 0, 0, 0, 70, 0),
-(2, 225, 0, 0, 0, 60, 0),
-(3, 225, 0, 0, 0, 70, 0),
-(4, 225, 0, 0, 0, 70, 0);
+(52, 225, 0, 0, 0, 60, 0),
+(54, 225, 0, 0, 0, 100, 0);
 
 -- --------------------------------------------------------
 
@@ -1595,7 +1592,8 @@ CREATE TABLE `personaggio` (
 --
 
 INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `Nome_Sottorazza`, `ID_Borsa`) VALUES
-(1, 15, 14, 13, 12, 10, 8, 7, 'bob', 'bello', 12, 14, 0, 1, 'Criminale', 'Arco Lungo', 'Armatura Di Pelle', 'Caotico Neutrale', 'Elfo', 'Elfo Scuro', 2);
+(1, 15, 14, 13, 12, 10, 8, 13, 'Evi', 'bella', 12, 14, 0, 1, 'Archeologo', NULL, NULL, 'Legale Neutrale', 'Nano', 'Nano Delle Montagne', 52),
+(2, 15, 14, 13, 12, 10, 8, 9, 'Gianfranco', 'E\' molto alto e ci piace così', 12, 14, 0, 1, 'Accolito', NULL, NULL, 'Neutrale', 'Elfo', 'Elfo Scuro', 54);
 
 -- --------------------------------------------------------
 
@@ -2118,7 +2116,7 @@ ALTER TABLE `abilita_personaggio`
 --
 ALTER TABLE `allineamento`
   ADD PRIMARY KEY (`Nome`),
-  ADD UNIQUE KEY `ID_ALLINEAMENTO_IND` (`Nome`);
+  ADD KEY `Nome` (`Nome`);
 
 --
 -- Indici per le tabelle `appartiene`
@@ -2613,6 +2611,18 @@ ALTER TABLE `utente`
 --
 -- AUTO_INCREMENT per le tabelle scaricate
 --
+
+--
+-- AUTO_INCREMENT per la tabella `borsa`
+--
+ALTER TABLE `borsa`
+  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
+-- AUTO_INCREMENT per la tabella `personaggio`
+--
+ALTER TABLE `personaggio`
+  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`

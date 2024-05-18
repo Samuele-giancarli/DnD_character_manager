@@ -35,7 +35,6 @@ $modcha=intdiv($cha, 2)-5;
 $nome=$_GET["name"];
 $descrizione_aspetto=$_GET["descrizione_aspetto"];
 $origine=$_GET["background"];
-$allineamento=$_GET["alignment"];
 $dado=$dbh->getDiceFromClass($classe);
 $dadovita=parseDie($dado)[0];
 $hitpoints=$modcon+$dadovita;
@@ -60,14 +59,15 @@ switch ($classe){
         die("Class not valid");
 }
 
-
+$allineamento = urldecode($_GET["alignment"]);
+$sottorazza=urldecode($_GET["subrace"]);
 $myvalues=array($str, $con, $dex,$int, $wis, $cha);
 $peso_borsa=15*$str;
 $reference=array(8,10,12,13,14,15);
 sort($myvalues);
 if ($myvalues==$reference){
     $idborsa=$dbh->addInventory($peso_borsa, $gold);
-    $idpersonaggio=$dbh->addCharacter($str, $dex, $con, $int, $wis, $cha, $hitpoints, $nome,$descrizione_aspetto,$classearmatura,$iniziativa,0,$origine, null, null, $allineamento, $razza,$idborsa, $_SESSION["ID"]);
+    $idpersonaggio=$dbh->addCharacter($str, $dex, $con, $int, $wis, $cha, $hitpoints, $nome,$descrizione_aspetto,$classearmatura,$iniziativa,0,$origine, null, null, $allineamento, $razza,$sottorazza, $idborsa, $_SESSION["ID"]);
     header("Location: index.php");
 }else{
     header("Location: create.php");
