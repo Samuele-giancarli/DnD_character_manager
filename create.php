@@ -49,6 +49,55 @@ function raceSelected(e){
     xhr.open("GET", `conditionalselect.php?step=sottorazza&razza=${razza}`);
     xhr.send();
 }
+
+function raceDescription(e){
+    const razza = e.value;
+    let xhr= new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("racedescription").innerHTML= xhr.responseText;
+        }
+    };
+    xhr.open("GET", `racedescription.php?razza=${razza}`);
+    xhr.send();
+}
+
+function subraceDescription(e){
+    const sottorazza = e.value;
+    let xhr= new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("subracedescription").innerHTML= xhr.responseText;
+        }
+    };
+    xhr.open("GET", `subracedescription.php?sottorazza=${sottorazza}`);
+    xhr.send();
+}
+
+function backgroundDescription(e){
+    const origini = e.value;
+    let xhr= new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("backgrounddescription").innerHTML= xhr.responseText;
+        }
+    };
+    xhr.open("GET", `backgrounddescription.php?origini=${origini}`);
+    xhr.send();
+}
+
+function classDescription(e){
+    const classe = e.value;
+    let xhr= new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("classdescription").innerHTML= xhr.responseText;
+        }
+    };
+    xhr.open("GET", `classdescription.php?classe=${classe}`);
+    xhr.send();
+}
+
 </script>
 
 <body>
@@ -83,7 +132,7 @@ function raceSelected(e){
         <a class="nav-link" href="create.php">Crea</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Guide</a>
+        <a class="nav-link" href="guide.php">Guide</a>
       </li>
     </ul>
   </div>
@@ -105,7 +154,7 @@ function raceSelected(e){
 
                                 <li>
                                 <label for="race"> Scegli una razza:  </label>
-                                 <select class="form-control" id="races" name="race" form="creapg" onchange="raceSelected(this);">
+                                 <select class="form-control" id="races" name="race" form="creapg" onchange="{raceSelected(this); raceDescription(this)}">
                                  <option disabled selected value></option> 
                                 <?php
                                 $races=$dbh->getRaces();
@@ -113,17 +162,20 @@ function raceSelected(e){
                                     echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
                                 }
                                 ?>
-                                </select>  </li>
+                                </select> 
+                                <table id="racedescription"></table>
+                                </li>
                                 <br>
 
                                 <li><label for="subrace"> Scegli una sottorazza:  </label>
-                                <select class="form-control" id="subraces" name="subrace" form="creapg">
-                                </select>  </li>
+                                <select class="form-control" id="subraces" name="subrace" form="creapg" onchange="subraceDescription(this);">
+                                </select> 
+                                <table id="subracedescription"></table></li>
                                 <br>
 
                                 <li>
                                 <label for="background"> Scegli le tue origini:  </label>
-                                 <select class="form-control" id="backgrounds" name="background" form="creapg">
+                                 <select class="form-control" id="backgrounds" name="background" form="creapg" onchange="backgroundDescription(this);">
                                  <option disabled selected value></option> 
                                 <?php
                                 $backgrounds=$dbh->getBackgrounds();
@@ -131,12 +183,13 @@ function raceSelected(e){
                                     echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
                                 }
                                 ?>
-                                </select>  </li>
+                                </select> 
+                                <table id="backgrounddescription"></table></li>
                                 <br>
 
                                 <li>
                                 <label for="class"> Scegli una classe:  </label>
-                                 <select class="form-control" id="class" name="class" form="creapg">
+                                 <select class="form-control" id="class" name="class" form="creapg" onchange="classDescription(this)";>
                                  <option disabled selected value></option> 
                                 <?php
                                 $classes=$dbh->getClassByLevel(1);
@@ -144,7 +197,8 @@ function raceSelected(e){
                                     echo "<option value=".$row["Nome"].">".htmlentities($row["Nome"])."</option>";
                                 }
                                 ?>
-                                </select>  </li><br>
+                                </select>
+                                <table id="classdescription"></table></li><br>
 
                                 <li>
                                 <label for="alignment"> Scegli un allineamento:  </label>

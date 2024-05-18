@@ -69,6 +69,72 @@ class DatabaseHelper{
         return $races;
     }
 
+    public function getRaceInfo($race){
+        $query="SELECT * FROM razza WHERE Nome=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $race);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $races=array();
+        while ($row = $result->fetch_assoc()){
+            $races[]=$row;
+        }
+        return $races;
+    }
+
+    public function getSubraceInfo($subrace){
+        $query="SELECT * FROM sottorazza WHERE Nome=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $subrace);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $subraces=array();
+        while ($row = $result->fetch_assoc()){
+            $subraces[]=$row;
+        }
+        return $subraces;
+    }
+
+    public function getBackgroundInfo($background){
+        $query="SELECT * FROM origine WHERE Nome=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $background);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $backgrounds=array();
+        while ($row = $result->fetch_assoc()){
+            $backgrounds[]=$row;
+        }
+        return $backgrounds;
+    }
+
+    public function getPrivilegeInfo($privilege){
+        $query="SELECT * FROM privilegio WHERE Nome=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $privilege);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $privileges=array();
+        while ($row = $result->fetch_assoc()){
+            $privileges[]=$row;
+        }
+        return $privileges;
+    }
+
+    public function getClassInfo($class){
+        $query="SELECT * FROM classe WHERE Nome=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $class);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $classes=array();
+        while ($row = $result->fetch_assoc()){
+            $classes[]=$row;
+        }
+        return $classes;
+    }
+
+
     public function getAlignments(){
         $query="SELECT * FROM allineamento";
         $stmt = $this->db->prepare($query);
@@ -161,6 +227,10 @@ class DatabaseHelper{
             return null;
         }
     }
+
+
+//fino a qui
+
 
     public function getStrength($ID){
         $query="SELECT Car_Forza FROM personaggio WHERE ID_Personaggio=?";

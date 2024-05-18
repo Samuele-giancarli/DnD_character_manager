@@ -2,6 +2,7 @@
     require_once("bootstrap.php");
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,31 +68,18 @@
   </div>
 </nav></header>
 
-<?php
-if (isset($_SESSION["ID"])){
-?>
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">I tuoi personaggi</div>
+                    <div class="card-header">Guide al Gioco</div>
                     <div class="card-body">
                       <?php
-                      $characters=$dbh->characterList($_SESSION["ID"]);
-                      foreach($characters as $character){
-                        echo htmlentities($character["Nome"]);
-                        echo "<br>";
-                      }
                       ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<?php
-}else{
-    header("Location: login.php");
-}
-?>
 </body>
 </html>

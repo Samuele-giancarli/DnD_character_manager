@@ -74,7 +74,7 @@ if (isset($_SESSION["ID"])){
 }
 ?>
       <li class="nav-item">
-        <a class="nav-link" href="#">Guide</a>
+        <a class="nav-link" href="guide.php">Guide</a>
       </li>
     </ul>
   </div>
