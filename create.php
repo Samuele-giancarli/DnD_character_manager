@@ -236,7 +236,7 @@ function classDescription(e){
                                 <input name="saggezza" type="number"><br>
                                 <label for="carisma">Carisma: </label>
                                 <input name="carisma" type="number"> 
-                            </div>
+                                
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

@@ -69,6 +69,31 @@ class DatabaseHelper{
         return $races;
     }
 
+    public function getAbilities(){
+        $query="SELECT * FROM abilita";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $abilities=array();
+        while ($row = $result->fetch_assoc()){
+            $abilities[]=$row;
+        }
+        return $abilities;
+    }
+
+    public function abilityMatches($classe, $origine){
+        $query= "SELECT abilita.*, classe_migliora.Nome_Classe, origine_migliora.Nome_Origine FROM abilita LEFT JOIN classe_migliora ON abilita.Nome=classe_migliora.Nome_Abilita AND classe_migliora.Nome_Classe=? LEFT JOIN origine_migliora ON abilita.Nome=origine_migliora.Nome_Abilita AND origine_migliora.Nome_Origine=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $classe, $origine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $abilities=array();
+        while ($row = $result->fetch_assoc()){
+            $abilities[]=$row;
+        }
+        return $abilities;
+    }
+
     public function getRaceInfo($race){
         $query="SELECT * FROM razza WHERE Nome=?";
         $stmt = $this->db->prepare($query);
@@ -226,6 +251,20 @@ class DatabaseHelper{
         } else {
             return null;
         }
+    }
+
+    public function updatePossiede($idutente, $idpersonaggio){
+        $query="INSERT INTO possiede(ID_Utente, ID_Personaggio) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $idutente, $idpersonaggio);
+        $stmt->execute();
+    }
+
+    public function updateAbilita($idpersonaggio, $nomeabilita, $valore){
+        $query="INSERT INTO abilita_personaggio(ID_Personaggio, Nome_Abilita, Valore) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isi", $idpersonaggio, $nomeabilita, $valore);
+        $stmt->execute();
     }
 
 

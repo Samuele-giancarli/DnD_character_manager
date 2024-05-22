@@ -65,9 +65,54 @@ $myvalues=array($str, $con, $dex,$int, $wis, $cha);
 $peso_borsa=15*$str;
 $reference=array(8,10,12,13,14,15);
 sort($myvalues);
+
+
+
+$valore=0;
+$abilita=$dbh->abilityMatches($classe, $origine);
+//var_dump($abilita);
+    //if query matches classe e abilita: valore+1, pass into dbAbilita
 if ($myvalues==$reference){
     $idborsa=$dbh->addInventory($peso_borsa, $gold);
     $idpersonaggio=$dbh->addCharacter($str, $dex, $con, $int, $wis, $cha, $hitpoints, $nome,$descrizione_aspetto,$classearmatura,$iniziativa,0,$origine, null, null, $allineamento, $razza,$sottorazza, $idborsa, $_SESSION["ID"]);
+    $dbh->updatePossiede($_SESSION["ID"], $idpersonaggio);
+
+    foreach ($abilita as $singolabilita){
+        $car_associata=$singolabilita["Caratteristica_Associata"];
+        switch ($car_associata){
+            case "Destrezza":
+                $valore=$moddex;
+                break;
+            case "Intelligenza":
+                $valore=$modint;
+                break;
+            case "Saggezza":
+                $valore=$modwis;
+                break;
+            case "Carisma":
+                $valore=$modcha;
+                break;
+            case "Costituzione":
+                $valore=$modcon;
+                break;
+            case "Forza":
+                $valore=$modstr;
+                break;
+            default:
+                die("Mod not valid");
+        }   
+
+        $nomeabilita=$singolabilita["Nome"];
+        if (!is_null($singolabilita["Nome_Classe"])){
+            $valore+=1;
+        }
+        if (!is_null($singolabilita["Nome_Origine"])){
+            $valore+=1;
+        }
+    $dbh->updateAbilita($idpersonaggio, $nomeabilita, $valore);
+    $valore=0;
+    }
+
     header("Location: index.php");
 }else{
     header("Location: create.php");
