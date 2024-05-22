@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 18, 2024 alle 10:51
+-- Creato il: Mag 22, 2024 alle 12:36
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -204,8 +204,11 @@ CREATE TABLE `borsa` (
 --
 
 INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
-(52, 225, 0, 0, 0, 60, 0),
-(54, 225, 0, 0, 0, 100, 0);
+(0, 225, 0, 0, 0, 150, 0),
+(1, 225, 0, 0, 0, 70, 0),
+(2, 225, 0, 0, 0, 60, 0),
+(3, 225, 0, 0, 0, 70, 0),
+(4, 225, 0, 0, 0, 70, 0);
 
 -- --------------------------------------------------------
 
@@ -1592,8 +1595,7 @@ CREATE TABLE `personaggio` (
 --
 
 INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `Nome_Sottorazza`, `ID_Borsa`) VALUES
-(1, 15, 14, 13, 12, 10, 8, 13, 'Evi', 'bella', 12, 14, 0, 1, 'Archeologo', NULL, NULL, 'Legale Neutrale', 'Nano', 'Nano Delle Montagne', 52),
-(2, 15, 14, 13, 12, 10, 8, 9, 'Gianfranco', 'E\' molto alto e ci piace così', 12, 14, 0, 1, 'Accolito', NULL, NULL, 'Neutrale', 'Elfo', 'Elfo Scuro', 54);
+(1, 15, 14, 13, 12, 10, 8, 7, 'bob', 'bello', 12, 14, 0, 1, 'Criminale', 'Arco Lungo', 'Armatura Di Pelle', 'Caotico Neutrale', 'Elfo', 'Elfo Scuro', 2);
 
 -- --------------------------------------------------------
 
@@ -1756,6 +1758,32 @@ CREATE TABLE `scelta_barbaro` (
   `ID_Barbaro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `scelta_barbaro`
+--
+
+INSERT INTO `scelta_barbaro` (`Nome_Classe`, `Livello_Classe`, `ID_Barbaro`) VALUES
+('Barbaro', 1, 1),
+('Barbaro', 2, 2),
+('Barbaro', 3, 3),
+('Barbaro', 4, 4),
+('Barbaro', 5, 5),
+('Barbaro', 6, 6),
+('Barbaro', 7, 7),
+('Barbaro', 8, 8),
+('Barbaro', 9, 9),
+('Barbaro', 10, 10),
+('Barbaro', 11, 11),
+('Barbaro', 12, 12),
+('Barbaro', 13, 13),
+('Barbaro', 14, 14),
+('Barbaro', 15, 15),
+('Barbaro', 16, 16),
+('Barbaro', 17, 17),
+('Barbaro', 18, 18),
+('Barbaro', 19, 19),
+('Barbaro', 20, 20);
+
 -- --------------------------------------------------------
 
 --
@@ -1767,6 +1795,32 @@ CREATE TABLE `scelta_bardo` (
   `Livello_Classe` int(11) NOT NULL,
   `ID_Bardo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `scelta_bardo`
+--
+
+INSERT INTO `scelta_bardo` (`Nome_Classe`, `Livello_Classe`, `ID_Bardo`) VALUES
+('Bardo', 1, 1),
+('Bardo', 2, 2),
+('Bardo', 3, 3),
+('Bardo', 4, 4),
+('Bardo', 5, 5),
+('Bardo', 6, 6),
+('Bardo', 7, 7),
+('Bardo', 8, 8),
+('Bardo', 9, 9),
+('Bardo', 10, 10),
+('Bardo', 11, 11),
+('Bardo', 12, 12),
+('Bardo', 13, 13),
+('Bardo', 14, 14),
+('Bardo', 15, 15),
+('Bardo', 16, 16),
+('Bardo', 17, 17),
+('Bardo', 18, 18),
+('Bardo', 19, 19),
+('Bardo', 20, 20);
 
 -- --------------------------------------------------------
 
@@ -1792,6 +1846,32 @@ CREATE TABLE `scelta_ladro` (
   `ID_Ladro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `scelta_ladro`
+--
+
+INSERT INTO `scelta_ladro` (`Nome_Classe`, `Livello_Classe`, `ID_Ladro`) VALUES
+('Ladro', 1, 1),
+('Ladro', 2, 2),
+('Ladro', 3, 3),
+('Ladro', 4, 4),
+('Ladro', 5, 5),
+('Ladro', 6, 6),
+('Ladro', 7, 7),
+('Ladro', 8, 8),
+('Ladro', 9, 9),
+('Ladro', 10, 10),
+('Ladro', 11, 11),
+('Ladro', 12, 12),
+('Ladro', 13, 13),
+('Ladro', 14, 14),
+('Ladro', 15, 15),
+('Ladro', 16, 16),
+('Ladro', 17, 17),
+('Ladro', 18, 18),
+('Ladro', 19, 19),
+('Ladro', 20, 20);
+
 -- --------------------------------------------------------
 
 --
@@ -1803,6 +1883,32 @@ CREATE TABLE `scelta_mago` (
   `Livello_Classe` int(11) NOT NULL,
   `ID_Mago` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `scelta_mago`
+--
+
+INSERT INTO `scelta_mago` (`Nome_Classe`, `Livello_Classe`, `ID_Mago`) VALUES
+('Mago', 1, 1),
+('Mago', 2, 2),
+('Mago', 3, 3),
+('Mago', 4, 4),
+('Mago', 5, 5),
+('Mago', 6, 6),
+('Mago', 7, 7),
+('Mago', 8, 8),
+('Mago', 9, 9),
+('Mago', 10, 10),
+('Mago', 11, 11),
+('Mago', 12, 12),
+('Mago', 13, 13),
+('Mago', 14, 14),
+('Mago', 15, 15),
+('Mago', 16, 16),
+('Mago', 17, 17),
+('Mago', 18, 18),
+('Mago', 19, 19),
+('Mago', 20, 20);
 
 -- --------------------------------------------------------
 
@@ -1868,9 +1974,11 @@ INSERT INTO `sottoclasse` (`Nome`, `Livello`) VALUES
 ('Collegio della Creazione', 1),
 ('Collegio della Creazione', 2),
 ('Collegio della Creazione', 3),
+('Collegio della Creazione', 4),
 ('Collegio delle Spade', 1),
 ('Collegio delle Spade', 2),
 ('Collegio delle Spade', 3),
+('Collegio delle Spade', 4),
 ('Guerriero Totemico', 1),
 ('Guerriero Totemico ', 2),
 ('Guerriero Totemico ', 3),
@@ -2116,7 +2224,7 @@ ALTER TABLE `abilita_personaggio`
 --
 ALTER TABLE `allineamento`
   ADD PRIMARY KEY (`Nome`),
-  ADD KEY `Nome` (`Nome`);
+  ADD UNIQUE KEY `ID_ALLINEAMENTO_IND` (`Nome`);
 
 --
 -- Indici per le tabelle `appartiene`
@@ -2568,6 +2676,7 @@ ALTER TABLE `specializzazione`
 -- Indici per le tabelle `tiri_salvezza_personaggio`
 --
 ALTER TABLE `tiri_salvezza_personaggio`
+  ADD PRIMARY KEY (`ID_Personaggio`,`Nome_Caratteristica`),
   ADD KEY `ID_Personaggio` (`ID_Personaggio`),
   ADD KEY `Nome_Caratteristica` (`Nome_Caratteristica`);
 
@@ -2613,16 +2722,28 @@ ALTER TABLE `utente`
 --
 
 --
--- AUTO_INCREMENT per la tabella `borsa`
+-- AUTO_INCREMENT per la tabella `scelta_barbaro`
 --
-ALTER TABLE `borsa`
-  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+ALTER TABLE `scelta_barbaro`
+  MODIFY `ID_Barbaro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT per la tabella `personaggio`
+-- AUTO_INCREMENT per la tabella `scelta_bardo`
 --
-ALTER TABLE `personaggio`
-  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `scelta_bardo`
+  MODIFY `ID_Bardo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT per la tabella `scelta_ladro`
+--
+ALTER TABLE `scelta_ladro`
+  MODIFY `ID_Ladro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT per la tabella `scelta_mago`
+--
+ALTER TABLE `scelta_mago`
+  MODIFY `ID_Mago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT per la tabella `utente`
