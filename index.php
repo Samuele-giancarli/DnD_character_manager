@@ -79,8 +79,10 @@ if (isset($_SESSION["ID"])){
                       <?php
                       $characters=$dbh->characterList($_SESSION["ID"]);
                       foreach($characters as $character){
-                        echo htmlentities($character["Nome"]);
-                        echo "<br>";
+                        ?>
+                          <a href="characterSheet.php?ID=<?php echo $character["ID_Personaggio"]; ?>"><?php echo $character["Nome"]; ?></a>
+                          <br>
+                        <?php
                       }
                       ?>
                     </div>
