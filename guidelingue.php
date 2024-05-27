@@ -74,12 +74,42 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Guide al Gioco</div>
+                    <div class="card-header">Guida alle Lingue</div>
                     <div class="card-body">
-                      <ul>
-                      <li><a href="guideclassi.php">Classi</a></li>
-                      <li><a href="guidelingue.php">Lingue</a></li>
-  </ul>
+                    <section>
+                    <table>
+                      <tr>
+                      <th>Nome</th>
+                      <th>Descrizione</th>
+                      <th>Parlata Da (Razze) </th>
+                      <th>Parlata Da (Origini)</th>
+                      </tr>
+                    <?php
+                    $tuttelingue=$dbh->getLanguages();
+                   // var_dump($tuttelingue);
+                    foreach ($tuttelingue as $lingua){
+                    $razze=$dbh->spokenByRace($lingua["Nome"]);
+                    $parlataDaRazze=array();
+                    foreach($razze as $razza){
+                        array_push($parlataDaRazze, $razza);
+                    }
+                    $finalRazze=implode(", ", $parlataDaRazze);
+
+                    $origini=$dbh->spokenByBackground($lingua["Nome"]);
+                    $parlataDaOrigini=array();
+                    foreach($origini as $origine){
+                        array_push($parlataDaOrigini, $origine);
+                    }
+                    $finalOrigini=implode(", ", $parlataDaOrigini);
+
+                    echo "<tr><td>".htmlentities($lingua["Nome"])."</td>
+                    <td>".htmlentities($lingua["Descrizione"])."</td>
+                    <td>".htmlentities($finalRazze)."</td>
+                    <td>".htmlentities($finalOrigini)."</td></tr>";
+                }
+                    ?>
+                     </table>
+            </section>
                     </div>
                 </div>
             </div>

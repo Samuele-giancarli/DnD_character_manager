@@ -198,7 +198,44 @@ class DatabaseHelper{
         return $classes;
     }
 
+public function getLanguages(){
+    $query="SELECT * FROM lingue";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $lingue=array();
+    while ($row = $result->fetch_assoc()){
+        $lingue[]=$row;
+    }
+    return $lingue;
+}
 
+public function spokenByRace($lingua){
+    $query="SELECT Nome_Razza FROM lingue_della_razza WHERE Nome_Lingua=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $lingua);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $razze=array();
+    while ($row = $result->fetch_assoc()){
+        $razze[]=$row["Nome_Razza"];
+    }
+    return $razze;
+}
+
+
+public function spokenByBackground($lingua){
+    $query="SELECT Nome_Origine FROM lingue_aggiuntive WHERE Nome_Lingua=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $lingua);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $origini=array();
+    while ($row = $result->fetch_assoc()){
+        $origini[]=$row["Nome_Origine"];
+    }
+    return $origini;
+}
 
     public function getAlignments(){
         $query="SELECT * FROM allineamento";
