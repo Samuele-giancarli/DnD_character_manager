@@ -476,6 +476,20 @@ class DatabaseHelper{
         $stmt->bind_param("i", $ID);
         $stmt->execute();
     }
+
+
+    public function getCharacterItems($ID) {
+        $stmt = $this->db->prepare("SELECT * FROM Contiene WHERE ID_Borsa = ?");
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $items = array();
+        while($row = $result->fetch_assoc()){
+            $items[] = $row;
+        }
+        return $items;
+    }
 }
 
 ?>
