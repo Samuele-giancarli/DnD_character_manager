@@ -35,7 +35,7 @@
 </head>
 <body>
 <header><nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">DND Aider</a>
+  <a class="navbar-brand" href="index.php">DND Aider</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -46,7 +46,6 @@
 <?php
 if (isset($_SESSION["ID"])){
     ?>
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <?php
 }
