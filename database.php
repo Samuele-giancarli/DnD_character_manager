@@ -450,15 +450,15 @@ class DatabaseHelper{
         return $row["ID_Borsa"];
     }
 
-    /*public function getClass($ID){
-        $query="SELECT Nome_Classe FROM personaggio WHERE ID_Personaggio=?";
+    public function getClass($ID){
+        $query="SELECT Nome_Classe FROM scelta_classe WHERE ID_Personaggio=?";
         $stmt=$this->db->prepare($query);
         $stmt->bind_param("i", $ID);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         return $row["Nome_Classe"];
-    }*/
+    }
 
     public function getLevel($ID){
         $query="SELECT Livello FROM personaggio WHERE ID_Personaggio=?";
