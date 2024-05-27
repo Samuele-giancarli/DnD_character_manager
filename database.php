@@ -145,7 +145,7 @@ class DatabaseHelper{
         }
         return $privileges;
     }
-
+//by name
     public function getClassInfo($class){
         $query="SELECT * FROM classe WHERE Nome=?";
         $stmt = $this->db->prepare($query);
@@ -158,6 +158,46 @@ class DatabaseHelper{
         }
         return $classes;
     }
+
+    public function getAllClassInfo($class){
+    $query="SELECT classe.*, barbaro.Bonus_Rabbia, barbaro.Utilizzi_Rabbia_Giornalieri, bardo.Dado_Ispirazione_Bardica,ladro.Bonus_Attacco_Furtivo FROM classe LEFT JOIN barbaro ON classe.Livello=barbaro.Livello_Classe AND classe.Nome=barbaro.Nome_Classe LEFT JOIN bardo ON classe.Livello=bardo.Livello_Classe AND classe.Nome=bardo.Nome_Classe LEFT JOIN ladro ON classe.Livello=ladro.Livello_Classe AND classe.Nome=ladro.Nome_Classe WHERE Nome=?";
+    $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $class);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $classes=array();
+        while ($row = $result->fetch_assoc()){
+            $classes[]=$row;
+        }
+        return $classes;
+    }
+
+    public function getCapacitiesByClass($class){
+    $query="SELECT Livello, impara_classe.Nome_Capacita FROM classe LEFT JOIN impara_classe ON classe.Livello=impara_classe.Livello_Classe AND classe.Nome=impara_classe.Nome_Classe WHERE Nome=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $class);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $capacities=array();
+    while ($row = $result->fetch_assoc()){
+        $capacities[]=$row;
+    }
+    return $capacities;
+}
+
+
+    public function getClasses(){
+        $query="SELECT DISTINCT Nome FROM classe";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $classes=array();
+        while ($row = $result->fetch_assoc()){
+            $classes[]=$row;
+        }
+        return $classes;
+    }
+
 
 
     public function getAlignments(){

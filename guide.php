@@ -27,6 +27,10 @@
             background-color: #8b4513;
             border: 1px solid #8b4513;
         }
+        table, th, td{
+            border: 1px solid black;
+             border-collapse:collapse;
+        }
 
     </style>
 </head>
@@ -72,8 +76,8 @@
                 <div class="card">
                     <div class="card-header">Guide al Gioco</div>
                     <div class="card-body">
-                      <?php
-                      ?>
+                      <a href="guideclassi.php">Classi</a>
+                     
                     </div>
                 </div>
             </div>
