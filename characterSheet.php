@@ -51,8 +51,9 @@ if (!isset($_GET["ID"])){
             <h2>Informazioni del personaggio</h2>
             <?php echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; ?>
             <?php echo "<p>".$dbh->getRaceName($IDpersonaggio)."</p>"; ?>
-            <?php echo "<p> SOTTOCLASSE </p>"; ?>
-            <?php echo "<p> CLASSE </p>"; ?>
+            <?php //echo "<p>".$dbh->getSubraceName($IDpersonaggio)."</p>"; ?>
+            <?php echo "<p>".$dbh->getClassName($IDpersonaggio)."</p>"; ?>
+            <?php echo "<p>".$dbh->getSubclassName($IDpersonaggio)."</p>"; ?>
         </section>
         <section id="stat-block">
          <h2>Punti caratteristica</h2>

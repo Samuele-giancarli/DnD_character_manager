@@ -107,6 +107,26 @@ class DatabaseHelper{
         return $races;
     }
 
+    /*public function getSubraceName($subrace){
+        $query="SELECT Nome_Razza FROM scelta_sottorazza WHERE Nome=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $subrace);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Nome_Razza"];
+    }*/
+
+    public function getSubclassName($ID){
+        $query="SELECT Nome_Sottoclasse FROM scelta_sottoclasse WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Nome_Sottoclasse"];
+    }
+
     public function getSubraceInfo($subrace){
         $query="SELECT * FROM sottorazza WHERE Nome=?";
         $stmt = $this->db->prepare($query);
@@ -527,7 +547,7 @@ public function spokenByBackground($lingua){
         return $row["ID_Borsa"];
     }
 
-    public function getClass($ID){
+    public function getClassName($ID){
         $query="SELECT Nome_Classe FROM scelta_classe WHERE ID_Personaggio=?";
         $stmt=$this->db->prepare($query);
         $stmt->bind_param("i", $ID);
