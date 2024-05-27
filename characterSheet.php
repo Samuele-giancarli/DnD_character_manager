@@ -51,7 +51,7 @@ if (!isset($_GET["ID"])){
             <h2>Informazioni del personaggio</h2>
             <?php echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; ?>
             <?php echo "<p>".$dbh->getRaceName($IDpersonaggio)."</p>"; ?>
-            <?php //echo "<p>".$dbh->getSubraceName($IDpersonaggio)."</p>"; ?>
+            <?php echo "SOTTORAZZA"//echo "<p>".$dbh->getSubraceName($IDpersonaggio)."</p>"; ?>
             <?php echo "<p>".$dbh->getClassName($IDpersonaggio)."</p>"; ?>
             <?php echo "<p>".$dbh->getSubclassName($IDpersonaggio)."</p>"; ?>
         </section>
@@ -126,7 +126,10 @@ if (!isset($_GET["ID"])){
         <h2>Equipaggiamento</h2>
     </section>
     <section>
-        <h2>Attacchi ed incantesimi</h2>
+        <h2>Attacchi</h2>
+    </section>
+    <section>
+        <h2>Incantesimi</h2>
     </section>
     <section>
         <h2>Privilegi e tratti</h2>
@@ -135,16 +138,15 @@ if (!isset($_GET["ID"])){
         <h2>Altre competenze e linguaggi</h2>
     </section>
     <section>
-        <h2>Saggezza (percezione) passiva</h2>
+        <h2>Punti Abilità</h2>
+        <?php $abilities = $dbh->getAbilities();
+        foreach ($abilities as $ability){
+            echo "<p>".$ability["Nome"].": ";//.$dbh->getAbilityScore($IDpersonaggio, $ability["ID"])."</p>";
+        }
+        ?>
     </section>
     <section>
         <h2>Punti ferita attuali</h2>
-        <table>
-            <tr>
-                <th>Punti ferita attuali:</th>
-                <td>15</td>
-            </tr>
-        </table>
     </section>
     <section>
         <h2>Punti ferita temporanei</h2>

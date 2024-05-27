@@ -117,6 +117,8 @@ class DatabaseHelper{
         return $row["Nome_Razza"];
     }*/
 
+    
+
     public function getSubclassName($ID){
         $query="SELECT Nome_Sottoclasse FROM scelta_sottoclasse WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
