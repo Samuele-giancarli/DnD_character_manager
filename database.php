@@ -757,7 +757,32 @@ public function getSubclassesFromClass($classe){
         $stmt->bind_param("is", $idpersonaggio,$nomeabilita);
         $stmt->execute();
     }
-    
+
+    public function getCompetenzeAbilita($ID){
+        $query="SELECT Nome_Abilita FROM competenze_abilita WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $abilities = array();
+        while($row = $result->fetch_assoc()){
+            $abilities[] = $row;
+        }
+        return $abilities;
+    }
+
+    public function getCharacterAbilities($ID){
+        $query="SELECT Nome_Abilita, Valore FROM abilita_personaggio WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $abilities = array();
+        while($row = $result->fetch_assoc()){
+            $abilities[] = $row;
+        }
+        return $abilities;
+    }
 }
 
 ?>
