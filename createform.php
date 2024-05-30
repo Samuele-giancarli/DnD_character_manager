@@ -104,10 +104,10 @@ if ($myvalues==$reference){
 
         $nomeabilita=$singolabilita["Nome"];
         if (!is_null($singolabilita["Nome_Classe"])){
-            $valore+=1;
+            $valore+=1; //ToDo:modificare 1 con bonus competenza della classa (se presenti più classi prendere il maggiore)
         }
         if (!is_null($singolabilita["Nome_Origine"])){
-            $valore+=1;
+            $valore+=1; //ToDo:modificare 1 con bonus competenza della classa (se presenti più classi prendere il maggiore)
         }
     $dbh->updateAbilita($idpersonaggio, $nomeabilita, $valore);
     $valore=0;
