@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 30, 2024 alle 12:44
+-- Creato il: Mag 31, 2024 alle 01:12
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -67,6 +67,32 @@ CREATE TABLE `abilita_personaggio` (
   `Nome_Abilita` varchar(20) NOT NULL,
   `Valore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `abilita_personaggio`
+--
+
+INSERT INTO `abilita_personaggio` (`ID_Personaggio`, `Nome_Abilita`, `Valore`) VALUES
+(3, 'Acrobazia', 2),
+(3, 'Addestrare Animali', -1),
+(3, 'Arcano', 1),
+(3, 'Atletica', 2),
+(3, 'Furtività', 2),
+(3, 'Indagare', 1),
+(3, 'Inganno', 2),
+(3, 'Intimidire', 0),
+(3, 'Intrattenere', 2),
+(3, 'Intuizione', -1),
+(3, 'Medicina', -1),
+(3, 'Natura', 1),
+(3, 'Percezione', -1),
+(3, 'Persuasione', 2),
+(3, 'Rapidità Di Mano', 2),
+(3, 'Religione', 1),
+(3, 'Sopravvivenza', -1),
+(3, 'Storia', 3);
+
+-- --------------------------------------------------------
 
 --
 -- Struttura della tabella `allineamento`
@@ -201,7 +227,8 @@ CREATE TABLE `borsa` (
 -- Dump dei dati per la tabella `borsa`
 --
 
-
+INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
+(3, 225, 0, 0, 0, 150, 0);
 
 -- --------------------------------------------------------
 
@@ -618,6 +645,12 @@ CREATE TABLE `competenze_abilita` (
 -- Dump dei dati per la tabella `competenze_abilita`
 --
 
+INSERT INTO `competenze_abilita` (`Nome_Abilita`, `ID_Personaggio`) VALUES
+('Inganno', 3),
+('Intrattenere', 3),
+('Persuasione', 3),
+('Storia', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -640,6 +673,16 @@ CREATE TABLE `contiene` (
   `Nome_Oggetto` varchar(30) NOT NULL,
   `Quantita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `contiene`
+--
+
+INSERT INTO `contiene` (`ID_Borsa`, `Nome_Oggetto`, `Quantita`) VALUES
+(3, 'Diamante', 1),
+(3, 'Pugnale', 5),
+(3, 'Turchese', 10),
+(3, 'Veleno Di Serpente', 1);
 
 -- --------------------------------------------------------
 
@@ -1440,72 +1483,72 @@ CREATE TABLE `oggetto` (
 --
 
 INSERT INTO `oggetto` (`Peso`, `Valore`, `Nome`, `Descrizione`, `Contenuto`, `Danno`, `Tipo_Danno`, `Classe_Armatura`, `Forza_Necessaria`, `Svantaggio_Furtivita`, `Tipologia`) VALUES
-(0, 500, 'Acquamarina', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 100, 'Ametista', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 500, 'Acquamarina', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 100, 'Ametista', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (1, 25, 'Arco Corto', NULL, NULL, '1d6', 'Perforante', NULL, NULL, NULL, 'Arma Semplice A DIstanza'),
 (1, 50, 'Arco Lungo', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Arma Marziale A DIstanza'),
 (5, 10, 'Armatura Di Pelle', NULL, NULL, NULL, NULL, '11 + Destrezza', 0, 0, 'Armatura Leggera'),
 (6, 45, 'Armatura Di Pelle Borchiata', NULL, NULL, NULL, NULL, '12 + Destrezza', 0, 0, 'Armatura Leggera'),
 (4, 5, 'Armatura Imbottita', NULL, NULL, NULL, NULL, '11 + Destrezza', 0, 1, 'Armatura Leggera'),
 (1, 5, 'Ascia', NULL, NULL, '1d6', 'Tagliente', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
-(0, 10, 'Azzurrite', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 10, 'Azzurrite', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (2, 25, 'Balestra Leggera', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Arma Semplice A Distanza'),
 (8, 50, 'Balestra Pesante', NULL, NULL, '1d10', 'Perforante', NULL, NULL, NULL, 'Arma Marziale A DIstanza'),
 (27, 200, 'Corazza', NULL, NULL, NULL, NULL, '17', 15, 1, 'Armatura Pesante'),
 (20, 50, 'Corazza A Scaglie', NULL, NULL, NULL, NULL, '14 + Destrezza', 0, 1, 'Armatura Media'),
 (9, 50, 'Cotta Di Maglia', NULL, NULL, NULL, NULL, '13 + Destrezza', 0, 0, 'Armatura Media'),
-(1, 1, 'Dardo Balestra (20)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 5000, 'Diamante', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 0, 'Disco Di Pietra Multicolore', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 'Dardo Balestra (20)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Munizioni'),
+(0, 5000, 'Diamante', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 0, 'Disco Di Pietra Multicolore', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (1, 2, 'Flauto Dolce', NULL, 'Un Flauto dolce e la sua custodia', NULL, NULL, NULL, NULL, NULL, NULL),
-(1, 1, 'Freccia (20)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 100, 'Granato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, 1, 'Freccia (20)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Munizioni'),
+(0, 100, 'Granato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (1, 5, 'Kit Erboristico', NULL, 'Questo kit contiene una serie di strumenti come forbici, mortaio e pestello, sacchetti e fiale utilizzati dagli erboristi per creare rimedi e pozioni.', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 1500, 'Lacrime Di Mezza Notte', 'Una creatura che ingerisce questo veleno non subisce alcun effetto fino allo scoccare della mezzanotte. Se il veleno non è stato neutralizzato prima di allora, la creatura deve superare un tiro salvezza di Costituzione con DC 17, subendo 31 (9d6) danni da veleno in caso di fallimento del tiro salvezza, o la metà in caso di successo.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
 (1, 30, 'Lira', NULL, 'Una Lira e la sua custodia', NULL, NULL, NULL, NULL, NULL, NULL),
 (24, 75, 'Maglia A Catena', NULL, NULL, NULL, NULL, '16', 13, 1, 'Armatura Pesante'),
 (1, 15, 'Martello Da Guerra', NULL, NULL, '1d8', 'Contundente', NULL, NULL, NULL, 'Arma Marizale Ravvicinata'),
-(0, 0, 'Maschera Scheggiata', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 0, 'Maschera Scheggiata', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (2, 5, 'Mazza', NULL, NULL, '1d6 ', 'Contundente', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
 (18, 750, 'Mezza Piastra', NULL, NULL, NULL, NULL, '15 + Destrezza', 0, 1, 'Armatura Media'),
-(0, 0, 'Moneta Con Due Teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 0, 'Occhio Di Vetro', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 0, 'Moneta Con Due Teste', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 0, 'Occhio Di Vetro', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (2, 400, 'Olio Di Taggit', 'Una creatura soggetta a questo veleno deve riuscire a superare un tiro salvezza di Costituzione con DC 13 o rimanere avvelenata per 24 ore. La creatura avvelenata è incosciente. La creatura si sveglia se subisce danni.', NULL, NULL, NULL, NULL, NULL, NULL, 'Contatto'),
-(0, 5000, 'Opale', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 0, 'Orologio Rotto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 10, 'Ossidiana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 5000, 'Opale', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 0, 'Orologio Rotto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 10, 'Ossidiana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (5, 40, 'Pacchetto Da Diplomatico', NULL, '2 custodie per mappe e pergamene, un set di abiti eleganti, una bottiglia d inchiostro, una penna a inchiostro, una lampada, 2 fiaschette d olio, 5 fogli di carta, una fiala di profumo, ceralacca e sa', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 10, 'Pacchetto Da Esploratore', NULL, 'Uno zaino, una branda, un kit da mensa, un acciarino, 10 torce, 10 giorni di razioni e una pelle d acqua. Lo zaino ha anche 50 piedi di corda di canapa legati ai lati.', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 19, 'Pacchetto Da Sacerdote', NULL, 'Uno zaino, una coperta, 10 candele, un acciarino, una cassetta per le elemosine, 2 blocchi di incenso, un incensiere, paramenti, 2 giorni di razioni e una pelle d acqua.', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 16, 'Pacchetto Da Scassinatore', NULL, 'Uno zaino, un sacchetto con 1.000 cuscinetti a sfera, 3 metri di corda, una campana, 5 candele, un piede di porco, un martello, 10 chiodi, una lanterna con cappuccio, 2 fiaschette d olio, 5 giorni di ', NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 0, 'Paio Di Calzini Vecchi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 100, 'Perla', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 500, 'Perla Nera', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 0, 'Paio Di Calzini Vecchi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 100, 'Perla', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 500, 'Perla Nera', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (30, 1500, 'Piastre', NULL, NULL, NULL, NULL, '18', 15, 1, 'Armatura Pesante'),
-(0, 0, 'Piede Di Coniglio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 50, 'Pietra Di Luna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 0, 'Pietra Sferica', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 0, 'Piede Di Coniglio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 50, 'Pietra Di Luna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 0, 'Pietra Sferica', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (2, 100, 'Pozione Della Scalata', 'Quando si beve questa pozione, si ottiene una velocità di arrampicata pari alla propria velocità di cammino per 1 ora. Durante questo periodo, si ha un vantaggio nelle prove di Forza (atletica) per arrampicarsi. La pozione è separata in strati marroni, argentati e grigi che assomigliano a bande di pietra. Agitando la bottiglia non si riesce a mescolare i colori.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
 (2, 1500, 'Pozione Della Taglia Gigante', 'Quando si beve questa pozione, si diventa Enormi per 24 ore se si è di taglia Media o inferiore, altrimenti la pozione non ha alcun effetto. Per questa durata, la vostra Forza diventa 25, se non è già più alta, e i vostri punti ferita massimi sono raddoppiati (i vostri punti ferita attuali sono raddoppiati quando bevete la pozione). Inoltre, la portata dei vostri attacchi in mischia aumenta di 3 metri.\r\nQuesta pozione è un liquido bianco pallido ricavato dalla lingua di una vongola gigante, con un aroma pungente simile a quello delle alghe in decomposizione. Tuttavia, quando viene consumata ha un sapore dolce.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
 (2, 100, 'Pozione Della Vitalità', 'Bevendo questa pozione si recuperano punti ferita. Il numero di punti ferita si rigenera di 4d4. A prescindere dalla potenza, il liquido rosso della pozione luccica quando viene agitato.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
 (2, 500, 'Pozione Di Volare', 'Quando si beve questa pozione, si acquisisce una velocità di volo pari alla velocità di camminata per 1 ora e ci si può librare. Se si è in aria quando la pozione si esaurisce, si cade a meno che non si abbia un altro mezzo per rimanere in volo. Il liquido chiaro di questa pozione galleggia in cima al contenitore e presenta impurità bianche e torbide.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
 (1, 2, 'Pugnale', NULL, NULL, '1d4 ', 'Perforante', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
-(0, 50, 'Quarzo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 0, 'Rosa Di Corallo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 1000, 'Rubino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 50, 'Quarzo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 0, 'Rosa Di Corallo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 1000, 'Rubino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (2, 150, 'Sangue Dell Assassino', 'Una creatura soggetta a questo veleno deve effettuare un tiro salvezza di Costituzione a CC 10. Se il tiro salvezza fallisce, subisce 6 (1d12) danni da veleno ed è avvelenata per 24 ore. Se il tiro salvezza riesce, la creatura subisce metà dei danni e non viene avvelenata.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
 (0, 1, 'Set Di Carte Da Gioco', NULL, 'Contiene 52 carte da gioco', NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 1000, 'Smeraldo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 1000, 'Smeraldo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (2, 15, 'Spada Lunga', NULL, NULL, '1d8', 'Tagliente', NULL, NULL, NULL, 'Arma Marizale Ravvicinata'),
 (3, 50, 'Spadone', NULL, NULL, '2d6', 'Tagliente', NULL, NULL, NULL, 'Arma Marizale Ravvicinata'),
-(0, 500, 'Topazio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 0, 'Topo Pietrificato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 10, 'Turchese', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 500, 'Topazio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 0, 'Topo Pietrificato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 10, 'Turchese', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (3, 1, 'Utensili Da Cucina', NULL, 'Cose utili per cucinare', NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 20, 'Utensili Da Fabbro', NULL, 'Cose utili per riparare armi ed armature', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 200, 'Veleno Di Serpente', 'Questo veleno deve essere raccolto da un serpente gigante velenoso morto o inabilitato. Una creatura soggetta a questo veleno deve riuscire a superare un tiro salvezza di Costituzione a DC 11, subendo 10 (3d6) danni da veleno se il tiro fallisce o la metà dei danni se riesce.', NULL, NULL, NULL, NULL, NULL, NULL, 'Lesione'),
-(0, 1000, 'Zaffiro', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 50, 'Zircone', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(0, 1000, 'Zaffiro', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 50, 'Zircone', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma');
 
 -- --------------------------------------------------------
 
@@ -1591,6 +1634,8 @@ CREATE TABLE `personaggio` (
 -- Dump dei dati per la tabella `personaggio`
 --
 
+INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `Nome_Sottorazza`, `ID_Borsa`) VALUES
+(3, 15, 14, 13, 12, 8, 10, 9, 'Zeta', 'Bella', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Neutrale', 'Umano', 'Nephalia', 3);
 
 -- --------------------------------------------------------
 
@@ -1607,6 +1652,8 @@ CREATE TABLE `possiede` (
 -- Dump dei dati per la tabella `possiede`
 --
 
+INSERT INTO `possiede` (`ID_Utente`, `ID_Personaggio`) VALUES
+(4, 3);
 
 -- --------------------------------------------------------
 
@@ -2195,6 +2242,10 @@ CREATE TABLE `utente` (
 --
 -- Dump dei dati per la tabella `utente`
 --
+
+INSERT INTO `utente` (`ID_Utente`, `Username`, `Password`, `E_mail`) VALUES
+(4, 'Aisja', 'a', 'a@a.it');
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -2720,13 +2771,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `borsa`
 --
 ALTER TABLE `borsa`
-  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `personaggio`
 --
 ALTER TABLE `personaggio`
-  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `scelta_barbaro`
@@ -2756,7 +2807,7 @@ ALTER TABLE `scelta_mago`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Limiti per le tabelle scaricate
