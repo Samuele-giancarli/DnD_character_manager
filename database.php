@@ -69,6 +69,18 @@ class DatabaseHelper{
         return $races;
     }
 
+    public function getSubclasses(){
+        $query="SELECT * FROM specializzazione ORDER BY Nome_Classe";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $subclasses=array();
+        while ($row = $result->fetch_assoc()){
+            $subclasses[]=$row;
+        }
+        return $subclasses;
+    }
+
     public function getSubraces(){
         $query="SELECT * FROM sottorazza ORDER BY Nome_Razza";
         $stmt = $this->db->prepare($query);
@@ -219,6 +231,18 @@ class DatabaseHelper{
     return $capacities;
 }
 
+public function getCapacitiesOfSubclass(){
+    $query="SELECT capacita_di_sottoclasse.Nome AS Capacita, capacita_di_sottoclasse.Descrizione as Descrizione, impara_sottoclasse.Nome_Sottoclasse as Sottoclasse, impara_sottoclasse.Livello_Sottoclasse as Livello FROM capacita_di_sottoclasse JOIN impara_sottoclasse ON capacita_di_sottoclasse.Nome=impara_sottoclasse.Nome_Capacita";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $capacities=array();
+    while ($row = $result->fetch_assoc()){
+        $capacities[]=$row;
+    }
+    return $capacities;
+}
+
 
     public function getClasses(){
         $query="SELECT DISTINCT Nome FROM classe";
@@ -281,6 +305,18 @@ public function spokenByBackground($lingua){
         $origini[]=$row["Nome_Origine"];
     }
     return $origini;
+}
+public function getSubclassesFromClass($classe){
+    $query="SELECT Nome_Sottoclasse FROM specializzazione WHERE Nome_Classe=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $classe);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $sottoclassi=array();
+    while ($row = $result->fetch_assoc()){
+        $sottoclassi[]=$row["Nome_Sottoclasse"];
+    }
+    return $sottoclassi;
 }
 
     public function getAlignments(){
