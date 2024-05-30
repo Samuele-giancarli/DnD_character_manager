@@ -268,6 +268,18 @@ public function getTraits(){
     return $traits;
 }
 
+public function getBackgroundsPrivileges(){
+    $query="SELECT origine.Nome, origine.Descrizione, privilegio.Nome as Privilegio, privilegio.Descrizione as Descrizione_Privilegio FROM origine LEFT JOIN privilegio ON origine.Nome_Privilegio=privilegio.Nome";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $traits=array();
+    while ($row = $result->fetch_assoc()){
+        $traits[]=$row;
+    }
+    return $traits;
+}
+
 public function getSubracialTraits($race){
     $query="SELECT Nome_Tratto FROM tratti_della_sottorazza WHERE Nome_Sottorazza=?";
     $stmt = $this->db->prepare($query);

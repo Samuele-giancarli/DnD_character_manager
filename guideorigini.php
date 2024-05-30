@@ -74,17 +74,28 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Guide al Gioco</div>
+                    <div class="card-header">Guida alle Origini e Privilegi</div>
                     <div class="card-body">
-                      <ul>
-                      <li><a href="guideclassi.php">Classi</a></li>
-                      <li><a href="guidesottoclassi.php">Sottoclassi</a></li>
-                      <li><a href="guidelingue.php">Lingue</a></li>
-                      <li><a href="guiderazze.php">Razze e Sottorazze</a></li>
-                      <li><a href="guideorigini.php">Origini e Privilegi</a></li>
-                      <li><a href="guiderazze.php">Glossario Incantesimi</a></li>
-                      <li><a href="guiderazze.php">Glossario Oggetti</a></li>
-  </ul>
+                    <section>
+                    <table>
+                      <tr>
+                      <th>Nome</th>
+                      <th>Descrizione</th>
+                      <th>Privilegio </th>
+                      <th>Descrizione Privilegio</th>
+                      </tr>
+                    <?php
+                    $tutteorigini=$dbh->getBackgroundsPrivileges();
+                   // var_dump($tuttelingue);
+                    foreach($tutteorigini as $row){
+                    echo "<tr><td>".htmlentities($row["Nome"])."</td>
+                    <td>".htmlentities($row["Descrizione"])."</td>
+                    <td>".htmlentities($row["Privilegio"])."</td>
+                    <td>".htmlentities($row["Descrizione_Privilegio"])."</td></tr>";
+                }
+                    ?>
+                     </table>
+            </section>
                     </div>
                 </div>
             </div>
