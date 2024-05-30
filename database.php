@@ -292,6 +292,8 @@ public function getSpells(){
     return $spells;
 }
 
+
+
 public function getSubracialTraits($race){
     $query="SELECT Nome_Tratto FROM tratti_della_sottorazza WHERE Nome_Sottorazza=?";
     $stmt = $this->db->prepare($query);
@@ -303,6 +305,89 @@ public function getSubracialTraits($race){
         $traits[]=$row;
     }
     return $traits;
+}
+
+public function getWeapons(){
+    $query="SELECT Nome, Peso, Valore, Danno, Tipo_Danno, Tipologia, Nome_Proprieta FROM oggetto LEFT JOIN proprieta_arma ON oggetto.Nome=proprieta_arma.Nome_Arma WHERE Tipologia LIKE 'Arma%'";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $weapons=array();
+    while ($row = $result->fetch_assoc()){
+        $weapons[]=$row;
+    }
+    return $weapons;
+}
+public function getArmors(){
+    $query="SELECT Nome, Peso, Valore, Classe_Armatura, Forza_Necessaria, Svantaggio_Furtivita, Tipologia FROM oggetto WHERE Tipologia LIKE 'Armatura %'";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $weapons=array();
+    while ($row = $result->fetch_assoc()){
+        $weapons[]=$row;
+    }
+    return $weapons;
+}
+
+public function getGems(){
+    $query="SELECT Nome, Valore FROM oggetto WHERE Tipologia LIKE '%Gemma%'";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $weapons=array();
+    while ($row = $result->fetch_assoc()){
+        $weapons[]=$row;
+    }
+    return $weapons;
+}
+
+public function getTrinkets(){
+    $query="SELECT Nome FROM oggetto WHERE Tipologia LIKE '%Cianfrusaglie%'";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $weapons=array();
+    while ($row = $result->fetch_assoc()){
+        $weapons[]=$row;
+    }
+    return $weapons;
+}
+
+
+public function getPotions(){
+    $query="SELECT Nome, Peso, Valore, Tipologia, Descrizione FROM oggetto WHERE (Tipologia LIKE '%Ingerito%') OR (Tipologia LIKE '%Contatto%')";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $weapons=array();
+    while ($row = $result->fetch_assoc()){
+        $weapons[]=$row;
+    }
+    return $weapons;
+}
+public function getAmmo(){
+    $query="SELECT Nome, Peso, Valore FROM oggetto WHERE Tipologia LIKE '%Munizioni%'";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $weapons=array();
+    while ($row = $result->fetch_assoc()){
+        $weapons[]=$row;
+    }
+    return $weapons;
+}
+
+public function getTools(){
+    $query="SELECT Nome, Peso, Valore, Contenuto FROM oggetto WHERE Contenuto IS NOT NULL";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $weapons=array();
+    while ($row = $result->fetch_assoc()){
+        $weapons[]=$row;
+    }
+    return $weapons;
 }
 
 

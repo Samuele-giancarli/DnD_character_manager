@@ -83,7 +83,7 @@
                       <li><a href="guiderazze.php">Razze e Sottorazze</a></li>
                       <li><a href="guideorigini.php">Origini e Privilegi</a></li>
                       <li><a href="guideincantesimi.php">Glossario Incantesimi</a></li>
-                      <li><a href="guiderazze.php">Glossario Oggetti</a></li>
+                      <li><a href="guideoggetti.php">Glossario Oggetti</a></li>
   </ul>
                     </div>
                 </div>
