@@ -69,6 +69,18 @@ class DatabaseHelper{
         return $races;
     }
 
+    public function getSubraces(){
+        $query="SELECT * FROM sottorazza ORDER BY Nome_Razza";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $races=array();
+        while ($row = $result->fetch_assoc()){
+            $races[]=$row;
+        }
+        return $races;
+    }
+
     public function getAbilities(){
         $query="SELECT * FROM abilita";
         $stmt = $this->db->prepare($query);
@@ -243,6 +255,18 @@ public function spokenByRace($lingua){
         $razze[]=$row["Nome_Razza"];
     }
     return $razze;
+}
+public function subracesByRace($razza){
+    $query="SELECT Nome FROM sottorazza WHERE Nome_Razza=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $razza);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $sottorazze=array();
+    while ($row = $result->fetch_assoc()){
+        $sottorazze[]=$row["Nome"];
+    }
+    return $sottorazze;
 }
 
 

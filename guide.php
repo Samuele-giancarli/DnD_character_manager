@@ -78,7 +78,9 @@
                     <div class="card-body">
                       <ul>
                       <li><a href="guideclassi.php">Classi</a></li>
+                      <li><a href="guidesottoclassi.php">Sottoclassi</a></li>
                       <li><a href="guidelingue.php">Lingue</a></li>
+                      <li><a href="guiderazze.php">Razze e Sottorazze</a></li>
   </ul>
                     </div>
                 </div>
