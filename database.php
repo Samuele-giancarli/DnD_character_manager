@@ -243,6 +243,45 @@ public function getCapacitiesOfSubclass(){
     return $capacities;
 }
 
+public function getRacialTraits($race){
+    $query="SELECT Nome_Tratto FROM tratti_della_razza WHERE Nome_Razza=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $race);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $traits=array();
+    while ($row = $result->fetch_assoc()){
+        $traits[]=$row;
+    }
+    return $traits;
+}
+
+public function getTraits(){
+    $query="SELECT Nome, Descrizione, tratti_della_razza.Nome_Razza, tratti_della_sottorazza.Nome_Sottorazza FROM tratti_razziali LEFT JOIN tratti_della_razza ON tratti_razziali.Nome=tratti_della_razza.Nome_Tratto LEFT JOIN tratti_della_sottorazza ON tratti_razziali.Nome=tratti_della_sottorazza.Nome_Tratto";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $traits=array();
+    while ($row = $result->fetch_assoc()){
+        $traits[]=$row;
+    }
+    return $traits;
+}
+
+public function getSubracialTraits($race){
+    $query="SELECT Nome_Tratto FROM tratti_della_sottorazza WHERE Nome_Sottorazza=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $race);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $traits=array();
+    while ($row = $result->fetch_assoc()){
+        $traits[]=$row;
+    }
+    return $traits;
+}
+
+
 
     public function getClasses(){
         $query="SELECT DISTINCT Nome FROM classe";

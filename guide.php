@@ -81,6 +81,9 @@
                       <li><a href="guidesottoclassi.php">Sottoclassi</a></li>
                       <li><a href="guidelingue.php">Lingue</a></li>
                       <li><a href="guiderazze.php">Razze e Sottorazze</a></li>
+                      <li><a href="guiderazze.php">Origini e Privilegi</a></li>
+                      <li><a href="guiderazze.php">Glossario Incantesimi</a></li>
+                      <li><a href="guiderazze.php">Glossario Oggetti</a></li>
   </ul>
                     </div>
                 </div>

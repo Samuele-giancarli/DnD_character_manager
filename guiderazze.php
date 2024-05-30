@@ -87,6 +87,7 @@
                       <th>Velocità</th>
                       <th>Sottorazze</th>
                       <th>Caratteristica Aumentata</th>
+                      <th>Tratti Razziali</th>
                       </tr>
                     <?php
                     $tutterazze=$dbh->getRaces();
@@ -94,10 +95,17 @@
                     foreach ($tutterazze as $razza){
                     $sottorazze=$dbh->subracesByRace($razza["Nome"]);
                     $arraySottorazze=array();
+                    $arrayTratti=array();
                     foreach($sottorazze as $sottorazza){
                         array_push($arraySottorazze, $sottorazza);
                     }
                     $finalSottorazze=implode(", ", $arraySottorazze);
+
+                    $allRacialTraits=$dbh->getRacialTraits($razza["Nome"]);
+                    foreach ($allRacialTraits as $racialTrait){
+                      array_push($arrayTratti, $racialTrait["Nome_Tratto"]);
+                    }
+                    $finalTratti=implode(", ", $arrayTratti);
 
                     echo "<tr><td>".htmlentities($razza["Nome"])."</td>
                     <td>".htmlentities($razza["Descrizione"])."</td>
@@ -105,7 +113,8 @@
                     <td>".htmlentities($razza["Taglia"])."</td>
                     <td>".htmlentities($razza["Velocita"])."</td>
                     <td>".htmlentities($finalSottorazze)."</td>
-                    <td>".htmlentities($razza["Aum_Nome_Caratteristica"]." ".$razza["Aum_Valore_Aggiuntivo"])."</td></tr>";
+                    <td>".htmlentities($razza["Aum_Nome_Caratteristica"]." ".$razza["Aum_Valore_Aggiuntivo"])."</td>
+                    <td>".htmlentities($finalTratti)."</td></tr>";
                 }
                     ?>
                      </table>
@@ -119,19 +128,65 @@
                       <th>Descrizione</th>
                       <th>Famiglia</th>
                       <th>Caratteristica Aumentata</th>
+                      <th>Tratti Razziali</th>
                       </tr>
                     <?php
+
                     $sottorazze=$dbh->getSubraces();
-                   // var_dump($tuttelingue);
                     foreach ($sottorazze as $sottorazza){
+                    $arrayTratti=array();
+                    $allSubracialTraits=$dbh->getSubracialTraits($sottorazza["Nome"]);
+                    foreach ($allSubracialTraits as $racialTrait){
+                      array_push($arrayTratti, $racialTrait["Nome_Tratto"]);
+                    }
+                    $finalTratti=implode(", ", $arrayTratti);
+
                     echo "<tr><td>".htmlentities($sottorazza["Nome"])."</td>
                     <td>".htmlentities($sottorazza["Descrizione"])."</td>
                     <td>".htmlentities($sottorazza["Nome_Razza"])."</td>
-                    <td>".htmlentities($sottorazza["Aum_Nome_Caratteristica"]." ".$sottorazza["Aum_Valore_Aggiuntivo"])."</td></tr>";
-                }
+                    <td>".htmlentities($sottorazza["Aum_Nome_Caratteristica"]." ".$sottorazza["Aum_Valore_Aggiuntivo"])."</td>
+                    <td>".htmlentities($finalTratti)."</td>
+                    </tr>";
+                    }
                     ?>
                      </table>
-            </section>
+                    </section>
+
+                    <section>
+                    <table>
+                    <legend>Tratti Razziali</legend>
+                      <tr>
+                      <th>Nome</th>
+                      <th>Descrizione</th>
+                      <th>Razze</th>
+                      </tr>
+
+                      <?php
+                      $arrayMagico=array();
+                      $tratti=$dbh->getTraits();
+                      foreach ($tratti as $tratto){
+                        $key=[$tratto["Nome"], $tratto["Descrizione"]];
+                        $key=implode("$", $key);
+                        if (!array_key_exists($key, $arrayMagico)){
+                          $arrayMagico[$key]=array();
+                          }
+                          if (!is_null($tratto["Nome_Razza"])){
+                          array_push($arrayMagico[$key], $tratto["Nome_Razza"]);
+                          }
+                          if (!is_null($tratto["Nome_Sottorazza"])){
+                          array_push($arrayMagico[$key], $tratto["Nome_Sottorazza"]);
+                          }
+                        }
+
+                        foreach ($arrayMagico as $key=>$value){
+                          $key=explode("$", $key);
+                          echo "<tr><td>".htmlentities($key[0])."</td>
+                          <td>".htmlentities($key[1])."</td>
+                          <td>".htmlentities(implode(", ",$value))."</td></tr>";
+                      }
+                      
+        
+                      ?>
                     </div>
                 </div>
             </div>
