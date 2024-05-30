@@ -104,9 +104,11 @@ if ($myvalues==$reference){
 
         $nomeabilita=$singolabilita["Nome"];
         if (!is_null($singolabilita["Nome_Classe"])){
+            $dbh->addCompetenzeAbilita($idpersonaggio, $nomeabilita);
             $valore+=2; 
         }
         if (!is_null($singolabilita["Nome_Origine"])){
+            $dbh->addCompetenzeAbilita($idpersonaggio, $nomeabilita);
             $valore+=2;
         }
     $dbh->updateAbilita($idpersonaggio, $nomeabilita, $valore);

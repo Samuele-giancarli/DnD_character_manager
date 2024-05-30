@@ -651,6 +651,13 @@ public function spokenByBackground($lingua){
             }
         }
     }
+
+    public function addCompetenzeAbilita($idpersonaggio, $nomeabilita){
+        $query="INSERT IGNORE INTO competenze_abilita(ID_Personaggio, Nome_Abilita) VALUES(?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $idpersonaggio,$nomeabilita);
+        $stmt->execute();
+    }
     
 }
 

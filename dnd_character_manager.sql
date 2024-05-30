@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 22, 2024 alle 12:36
+-- Creato il: Mag 30, 2024 alle 12:44
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -67,8 +67,6 @@ CREATE TABLE `abilita_personaggio` (
   `Nome_Abilita` varchar(20) NOT NULL,
   `Valore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
 
 --
 -- Struttura della tabella `allineamento`
@@ -203,12 +201,7 @@ CREATE TABLE `borsa` (
 -- Dump dei dati per la tabella `borsa`
 --
 
-INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
-(0, 225, 0, 0, 0, 150, 0),
-(1, 225, 0, 0, 0, 70, 0),
-(2, 225, 0, 0, 0, 60, 0),
-(3, 225, 0, 0, 0, 70, 0),
-(4, 225, 0, 0, 0, 70, 0);
+
 
 -- --------------------------------------------------------
 
@@ -620,6 +613,10 @@ CREATE TABLE `competenze_abilita` (
   `Nome_Abilita` varchar(20) NOT NULL,
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `competenze_abilita`
+--
 
 -- --------------------------------------------------------
 
@@ -1594,8 +1591,6 @@ CREATE TABLE `personaggio` (
 -- Dump dei dati per la tabella `personaggio`
 --
 
-INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `Nome_Sottorazza`, `ID_Borsa`) VALUES
-(1, 15, 14, 13, 12, 10, 8, 7, 'bob', 'bello', 12, 14, 0, 1, 'Criminale', 'Arco Lungo', 'Armatura Di Pelle', 'Caotico Neutrale', 'Elfo', 'Elfo Scuro', 2);
 
 -- --------------------------------------------------------
 
@@ -1607,6 +1602,11 @@ CREATE TABLE `possiede` (
   `ID_Utente` int(11) NOT NULL,
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `possiede`
+--
+
 
 -- --------------------------------------------------------
 
@@ -2195,11 +2195,6 @@ CREATE TABLE `utente` (
 --
 -- Dump dei dati per la tabella `utente`
 --
-
-INSERT INTO `utente` (`ID_Utente`, `Username`, `Password`, `E_mail`) VALUES
-(1, 'Aisja', 'a', 'a@a.it'),
-(2, 'Palikko', 'ciao', 'ciao@djhdj.it');
-
 --
 -- Indici per le tabelle scaricate
 --
@@ -2722,6 +2717,18 @@ ALTER TABLE `utente`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `borsa`
+--
+ALTER TABLE `borsa`
+  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT per la tabella `personaggio`
+--
+ALTER TABLE `personaggio`
+  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT per la tabella `scelta_barbaro`
 --
 ALTER TABLE `scelta_barbaro`
@@ -2749,7 +2756,7 @@ ALTER TABLE `scelta_mago`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Limiti per le tabelle scaricate
