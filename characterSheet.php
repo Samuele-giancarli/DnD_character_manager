@@ -86,10 +86,26 @@
         <section class="half-width">
             <h2>Punti Abilità</h2>
             <?php 
+                $characterSkills = $dbh->getCompetenzeAbilita($IDpersonaggio);
                 $abilities = $dbh->getAbilities();
+                $characterAbilities = $dbh->getCharacterAbilities($IDpersonaggio);
+
+                echo "<table>";
                 foreach ($abilities as $ability){
-                    echo "<p>".$ability["Nome"].": ";//.$dbh->getAbilityScore($IDpersonaggio, $ability["ID"])."</p>";
+                    $value = "";
+                    foreach ($characterAbilities as $charAbility) {
+                        if ($ability["Nome"] == $charAbility["Nome_Abilita"]) {
+                            $value = $charAbility["Valore"];
+                            break;
+                        }
+                    }
+                    if (in_array($ability["Nome"], array_column($characterSkills, 'Nome_Abilita'))){
+                        echo "<tr><td><b>".$ability["Nome"].":</b></td><td><b>".$value."</b></td></tr>";
+                    } else {
+                        echo "<tr><td>".$ability["Nome"].":</td><td>".$value."</td></tr>";
+                    }
                 }
+                echo "</table>";
             ?>
         </section>
         <section class="half-width">
@@ -152,6 +168,9 @@
         <section class="third-width">
             <h2>Allineamento</h2>
             <?php echo "<p>".$dbh->getAlignmentName($IDpersonaggio)."</p>"; ?>
+        </section>
+        <section class="third-width">
+            <h2><a href="borsa.php?ID=<?php echo $character["ID_Personaggio"]; ?>">Borsa</a></h2>
         </section>
         <section class="full-width">
             <h2>Tiri salvezza</h2>
