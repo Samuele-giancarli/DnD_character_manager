@@ -74,17 +74,59 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Guide al Gioco</div>
+                    <div class="card-header">Guida agli Incantesimi</div>
                     <div class="card-body">
-                      <ul>
-                      <li><a href="guideclassi.php">Classi</a></li>
-                      <li><a href="guidesottoclassi.php">Sottoclassi</a></li>
-                      <li><a href="guidelingue.php">Lingue</a></li>
-                      <li><a href="guiderazze.php">Razze e Sottorazze</a></li>
-                      <li><a href="guideorigini.php">Origini e Privilegi</a></li>
-                      <li><a href="guideincantesimi.php">Glossario Incantesimi</a></li>
-                      <li><a href="guiderazze.php">Glossario Oggetti</a></li>
-  </ul>
+                    <section>
+                    <table>
+                    <legend>Specifiche Incantesimi</legend>
+                      <tr>
+                      <th>Nome</th>
+                      <th>Livello</th>
+                      <th>Tempo di Lancio</th>
+                      <th>Durata</th>
+                      <th>Distanza</th>
+                      <th>Rituale</th>
+                      <th>Componenti</th>
+                      <th>LVL Mago</th>
+                      <th>LVL Bardo</th>
+                      </tr>
+                    <?php
+                    $tuttincantesimi=$dbh->getSpells();
+                    foreach($tuttincantesimi as $row){
+                        if ($row["Rituale"]==0){
+                            $row["Rituale"]="No";
+                        }else{
+                            $row["Rituale"]="Sì";
+                        }
+
+                    echo "<tr><td>".htmlentities($row["Nome"])."</td>
+                    <td>".htmlentities($row["Livello"])."</td>
+                    <td>".htmlentities($row["Tempo_di_Lancio"])."</td>
+                    <td>".htmlentities($row["Durata"])."</td>
+                    <td>".htmlentities($row["Distanza"])."</td>
+                    <td>".htmlentities($row["Rituale"])."</td>
+                    <td>".htmlentities($row["Componenti"])."</td>
+                    <td>".htmlentities($row["ID_Mago"])."</td>
+                    <td>".htmlentities($row["ID_Bardo"])."</td></tr>";
+                }
+                    ?>
+                     </table>
+                     </section>
+
+                    <section>
+                    <table>
+                    <legend>Descrizione Incantesimi</legend>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Descrizione</th>
+                      </tr>
+
+                    <?php
+                    foreach($tuttincantesimi as $row){
+                    echo "<tr><td>".htmlentities($row["Nome"])."</td>
+                    <td>".htmlentities($row["Descrizione"])."</td></tr>";
+                    }
+                    ?>
                     </div>
                 </div>
             </div>

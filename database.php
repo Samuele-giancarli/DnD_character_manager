@@ -280,6 +280,18 @@ public function getBackgroundsPrivileges(){
     return $traits;
 }
 
+public function getSpells(){
+    $query="SELECT * FROM incantesimo";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $spells=array();
+    while ($row = $result->fetch_assoc()){
+        $spells[]=$row;
+    }
+    return $spells;
+}
+
 public function getSubracialTraits($race){
     $query="SELECT Nome_Tratto FROM tratti_della_sottorazza WHERE Nome_Sottorazza=?";
     $stmt = $this->db->prepare($query);
