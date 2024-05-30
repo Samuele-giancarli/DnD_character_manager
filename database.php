@@ -589,6 +589,69 @@ public function spokenByBackground($lingua){
         }
         return $items;
     }
+
+    public function getAllItems() {
+        $stmt = $this->db->prepare("SELECT Nome FROM oggetto");
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+        $obj = array();
+        while ($row = $result->fetch_assoc()) {
+            $obj[] = $row;
+        }
+        return $obj;
+    }
+
+    //aggiunge gli oggetti
+
+
+    public function addItemToBag($IDborsa, $NomeObj, $quantity) {
+        // Controlla se l'oggetto esiste già nella borsa
+        $stmtCheck = $this->db->prepare("SELECT Quantita FROM Contiene WHERE ID_Borsa = ? AND Nome_Oggetto = ?");
+        $stmtCheck->bind_param("is", $IDborsa, $NomeObj);
+        $stmtCheck->execute();
+        $result = $stmtCheck->get_result();
+        $row = $result->fetch_assoc();
+
+        if ($row) {
+            // Se l'oggetto esiste, aggiorna la quantità
+            $newQuantity = $row['Quantita'] + $quantity;
+            $stmtUpdate = $this->db->prepare("UPDATE Contiene SET Quantita = ? WHERE ID_Borsa = ? AND Nome_Oggetto = ?");
+            $stmtUpdate->bind_param("iis", $newQuantity, $IDborsa, $NomeObj);
+            $stmtUpdate->execute();
+        } else {
+            // Se l'oggetto non esiste, inserisci un nuovo record
+            $stmtInsert = $this->db->prepare("INSERT INTO Contiene (ID_Borsa, Nome_Oggetto, Quantita) VALUES (?, ?, ?)");
+            $stmtInsert->bind_param("isi", $IDborsa, $NomeObj, $quantity);
+            $stmtInsert->execute();
+        }
+    }
+
+    public function removeItemQuantityFromBag($IDborsa, $itemID, $quantity) {
+        // Controlla la quantità corrente dell'oggetto nella borsa
+        $stmtCheck = $this->db->prepare("SELECT Quantita FROM Contiene WHERE ID_Borsa = ? AND Nome_Oggetto = ?");
+        $stmtCheck->bind_param("is", $IDborsa, $itemID);
+        $stmtCheck->execute();
+        $result = $stmtCheck->get_result();
+        $row = $result->fetch_assoc();
+    
+        if ($row) {
+            $currentQuantity = $row['Quantita'];
+            if ($currentQuantity <= $quantity) {
+                // Se la quantità da rimuovere è maggiore o uguale alla quantità corrente, rimuovi l'oggetto
+                $stmtDelete = $this->db->prepare("DELETE FROM Contiene WHERE ID_Borsa = ? AND Nome_Oggetto = ?");
+                $stmtDelete->bind_param("is", $IDborsa, $itemID);
+                $stmtDelete->execute();
+            } else {
+                // Altrimenti, aggiorna la quantità
+                $newQuantity = $currentQuantity - $quantity;
+                $stmtUpdate = $this->db->prepare("UPDATE Contiene SET Quantita = ? WHERE ID_Borsa = ? AND Nome_Oggetto = ?");
+                $stmtUpdate->bind_param("iis", $newQuantity, $IDborsa, $itemID);
+                $stmtUpdate->execute();
+            }
+        }
+    }
+    
 }
 
 ?>

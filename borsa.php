@@ -17,7 +17,26 @@ if (!isset($_GET["ID"])){
 $IDborsa = $dbh->getBagID($IDpersonaggio);
 
 $items = $dbh->getCharacterItems($IDborsa);
-var_dump($items)
+
+$allItems = $dbh->getAllItems();
+
+if (isset($_POST["add_item"])) {
+  $itemID = $_POST["item"];
+  $quantity = $_POST["quantity"];
+  $dbh->addItemToBag($IDborsa, $itemID, $quantity);
+  header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
+  exit();
+}
+
+// Gestione rimozione quantità di oggetto
+if (isset($_POST["remove_item"])) {
+  $itemID = $_POST["item"];
+  $quantity = $_POST["quantity"];
+  $dbh->removeItemQuantityFromBag($IDborsa, $itemID, $quantity);
+  header("Location: borsa.php?ID=" . $IDpersonaggio);
+  exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -97,6 +116,27 @@ var_dump($items)
                       }
                       ?>
                     </ul>
+
+                    <!-- Form per aggiungere oggetti -->
+                    <form method="POST">
+                      <div class="form-group">
+                        <label for="item">Aggiungi oggetto:</label>
+                        <select id="item" name="item" class="form-control">
+                          <?php
+                            foreach ($allItems as $obj) {
+                              echo '<option value="' . htmlentities($obj["Nome"]) . '">' . htmlentities($obj["Nome"]) . '</option>';
+                            }
+                          ?>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="quantity">Quantità:</label>
+                        <input type="number" id="quantity" name="quantity" class="form-control" min="1" value="1">
+                      </div>
+                      <button type="submit" name="add_item" class="btn btn-primary">Aggiungi</button>
+                      <button type="submit" name="remove_item" class="btn btn-danger">Rimuovi</button>
+                    </form>
+
                 </div>
             </div>
         </div>
