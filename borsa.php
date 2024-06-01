@@ -19,6 +19,8 @@ $nomepersonaggio=$dbh->getName($IDpersonaggio);
 $items = $dbh->getCharacterItems($IDborsa);
 
 $allItems = $dbh->getAllItems();
+$allWeapons=$dbh->getWeaponsFromInventory($IDborsa);
+$allArmors=$dbh->getArmorsFromInventory($IDborsa);
 
 if (isset($_POST["add_item"])) {
   $itemID = $_POST["item"];
@@ -136,7 +138,33 @@ if (isset($_POST["remove_item"])) {
                       <button type="submit" name="add_item" class="btn btn-primary">Aggiungi</button>
                       <button type="submit" name="remove_item" class="btn btn-danger">Rimuovi</button>
                     </form>
+                    <br>
 
+                    <form method="GET" action="equipment.php">
+                    <input id="idborsa" name="idborsa" type="hidden" value="<?php echo $IDborsa?>"/>
+                    <input id="idpersonaggio" name="idpersonaggio" type="hidden" value="<?php echo $IDpersonaggio?>"/>
+                    <div class="form-group">
+                    <label for="weapon">Equipaggia arma:</label>
+                    <select id="weapon" name="weapon" class="form-control">
+                          <?php
+                            foreach ($allWeapons as $obj) {
+                              echo '<option value="' . htmlentities($obj["Nome_Oggetto"]) . '">' . htmlentities($obj["Nome_Oggetto"]) . '</option>';
+                            }
+                          ?>
+                        </select>
+                    <br>
+
+                    <label for="armor">Equipaggia armatura:</label>
+                    <select id="armor" name="armor" class="form-control">
+                          <?php
+                            foreach ($allArmors as $obj) {
+                              echo '<option value="' . htmlentities($obj["Nome_Oggetto"]) . '">' . htmlentities($obj["Nome_Oggetto"]) . '</option>';
+                            }
+                          ?>
+                        </select>
+                          </div>
+                      <button type="submit" name="equip_all" class="btn btn-primary">Equipaggia</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -369,6 +369,20 @@ public function getWeapons(){
     }
     return $weapons;
 }
+
+public function getWeaponsFromInventory($IDborsa){
+    $query="SELECT contiene.Nome_Oggetto FROM contiene LEFT JOIN oggetto ON contiene.Nome_Oggetto=oggetto.Nome WHERE contiene.ID_Borsa=? AND Tipologia LIKE 'Arma %'";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $IDborsa);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $weapons=array();
+    while ($row = $result->fetch_assoc()){
+        $weapons[]=$row;
+    }
+    return $weapons;
+}
+
 public function getArmors(){
     $query="SELECT Nome, Peso, Valore, Classe_Armatura, Forza_Necessaria, Svantaggio_Furtivita, Tipologia FROM oggetto WHERE Tipologia LIKE 'Armatura %'";
     $stmt = $this->db->prepare($query);
@@ -379,6 +393,19 @@ public function getArmors(){
         $weapons[]=$row;
     }
     return $weapons;
+}
+
+public function getArmorsFromInventory($IDborsa){
+    $query="SELECT contiene.Nome_Oggetto FROM contiene LEFT JOIN oggetto ON contiene.Nome_Oggetto=oggetto.Nome WHERE contiene.ID_Borsa=? AND Tipologia LIKE 'Armatura %'";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $IDborsa);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $armors=array();
+    while ($row = $result->fetch_assoc()){
+        $armors[]=$row;
+    }
+    return $armors;
 }
 
 public function getGems(){
@@ -479,6 +506,7 @@ public function spokenByRace($lingua){
     }
     return $razze;
 }
+
 public function subracesByRace($razza){
     $query="SELECT Nome FROM sottorazza WHERE Nome_Razza=?";
     $stmt = $this->db->prepare($query);
@@ -655,6 +683,16 @@ public function getSubclassesFromClass($classe){
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ii", $oro,$idborsa);
         $stmt->execute();
+    }
+
+    public function updateEquipment($idpersonaggio, $arma, $armatura){
+        $query="UPDATE personaggio SET Arma_Equipaggiata=?, Armatura_Equipaggiata=? WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssi", $arma,$armatura, $idpersonaggio);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
     }
 
     public function addBackgroundInventory($idborsa, $nome, $quantita){
