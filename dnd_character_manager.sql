@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 31, 2024 alle 01:12
+-- Creato il: Giu 02, 2024 alle 01:34
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -90,7 +90,367 @@ INSERT INTO `abilita_personaggio` (`ID_Personaggio`, `Nome_Abilita`, `Valore`) V
 (3, 'Rapidità Di Mano', 2),
 (3, 'Religione', 1),
 (3, 'Sopravvivenza', -1),
-(3, 'Storia', 3);
+(3, 'Storia', 3),
+(4, 'Acrobazia', 2),
+(4, 'Addestrare Animali', 1),
+(4, 'Arcano', 2),
+(4, 'Atletica', 1),
+(4, 'Furtività', 2),
+(4, 'Indagare', 2),
+(4, 'Inganno', 1),
+(4, 'Intimidire', 3),
+(4, 'Intrattenere', 1),
+(4, 'Intuizione', 1),
+(4, 'Medicina', 1),
+(4, 'Natura', 2),
+(4, 'Percezione', 1),
+(4, 'Persuasione', 1),
+(4, 'Rapidità Di Mano', 2),
+(4, 'Religione', 2),
+(4, 'Sopravvivenza', 1),
+(4, 'Storia', 4),
+(5, 'Acrobazia', 2),
+(5, 'Addestrare Animali', 1),
+(5, 'Arcano', 2),
+(5, 'Atletica', 1),
+(5, 'Furtività', 2),
+(5, 'Indagare', 2),
+(5, 'Inganno', 3),
+(5, 'Intimidire', 1),
+(5, 'Intrattenere', 1),
+(5, 'Intuizione', 1),
+(5, 'Medicina', 1),
+(5, 'Natura', 2),
+(5, 'Percezione', 3),
+(5, 'Persuasione', 1),
+(5, 'Rapidità Di Mano', 2),
+(5, 'Religione', 2),
+(5, 'Sopravvivenza', 1),
+(5, 'Storia', 2),
+(6, 'Acrobazia', 0),
+(6, 'Addestrare Animali', -1),
+(6, 'Arcano', 1),
+(6, 'Atletica', 2),
+(6, 'Furtività', 0),
+(6, 'Indagare', 1),
+(6, 'Inganno', 4),
+(6, 'Intimidire', 2),
+(6, 'Intrattenere', 4),
+(6, 'Intuizione', -1),
+(6, 'Medicina', -1),
+(6, 'Natura', 1),
+(6, 'Percezione', -1),
+(6, 'Persuasione', 4),
+(6, 'Rapidità Di Mano', 0),
+(6, 'Religione', 1),
+(6, 'Sopravvivenza', -1),
+(6, 'Storia', 3),
+(7, 'Acrobazia', 0),
+(7, 'Addestrare Animali', -1),
+(7, 'Arcano', 1),
+(7, 'Atletica', 2),
+(7, 'Furtività', 0),
+(7, 'Indagare', 1),
+(7, 'Inganno', 4),
+(7, 'Intimidire', 2),
+(7, 'Intrattenere', 4),
+(7, 'Intuizione', -1),
+(7, 'Medicina', -1),
+(7, 'Natura', 1),
+(7, 'Percezione', -1),
+(7, 'Persuasione', 4),
+(7, 'Rapidità Di Mano', 0),
+(7, 'Religione', 1),
+(7, 'Sopravvivenza', -1),
+(7, 'Storia', 3),
+(8, 'Acrobazia', 0),
+(8, 'Addestrare Animali', -1),
+(8, 'Arcano', 1),
+(8, 'Atletica', 2),
+(8, 'Furtività', 0),
+(8, 'Indagare', 1),
+(8, 'Inganno', 4),
+(8, 'Intimidire', 2),
+(8, 'Intrattenere', 4),
+(8, 'Intuizione', 1),
+(8, 'Medicina', -1),
+(8, 'Natura', 1),
+(8, 'Percezione', -1),
+(8, 'Persuasione', 4),
+(8, 'Rapidità Di Mano', 0),
+(8, 'Religione', 3),
+(8, 'Sopravvivenza', -1),
+(8, 'Storia', 1),
+(9, 'Acrobazia', 0),
+(9, 'Addestrare Animali', -1),
+(9, 'Arcano', 1),
+(9, 'Atletica', 2),
+(9, 'Furtività', 0),
+(9, 'Indagare', 1),
+(9, 'Inganno', 4),
+(9, 'Intimidire', 2),
+(9, 'Intrattenere', 4),
+(9, 'Intuizione', -1),
+(9, 'Medicina', -1),
+(9, 'Natura', 1),
+(9, 'Percezione', -1),
+(9, 'Persuasione', 4),
+(9, 'Rapidità Di Mano', 0),
+(9, 'Religione', 1),
+(9, 'Sopravvivenza', 1),
+(9, 'Storia', 3),
+(10, 'Acrobazia', 0),
+(10, 'Addestrare Animali', -1),
+(10, 'Arcano', 1),
+(10, 'Atletica', 2),
+(10, 'Furtività', 0),
+(10, 'Indagare', 1),
+(10, 'Inganno', 4),
+(10, 'Intimidire', 2),
+(10, 'Intrattenere', 4),
+(10, 'Intuizione', -1),
+(10, 'Medicina', -1),
+(10, 'Natura', 1),
+(10, 'Percezione', -1),
+(10, 'Persuasione', 4),
+(10, 'Rapidità Di Mano', 0),
+(10, 'Religione', 1),
+(10, 'Sopravvivenza', 1),
+(10, 'Storia', 3),
+(11, 'Acrobazia', 0),
+(11, 'Addestrare Animali', -1),
+(11, 'Arcano', 1),
+(11, 'Atletica', 2),
+(11, 'Furtività', 0),
+(11, 'Indagare', 1),
+(11, 'Inganno', 4),
+(11, 'Intimidire', 2),
+(11, 'Intrattenere', 4),
+(11, 'Intuizione', -1),
+(11, 'Medicina', -1),
+(11, 'Natura', 1),
+(11, 'Percezione', -1),
+(11, 'Persuasione', 4),
+(11, 'Rapidità Di Mano', 0),
+(11, 'Religione', 1),
+(11, 'Sopravvivenza', 1),
+(11, 'Storia', 3),
+(12, 'Acrobazia', 0),
+(12, 'Addestrare Animali', -1),
+(12, 'Arcano', 1),
+(12, 'Atletica', 2),
+(12, 'Furtività', 0),
+(12, 'Indagare', 1),
+(12, 'Inganno', 4),
+(12, 'Intimidire', 2),
+(12, 'Intrattenere', 4),
+(12, 'Intuizione', -1),
+(12, 'Medicina', -1),
+(12, 'Natura', 1),
+(12, 'Percezione', -1),
+(12, 'Persuasione', 4),
+(12, 'Rapidità Di Mano', 0),
+(12, 'Religione', 1),
+(12, 'Sopravvivenza', 1),
+(12, 'Storia', 3),
+(13, 'Acrobazia', 0),
+(13, 'Addestrare Animali', -1),
+(13, 'Arcano', 1),
+(13, 'Atletica', 2),
+(13, 'Furtività', 0),
+(13, 'Indagare', 1),
+(13, 'Inganno', 4),
+(13, 'Intimidire', 2),
+(13, 'Intrattenere', 4),
+(13, 'Intuizione', -1),
+(13, 'Medicina', -1),
+(13, 'Natura', 1),
+(13, 'Percezione', -1),
+(13, 'Persuasione', 4),
+(13, 'Rapidità Di Mano', 0),
+(13, 'Religione', 1),
+(13, 'Sopravvivenza', 1),
+(13, 'Storia', 3),
+(14, 'Acrobazia', 0),
+(14, 'Addestrare Animali', -1),
+(14, 'Arcano', 1),
+(14, 'Atletica', 2),
+(14, 'Furtività', 0),
+(14, 'Indagare', 1),
+(14, 'Inganno', 4),
+(14, 'Intimidire', 2),
+(14, 'Intrattenere', 4),
+(14, 'Intuizione', -1),
+(14, 'Medicina', -1),
+(14, 'Natura', 1),
+(14, 'Percezione', -1),
+(14, 'Persuasione', 4),
+(14, 'Rapidità Di Mano', 0),
+(14, 'Religione', 1),
+(14, 'Sopravvivenza', 1),
+(14, 'Storia', 3),
+(15, 'Acrobazia', 0),
+(15, 'Addestrare Animali', -1),
+(15, 'Arcano', 1),
+(15, 'Atletica', 2),
+(15, 'Furtività', 0),
+(15, 'Indagare', 1),
+(15, 'Inganno', 4),
+(15, 'Intimidire', 2),
+(15, 'Intrattenere', 4),
+(15, 'Intuizione', -1),
+(15, 'Medicina', -1),
+(15, 'Natura', 1),
+(15, 'Percezione', -1),
+(15, 'Persuasione', 4),
+(15, 'Rapidità Di Mano', 0),
+(15, 'Religione', 1),
+(15, 'Sopravvivenza', 1),
+(15, 'Storia', 3),
+(16, 'Acrobazia', 4),
+(16, 'Addestrare Animali', 2),
+(16, 'Arcano', 1),
+(16, 'Atletica', 1),
+(16, 'Furtività', 6),
+(16, 'Indagare', 1),
+(16, 'Inganno', 2),
+(16, 'Intimidire', 2),
+(16, 'Intrattenere', 0),
+(16, 'Intuizione', 2),
+(16, 'Medicina', 2),
+(16, 'Natura', 1),
+(16, 'Percezione', 2),
+(16, 'Persuasione', 2),
+(16, 'Rapidità Di Mano', 4),
+(16, 'Religione', 1),
+(16, 'Sopravvivenza', 2),
+(16, 'Storia', 1),
+(17, 'Acrobazia', 1),
+(17, 'Addestrare Animali', 0),
+(17, 'Arcano', 1),
+(17, 'Atletica', 2),
+(17, 'Furtività', 1),
+(17, 'Indagare', 1),
+(17, 'Inganno', 1),
+(17, 'Intimidire', -1),
+(17, 'Intrattenere', 1),
+(17, 'Intuizione', 2),
+(17, 'Medicina', 0),
+(17, 'Natura', 1),
+(17, 'Percezione', 0),
+(17, 'Persuasione', 1),
+(17, 'Rapidità Di Mano', 1),
+(17, 'Religione', 3),
+(17, 'Sopravvivenza', 0),
+(17, 'Storia', 1),
+(18, 'Acrobazia', 1),
+(18, 'Addestrare Animali', 0),
+(18, 'Arcano', 1),
+(18, 'Atletica', 2),
+(18, 'Furtività', 1),
+(18, 'Indagare', 1),
+(18, 'Inganno', 1),
+(18, 'Intimidire', -1),
+(18, 'Intrattenere', 1),
+(18, 'Intuizione', 2),
+(18, 'Medicina', 0),
+(18, 'Natura', 1),
+(18, 'Percezione', 0),
+(18, 'Persuasione', 1),
+(18, 'Rapidità Di Mano', 1),
+(18, 'Religione', 3),
+(18, 'Sopravvivenza', 0),
+(18, 'Storia', 1),
+(19, 'Acrobazia', 2),
+(19, 'Addestrare Animali', 0),
+(19, 'Arcano', 1),
+(19, 'Atletica', 2),
+(19, 'Furtività', 2),
+(19, 'Indagare', 1),
+(19, 'Inganno', 1),
+(19, 'Intimidire', -1),
+(19, 'Intrattenere', 1),
+(19, 'Intuizione', 0),
+(19, 'Medicina', 0),
+(19, 'Natura', 1),
+(19, 'Percezione', 0),
+(19, 'Persuasione', 1),
+(19, 'Rapidità Di Mano', 2),
+(19, 'Religione', 1),
+(19, 'Sopravvivenza', 0),
+(19, 'Storia', 3),
+(20, 'Acrobazia', 2),
+(20, 'Addestrare Animali', 0),
+(20, 'Arcano', 1),
+(20, 'Atletica', 2),
+(20, 'Furtività', 2),
+(20, 'Indagare', 1),
+(20, 'Inganno', 1),
+(20, 'Intimidire', -1),
+(20, 'Intrattenere', 1),
+(20, 'Intuizione', 0),
+(20, 'Medicina', 0),
+(20, 'Natura', 1),
+(20, 'Percezione', 0),
+(20, 'Persuasione', 1),
+(20, 'Rapidità Di Mano', 2),
+(20, 'Religione', 1),
+(20, 'Sopravvivenza', 0),
+(20, 'Storia', 3),
+(21, 'Acrobazia', 2),
+(21, 'Addestrare Animali', 0),
+(21, 'Arcano', 1),
+(21, 'Atletica', 2),
+(21, 'Furtività', 2),
+(21, 'Indagare', 1),
+(21, 'Inganno', 1),
+(21, 'Intimidire', -1),
+(21, 'Intrattenere', 1),
+(21, 'Intuizione', 0),
+(21, 'Medicina', 0),
+(21, 'Natura', 1),
+(21, 'Percezione', 0),
+(21, 'Persuasione', 1),
+(21, 'Rapidità Di Mano', 2),
+(21, 'Religione', 1),
+(21, 'Sopravvivenza', 0),
+(21, 'Storia', 3),
+(22, 'Acrobazia', 2),
+(22, 'Addestrare Animali', 0),
+(22, 'Arcano', 1),
+(22, 'Atletica', 2),
+(22, 'Furtività', 2),
+(22, 'Indagare', 1),
+(22, 'Inganno', 1),
+(22, 'Intimidire', -1),
+(22, 'Intrattenere', 1),
+(22, 'Intuizione', 0),
+(22, 'Medicina', 0),
+(22, 'Natura', 1),
+(22, 'Percezione', 0),
+(22, 'Persuasione', 1),
+(22, 'Rapidità Di Mano', 2),
+(22, 'Religione', 1),
+(22, 'Sopravvivenza', 0),
+(22, 'Storia', 3),
+(23, 'Acrobazia', 2),
+(23, 'Addestrare Animali', 0),
+(23, 'Arcano', 3),
+(23, 'Atletica', 2),
+(23, 'Furtività', 2),
+(23, 'Indagare', 1),
+(23, 'Inganno', -1),
+(23, 'Intimidire', -1),
+(23, 'Intrattenere', -1),
+(23, 'Intuizione', 4),
+(23, 'Medicina', 0),
+(23, 'Natura', 1),
+(23, 'Percezione', 0),
+(23, 'Persuasione', -1),
+(23, 'Rapidità Di Mano', 2),
+(23, 'Religione', 3),
+(23, 'Sopravvivenza', 0),
+(23, 'Storia', 1);
 
 -- --------------------------------------------------------
 
@@ -228,7 +588,27 @@ CREATE TABLE `borsa` (
 --
 
 INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
-(3, 225, 0, 0, 0, 150, 0);
+(3, 225, 0, 0, 0, 150, 0),
+(4, 120, 0, 0, 0, 50, 0),
+(5, 120, 0, 0, 0, 90, 0),
+(6, 210, 0, 0, 0, 120, 0),
+(7, 210, 0, 0, 0, 130, 0),
+(8, 210, 0, 0, 0, 130, 0),
+(9, 210, 0, 0, 0, 130, 0),
+(10, 210, 0, 0, 0, 120, 0),
+(11, 210, 0, 0, 0, 160, 0),
+(12, 210, 0, 0, 0, 70, 0),
+(13, 210, 0, 0, 0, 110, 0),
+(14, 210, 0, 0, 0, 80, 0),
+(15, 210, 0, 0, 0, 80, 0),
+(16, 195, 0, 0, 0, 120, 0),
+(17, 225, 0, 0, 0, 110, 0),
+(18, 225, 0, 0, 0, 140, 0),
+(19, 225, 0, 0, 0, 110, 0),
+(20, 225, 0, 0, 0, 135, 0),
+(21, 225, 0, 0, 0, 145, 0),
+(22, 225, 0, 0, 0, 195, 0),
+(23, 225, 0, 0, 0, 75, 0);
 
 -- --------------------------------------------------------
 
@@ -646,10 +1026,102 @@ CREATE TABLE `competenze_abilita` (
 --
 
 INSERT INTO `competenze_abilita` (`Nome_Abilita`, `ID_Personaggio`) VALUES
+('Acrobazia', 5),
+('Acrobazia', 16),
+('Arcano', 23),
+('Atletica', 4),
+('Atletica', 5),
+('Furtività', 5),
+('Furtività', 16),
 ('Inganno', 3),
+('Inganno', 5),
+('Inganno', 6),
+('Inganno', 7),
+('Inganno', 8),
+('Inganno', 9),
+('Inganno', 10),
+('Inganno', 11),
+('Inganno', 12),
+('Inganno', 13),
+('Inganno', 14),
+('Inganno', 15),
+('Inganno', 16),
+('Inganno', 17),
+('Inganno', 18),
+('Inganno', 19),
+('Inganno', 20),
+('Inganno', 21),
+('Inganno', 22),
+('Intimidire', 4),
+('Intimidire', 16),
 ('Intrattenere', 3),
+('Intrattenere', 6),
+('Intrattenere', 7),
+('Intrattenere', 8),
+('Intrattenere', 9),
+('Intrattenere', 10),
+('Intrattenere', 11),
+('Intrattenere', 12),
+('Intrattenere', 13),
+('Intrattenere', 14),
+('Intrattenere', 15),
+('Intrattenere', 17),
+('Intrattenere', 18),
+('Intrattenere', 19),
+('Intrattenere', 20),
+('Intrattenere', 21),
+('Intrattenere', 22),
+('Intuizione', 8),
+('Intuizione', 17),
+('Intuizione', 18),
+('Intuizione', 23),
+('Percezione', 5),
 ('Persuasione', 3),
-('Storia', 3);
+('Persuasione', 6),
+('Persuasione', 7),
+('Persuasione', 8),
+('Persuasione', 9),
+('Persuasione', 10),
+('Persuasione', 11),
+('Persuasione', 12),
+('Persuasione', 13),
+('Persuasione', 14),
+('Persuasione', 15),
+('Persuasione', 16),
+('Persuasione', 17),
+('Persuasione', 18),
+('Persuasione', 19),
+('Persuasione', 20),
+('Persuasione', 21),
+('Persuasione', 22),
+('Rapidità Di Mano', 5),
+('Rapidità Di Mano', 16),
+('Religione', 8),
+('Religione', 17),
+('Religione', 18),
+('Religione', 23),
+('Sopravvivenza', 9),
+('Sopravvivenza', 10),
+('Sopravvivenza', 11),
+('Sopravvivenza', 12),
+('Sopravvivenza', 13),
+('Sopravvivenza', 14),
+('Sopravvivenza', 15),
+('Storia', 3),
+('Storia', 4),
+('Storia', 6),
+('Storia', 7),
+('Storia', 9),
+('Storia', 10),
+('Storia', 11),
+('Storia', 12),
+('Storia', 13),
+('Storia', 14),
+('Storia', 15),
+('Storia', 19),
+('Storia', 20),
+('Storia', 21),
+('Storia', 22);
 
 -- --------------------------------------------------------
 
@@ -661,6 +1133,14 @@ CREATE TABLE `conosce` (
   `Nome_Incantesimo` varchar(30) NOT NULL,
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `conosce`
+--
+
+INSERT INTO `conosce` (`Nome_Incantesimo`, `ID_Personaggio`) VALUES
+('Confusione', 16),
+('Telepatia', 16);
 
 -- --------------------------------------------------------
 
@@ -679,10 +1159,40 @@ CREATE TABLE `contiene` (
 --
 
 INSERT INTO `contiene` (`ID_Borsa`, `Nome_Oggetto`, `Quantita`) VALUES
-(3, 'Diamante', 1),
+(19, 'Abiti Pregiati', 1),
+(20, 'Abiti Pregiati', 1),
+(21, 'Abiti Pregiati', 1),
+(22, 'Abiti Pregiati', 1),
+(19, 'Anello con Sigillo', 1),
+(20, 'Anello con Sigillo', 1),
+(21, 'Anello con Sigillo', 1),
+(22, 'Anello con Sigillo', 1),
+(23, 'Balestra Leggera', 1),
+(22, 'Cotta Di Maglia', 1),
+(3, 'Diamante', 7),
+(3, 'Disco Di Pietra Multicolore', 1),
+(18, 'Libro di Preghiere', 1),
+(23, 'Libro di Preghiere', 1),
+(22, 'Lira', 1),
+(22, 'Pacchetto da Diplomatico', 1),
+(23, 'Pacchetto da Esploratore', 1),
+(18, 'Paramenti', 1),
+(23, 'Paramenti', 1),
+(19, 'Pergamena di Attestato', 1),
+(20, 'Pergamena di Attestato', 1),
+(21, 'Pergamena di Attestato', 1),
+(22, 'Pergamena di Attestato', 1),
 (3, 'Pugnale', 5),
+(23, 'Sacchetto di Componenti', 1),
+(18, 'Simbolo Sacro', 1),
+(23, 'Simbolo Sacro', 1),
+(21, 'Spadone', 1),
+(18, 'Stecca d\'Incenso', 5),
+(23, 'Stecca d\'Incenso', 5),
 (3, 'Turchese', 10),
-(3, 'Veleno Di Serpente', 1);
+(3, 'Veleno Di Serpente', 1),
+(18, 'Vestiti Comuni', 1),
+(23, 'Vestiti Comuni', 1);
 
 -- --------------------------------------------------------
 
@@ -1319,17 +1829,6 @@ INSERT INTO `lingue_aggiuntive` (`Nome_Lingua`, `Nome_Origine`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `lingue_conosciute`
---
-
-CREATE TABLE `lingue_conosciute` (
-  `Nome_Lingua` varchar(20) NOT NULL,
-  `ID_Personaggio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `lingue_della_razza`
 --
 
@@ -1483,8 +1982,12 @@ CREATE TABLE `oggetto` (
 --
 
 INSERT INTO `oggetto` (`Peso`, `Valore`, `Nome`, `Descrizione`, `Contenuto`, `Danno`, `Tipo_Danno`, `Classe_Armatura`, `Forza_Necessaria`, `Svantaggio_Furtivita`, `Tipologia`) VALUES
+(0, 0, 'Abiti Comuni con Cappuccio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 0, 'Abiti da Viaggiatore', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 0, 'Abiti Pregiati', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 500, 'Acquamarina', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (0, 100, 'Ametista', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 0, 'Anello con Sigillo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (1, 25, 'Arco Corto', NULL, NULL, '1d6', 'Perforante', NULL, NULL, NULL, 'Arma Semplice A DIstanza'),
 (1, 50, 'Arco Lungo', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Arma Marziale A DIstanza'),
 (5, 10, 'Armatura Di Pelle', NULL, NULL, NULL, NULL, '11 + Destrezza', 0, 0, 'Armatura Leggera'),
@@ -1496,17 +1999,25 @@ INSERT INTO `oggetto` (`Peso`, `Valore`, `Nome`, `Descrizione`, `Contenuto`, `Da
 (8, 50, 'Balestra Pesante', NULL, NULL, '1d10', 'Perforante', NULL, NULL, NULL, 'Arma Marziale A DIstanza'),
 (27, 200, 'Corazza', NULL, NULL, NULL, NULL, '17', 15, 1, 'Armatura Pesante'),
 (20, 50, 'Corazza A Scaglie', NULL, NULL, NULL, NULL, '14 + Destrezza', 0, 1, 'Armatura Media'),
+(0, 0, 'Corda di Seta - 15 Metri', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (9, 50, 'Cotta Di Maglia', NULL, NULL, NULL, NULL, '13 + Destrezza', 0, 0, 'Armatura Media'),
 (1, 1, 'Dardo Balestra (20)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Munizioni'),
 (0, 5000, 'Diamante', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (0, 0, 'Disco Di Pietra Multicolore', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(2, 10, 'Doppia Ascia a Mano', NULL, NULL, '2d6', 'Tagliente', NULL, NULL, NULL, 'Arma da Lancio'),
 (1, 2, 'Flauto Dolce', NULL, 'Un Flauto dolce e la sua custodia', NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 0, 'Focus Arcano', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (1, 1, 'Freccia (20)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Munizioni'),
+(0, 0, 'Gingillo dal Sito di Scavo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 0, 'Gingillo del Marinaio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 100, 'Granato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (1, 5, 'Kit Erboristico', NULL, 'Questo kit contiene una serie di strumenti come forbici, mortaio e pestello, sacchetti e fiale utilizzati dagli erboristi per creare rimedi e pozioni.', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 1500, 'Lacrime Di Mezza Notte', 'Una creatura che ingerisce questo veleno non subisce alcun effetto fino allo scoccare della mezzanotte. Se il veleno non è stato neutralizzato prima di allora, la creatura deve superare un tiro salvezza di Costituzione con DC 17, subendo 31 (9d6) danni da veleno in caso di fallimento del tiro salvezza, o la metà in caso di successo.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
+(0, 0, 'Lanterna Occhio di Bue', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 0, 'Libro di Preghiere', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (1, 30, 'Lira', NULL, 'Una Lira e la sua custodia', NULL, NULL, NULL, NULL, NULL, NULL),
 (24, 75, 'Maglia A Catena', NULL, NULL, NULL, NULL, '16', 13, 1, 'Armatura Pesante'),
+(0, 0, 'Mappa delle Rovine', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (1, 15, 'Martello Da Guerra', NULL, NULL, '1d8', 'Contundente', NULL, NULL, NULL, 'Arma Marizale Ravvicinata'),
 (0, 0, 'Maschera Scheggiata', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (2, 5, 'Mazza', NULL, NULL, '1d6 ', 'Contundente', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
@@ -1519,13 +2030,19 @@ INSERT INTO `oggetto` (`Peso`, `Valore`, `Nome`, `Descrizione`, `Contenuto`, `Da
 (0, 10, 'Ossidiana', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (5, 40, 'Pacchetto Da Diplomatico', NULL, '2 custodie per mappe e pergamene, un set di abiti eleganti, una bottiglia d inchiostro, una penna a inchiostro, una lampada, 2 fiaschette d olio, 5 fogli di carta, una fiala di profumo, ceralacca e sa', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 10, 'Pacchetto Da Esploratore', NULL, 'Uno zaino, una branda, un kit da mensa, un acciarino, 10 torce, 10 giorni di razioni e una pelle d acqua. Lo zaino ha anche 50 piedi di corda di canapa legati ai lati.', NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 40, 'Pacchetto da Intrattenitore', NULL, '1 Zaino, 1 Sacco a Pelo, 2 Costumi, 5 Candele, 5 Razioni Alimentari, 1 Kit di Travestimento, 1 Otre', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 19, 'Pacchetto Da Sacerdote', NULL, 'Uno zaino, una coperta, 10 candele, un acciarino, una cassetta per le elemosine, 2 blocchi di incenso, un incensiere, paramenti, 2 giorni di razioni e una pelle d acqua.', NULL, NULL, NULL, NULL, NULL, NULL),
 (5, 16, 'Pacchetto Da Scassinatore', NULL, 'Uno zaino, un sacchetto con 1.000 cuscinetti a sfera, 3 metri di corda, una campana, 5 candele, un piede di porco, un martello, 10 chiodi, una lanterna con cappuccio, 2 fiaschette d olio, 5 giorni di ', NULL, NULL, NULL, NULL, NULL, NULL),
 (0, 0, 'Paio Di Calzini Vecchi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 0, 'Paramenti', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 0, 'Pergamena di Attestato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 100, 'Perla', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (0, 500, 'Perla Nera', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 0, 'Perno di Assicurazione', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (30, 1500, 'Piastre', NULL, NULL, NULL, NULL, '18', 15, 1, 'Armatura Pesante'),
+(0, 0, 'Piccone da Minatore', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 0, 'Piede Di Coniglio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 0, 'Piede di Porco', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 50, 'Pietra Di Luna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (0, 0, 'Pietra Sferica', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (2, 100, 'Pozione Della Scalata', 'Quando si beve questa pozione, si ottiene una velocità di arrampicata pari alla propria velocità di cammino per 1 ora. Durante questo periodo, si ha un vantaggio nelle prove di Forza (atletica) per arrampicarsi. La pozione è separata in strati marroni, argentati e grigi che assomigliano a bande di pietra. Agitando la bottiglia non si riesce a mescolare i colori.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
@@ -1534,19 +2051,28 @@ INSERT INTO `oggetto` (`Peso`, `Valore`, `Nome`, `Descrizione`, `Contenuto`, `Da
 (2, 500, 'Pozione Di Volare', 'Quando si beve questa pozione, si acquisisce una velocità di volo pari alla velocità di camminata per 1 ora e ci si può librare. Se si è in aria quando la pozione si esaurisce, si cade a meno che non si abbia un altro mezzo per rimanere in volo. Il liquido chiaro di questa pozione galleggia in cima al contenitore e presenta impurità bianche e torbide.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
 (1, 2, 'Pugnale', NULL, NULL, '1d4 ', 'Perforante', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
 (0, 50, 'Quarzo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(4, 8, 'Quattro Giavellotti', NULL, NULL, '4d6', 'Perforante', NULL, NULL, NULL, 'Arma da Lancio'),
 (0, 0, 'Rosa Di Corallo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 1000, 'Rubino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(0, 0, 'Sacchetto di Componenti', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (2, 150, 'Sangue Dell Assassino', 'Una creatura soggetta a questo veleno deve effettuare un tiro salvezza di Costituzione a CC 10. Se il tiro salvezza fallisce, subisce 6 (1d12) danni da veleno ed è avvelenata per 24 ore. Se il tiro salvezza riesce, la creatura subisce metà dei danni e non viene avvelenata.', NULL, NULL, NULL, NULL, NULL, NULL, 'Ingerito'),
 (0, 1, 'Set Di Carte Da Gioco', NULL, 'Contiene 52 carte da gioco', NULL, NULL, NULL, NULL, NULL, NULL),
+(0, 0, 'Simbolo Sacro', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 1000, 'Smeraldo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
+(1, 10, 'Spada Corta', NULL, NULL, '1d6', 'Perforante', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
 (2, 15, 'Spada Lunga', NULL, NULL, '1d8', 'Tagliente', NULL, NULL, NULL, 'Arma Marizale Ravvicinata'),
 (3, 50, 'Spadone', NULL, NULL, '2d6', 'Tagliente', NULL, NULL, NULL, 'Arma Marizale Ravvicinata'),
+(0, 0, 'Stecca d\'Incenso', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(1, 25, 'Stocco', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
+(0, 0, 'Tenda per Due', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
+(0, 5, 'Tirapugni d\'Ottone', NULL, NULL, '1d4', 'Contundente', NULL, NULL, NULL, 'Arma Semplice Da Mischia'),
 (0, 500, 'Topazio', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (0, 0, 'Topo Pietrificato', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 10, 'Turchese', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (3, 1, 'Utensili Da Cucina', NULL, 'Cose utili per cucinare', NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 20, 'Utensili Da Fabbro', NULL, 'Cose utili per riparare armi ed armature', NULL, NULL, NULL, NULL, NULL, NULL),
 (2, 200, 'Veleno Di Serpente', 'Questo veleno deve essere raccolto da un serpente gigante velenoso morto o inabilitato. Una creatura soggetta a questo veleno deve riuscire a superare un tiro salvezza di Costituzione a DC 11, subendo 10 (3d6) danni da veleno se il tiro fallisce o la metà dei danni se riesce.', NULL, NULL, NULL, NULL, NULL, NULL, 'Lesione'),
+(0, 0, 'Vestiti Comuni', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cianfrusaglie'),
 (0, 1000, 'Zaffiro', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
 (0, 50, 'Zircone', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma');
 
@@ -1635,7 +2161,27 @@ CREATE TABLE `personaggio` (
 --
 
 INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `Nome_Sottorazza`, `ID_Borsa`) VALUES
-(3, 15, 14, 13, 12, 8, 10, 9, 'Zeta', 'Bella', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Neutrale', 'Umano', 'Nephalia', 3);
+(3, 15, 14, 13, 12, 8, 10, 9, 'Zeta', 'Bella', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Neutrale', 'Umano', 'Nephalia', 3),
+(4, 8, 15, 10, 14, 13, 12, 12, 'Evi', 'Ooooo', 12, 15, 0, 4, 'Cavaliere', NULL, NULL, 'Neutrale Malvagio', 'Elfo', 'Elfo Dei Boschi', 4),
+(5, 8, 10, 15, 14, 13, 12, 10, 'Gianfranco', 'Oooo', 10, 10, 0, 4, 'Marinaio', NULL, NULL, 'Legale Buono', 'Umano', 'Nephalia', 5),
+(6, 14, 10, 13, 12, 8, 15, 9, 'Tiro', 'oooo', 10, 10, 0, 4, 'Cavaliere', NULL, NULL, 'Legale Buono', 'Nano', 'Nano Delle Colline', 6),
+(7, 14, 10, 13, 12, 8, 15, 9, 'Tiro', 'oooo', 10, 10, 0, 4, 'Cavaliere', NULL, NULL, 'Legale Buono', 'Nano', 'Nano Delle Colline', 7),
+(8, 14, 10, 13, 12, 8, 15, 9, 'Ooo', 'Fico', 10, 10, 0, 4, 'Accolito', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Dei Boschi', 8),
+(9, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 9),
+(10, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 10),
+(11, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 11),
+(12, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 12),
+(13, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 13),
+(14, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 14),
+(15, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 15),
+(16, 13, 14, 8, 12, 15, 10, 7, 'Prova0', 'Questa è la sua descrizione aspetto', 12, 14, 0, 4, 'Criminale', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 16),
+(17, 15, 13, 14, 12, 10, 8, 10, 'ProvaOrigine', 'eeee', 11, 13, 0, 4, 'Accolito', NULL, NULL, 'Caotico Malvagio', 'Elfo', 'Elfo Dei Boschi', 17),
+(18, 15, 13, 14, 12, 10, 8, 10, 'ProvaOrigine', 'eeee', 11, 13, 0, 4, 'Accolito', NULL, NULL, 'Caotico Malvagio', 'Elfo', 'Elfo Dei Boschi', 18),
+(19, 15, 14, 13, 12, 10, 8, 9, 'ProvaOrigine2', 'oh', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Buono', 'Elfo', 'Elfo Dei Boschi', 19),
+(20, 15, 14, 13, 12, 10, 8, 9, 'ProvaOrigine2', 'oh', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Buono', 'Elfo', 'Elfo Dei Boschi', 20),
+(21, 15, 14, 13, 12, 10, 8, 9, 'Ev', 'Aaaa', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Legale Neutrale', 'Elfo', 'Elfo Scuro', 21),
+(22, 15, 14, 13, 12, 10, 8, 9, 'Ev', 'Aaaa', 12, 14, 0, 4, 'Cavaliere', 'Cotta Di Maglia', NULL, 'Legale Neutrale', 'Elfo', 'Elfo Scuro', 22),
+(23, 15, 14, 13, 12, 10, 8, 7, 'ciccio', 'bono', 12, 14, 0, 4, 'Accolito', NULL, NULL, 'Caotico Buono', 'Nano', 'Nano Delle Montagne', 23);
 
 -- --------------------------------------------------------
 
@@ -1653,7 +2199,27 @@ CREATE TABLE `possiede` (
 --
 
 INSERT INTO `possiede` (`ID_Utente`, `ID_Personaggio`) VALUES
-(4, 3);
+(4, 3),
+(4, 4),
+(4, 5),
+(4, 6),
+(4, 7),
+(4, 8),
+(4, 9),
+(4, 10),
+(4, 11),
+(4, 12),
+(4, 13),
+(4, 14),
+(4, 15),
+(4, 16),
+(4, 17),
+(4, 18),
+(4, 19),
+(4, 20),
+(4, 21),
+(4, 22),
+(4, 23);
 
 -- --------------------------------------------------------
 
@@ -1881,6 +2447,31 @@ CREATE TABLE `scelta_classe` (
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `scelta_classe`
+--
+
+INSERT INTO `scelta_classe` (`Nome_Classe`, `Livello_Classe`, `ID_Personaggio`) VALUES
+('Bardo', 1, 6),
+('Bardo', 1, 7),
+('Bardo', 1, 8),
+('Bardo', 1, 9),
+('Bardo', 1, 10),
+('Bardo', 1, 11),
+('Bardo', 1, 12),
+('Bardo', 1, 13),
+('Bardo', 1, 14),
+('Bardo', 1, 15),
+('Bardo', 1, 17),
+('Bardo', 1, 18),
+('Bardo', 1, 19),
+('Bardo', 1, 20),
+('Bardo', 1, 21),
+('Bardo', 1, 22),
+('Ladro', 1, 5),
+('Ladro', 1, 16),
+('Mago', 1, 23);
+
 -- --------------------------------------------------------
 
 --
@@ -1968,6 +2559,14 @@ CREATE TABLE `scelta_sottoclasse` (
   `Nome_Sottoclasse` varchar(30) NOT NULL,
   `Livello_Sottoclasse` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `scelta_sottoclasse`
+--
+
+INSERT INTO `scelta_sottoclasse` (`ID_Personaggio`, `Nome_Sottoclasse`, `Livello_Sottoclasse`) VALUES
+(16, 'Assassino', 1),
+(5, 'Berserker', 1);
 
 -- --------------------------------------------------------
 
@@ -2126,8 +2725,42 @@ INSERT INTO `specializzazione` (`Nome_Classe`, `Livello_Classe`, `Nome_Sottoclas
 
 CREATE TABLE `tiri_salvezza_personaggio` (
   `ID_Personaggio` int(11) NOT NULL,
-  `Nome_Caratteristica` varchar(20) NOT NULL
+  `Nome_Caratteristica` varchar(20) NOT NULL,
+  `Valore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `tiri_salvezza_personaggio`
+--
+
+INSERT INTO `tiri_salvezza_personaggio` (`ID_Personaggio`, `Nome_Caratteristica`, `Valore`) VALUES
+(10, 'Carisma', 0),
+(10, 'Destrezza', 0),
+(11, 'Carisma', 0),
+(11, 'Destrezza', 0),
+(12, 'Carisma', 4),
+(12, 'Destrezza', 2),
+(13, 'Carisma', 4),
+(13, 'Destrezza', 2),
+(14, 'Carisma', 4),
+(14, 'Destrezza', 2),
+(15, 'Carisma', 4),
+(15, 'Destrezza', 2),
+(16, 'Destrezza', 4),
+(16, 'Intelligenza', 3),
+(17, 'Carisma', 1),
+(18, 'Carisma', 1),
+(18, 'Destrezza', 3),
+(19, 'Carisma', 1),
+(19, 'Destrezza', 4),
+(20, 'Carisma', 1),
+(20, 'Destrezza', 4),
+(21, 'Carisma', 1),
+(21, 'Destrezza', 4),
+(22, 'Carisma', 1),
+(22, 'Destrezza', 4),
+(23, 'Intelligenza', 3),
+(23, 'Saggezza', 2);
 
 -- --------------------------------------------------------
 
@@ -2498,14 +3131,6 @@ ALTER TABLE `lingue_aggiuntive`
   ADD KEY `FKLin_ORI_IND` (`Nome_Origine`);
 
 --
--- Indici per le tabelle `lingue_conosciute`
---
-ALTER TABLE `lingue_conosciute`
-  ADD PRIMARY KEY (`Nome_Lingua`,`ID_Personaggio`),
-  ADD UNIQUE KEY `ID_Lingue_Conosciute_IND` (`Nome_Lingua`,`ID_Personaggio`),
-  ADD KEY `FKLin_PER_IND` (`ID_Personaggio`);
-
---
 -- Indici per le tabelle `lingue_della_razza`
 --
 ALTER TABLE `lingue_della_razza`
@@ -2771,13 +3396,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `borsa`
 --
 ALTER TABLE `borsa`
-  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT per la tabella `personaggio`
 --
 ALTER TABLE `personaggio`
-  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT per la tabella `scelta_barbaro`
@@ -2980,13 +3605,6 @@ ALTER TABLE `lancia_mago`
 ALTER TABLE `lingue_aggiuntive`
   ADD CONSTRAINT `FK_linguaa` FOREIGN KEY (`Nome_Lingua`) REFERENCES `lingue` (`Nome`),
   ADD CONSTRAINT `FK_nomeoriginea` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`);
-
---
--- Limiti per la tabella `lingue_conosciute`
---
-ALTER TABLE `lingue_conosciute`
-  ADD CONSTRAINT `FK_idpersonaggioc` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
-  ADD CONSTRAINT `FK_linguac` FOREIGN KEY (`Nome_Lingua`) REFERENCES `lingue` (`Nome`);
 
 --
 -- Limiti per la tabella `lingue_della_razza`
