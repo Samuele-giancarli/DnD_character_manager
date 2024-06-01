@@ -76,11 +76,11 @@
         <section class="full-width">
             <h2>Informazioni del personaggio</h2>
             <div class="character-info">
-                <?php echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; ?>
-                <?php echo "<p>".$dbh->getRaceName($IDpersonaggio)."</p>"; ?>
-                <?php //echo "<p>".$dbh->getSubraceName($IDpersonaggio)."</p>"; ?>
-                <?php echo "<p>".$dbh->getClassName($IDpersonaggio)."</p>"; ?>
-                <?php echo "<p>".$dbh->getSubclassName($IDpersonaggio)."</p>"; ?>
+                <?php echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
+                echo "<p>".$dbh->getRaceName($IDpersonaggio)."</p>"; 
+                echo "<p>".$dbh->getSubraceName($IDpersonaggio)."</p>";
+                echo "<p>".$dbh->getClassName($IDpersonaggio)."</p>";
+                echo "<p>".$dbh->getSubclassName($IDpersonaggio)."</p>"; ?>
             </div>
         </section>
         <section class="half-width">

@@ -131,15 +131,15 @@ class DatabaseHelper{
         return $races;
     }
 
-    /*public function getSubraceName($subrace){
-        $query="SELECT Nome_Razza FROM scelta_sottorazza WHERE Nome=?";
+    public function getSubraceName($ID_personaggio){
+        $query="SELECT Nome_Sottorazza FROM personaggio WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("s", $subrace);
+        $stmt->bind_param("i", $ID_personaggio);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        return $row["Nome_Razza"];
-    }*/
+        return $row["Nome_Sottorazza"];
+    }
 
     
 
@@ -308,7 +308,7 @@ public function getSubracialTraits($race){
 }
 
 public function getWeapons(){
-    $query="SELECT Nome, Peso, Valore, Danno, Tipo_Danno, Tipologia, Nome_Proprieta FROM oggetto LEFT JOIN proprieta_arma ON oggetto.Nome=proprieta_arma.Nome_Arma WHERE Tipologia LIKE 'Arma%'";
+    $query="SELECT Nome, Peso, Valore, Danno, Tipo_Danno, Tipologia, Nome_Proprieta FROM oggetto LEFT JOIN proprieta_arma ON oggetto.Nome=proprieta_arma.Nome_Arma WHERE Tipologia LIKE 'Arma %'";
     $stmt = $this->db->prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
