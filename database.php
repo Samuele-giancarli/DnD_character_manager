@@ -243,6 +243,32 @@ class DatabaseHelper{
     return $capacities;
 }
 
+public function getCapacitiesOfClassAndLevel($class, $level){
+    $query="SELECT * FROM impara_classe WHERE Nome_Classe=? AND Livello_Classe=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("si", $class, $level);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $capacities=array();
+    while ($row = $result->fetch_assoc()){
+        $capacities[]=$row;
+    }
+    return $capacities;
+}
+
+public function getCapacitiesOfSubclassAndLevel($subclass, $level){
+    $query="SELECT * FROM impara_sottoclasse WHERE Nome_Sottoclasse=? AND Livello_Sottoclasse=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("si", $subclass, $level);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $capacities=array();
+    while ($row = $result->fetch_assoc()){
+        $capacities[]=$row;
+    }
+    return $capacities;
+}
+
 public function getCapacitiesOfSubclass(){
     $query="SELECT capacita_di_sottoclasse.Nome AS Capacita, capacita_di_sottoclasse.Descrizione as Descrizione, impara_sottoclasse.Nome_Sottoclasse as Sottoclasse, impara_sottoclasse.Livello_Sottoclasse as Livello FROM capacita_di_sottoclasse JOIN impara_sottoclasse ON capacita_di_sottoclasse.Nome=impara_sottoclasse.Nome_Capacita";
     $stmt = $this->db->prepare($query);
@@ -944,6 +970,16 @@ public function getSubclassesFromClass($classe){
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         return $row["Livello_Classe"];
+    }
+
+    public function getSubclassLevel($ID){
+        $query="SELECT Livello_Sottoclasse FROM scelta_sottoclasse WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Livello_Sottoclasse"];
     }
 
     public function getLevel($ID){

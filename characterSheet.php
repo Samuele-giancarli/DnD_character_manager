@@ -82,6 +82,7 @@
                 $subrace=$dbh->getSubraceName($IDpersonaggio);
                 $subclass=$dbh->getSubclassName($IDpersonaggio);
                 $livelloclasse=$dbh->getClassLevel($IDpersonaggio);
+                $livellosottoclasse=$dbh->getSubclassLevel($IDpersonaggio);
                 $origini=$dbh->getOriginName($IDpersonaggio);
                 echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
                 echo "<p>".htmlentities($race)."</p>"; 
@@ -213,7 +214,26 @@
             ?>
         </section>
         <section class="full-width">
-            <h2>Capacità</h2>
+            <h2>Capacità di Classe</h2>
+            <?php
+            $classcap=$dbh->getCapacitiesOfClassAndLevel($class, $livelloclasse);
+            echo "<p>";
+            foreach ($classcap as $cap){
+                echo $cap["Livello_Classe"].": ".htmlentities($cap["Nome_Capacita"])."<br>";
+            }
+            echo "</p>";
+            ?>
+        </section>
+        <section class="full-width">
+            <h2>Capacità di Sottoclasse</h2>
+            <?php
+            $subclasscap=$dbh->getCapacitiesOfSubclassAndLevel($subclass, $livelloclasse);
+            echo "<p>";
+            foreach ($subclasscap as $cap){
+                echo $cap["Livello_Sottoclasse"].": ".htmlentities($cap["Nome_Capacita"])."<br>";
+            }
+            echo "</p>";
+            ?>
         </section>
         <section class="full-width">
             <h2>Incantesimi</h2>
