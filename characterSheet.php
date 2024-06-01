@@ -82,13 +82,13 @@
                 $subrace=$dbh->getSubraceName($IDpersonaggio);
                 $subclass=$dbh->getSubclassName($IDpersonaggio);
                 $livelloclasse=$dbh->getClassLevel($IDpersonaggio);
-                $livellosottoclasse=$dbh->getSubclassLevel($IDpersonaggio);
                 $origini=$dbh->getOriginName($IDpersonaggio);
                 echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
                 echo "<p>".htmlentities($race)."</p>"; 
                 echo "<p>".htmlentities($subrace)."</p>";
                 echo "<p>".htmlentities($class)."</p>";
                 if (!is_null($subclass)){
+                $livellosottoclasse=$dbh->getSubclassLevel($IDpersonaggio);
                 echo "<p>".htmlentities($subclass)."</p>"; }?>
             </div>
         </section>
