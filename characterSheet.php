@@ -76,11 +76,18 @@
         <section class="full-width">
             <h2>Informazioni del personaggio</h2>
             <div class="character-info">
-                <?php echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
-                echo "<p>".$dbh->getRaceName($IDpersonaggio)."</p>"; 
-                echo "<p>".$dbh->getSubraceName($IDpersonaggio)."</p>";
-                echo "<p>".$dbh->getClassName($IDpersonaggio)."</p>";
-                echo "<p>".$dbh->getSubclassName($IDpersonaggio)."</p>"; ?>
+                <?php 
+                $race=$dbh->getRaceName($IDpersonaggio);
+                $class=$dbh->getClassName($IDpersonaggio);
+                $subrace=$dbh->getSubraceName($IDpersonaggio);
+                $subclass=$dbh->getSubclassName($IDpersonaggio);
+                $livelloclasse=$dbh->getClassLevel($IDpersonaggio);
+
+                echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
+                echo "<p>".htmlentities($race)."</p>"; 
+                echo "<p>".htmlentities($subrace)."</p>";
+                echo "<p>".htmlentities($class)."</p>";
+                echo "<p>".htmlentities($subclass)."</p>"; ?>
             </div>
         </section>
         <section class="half-width">
@@ -181,6 +188,8 @@
         </section>
         <section class="full-width">
             <h2>Bonus di competenza</h2>
+            <?php $bonus=$dbh->getClassBonus($class, $livelloclasse);
+            echo "<p>".$bonus."</p>";?>
         </section>
         <section class="full-width">
             <h2>Equipaggiamento</h2>
