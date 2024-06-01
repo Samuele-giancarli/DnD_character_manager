@@ -152,7 +152,40 @@ if ($myvalues==$reference){
                 die("Mod not valid");
         }   
         $dbh->insertSavingThrow($idpersonaggio, $nomecaratteristica, $valoretiro);
+
+        $oggettiorigine=array();
+        $backgroundgold=0;
+        switch ($origine){
+            case "Accolito":
+                $oggettiorigine=[["Simbolo Sacro", 1], ["Libro di Preghiere",1], ["Stecca d'Incenso",5],["Paramenti",1],["Vestiti Comuni",1]];
+                $backgroundgold=15;
+                break;
+            case "Archeologo":
+                $oggettiorigine=[["Mappa delle Rovine",1],["Lanterna Occhio di Bue",1],["Piccone da Minatore",1],["Abiti da Viaggiatore",1],["Tenda per Due",1],["Gingillo dal Sito di Scavo",1]];
+                $backgroundgold=25;
+                break;
+            case "Cavaliere":
+                $oggettiorigine=[["Abiti Pregiati",1],["Anello con Sigillo",1],["Pergamena di Attestato",1]];
+                $backgroundgold=25;
+                break;
+            case "Criminale":
+                $oggettiorigine=[["Piede di Porco",1],["Abiti Comuni con Cappuccio",1]];
+                $backgroundgold=15;
+                break;
+            case "Marinaio":
+                $oggettiorigine=[["Perno di Assicurazione",1],["Corda di Seta - 15 Metri",1],["Gingillo del Marinaio",1],["Vestiti Comuni",1]];
+                $backgroundgold=10;
+                break;
+            default:
+            die("Invalid Background");
+        }
     }
+
+    foreach ($oggettiorigine as $oggetto){
+        $dbh->addBackgroundInventory($idborsa, $oggetto[0], $oggetto[1]);
+    }
+    $dbh->updateGold($backgroundgold, $idborsa);
+
     header("Location: index.php");
 }else{
     header("Location: create.php");

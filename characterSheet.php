@@ -87,7 +87,8 @@
                 echo "<p>".htmlentities($race)."</p>"; 
                 echo "<p>".htmlentities($subrace)."</p>";
                 echo "<p>".htmlentities($class)."</p>";
-                echo "<p>".htmlentities($subclass)."</p>"; ?>
+                if (!is_null($subclass)){
+                echo "<p>".htmlentities($subclass)."</p>"; }?>
             </div>
         </section>
         <section class="half-width">
@@ -192,19 +193,19 @@
             echo "<p>".$bonus."</p>";?>
         </section>
         <section class="full-width">
-            <h2>Equipaggiamento</h2>
+            <h2>Competenze</h2>
         </section>
         <section class="full-width">
-            <h2>Attacchi</h2>
+            <h2>Capacità</h2>
         </section>
         <section class="full-width">
             <h2>Incantesimi</h2>
         </section>
         <section class="full-width">
-            <h2>Privilegi e tratti</h2>
+            <h2>Privilegi e tratti razziali</h2>
         </section>
         <section class="full-width">
-            <h2>Altre competenze e linguaggi</h2>
+            <h2>Lingue</h2>
         </section>
     </div>
 </body>

@@ -150,7 +150,9 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
+        if (!is_null($row)){
         return $row["Nome_Sottoclasse"];
+        }
     }
 
     public function getSubraceInfo($subrace){
@@ -524,6 +526,23 @@ public function getSubclassesFromClass($classe){
         $stmt->execute();
         $result=$this->db->insert_id;
         return $result;
+    }
+
+    public function updateGold($oro, $idborsa){
+        $query="UPDATE borsa SET Monete_Oro=Monete_Oro+? WHERE ID_Borsa=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $oro,$idborsa);
+        $stmt->execute();
+    }
+
+    public function addBackgroundInventory($idborsa, $nome, $quantita){
+        $query="INSERT INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isi", $idborsa,$nome, $quantita);
+       if ($stmt->execute()){
+        return true;
+       }
+       return false;
     }
     
     public function insertClassChoice($idpersonaggio, $classe){
