@@ -98,6 +98,18 @@ function classDescription(e){
     xhr.send();
 }
 
+function inventoryChoice(e){
+    const classe=e.value;
+    let xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(){
+    if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("inventorychoice").innerHTML= xhr.responseText;
+        }
+    };
+    xhr.open("GET", `inventorychoice.php?classe=${classe}`);
+    xhr.send();
+}
+
 </script>
 
 <body>
@@ -153,7 +165,7 @@ function classDescription(e){
 
                                 <li>
                                 <label for="race"> Scegli una razza:  </label>
-                                 <select class="form-control" id="races" name="race" form="creapg" onchange="{raceSelected(this); raceDescription(this)}">
+                                 <select class="form-control" id="races" name="race" form="creapg" onchange="raceSelected(this); raceDescription(this);">
                                  <option disabled selected value></option> 
                                 <?php
                                 $races=$dbh->getRaces();
@@ -188,7 +200,7 @@ function classDescription(e){
 
                                 <li>
                                 <label for="class"> Scegli una classe:  </label>
-                                 <select class="form-control" id="class" name="class" form="creapg" onchange="classDescription(this)";>
+                                 <select class="form-control" id="class" name="class" form="creapg" onchange="classDescription(this); inventoryChoice(this);">
                                  <option disabled selected value></option> 
                                 <?php
                                 $classes=$dbh->getClassByLevel(1);
@@ -235,7 +247,10 @@ function classDescription(e){
                                 <input name="saggezza" type="number"><br>
                                 <label for="carisma">Carisma: </label>
                                 <input name="carisma" type="number"> 
-                                
+
+                                <legend>Scegli il tuo inventario:</legend>
+                                <div id="inventorychoice">
+                                </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

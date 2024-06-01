@@ -527,6 +527,12 @@ public function getSubclassesFromClass($classe){
         $result=$this->db->insert_id;
         return $result;
     }
+    public function addSingleObjectToInventory($idborsa, $nomeoggetto){
+        $query="INSERT INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,1)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $idborsa,$nomeoggetto);
+        $stmt->execute();
+    }
 
     public function updateGold($oro, $idborsa){
         $query="UPDATE borsa SET Monete_Oro=Monete_Oro+? WHERE ID_Borsa=?";

@@ -185,6 +185,14 @@ if ($myvalues==$reference){
         $dbh->addBackgroundInventory($idborsa, $oggetto[0], $oggetto[1]);
     }
     $dbh->updateGold($backgroundgold, $idborsa);
+    $nchoices=$_GET["choicen"];
+    $choices=array();
+    for ($i=0;$i<$nchoices;$i++){
+        array_push($choices, urldecode($_GET["choice".$i]));
+    }
+    foreach ($choices as $object){
+        $dbh->addSingleObjectToInventory($idborsa, $object);
+    }
 
     header("Location: index.php");
 }else{
