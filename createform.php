@@ -114,7 +114,45 @@ if ($myvalues==$reference){
     $dbh->updateAbilita($idpersonaggio, $nomeabilita, $valore);
     $valore=0;
     }
+    //$classe
     $dbh->insertClassChoice($idpersonaggio, $classe);
+    $tirisalvezza=$dbh->getSavingThrowsName($classe);
+    $livelloclasse=$dbh->getClassLevel($idpersonaggio);
+    $bonuscompetenza=$dbh->getClassBonus($classe, $livelloclasse);
+
+    //sono un Bardo lvl 1: ho +2 di bonus_competenza
+    //in Carisma e Destrezza
+    //ho 15 punteggio Carisma e 10 punteggio Destrezza
+    //inoltre aggiungo il modificatore di Carisma e Destrezza (2 e 0)
+    //avrò valore 4 in Carisma e 2 in Destrezza nel tiro salvezza
+
+    foreach ($tirisalvezza as $tirosalvezza){
+        $nomecaratteristica=$tirosalvezza["Nome_TiroSalvezza"];
+        $valoretiro=0;
+        switch ($nomecaratteristica){
+            case "Destrezza":
+                $valoretiro=$moddex+$bonuscompetenza;
+                break;
+            case "Intelligenza":
+                $valoretiro=$modint+$bonuscompetenza;
+                break;
+            case "Saggezza":
+                $valoretiro=$modwis+$bonuscompetenza;
+                break;
+            case "Carisma":
+                $valoretiro=$modcha+$bonuscompetenza;
+                break;
+            case "Costituzione":
+                $valoretiro=$modcon+$bonuscompetenza;
+                break;
+            case "Forza":
+                $valoretiro=$modstr+$bonuscompetenza;
+                break;
+            default:
+                die("Mod not valid");
+        }   
+        $dbh->insertSavingThrow($idpersonaggio, $nomecaratteristica, $valoretiro);
+    }
     header("Location: index.php");
 }else{
     header("Location: create.php");

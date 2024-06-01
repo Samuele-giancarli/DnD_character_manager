@@ -546,6 +546,43 @@ public function getSubclassesFromClass($classe){
         return false;
     }
 
+    public function insertSavingThrow($idpersonaggio, $nomecaratteristica, $valore){
+        $query="INSERT INTO tiri_salvezza_personaggio(ID_Personaggio, Nome_Caratteristica, Valore) VALUES(?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isi", $idpersonaggio,$nomecaratteristica, $valore);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
+
+    public function getSavingThrowsName($classe){
+        $query="SELECT Nome_TiroSalvezza FROM competenza WHERE Nome_Classe=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $classe);
+        $stmt->execute();
+        $throws = array();
+        $result = $stmt->get_result();
+        while($row = $result->fetch_assoc()){
+            $throws[] = $row;
+        }
+        return $throws;
+    }
+
+    public function getSavingThrowsByID($idpersonaggio){
+        $query="SELECT * FROM tiri_salvezza_personaggio WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $idpersonaggio);
+        $stmt->execute();
+        $throws = array();
+        $result = $stmt->get_result();
+        while($row = $result->fetch_assoc()){
+            $throws[] = $row;
+        }
+        return $throws;
+    }
+
+
     public function getDiceFromClass($nomeclasse){
         $query="SELECT * FROM classe WHERE Nome=?";
         $stmt=$this->db->prepare($query);
@@ -678,6 +715,16 @@ public function getSubclassesFromClass($classe){
         return $row["Nome"];
     }
 
+    public function getClassBonus($classe, $livello){
+        $query="SELECT Bonus_Competenza FROM classe WHERE Nome=? AND Livello=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("si", $classe, $livello);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Bonus_Competenza"];
+    }
+
     public function getDescription($ID){
         $query="SELECT Descrizione_Aspetto FROM personaggio WHERE ID_Personaggio=?";
         $stmt=$this->db->prepare($query);
@@ -785,6 +832,16 @@ public function getSubclassesFromClass($classe){
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         return $row["Nome_Classe"];
+    }
+
+    public function getClassLevel($ID){
+        $query="SELECT Livello_Classe FROM scelta_classe WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Livello_Classe"];
     }
 
     public function getLevel($ID){

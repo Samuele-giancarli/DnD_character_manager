@@ -174,6 +174,10 @@
         </section>
         <section class="full-width">
             <h2>Tiri salvezza</h2>
+            <?php
+            $tirisalvezza=$dbh->getSavingThrowsByID($IDpersonaggio);
+            echo "<p>Primo tiro in: ".$tirisalvezza[0]["Nome_Caratteristica"]." con Valore: ".$tirisalvezza[0]["Valore"]."</p>";
+            echo "<p>Secondo tiro in: ".$tirisalvezza[1]["Nome_Caratteristica"]." con Valore: ".$tirisalvezza[1]["Valore"]."</p>";?>
         </section>
         <section class="full-width">
             <h2>Bonus di competenza</h2>
