@@ -695,6 +695,48 @@ public function getSubclassesFromClass($classe){
         return false;
     }
 
+    public function isWeaponEquipped($idpersonaggio, $arma){
+        $query="SELECT Arma_Equipaggiata FROM personaggio WHERE ID_Personaggio=? AND Arma_Equipaggiata=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $arma, $idpersonaggio);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
+
+    
+    public function isArmorEquipped($idpersonaggio, $armatura){
+        $query="SELECT Armatura_Equipaggiata FROM personaggio WHERE ID_Personaggio=? AND Armatura_Equipaggiata=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $armatura, $idpersonaggio);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
+
+    public function removeEquippedWeapon($idpersonaggio){
+        $query="UPDATE personaggio SET Arma_Equipaggiata=NULL WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$idpersonaggio);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
+
+    public function removeEquippedArmor($idpersonaggio){
+        $query="UPDATE personaggio SET Armatura_Equipaggiata=NULL WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i",$idpersonaggio);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
+
+
     public function addBackgroundInventory($idborsa, $nome, $quantita){
         $query="INSERT INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,?)";
         $stmt = $this->db->prepare($query);
