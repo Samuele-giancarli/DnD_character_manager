@@ -170,7 +170,7 @@
             <?php echo "<p>".$dbh->getAlignmentName($IDpersonaggio)."</p>"; ?>
         </section>
         <section class="third-width">
-            <h2><a href="borsa.php?ID=<?php echo $character["ID_Personaggio"]; ?>">Borsa</a></h2>
+            <h2><a href="borsa.php?ID=<?php echo $IDpersonaggio;?>">Borsa</a></h2>
         </section>
         <section class="full-width">
             <h2>Tiri salvezza</h2>

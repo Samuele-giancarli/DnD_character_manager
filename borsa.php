@@ -15,7 +15,7 @@ if (!isset($_GET["ID"])){
 
 
 $IDborsa = $dbh->getBagID($IDpersonaggio);
-
+$nomepersonaggio=$dbh->getName($IDpersonaggio);
 $items = $dbh->getCharacterItems($IDborsa);
 
 $allItems = $dbh->getAllItems();
@@ -44,7 +44,7 @@ if (isset($_POST["remove_item"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borsa di <?php echo $dbh->getName($IDpersonaggio) ; ?></title>
+    <title>Borsa di <?php echo $nomepersonaggio;?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <style>
         body {
@@ -106,7 +106,7 @@ if (isset($_POST["remove_item"])) {
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Borsa di <?php echo $dbh->getName($IDpersonaggio); ?></div>
+                <div class="card-header"><a href="characterSheet.php?ID=<?php echo $IDpersonaggio;?>">Borsa di <?php echo $nomepersonaggio;?></a></div>
                 <div class="card-body">
                     <ul>
                       <?php
