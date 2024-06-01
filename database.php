@@ -330,6 +330,19 @@ public function getSpells(){
     return $spells;
 }
 
+public function getSpellsByID($ID){
+    $query="SELECT * FROM conosce WHERE ID_Personaggio=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $ID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $spells=array();
+    while ($row = $result->fetch_assoc()){
+        $spells[]=$row;
+    }
+    return $spells;
+}
+
 
 
 public function getSubracialTraits($race){

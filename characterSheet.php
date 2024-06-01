@@ -237,6 +237,14 @@
         </section>
         <section class="full-width">
             <h2>Incantesimi</h2>
+            <?php
+            $spells=$dbh->getSpellsByID($IDpersonaggio);
+            echo "<p>";
+            foreach ($spells as $spell){
+                echo htmlentities($spell["Nome_Incantesimo"])."<br>";
+            }
+            echo "</p>";
+            ?>
         </section>
         <section class="full-width">
             <h2>Privilegi e tratti razziali</h2>
