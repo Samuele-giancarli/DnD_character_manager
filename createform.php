@@ -114,7 +114,7 @@ if ($myvalues==$reference){
     $dbh->updateAbilita($idpersonaggio, $nomeabilita, $valore);
     $valore=0;
     }
-
+    $dbh->insertClassChoice($idpersonaggio, $classe);
     header("Location: index.php");
 }else{
     header("Location: create.php");

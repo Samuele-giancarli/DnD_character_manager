@@ -525,6 +525,26 @@ public function getSubclassesFromClass($classe){
         $result=$this->db->insert_id;
         return $result;
     }
+    
+    public function insertClassChoice($idpersonaggio, $classe){
+        $query="INSERT INTO scelta_classe(ID_Personaggio, Nome_Classe, Livello_Classe) VALUES(?, ?, 1)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $idpersonaggio,$classe);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
+
+    public function insertSubclassChoice($idpersonaggio, $sottoclasse){
+        $query="INSERT INTO scelta_sottoclasse(ID_Personaggio, Nome_Sottoclasse, Livello_Sottoclasse) VALUES(?, ?, 1)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $idpersonaggio,$sottoclasse);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
 
     public function getDiceFromClass($nomeclasse){
         $query="SELECT * FROM classe WHERE Nome=?";
