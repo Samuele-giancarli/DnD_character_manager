@@ -82,7 +82,7 @@
                 $subrace=$dbh->getSubraceName($IDpersonaggio);
                 $subclass=$dbh->getSubclassName($IDpersonaggio);
                 $livelloclasse=$dbh->getClassLevel($IDpersonaggio);
-
+                $origini=$dbh->getOriginName($IDpersonaggio);
                 echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
                 echo "<p>".htmlentities($race)."</p>"; 
                 echo "<p>".htmlentities($subrace)."</p>";
@@ -163,7 +163,7 @@
         </section>
         <section class="third-width">
             <h2>Origini</h2>
-            <?php echo "<p>".$dbh->getOriginName($IDpersonaggio)."</p>"; ?>
+            <?php echo "<p>".htmlentities($origini)."</p>"; ?>
         </section>
         <section class="third-width">
             <h2>Armatura equipaggiata</h2>
@@ -190,10 +190,27 @@
         <section class="full-width">
             <h2>Bonus di competenza</h2>
             <?php $bonus=$dbh->getClassBonus($class, $livelloclasse);
-            echo "<p>".$bonus."</p>";?>
+            echo "<p>+ ".$bonus."</p>";?>
         </section>
         <section class="full-width">
             <h2>Competenze</h2>
+            <?php
+            $armors=$dbh->getArmorProficiencies($class);
+            $weapons=$dbh->getWeaponProficiencies($class);
+            $tools=$dbh->getToolProficiencies($class,$origini);
+            echo "<p>Competenze in armature: ";
+            foreach ($armors as $armor){
+            echo htmlentities($armor["Nome_Armatura"]).", ";
+        } echo "</p>";
+            echo "<p>Competenze in armi: ";
+            foreach ($weapons as $weapon){
+                echo htmlentities($weapon["Nome_Arma"]).", ";
+            }echo "</p>";
+            echo "<p>Competenze in strumenti: ";
+            foreach ($tools as $tool){
+                echo htmlentities($tool["Nome_Strumento"]).", ";}
+            echo "</p>";
+            ?>
         </section>
         <section class="full-width">
             <h2>Capacità</h2>
@@ -203,9 +220,27 @@
         </section>
         <section class="full-width">
             <h2>Privilegi e tratti razziali</h2>
+            <?php
+            $privilegi=$dbh->getPrivilegeFromBackground($origini);
+            $trattirazziali=$dbh->getAllTraits($race, $subrace);
+            echo "<p>Privilegio: ".htmlentities($privilegi["Nome_Privilegio"])."</p>";
+            echo "<p>Tratti Razziali: ";
+            foreach ($trattirazziali as $tratto){
+                echo htmlentities($tratto["Nome_Tratto"]).", ";
+            }
+            echo "</p>";
+            ?>
         </section>
         <section class="full-width">
             <h2>Lingue</h2>
+            <p>
+            <?php
+            $lingue=$dbh->getAllLanguages($origini, $race);
+            foreach ($lingue as $lingua){
+                echo htmlentities($lingua["Nome_Lingua"]).", ";
+            }
+            ?>
+            </p>
         </section>
     </div>
 </body>

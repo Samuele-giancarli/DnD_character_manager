@@ -193,6 +193,16 @@ class DatabaseHelper{
         }
         return $privileges;
     }
+
+    public function getPrivilegeFromBackground($origini){
+        $query="SELECT Nome_Privilegio FROM origine WHERE Nome=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $origini);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row;
+    }
 //by name
     public function getClassInfo($class){
         $query="SELECT * FROM classe WHERE Nome=?";
@@ -533,6 +543,73 @@ public function getSubclassesFromClass($classe){
         $stmt->bind_param("is", $idborsa,$nomeoggetto);
         $stmt->execute();
     }
+
+    public function getArmorProficiencies($class){
+        $query="SELECT Nome_Armatura FROM competenza_della_classe_in_armature WHERE Nome_Classe=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $class);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $armors=array();
+        while ($row = $result->fetch_assoc()){
+            $armors[]=$row;
+        }
+        return $armors;
+    }
+
+    public function getWeaponProficiencies($class){
+        $query="SELECT Nome_Arma FROM competenza_della_classe_in_armi WHERE Nome_Classe=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $class);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $weapons=array();
+        while ($row = $result->fetch_assoc()){
+            $weapons[]=$row;
+        }
+        return $weapons;
+    }
+
+    
+    public function getToolProficiencies($classe, $origine){
+        $query="SELECT DISTINCT Nome_Strumento FROM competenza_della_classe_in_strumenti WHERE Nome_Classe=? UNION SELECT DISTINCT Nome_Strumento FROM competenza_dell_origine_in_strumenti WHERE Nome_Origine=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $classe, $origine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $tools=array();
+        while ($row = $result->fetch_assoc()){
+            $tools[]=$row;
+        }
+        return $tools;
+    }
+
+    public function getAllTraits($razza, $sottorazza){
+        $query="SELECT DISTINCT Nome_Tratto FROM tratti_della_razza WHERE Nome_Razza=? UNION SELECT DISTINCT Nome_Tratto FROM tratti_della_sottorazza WHERE Nome_Sottorazza=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $razza, $sottorazza);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $traits=array();
+        while ($row = $result->fetch_assoc()){
+            $traits[]=$row;
+        }
+        return $traits;
+    }
+
+    public function getAllLanguages($origine, $razza){
+        $query="SELECT DISTINCT Nome_Lingua FROM lingue_aggiuntive WHERE Nome_Origine=? UNION SELECT DISTINCT Nome_Lingua FROM lingue_della_razza WHERE Nome_Razza=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ss", $origine, $razza);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $lang=array();
+        while ($row = $result->fetch_assoc()){
+            $lang[]=$row;
+        }
+        return $lang;
+    }
+
 
     public function updateGold($oro, $idborsa){
         $query="UPDATE borsa SET Monete_Oro=Monete_Oro+? WHERE ID_Borsa=?";
