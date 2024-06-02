@@ -706,22 +706,31 @@ public function getSubclassesFromClass($classe){
     public function isWeaponEquipped($idpersonaggio, $arma){
         $query="SELECT Arma_Equipaggiata FROM personaggio WHERE ID_Personaggio=? AND Arma_Equipaggiata=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("si", $arma, $idpersonaggio);
-        if ($stmt->execute()){
-            return true;
-        }
-        return false;
+        $stmt->bind_param("is", $idpersonaggio, $arma);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return !!$row;
     }
-
     
     public function isArmorEquipped($idpersonaggio, $armatura){
         $query="SELECT Armatura_Equipaggiata FROM personaggio WHERE ID_Personaggio=? AND Armatura_Equipaggiata=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("si", $armatura, $idpersonaggio);
-        if ($stmt->execute()){
-            return true;
-        }
-        return false;
+        $stmt->bind_param("is", $idpersonaggio, $armatura);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return !!$row;
+    }
+
+    public function isItemInBag($idborsa, $idoggetto){
+        $query="SELECT * FROM contiene WHERE ID_Borsa=? AND Nome_Oggetto=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $idborsa, $idoggetto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return !!$row;
     }
 
     public function removeEquippedWeapon($idpersonaggio){

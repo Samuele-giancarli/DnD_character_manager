@@ -123,14 +123,14 @@ if (isset($_POST["remove_money"])) {
 if (isset($_POST["remove_item"])) {
   $itemID = $_POST["item"];
   $quantity = $_POST["quantity"];
-  $weaponname=$_GET["weapon"];
-  $armorname=$_GET["armor"];
   $dbh->removeItemQuantityFromBag($IDborsa, $itemID, $quantity);
-  if ($dbh->isWeaponEquipped($IDpersonaggio,$weaponname)){
-    $dbh->removeEquippedWeapon($IDpersonaggio);
-  }
-  if ($dbh->isArmorEquipped($IDpersonaggio,$armorname)){
-    $dbh->removeEquippedArmor($IDpersonaggio);
+  if(!$dbh->isItemInBag($IDborsa, $itemID)) {
+    if ($dbh->isWeaponEquipped($IDpersonaggio,$itemID)){
+      $dbh->removeEquippedWeapon($IDpersonaggio);
+    }
+    if ($dbh->isArmorEquipped($IDpersonaggio,$itemID)){
+      $dbh->removeEquippedArmor($IDpersonaggio);
+    }
   }
   header("Location: borsa.php?ID=" . $IDpersonaggio);
   exit();
