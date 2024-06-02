@@ -13,8 +13,14 @@ if (!isset($_GET["ID"])){
       die();
   } else { $IDpersonaggio = $_GET["ID"];}
 
-
 $IDborsa = $dbh->getBagID($IDpersonaggio);
+$borsa=$dbh->getBagInfo($IDborsa);
+$platino=$borsa[0]["Monete_Platino"];
+$oro=$borsa[0]["Monete_Oro"];
+$electrum=$borsa[0]["Monete_Electrum"];
+$argento=$borsa[0]["Monete_Argento"];
+$rame=$borsa[0]["Monete_Rame"];
+$pesotrasportato=$dbh->getCurrentWeight($IDborsa);
 $nomepersonaggio=$dbh->getName($IDpersonaggio);
 $items = $dbh->getCharacterItems($IDborsa);
 
@@ -25,10 +31,93 @@ $allArmors=$dbh->getArmorsFromInventory($IDborsa);
 if (isset($_POST["add_item"])) {
   $itemID = $_POST["item"];
   $quantity = $_POST["quantity"];
+  $pesoborsa=$dbh->getBagInfo($IDborsa)["Peso_Trasportabile"];
+  $pesooggetto=$dbh->getObjectInfo($itemID)["Peso"];
+  if ($pesooggetto*$quantity+$pesotrasportato>$pesoborsa){ 
+  header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
+  exit();
+} else{
   $dbh->addItemToBag($IDborsa, $itemID, $quantity);
   header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
   exit();
 }
+}
+
+if (isset($_POST["add_money"])) {
+  $platinum = intval($_POST["platinum"]);
+  if ($platinum==null){
+    $platinum=0;
+  }
+  $gold = intval($_POST["gold"]);
+  if ($gold==null){
+    $gold=0;
+  }
+  $electrum_e = intval($_POST["electrum"]);
+  if ($electrum_e==null){
+    $electrum_e=0;
+  }
+  $silver = intval($_POST["silver"]);
+  if ($silver==null){
+    $silver=0;
+  }
+  $copper = intval($_POST["copper"]);
+  if ($copper==null){
+    $copper=0;
+  }
+
+  $dbh->updateMoney($IDborsa, $copper, $silver, $electrum_e, $gold, $platinum);
+  header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
+  exit();
+}
+
+if (isset($_POST["remove_money"])) {
+  $platinum = -intval($_POST["platinum"]);
+  if (($platinum==null)||($platino==0)){
+    $platinum=0;
+  }else if ($platinum+$platino<=0){
+    $dbh->updateMoney($IDborsa,0,0,0,0,-$platino);
+    $platinum=0;
+  }
+  
+  $gold = -intval($_POST["gold"]);
+  if (($gold==null)||($oro==0)){
+    $gold=0;
+  }else if ($gold+$oro<=0){
+    $dbh->updateMoney($IDborsa,0,0,0,-$oro,0);
+    $gold=0;
+  }
+
+  $electrum_e = -intval($_POST["electrum"]);
+  if (($electrum_e==null)||($electrum==0)){
+    $electrum_e=0;
+  }else if ($electrum_e+$electrum<=0){
+    $dbh->updateMoney($IDborsa,0,0,-$electrum,0,0);
+    $electrum_e=0;
+  }
+
+  $silver = -intval($_POST["silver"]);
+  if (($silver==null)||($argento==0)){
+    $silver=0;
+  }else if ($silver+$argento<=0){
+    $dbh->updateMoney($IDborsa,0,-$argento,0,0,0);
+    $silver=0;
+  }
+  $copper = -intval($_POST["copper"]);
+  if(($copper==null)||($rame==0)){
+    $copper=0;
+  }else if ($copper+$rame<=0){
+    $dbh->updateMoney($IDborsa,-$rame,0,0,0,0);
+    $copper=0;
+  }
+
+  $dbh->updateMoney($IDborsa, $copper, $silver, $electrum_e, $gold, $platinum);
+  header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
+  exit();
+}
+
+
+
+
 
 // Gestione rimozione quantità di oggetto
 if (isset($_POST["remove_item"])) {
@@ -120,6 +209,10 @@ if (isset($_POST["remove_item"])) {
                 <div class="card-body">
                     <ul>
                       <?php
+                  
+                        $pesotrasportabile=$borsa[0]["Peso_Trasportabile"]-$pesotrasportato;
+                        echo "<li>Peso Trasportabile: ".$pesotrasportabile."/".$borsa[0]["Peso_Trasportabile"]."</li>"; 
+                        echo "<br>";
                       // Visualizza gli oggetti del personaggio
                       foreach($items as $item){
                           echo "<li>" .htmlentities($item["Nome_Oggetto"]). ":" .htmlentities($item["Quantita"]). "</li>";
@@ -148,6 +241,32 @@ if (isset($_POST["remove_item"])) {
                     </form>
                     <br>
 
+                    <form method="POST">
+                      <ul>Monete attuali:
+                      <?php
+                      echo "<li>Platino: ".$platino."</li>";
+                      echo "<li>Oro: ".$oro."</li>";
+                      echo "<li>Electrum: ".$electrum."</li>";
+                      echo "<li>Argento: ".$argento."</li>";
+                      echo "<li>Rame: ".$rame."</li>";
+                      ?>
+                      </ul>
+                      <label for="platinum">Monete di platino:</label><br>
+                      <input type="number" id="platinum" name="platinum" class="form-control" min="1">
+                      <label for="gold">Monete d'oro:</label><br>
+                      <input type="number" id="gold" name="gold" class="form-control" min="1">
+                      <label for="electrum">Monete di electrum:</label><br>
+                      <input type="number" id="electrum" name="electrum" class="form-control" min="1">
+                      <label for="silver">Monete d'argento:</label><br>
+                      <input type="number" id="silver" name="silver" class="form-control" min="1">
+                      <label for="copper">Monete di rame:</label><br>
+                      <input type="number" id="copper" name="copper" class="form-control" min="1">
+                      <button type="submit" name="add_money" class="btn btn-primary">Aggiungi</button>
+                      <button type="submit" name="remove_money" class="btn btn-danger">Rimuovi</button>
+                    </form>
+                    <br>
+
+
                     <form method="GET" action="equipment.php">
                     <input id="idborsa" name="idborsa" type="hidden" value="<?php echo $IDborsa?>"/>
                     <input id="idpersonaggio" name="idpersonaggio" type="hidden" value="<?php echo $IDpersonaggio?>"/>
@@ -161,6 +280,7 @@ if (isset($_POST["remove_item"])) {
                           ?>
                         </select>
                     <br>
+
 
                     <label for="armor">Equipaggia armatura:</label>
                     <select id="armor" name="armor" class="form-control">

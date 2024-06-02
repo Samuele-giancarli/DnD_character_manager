@@ -604,6 +604,14 @@ public function getSubclassesFromClass($classe){
         $result=$this->db->insert_id;
         return $result;
     }
+
+    public function updateMoney($idborsa, $rame, $argento, $electrum, $oro, $platino){
+        $query="UPDATE borsa SET Monete_Rame=Monete_Rame+?, Monete_Argento=Monete_Argento+?, Monete_Electrum=Monete_Electrum+?, Monete_Oro=Monete_Oro+?, Monete_Platino=Monete_Platino+? WHERE ID_Borsa=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iiiiii", $rame, $argento, $electrum, $oro, $platino, $idborsa);
+        $stmt->execute();
+    }
+
     public function addSingleObjectToInventory($idborsa, $nomeoggetto){
         $query="INSERT INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,1)";
         $stmt = $this->db->prepare($query);
@@ -1044,6 +1052,45 @@ public function getSubclassesFromClass($classe){
         $row = $result->fetch_assoc();
         return $row["ID_Borsa"];
     }
+    
+    public function getCurrentWeight($idborsa){
+        $query="SELECT SUM(oggetto.Peso * contiene.Quantita) AS Prodotto FROM contiene JOIN oggetto ON contiene.Nome_Oggetto=oggetto.Nome WHERE contiene.ID_Borsa=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $idborsa);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Prodotto"];
+    }
+
+    public function getBagInfo($IDborsa){
+        $query="SELECT * FROM borsa WHERE ID_Borsa=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $IDborsa);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $info = array();
+        while($row = $result->fetch_assoc()){
+            $info[] = $row;
+        }
+        return $info;
+    }
+    
+    public function getObjectInfo($oggetto){
+        $query="SELECT * FROM oggetto WHERE Nome=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("s", $oggetto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $info = array();
+        while($row = $result->fetch_assoc()){
+            $info[] = $row;
+        }
+        return $info;
+    }
+
+ 
+
 
     public function getClassName($ID){
         $query="SELECT Nome_Classe FROM scelta_classe WHERE ID_Personaggio=?";
@@ -1097,7 +1144,6 @@ public function getSubclassesFromClass($classe){
         $stmt = $this->db->prepare("SELECT * FROM Contiene WHERE ID_Borsa = ?");
         $stmt->bind_param("i", $ID);
         $stmt->execute();
-
         $result = $stmt->get_result();
         $items = array();
         while($row = $result->fetch_assoc()){
