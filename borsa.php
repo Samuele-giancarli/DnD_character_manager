@@ -31,16 +31,16 @@ $allArmors=$dbh->getArmorsFromInventory($IDborsa);
 if (isset($_POST["add_item"])) {
   $itemID = $_POST["item"];
   $quantity = $_POST["quantity"];
-  $pesoborsa=$dbh->getBagInfo($IDborsa)["Peso_Trasportabile"];
-  $pesooggetto=$dbh->getObjectInfo($itemID)["Peso"];
-  if ($pesooggetto*$quantity+$pesotrasportato>$pesoborsa){ 
-  header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
+  $pesoborsa=$dbh->getBagInfo($IDborsa)[0]["Peso_Trasportabile"];
+  $pesooggetto=$dbh->getObjectInfo($itemID)[0]["Peso"];
+  if (($pesooggetto*$quantity+$pesotrasportato)>$pesoborsa){
+    header("Location: borsa.php?ID=".$IDborsa); //se non va prova $IDborsa
+  } else{
+    $dbh->addItemToBag($IDborsa, $itemID, $quantity);
+    $pesotrasportabile=$pesoborsa-$pesotrasportato-($pesooggetto*$quantity);
+    header("Location: borsa.php?ID=".$IDborsa); //se non va prova $IDborsa
+  }
   exit();
-} else{
-  $dbh->addItemToBag($IDborsa, $itemID, $quantity);
-  header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
-  exit();
-}
 }
 
 if (isset($_POST["add_money"])) {
@@ -78,7 +78,7 @@ if (isset($_POST["remove_money"])) {
     $dbh->updateMoney($IDborsa,0,0,0,0,-$platino);
     $platinum=0;
   }
-  
+
   $gold = -intval($_POST["gold"]);
   if (($gold==null)||($oro==0)){
     $gold=0;
@@ -215,7 +215,7 @@ if (isset($_POST["remove_item"])) {
                         echo "<br>";
                       // Visualizza gli oggetti del personaggio
                       foreach($items as $item){
-                          echo "<li>" .htmlentities($item["Nome_Oggetto"]). ":" .htmlentities($item["Quantita"]). "</li>";
+                          echo "<li>" .htmlentities($item["Nome_Oggetto"]). ": " .htmlentities($item["Quantita"]). "</li>";
                       }
                       ?>
                     </ul>
@@ -240,6 +240,7 @@ if (isset($_POST["remove_item"])) {
                       <button type="submit" name="remove_item" class="btn btn-danger">Rimuovi</button>
                     </form>
                     <br>
+
 
                     <form method="POST">
                       <ul>Monete attuali:
