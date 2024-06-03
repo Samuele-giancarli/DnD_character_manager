@@ -123,6 +123,7 @@ if (isset($_POST["remove_money"])) {
 if (isset($_POST["remove_item"])) {
   $itemID = $_POST["item"];
   $quantity = $_POST["quantity"];
+  $moddex=($dbh->getCharacterInfo($IDpersonaggio)["Car_Destrezza"]/2)-5;
   $dbh->removeItemQuantityFromBag($IDborsa, $itemID, $quantity);
   if(!$dbh->isItemInBag($IDborsa, $itemID)) {
     if ($dbh->isWeaponEquipped($IDpersonaggio,$itemID)){
@@ -130,6 +131,7 @@ if (isset($_POST["remove_item"])) {
     }
     if ($dbh->isArmorEquipped($IDpersonaggio,$itemID)){
       $dbh->removeEquippedArmor($IDpersonaggio);
+      $dbh->updateCA($IDpersonaggio,10+$moddex);
     }
   }
   header("Location: borsa.php?ID=" . $IDpersonaggio);

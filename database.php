@@ -183,6 +183,16 @@ class DatabaseHelper{
         return $backgrounds;
     }
 
+    public function getCharacterInfo($idpersonaggio){
+        $query="SELECT * FROM personaggio WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $idpersonaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row;
+    }
+
     public function getPrivilegeInfo($privilege){
         $query="SELECT * FROM privilegio WHERE Nome=?";
         $stmt = $this->db->prepare($query);
@@ -703,6 +713,13 @@ public function getSubclassesFromClass($classe){
         $stmt->execute();
     }
 
+    public function updateCA($idpersonaggio, $valore){
+        $query="UPDATE personaggio SET Classe_Armatura=? WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $valore,$idpersonaggio);
+        $stmt->execute();
+    }
+
     public function updateEquipment($idpersonaggio, $arma, $armatura){
         $query="UPDATE personaggio SET Arma_Equipaggiata=?, Armatura_Equipaggiata=? WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
@@ -861,11 +878,11 @@ public function getSubclassesFromClass($classe){
         return $characters;
     }
 
-    public function addCharacter($Forza, $Destrezza, $Costituzione, $Intelligenza, $Saggezza, $Carisma, $Punti_Ferita, $Nome, $Descrizione,$Classe_Armatura, $Iniziativa, $Punti_esperienza, $Nome_Origine, $Armatura_equipaggiata, $Arma_equipaggiata, $Nome_allineamento, $Nome_razza,$Nome_sottorazza, $ID_Borsa, $ID){
-        $query = "INSERT INTO personaggio (Car_Forza, Car_Destrezza, Car_Costituzione, Car_Intelligenza, Car_Saggezza, Car_Carisma, Punti_Ferita, Nome, Descrizione_Aspetto, Classe_Armatura, Iniziativa, Punti_Esperienza, Nome_Origine, Armatura_Equipaggiata, Arma_equipaggiata, Nome_Allineamento, Nome_Razza, Nome_Sottorazza, ID_Borsa, ID_Utente)
+    public function addCharacter($Forza, $Destrezza, $Costituzione, $Intelligenza, $Saggezza, $Carisma, $Punti_Ferita, $Nome, $Descrizione,$Classe_Armatura, $Iniziativa, $Nome_Origine, $Armatura_equipaggiata, $Arma_equipaggiata, $Nome_allineamento, $Nome_razza,$Nome_sottorazza, $ID_Borsa, $ID){
+        $query = "INSERT INTO personaggio (Car_Forza, Car_Destrezza, Car_Costituzione, Car_Intelligenza, Car_Saggezza, Car_Carisma, Punti_Ferita, Nome, Descrizione_Aspetto, Classe_Armatura, Iniziativa, Nome_Origine, Armatura_Equipaggiata, Arma_equipaggiata, Nome_Allineamento, Nome_Razza, Nome_Sottorazza, ID_Borsa, ID_Utente)
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("iiiiiiissiiissssssii", $Forza, $Destrezza, $Costituzione, $Intelligenza, $Saggezza, $Carisma, $Punti_Ferita, $Nome, $Descrizione,$Classe_Armatura, $Iniziativa, $Punti_esperienza, $Nome_Origine, $Armatura_equipaggiata, $Arma_equipaggiata, $Nome_allineamento, $Nome_razza, $Nome_sottorazza, $ID_Borsa, $ID);
+        $stmt->bind_param("iiiiiiissiissssssii", $Forza, $Destrezza, $Costituzione, $Intelligenza, $Saggezza, $Carisma, $Punti_Ferita, $Nome, $Descrizione,$Classe_Armatura, $Iniziativa, $Nome_Origine, $Armatura_equipaggiata, $Arma_equipaggiata, $Nome_allineamento, $Nome_razza, $Nome_sottorazza, $ID_Borsa, $ID);
         if ($stmt->execute()) {
             return $this->db->insert_id;
         } else {
@@ -1103,6 +1120,17 @@ public function getSubclassesFromClass($classe){
             $info[] = $row;
         }
         return $info;
+    }
+
+    public function getArmorInfo($armatura){
+        $query="SELECT * FROM oggetto WHERE Nome=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("s", $armatura);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Classe_Armatura"];
+
     }
     
     public function getObjectInfo($oggetto){

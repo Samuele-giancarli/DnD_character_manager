@@ -74,7 +74,7 @@ $abilita=$dbh->abilityMatches($classe, $origine);
     //if query matches classe e abilita: valore+1, pass into dbAbilita
 if ($myvalues==$reference){
     $idborsa=$dbh->addInventory($peso_borsa, $gold);
-    $idpersonaggio=$dbh->addCharacter($str, $dex, $con, $int, $wis, $cha, $hitpoints, $nome,$descrizione_aspetto,$classearmatura,$iniziativa,0,$origine, null, null, $allineamento, $razza,$sottorazza, $idborsa, $_SESSION["ID"]);
+    $idpersonaggio=$dbh->addCharacter($str, $dex, $con, $int, $wis, $cha, $hitpoints, $nome,$descrizione_aspetto,$classearmatura,$iniziativa,$origine, null, null, $allineamento, $razza,$sottorazza, $idborsa, $_SESSION["ID"]);
     $dbh->updatePossiede($_SESSION["ID"], $idpersonaggio);
 
     foreach ($abilita as $singolabilita){
