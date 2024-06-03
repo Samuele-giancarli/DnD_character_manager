@@ -76,6 +76,10 @@ if ($myvalues==$reference){
     $idborsa=$dbh->addInventory($peso_borsa, $gold);
     $idpersonaggio=$dbh->addCharacter($str, $dex, $con, $int, $wis, $cha, $hitpoints, $nome,$descrizione_aspetto,$classearmatura,$iniziativa,$origine, null, null, $allineamento, $razza,$sottorazza, $idborsa, $_SESSION["ID"]);
     $dbh->updatePossiede($_SESSION["ID"], $idpersonaggio);
+    $augmented=$dbh->getAumFromRace($razza, $sottorazza);
+
+    $dbh->updateCharacterSkills($idpersonaggio, $augmented["Caratteristica_Razza"], $augmented["Valore_Razza"]);
+    $dbh->updateCharacterSkills($idpersonaggio, $augmented["Caratteristica_Sottorazza"], $augmented["Valore_Sottorazza"]);
 
     foreach ($abilita as $singolabilita){
         $car_associata=$singolabilita["Caratteristica_Associata"];

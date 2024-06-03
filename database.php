@@ -756,6 +756,14 @@ public function getSubclassesFromClass($classe){
         $stmt->execute();
     }
 
+    public function updateCharacterSkills($idpersonaggio, $caratteristica, $valore){
+        $query="UPDATE personaggio SET Car_".$caratteristica."=Car_".$caratteristica."+? WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii",$valore, $idpersonaggio);
+        $stmt->execute();
+    }
+
+
     public function updateEquipment($idpersonaggio, $arma, $armatura){
         $query="UPDATE personaggio SET Arma_Equipaggiata=?, Armatura_Equipaggiata=? WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
@@ -1161,6 +1169,17 @@ public function getSubclassesFromClass($classe){
         $row = $result->fetch_assoc();
         return $row["ID_Borsa"];
     }
+
+    public function getAumFromRace($race, $subrace){
+        $query="SELECT razza.Aum_Nome_Caratteristica AS Caratteristica_Razza, razza.Aum_Valore_Aggiuntivo AS Valore_Razza, sottorazza.Aum_Nome_Caratteristica AS Caratteristica_Sottorazza, sottorazza.Aum_Valore_Aggiuntivo AS Valore_Sottorazza FROM razza JOIN sottorazza on razza.Nome=sottorazza.Nome_Razza WHERE razza.Nome=? AND sottorazza.Nome=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("ss", $race, $subrace);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row;
+    }
+
     
     public function getCurrentWeight($idborsa){
         $query="SELECT SUM(oggetto.Peso * contiene.Quantita) AS Prodotto FROM contiene JOIN oggetto ON contiene.Nome_Oggetto=oggetto.Nome WHERE contiene.ID_Borsa=?";
