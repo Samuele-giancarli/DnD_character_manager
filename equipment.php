@@ -16,6 +16,6 @@ $valore=intval($array[0])+$moddex;
     $valore=intval($info);
 }
 $dbh->updateCA($idpersonaggio, $valore);
-header("Location: borsa.php?ID=".$idborsa);
+header("Location: borsa.php?ID=".$idpersonaggio);
 
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 $classe=$_GET["classe"];
-$inventariobardo=[["Tirapugni", "Spadone", "Arco Corto"], ["Pacchetto da Diplomatico", "Pacchetto da Intrattenitore"],["Lira"],["Armatura di Pelle", "Pugnale"]];
+$inventariobardo=[["Tirapugni d'Ottone", "Spadone", "Arco Corto"], ["Pacchetto da Diplomatico", "Pacchetto da Intrattenitore"],["Lira"],["Armatura di Pelle", "Pugnale"]];
 $inventariobarbaro=[["Ascia", "Martello da Guerra"], ["Doppia Ascia a Mano", "Mazza"],["Pacchetto Da Esploratore"], ["Quattro Giavellotti"]];
 $inventarioladro=[["Stocco", "Spada Corta"], ["Arco Corto"], ["Pacchetto da Scassinatore", "Pacchetto da Esploratore"],["Armatura di Pelle", "Pugnale"]];
 $inventariomago=[["Balestra Leggera"], ["Sacchetto di Componenti", "Focus Arcano"], ["Pacchetto da Esploratore"],["Pugnale"]];

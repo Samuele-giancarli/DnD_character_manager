@@ -81,6 +81,29 @@ class DatabaseHelper{
         return $subclasses;
     }
 
+    
+    public function getSubclassesByClassAndLevel($classe, $livello){
+        $query="SELECT * FROM specializzazione WHERE Nome_Classe=? AND Livello_Classe=? ORDER BY Nome_Classe";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $classe, $livello);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $subclasses=array();
+        while ($row = $result->fetch_assoc()){
+            $subclasses[]=$row;
+        }
+        return $subclasses;
+    }
+
+    public function getSubclassesByClassAndID($classe, $idpersonaggio){
+        $query="SELECT DISTINCT scelta_sottoclasse.Nome_Sottoclasse FROM scelta_sottoclasse LEFT JOIN specializzazione ON scelta_sottoclasse.Nome_Sottoclasse=specializzazione.Nome_Sottoclasse WHERE Nome_Classe=? AND ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $classe, $idpersonaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
     public function getSubraces(){
         $query="SELECT * FROM sottorazza ORDER BY Nome_Razza";
         $stmt = $this->db->prepare($query);
@@ -147,6 +170,19 @@ class DatabaseHelper{
         $query="SELECT * FROM scelta_sottoclasse WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $info = array();
+        while($row = $result->fetch_assoc()){
+            $info[] = $row;
+        }
+        return $info;
+    }
+
+    public function getMySubclassLevel($ID, $subclass){
+        $query="SELECT Livello_Sottoclasse FROM scelta_sottoclasse WHERE ID_Personaggio=? AND Nome_Sottoclasse=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $ID, $subclass);
         $stmt->execute();
         $result = $stmt->get_result();
         $info = array();
@@ -808,14 +844,34 @@ public function getSubclassesFromClass($classe){
         $stmt->execute();
     }
 
-    public function insertSubclassChoice($idpersonaggio, $sottoclasse){
-        $query="INSERT INTO scelta_sottoclasse(ID_Personaggio, Nome_Sottoclasse, Livello_Sottoclasse) VALUES(?, ?, 1)";
+    public function insertSubclassChoice($idpersonaggio, $sottoclasse, $livello){
+        $query="INSERT INTO scelta_sottoclasse(ID_Personaggio, Nome_Sottoclasse, Livello_Sottoclasse) VALUES(?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("is", $idpersonaggio,$sottoclasse);
+        $stmt->bind_param("isi", $idpersonaggio,$sottoclasse, $livello);
         if ($stmt->execute()){
             return true;
         }
         return false;
+    }
+
+    public function removeOldChoiceSubclass($idpersonaggio, $sottoclasse){
+        $query="DELETE FROM scelta_sottoclasse WHERE ID_Personaggio=? AND Nome_Sottoclasse=? AND Livello_Sottoclasse=(SELECT MIN(Livello_Sottoclasse) FROM scelta_sottoclasse WHERE ID_Personaggio=? AND Nome_Sottoclasse=?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isis", $idpersonaggio,$sottoclasse,$idpersonaggio, $sottoclasse);
+        $stmt->execute();
+    }
+
+    public function chosenSubclassesFromClasses($idpersonaggio){
+    $query="SELECT DISTINCT specializzazione.Nome_Classe FROM scelta_sottoclasse LEFT JOIN specializzazione ON scelta_sottoclasse.Nome_Sottoclasse=specializzazione.Nome_Sottoclasse WHERE scelta_sottoclasse.ID_Personaggio=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("i", $idpersonaggio);
+    $stmt->execute();
+    $subclasses = array();
+    $result = $stmt->get_result();
+    while($row = $result->fetch_assoc()){
+    $subclasses[] = $row;
+    }
+    return $subclasses;
     }
 
     public function insertSavingThrow($idpersonaggio, $nomecaratteristica, $valore){
@@ -887,7 +943,7 @@ public function getSubclassesFromClass($classe){
 
     public function addCharacter($Forza, $Destrezza, $Costituzione, $Intelligenza, $Saggezza, $Carisma, $Punti_Ferita, $Nome, $Descrizione,$Classe_Armatura, $Iniziativa, $Nome_Origine, $Armatura_equipaggiata, $Arma_equipaggiata, $Nome_allineamento, $Nome_razza,$Nome_sottorazza, $ID_Borsa, $ID){
         $query = "INSERT INTO personaggio (Car_Forza, Car_Destrezza, Car_Costituzione, Car_Intelligenza, Car_Saggezza, Car_Carisma, Punti_Ferita, Nome, Descrizione_Aspetto, Classe_Armatura, Iniziativa, Nome_Origine, Armatura_Equipaggiata, Arma_equipaggiata, Nome_Allineamento, Nome_Razza, Nome_Sottorazza, ID_Borsa, ID_Utente)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("iiiiiiissiissssssii", $Forza, $Destrezza, $Costituzione, $Intelligenza, $Saggezza, $Carisma, $Punti_Ferita, $Nome, $Descrizione,$Classe_Armatura, $Iniziativa, $Nome_Origine, $Armatura_equipaggiata, $Arma_equipaggiata, $Nome_allineamento, $Nome_razza, $Nome_sottorazza, $ID_Borsa, $ID);
         if ($stmt->execute()) {
@@ -1132,11 +1188,8 @@ public function getSubclassesFromClass($classe){
         $stmt->bind_param("i", $IDborsa);
         $stmt->execute();
         $result = $stmt->get_result();
-        $info = array();
-        while($row = $result->fetch_assoc()){
-            $info[] = $row;
-        }
-        return $info;
+        $row = $result->fetch_assoc();
+        return $row;
     }
 
     public function getArmorInfo($armatura){
@@ -1156,11 +1209,8 @@ public function getSubclassesFromClass($classe){
         $stmt->bind_param("s", $oggetto);
         $stmt->execute();
         $result = $stmt->get_result();
-        $info = array();
-        while($row = $result->fetch_assoc()){
-            $info[] = $row;
-        }
-        return $info;
+        $row = $result->fetch_assoc();
+        return $row;
     }
 
     public function dexterityWeaponChoice(){
@@ -1224,6 +1274,16 @@ public function getSubclassesFromClass($classe){
         $row = $result->fetch_assoc();
         return $row["Livello_Sottoclasse"];
     }
+
+    public function getSubclassDesiredLevel($classe, $livello, $sottoclasse){
+        $query="SELECT Livello_Sottoclasse FROM specializzazione WHERE Nome_Classe=? AND Livello_Classe=? AND Nome_Sottoclasse=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("sis", $classe, $livello, $sottoclasse);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
 
     public function getLevel($ID){
         $query="SELECT Livello FROM personaggio WHERE ID_Personaggio=?";

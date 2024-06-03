@@ -15,11 +15,11 @@ if (!isset($_GET["ID"])){
 
 $IDborsa = $dbh->getBagID($IDpersonaggio);
 $borsa=$dbh->getBagInfo($IDborsa);
-$platino=$borsa[0]["Monete_Platino"];
-$oro=$borsa[0]["Monete_Oro"];
-$electrum=$borsa[0]["Monete_Electrum"];
-$argento=$borsa[0]["Monete_Argento"];
-$rame=$borsa[0]["Monete_Rame"];
+$platino=$borsa["Monete_Platino"];
+$oro=$borsa["Monete_Oro"];
+$electrum=$borsa["Monete_Electrum"];
+$argento=$borsa["Monete_Argento"];
+$rame=$borsa["Monete_Rame"];
 $pesotrasportato=$dbh->getCurrentWeight($IDborsa);
 $nomepersonaggio=$dbh->getName($IDpersonaggio);
 $items = $dbh->getCharacterItems($IDborsa);
@@ -31,14 +31,14 @@ $allArmors=$dbh->getArmorsFromInventory($IDborsa);
 if (isset($_POST["add_item"])) {
   $itemID = $_POST["item"];
   $quantity = $_POST["quantity"];
-  $pesoborsa=$dbh->getBagInfo($IDborsa)[0]["Peso_Trasportabile"];
-  $pesooggetto=$dbh->getObjectInfo($itemID)[0]["Peso"];
+  $pesoborsa=$dbh->getBagInfo($IDborsa)["Peso_Trasportabile"];
+  $pesooggetto=$dbh->getObjectInfo($itemID)["Peso"];
   if (($pesooggetto*$quantity+$pesotrasportato)>$pesoborsa){
-    header("Location: borsa.php?ID=".$IDborsa); //se non va prova $IDborsa
+    header("Location: borsa.php?ID=".$IDpersonaggio);
   } else{
     $dbh->addItemToBag($IDborsa, $itemID, $quantity);
     $pesotrasportabile=$pesoborsa-$pesotrasportato-($pesooggetto*$quantity);
-    header("Location: borsa.php?ID=".$IDborsa); //se non va prova $IDborsa
+    header("Location: borsa.php?ID=".$IDpersonaggio); 
   }
   exit();
 }
@@ -66,7 +66,7 @@ if (isset($_POST["add_money"])) {
   }
 
   $dbh->updateMoney($IDborsa, $copper, $silver, $electrum_e, $gold, $platinum);
-  header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
+  header("Location: borsa.php?ID=" . $IDpersonaggio); 
   exit();
 }
 
@@ -111,7 +111,7 @@ if (isset($_POST["remove_money"])) {
   }
 
   $dbh->updateMoney($IDborsa, $copper, $silver, $electrum_e, $gold, $platinum);
-  header("Location: borsa.php?ID=" . $IDpersonaggio); //se non va prova $IDborsa
+  header("Location: borsa.php?ID=" . $IDpersonaggio);
   exit();
 }
 
@@ -212,8 +212,8 @@ if (isset($_POST["remove_item"])) {
                     <ul>
                       <?php
                   
-                        $pesotrasportabile=$borsa[0]["Peso_Trasportabile"]-$pesotrasportato;
-                        echo "<li>Peso Trasportabile: ".$pesotrasportabile."/".$borsa[0]["Peso_Trasportabile"]."</li>"; 
+                        $pesotrasportabile=$borsa["Peso_Trasportabile"]-$pesotrasportato;
+                        echo "<li>Peso Trasportabile: ".$pesotrasportabile."/".$borsa["Peso_Trasportabile"]."</li>"; 
                         echo "<br>";
                       // Visualizza gli oggetti del personaggio
                       foreach($items as $item){

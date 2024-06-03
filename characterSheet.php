@@ -193,6 +193,7 @@
             $dexterityweapons=$dbh->dexterityWeaponChoice();
             $strengthweapons=$dbh->strengthWeaponChoice();
             $tiro=null;
+            if (!is_null($arma)){
             $qarma = ["Nome" => $arma];
                 if (in_array($qarma, $dexterityweapons)){
                     $tiro="Destrezza";
@@ -203,7 +204,10 @@
                 if (in_array($qarma,$dexterityweapons)&&in_array($qarma, $strengthweapons)){
                     $tiro="Destrezza o Forza";
                 }
-            echo "<p title=\"".$weaponinfo[0]["Danno"]." ".$tiro."\">".$arma."</p>"; ?>
+                echo "<p title=\"".$weaponinfo["Danno"]." ".$tiro."\">".$arma."</p>"; 
+            }
+            ?>
+        
         </section>
         <section class="third-width">
             <h2>Allineamento</h2>

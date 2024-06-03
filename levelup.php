@@ -1,21 +1,64 @@
 <?php
     require_once("bootstrap.php");
+
+    function Flatten1($x){
+        return $x["Nome"];
+    }
+
+    function Flatten2($y){
+        return $y["Nome_Classe"];
+    }
+
     $idpersonaggio=$_GET["idpersonaggio"];
     //var_dump($idpersonaggio);
     $livellopersonaggio=$_GET["livellopersonaggio"];
     //var_dump($livellopersonaggio);
     $tutteclassi=$dbh->getClasses();
     $classiottenute=$dbh->getClassesInfo($idpersonaggio);
+    $sottoclassi=$dbh->getSubclasses();
 
+    //tutte le tue classi: vedere a che livello ottengono la prima sottoclasse
+    //in specializzazione
+    //fare la select: e sceglierla
+    
     if (isset($_GET["classlevel"])){
         $scelta=$_GET["classlevel"];
         $livellopersonaggio+=1;
         $arrayscelta=explode(" ", $scelta);
-        $dbh->insertClassChoice($idpersonaggio, $arrayscelta[0], $arrayscelta[1]);
-        if ($arrayscelta[1]>=2){
-        $dbh->removeOldChoice($idpersonaggio, $arrayscelta[0]);
+        $nomeclasse=$arrayscelta[0];
+        $livelloclasse=$arrayscelta[1];
+
+        //abbiamo preso nome e livello della classe di cui stiamo aumentando il lvl
+        $dbh->insertClassChoice($idpersonaggio, $nomeclasse, $livelloclasse);
+        // aumento il lvl della classe
+        $sottoclassiGiaScelte=$dbh->chosenSubclassesFromClasses($idpersonaggio);
+        // ho la lista delle classi che ho già specializzato "first time"
+        $flattenedScelte=array_map("Flatten2", $sottoclassiGiaScelte);
+        // tengo solo i nomi di queste classi
+        $sottoclasseDaLivellare=$dbh->getSubclassesByClassAndID($nomeclasse, $idpersonaggio)["Nome_Sottoclasse"];
+        // trovo la sottoclasse che sto livellando
+        $livellosottoclasse=$dbh->getMySubclassLevel($idpersonaggio, $sottoclasseDaLivellare);
+        // trovo il suo livello attuale
+        $livelloTarget=$dbh->getSubclassDesiredLevel($nomeclasse,$livelloclasse,$sottoclasseDaLivellare);
+        //trovo il livello target in questo momento
+        //se la classe che sto aumentando è tra quelle che ho specializzato, e ho una sottoclasse
+        //risultante dalla query tra classe e livello
+        if (in_array($nomeclasse, $flattenedScelte)&&!is_null($sottoclasseDaLivellare)&&!is_null($livelloTarget)){
+            //aumento di lvl la sottoclasse e rimuovo il vecchio livello
+           $dbh->removeOldChoiceSubclass($idpersonaggio, $sottoclasseDaLivellare);
+           $dbh->insertSubclassChoice($idpersonaggio, $sottoclasseDaLivellare, $livelloTarget["Livello_Sottoclasse"]);
         }
+        //rimuovo il vecchio livello
+        if ($livelloclasse>=2){
+        $dbh->removeOldChoice($idpersonaggio, $nomeclasse);
+        }
+
         header("Location: characterSheet.php?ID=".$idpersonaggio);
+    }
+
+    if (isset($_GET["subclasschoice"])){
+        $scelta=$_GET["subclasschoice"];
+        $dbh->insertSubclassChoice($idpersonaggio, $scelta, 1);
     }
 ?>
 
@@ -93,6 +136,34 @@
                 <div class="card">
                     <div class="card-header">Sei salito di livello!</div>
                     <div class="card-body">
+                    <legend>Scegli la tua sottoclasse</legend>
+                    <form action="levelup.php" method="GET">
+
+                    <?php
+
+                    $sottoclassiGiaScelte=$dbh->chosenSubclassesFromClasses($idpersonaggio);
+                    $flattenedScelte=array_map("Flatten2", $sottoclassiGiaScelte);
+                    foreach ($classiottenute as $classe){
+                        if(in_array($classe["Nome_Classe"], $flattenedScelte)) {
+                            continue;
+                        }
+                        echo $classe["Nome_Classe"]." ";
+                        $sottoclassiottenibili=$dbh->getSubclassesByClassAndLevel($classe["Nome_Classe"], $classe["Livello_Classe"]);
+                        //var_dump($sottoclassiottenibili);
+                        if (!is_null($sottoclassiottenibili)){
+                        echo  "<select name=\"subclasschoice\">";
+                        foreach ($sottoclassiottenibili as $sottoclasse){
+                            echo '<option value="'.$sottoclasse["Nome_Sottoclasse"].'">' . $sottoclasse["Nome_Sottoclasse"]. '</option>';
+                        }
+                        echo "</select><br>";
+                    }
+                }
+                    ?>
+                    <input type="submit"/>
+                    <input id="idpersonaggio" name="idpersonaggio" type="hidden" value="<?php echo $idpersonaggio?>"/>
+                    <input id="livellopersonaggio" name="livellopersonaggio" type="hidden" value="<?php echo $livellopersonaggio?>"/>
+                    </form>
+
                     <legend>Scegli dove progredire</legend>
                     <form method="GET" action="levelup.php">
                     <?php
@@ -101,14 +172,6 @@
                     ?>
                     <select id="classlevel" name="classlevel">
                         <?php
-
-                        function Flatten1($x){
-                            return $x["Nome"];
-                        }
-
-                        function Flatten2($y){
-                            return $y["Nome_Classe"];
-                        }
 
                         $flattenedtutte=array_map("Flatten1", $tutteclassi);
                         $flattenedottenute=array_map("Flatten2", $classiottenute);
@@ -132,10 +195,13 @@
                         
                         ?>
                     </select>
+                
                     <input type="submit" name="levelpg"/>
                     <input id="idpersonaggio" name="idpersonaggio" type="hidden" value="<?php echo $idpersonaggio?>"/>
                     <input id="livellopersonaggio" name="livellopersonaggio" type="hidden" value="<?php echo $livellopersonaggio?>"/>
                     </form>
+                    <br>
+
                     </div>
                 </div>
             </div>
