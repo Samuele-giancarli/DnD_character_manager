@@ -38,7 +38,7 @@
             $valorecaratteristica=$dbh->getAumFromCapacity($nomeclasse, $livelloclasse)["Aum_Valore_Aggiuntivo"];
             $dbh->updateCharacterSkills($idpersonaggio, $nomecaratteristica, $valorecaratteristica);
         }
-        
+
         // aumento il lvl della classe
         $sottoclassiGiaScelte=$dbh->chosenSubclassesFromClasses($idpersonaggio);
         // ho la lista delle classi che ho già specializzato "first time"
@@ -62,13 +62,22 @@
         $dbh->removeOldChoice($idpersonaggio, $nomeclasse);
         }
 
-        header("Location: characterSheet.php?ID=".$idpersonaggio);
+        header("Location: levelup.php?idpersonaggio=".$idpersonaggio."&livellopersonaggio=".$livellopersonaggio);
+        exit();
     }
 
     if (isset($_GET["subclasschoice"])){
         $scelta=$_GET["subclasschoice"];
         $dbh->insertSubclassChoice($idpersonaggio, $scelta, 1);
     }
+
+    if (isset($_POST["newspell"])){
+        $spell=urldecode($_POST["newspell"]);
+        $dbh->insertNewSpell($idpersonaggio, $spell);
+        header("Location: levelup.php?idpersonaggio=".$idpersonaggio."&livellopersonaggio=".$livellopersonaggio);
+        exit();
+    }
+
 ?>
 
 
@@ -143,7 +152,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Sei salito di livello!</div>
+                    <div class="card-header"><a href=<?php echo "\"characterSheet.php?ID=".$idpersonaggio."\""; ?>>Sei salito di livello!</a></div>
                     <div class="card-body">
                     <legend>Scegli la tua sottoclasse</legend>
                     <form action="levelup.php" method="GET">
@@ -213,6 +222,60 @@
                     </form>
                     <br>
 
+                    <?php
+                    //trovo il livello del mio mago e bardo e l'id corrispondente
+                    $idmago=$dbh->getClassLevelByIdAndName($idpersonaggio, "Mago");
+                    $idbardo=$dbh->getClassLevelByIdAndName($idpersonaggio, "Bardo");
+
+                    if (!is_null($idbardo)){
+                        echo "<form method=\"POST\">";
+                        echo "<legend>Impara un nuovo incantesimo (Bardo)</legend>";
+                        $incantesimi_imparabiliB=$dbh->getSpellsByLevelB($idbardo["Livello_Classe"]);
+                        //var_dump($incantesimi_imparabiliB);
+                        $incantesimi_imparatiB=$dbh->getCountOfSpellsByLevelID_B($idpersonaggio);
+                        echo "<select name=\"newspell\">";
+                        foreach ($incantesimi_imparabiliB as $slot){
+                            if (array_key_exists($slot["Livello_Slot"], $incantesimi_imparatiB)&&$incantesimi_imparatiB[$slot["Livello_Slot"]]>=$slot["Quantita"]){
+                                continue;
+                            }
+                            $notlearntspells_B=$dbh->getSpellsExceptLearnt_B($idpersonaggio, $slot["Livello_Slot"]);
+                            //echo $slot["Livello_Slot"]."<br>";
+                            //var_dump($notlearntspells_B);
+                            //echo "<br><br>";
+                            foreach ($notlearntspells_B as $spell){
+                                echo "<option value=\"".urlencode($spell["Nome"])."\">".htmlentities($spell["Nome"])." (".$slot["Livello_Slot"].")</option>";
+                            }
+                        }
+                        echo "</select>";
+                        echo "<input value=\"Invia\" type=\"submit\"/>";
+                        echo "</form>";
+                    }
+
+                    if (!is_null($idmago)){
+                        echo "<form method=\"POST\">";
+                        echo "<legend>Impara un nuovo incantesimo (Mago)</legend>";
+                        $incantesimi_imparabiliM=$dbh->getSpellsByLevelM($idmago["Livello_Classe"]);
+                        //var_dump($incantesimi_imparabiliB);
+                        $incantesimi_imparatiM=$dbh->getCountOfSpellsByLevelID_M($idpersonaggio);
+                        echo "<select name=\"newspell\">";
+                        foreach ($incantesimi_imparabiliM as $slot){
+                            if (array_key_exists($slot["Livello_Slot"], $incantesimi_imparatiM)&&$incantesimi_imparatiM[$slot["Livello_Slot"]]>=$slot["Quantita"]){
+                                continue;
+                            }
+                            $notlearntspells_M=$dbh->getSpellsExceptLearnt_M($idpersonaggio, $slot["Livello_Slot"]);
+                            //echo $slot["Livello_Slot"]."<br>";
+                            //var_dump($notlearntspells_B);
+                            //echo "<br><br>";
+                            foreach ($notlearntspells_M as $spell){
+                                echo "<option value=\"".urlencode($spell["Nome"])."\">".htmlentities($spell["Nome"])." (".$slot["Livello_Slot"].")</option>";
+                            }
+                        }
+                        echo "</select>";
+                        echo "<input value=\"Invia\" type=\"submit\"/>";
+                        echo "</form>";
+                    }
+
+                    ?>
                     </div>
                 </div>
             </div>

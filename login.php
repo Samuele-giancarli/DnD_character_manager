@@ -111,8 +111,9 @@ if (isset($_SESSION["ID"])){
                             $idutente=$dbh->loginUtente($username, $password);
                             if (!is_null($idutente)){
                             $mess="Login success";
-                            header("Location: index.php");
                             $_SESSION["ID"]=$idutente;
+                            header("Location: index.php");
+                            exit();
                         }else{
                             $mess="Login failed";
                         }

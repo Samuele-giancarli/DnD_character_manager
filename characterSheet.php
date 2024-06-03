@@ -73,6 +73,7 @@
     <header id="header">
     </header>
     <div id="container">
+        <a href="index.php">Torna alla Home</a>
         <section class="full-width">
             <h2>Informazioni del personaggio</h2>
             <div class="character-info">

@@ -633,11 +633,89 @@ public function getSubclassesFromClass($classe){
         $stmt->bind_param("i", $level);
         $stmt->execute();
         $result = $stmt->get_result();
-        $subraces=array();
+        $classes=array();
         while ($row = $result->fetch_assoc()){
             $classes[]=$row;
         }
         return $classes;
+    }
+
+    public function getCountOfSpellsByLevelID_B($ID){
+        $query="SELECT incantesimo.Livello, COUNT(*) AS Conteggio FROM conosce LEFT JOIN incantesimo ON conosce.Nome_Incantesimo=incantesimo.Nome WHERE incantesimo.ID_Bardo IS NOT NULL AND conosce.ID_Personaggio=? GROUP BY incantesimo.Livello";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $spells=array();
+        while ($row = $result->fetch_assoc()){
+            $spells[$row["Livello"]]=$row["Conteggio"];
+        }
+        return $spells;
+    }
+
+    public function getCountOfSpellsByLevelID_M($ID){
+        $query="SELECT incantesimo.Livello, COUNT(*) AS Conteggio FROM conosce LEFT JOIN incantesimo ON conosce.Nome_Incantesimo=incantesimo.Nome WHERE incantesimo.ID_Mago IS NOT NULL AND conosce.ID_Personaggio=? GROUP BY incantesimo.Livello";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $ID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $spells=array();
+        while ($row = $result->fetch_assoc()){
+            $spells[$row["Livello"]]=$row["Conteggio"];
+        }
+        return $spells;
+    }
+
+    public function getSpellsByLevelM($level){
+        $query="SELECT * FROM lancia_mago WHERE ID_Mago=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $level);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $spells=array();
+        while ($row = $result->fetch_assoc()){
+            $spells[]=$row;
+        }
+        return $spells;
+    }
+
+    public function getSpellsByLevelB($level){
+        $query="SELECT * FROM lancia_bardo WHERE ID_Bardo=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $level);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $spells=array();
+        while ($row = $result->fetch_assoc()){
+            $spells[]=$row;
+        }
+        return $spells;
+    }
+
+    public function getSpellsExceptLearnt_M($idpersonaggio, $level){
+        $query="(SELECT Nome FROM incantesimo WHERE ID_Mago=?) EXCEPT (SELECT conosce.Nome_Incantesimo AS Nome FROM conosce LEFT JOIN incantesimo ON conosce.Nome_Incantesimo=incantesimo.Nome WHERE incantesimo.ID_Mago=? AND conosce.ID_Personaggio=?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iii", $level, $level, $idpersonaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $spells=array();
+        while ($row = $result->fetch_assoc()){
+            $spells[]=$row;
+        }
+        return $spells;
+    }
+
+    public function getSpellsExceptLearnt_B($idpersonaggio, $level){
+        $query="(SELECT Nome FROM incantesimo WHERE ID_Bardo=?) EXCEPT (SELECT conosce.Nome_Incantesimo AS Nome FROM conosce LEFT JOIN incantesimo ON conosce.Nome_Incantesimo=incantesimo.Nome WHERE incantesimo.ID_Bardo=? AND conosce.ID_Personaggio=?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iii", $level, $level, $idpersonaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $spells=array();
+        while ($row = $result->fetch_assoc()){
+            $spells[]=$row;
+        }
+        return $spells;
     }
 
     public function getBackgrounds(){
@@ -892,7 +970,6 @@ public function getSubclassesFromClass($classe){
         return false;
     }
 
-
     public function updateSavingThrows($valore, $idpersonaggio){
         $query="UPDATE tiri_salvezza_personaggio SET Valore=Valore+? WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
@@ -926,6 +1003,15 @@ public function getSubclassesFromClass($classe){
         return $throws;
     }
 
+    public function insertNewSpell($idpersonaggio, $spell){
+        $query="INSERT INTO conosce(ID_Personaggio, Nome_Incantesimo) VALUES(?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $idpersonaggio,$spell);
+        if ($stmt->execute()){
+            return true;
+        }
+        return false;
+    }
 
     public function getDiceFromClass($nomeclasse){
         $query="SELECT * FROM classe WHERE Nome=?";
@@ -1292,6 +1378,16 @@ public function getSubclassesFromClass($classe){
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         return $row["Livello_Classe"];
+    }
+
+    public function getClassLevelByIdAndName($ID, $classe){
+        $query="SELECT Livello_Classe FROM scelta_classe WHERE ID_Personaggio=? AND Nome_Classe=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("is", $ID, $classe);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row;
     }
 
     public function getSubclassLevel($ID){
