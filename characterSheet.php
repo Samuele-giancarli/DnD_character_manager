@@ -167,10 +167,6 @@
             <?php echo "<p>".$dbh->getInitiative($IDpersonaggio)."</p>"; ?>
         </section>
         <section class="third-width">
-            <h2>Punti esperienza</h2>
-            <?php echo "<p>".$dbh->getExperiencePoints($IDpersonaggio)."</p>"; ?>
-        </section>
-        <section class="third-width">
             <h2>Origini</h2>
             <?php echo "<p>".htmlentities($origini)."</p>"; ?>
         </section>
@@ -180,7 +176,25 @@
         </section>
         <section class="third-width">
             <h2>Arma equipaggiata</h2>
-            <?php echo "<p>".$dbh->getEquippedWeapon($IDpersonaggio)."</p>"; ?>
+            <?php 
+            $arma=$dbh->getEquippedWeapon($IDpersonaggio);
+            $weaponinfo=$dbh->getObjectInfo($arma);
+            $modstr=($dbh->getCharacterInfo($IDpersonaggio)["Car_Forza"])/2-5;
+            $moddex=($dbh->getCharacterInfo($IDpersonaggio)["Car_Destrezza"])/2-5;
+            $dexterityweapons=$dbh->dexterityWeaponChoice();
+            $strengthweapons=$dbh->strengthWeaponChoice();
+            $tiro=null;
+            $qarma = ["Nome" => $arma];
+                if (in_array($qarma, $dexterityweapons)){
+                    $tiro="Destrezza";
+                }
+                if (in_array($qarma, $strengthweapons)){
+                    $tiro="Forza";
+                }
+                if (in_array($qarma,$dexterityweapons)&&in_array($qarma, $strengthweapons)){
+                    $tiro="Destrezza o Forza";
+                }
+            echo "<p title=\"".$weaponinfo[0]["Danno"]." ".$tiro."\">".$arma."</p>"; ?>
         </section>
         <section class="third-width">
             <h2>Allineamento</h2>

@@ -1146,6 +1146,31 @@ public function getSubclassesFromClass($classe){
         return $info;
     }
 
+    public function dexterityWeaponChoice(){
+        $query="(SELECT oggetto.Nome FROM oggetto WHERE Tipologia LIKE '% A DIstanza') UNION (SELECT proprieta_arma.Nome_Arma FROM proprieta_arma JOIN proprieta ON proprieta_arma.Nome_Proprieta=proprieta.Nome WHERE proprieta_arma.Nome_Proprieta='Precisione')";
+        $stmt=$this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $info = array();
+        while($row = $result->fetch_assoc()){
+            $info[] = $row;
+        }
+        return $info;
+    }
+
+    public function strengthWeaponChoice(){
+        $query="(SELECT oggetto.Nome FROM oggetto WHERE Tipologia LIKE '%Ravvicinata%') UNION (SELECT proprieta_arma.Nome_Arma FROM proprieta_arma JOIN proprieta ON proprieta_arma.Nome_Proprieta=proprieta.Nome WHERE proprieta_arma.Nome_Proprieta='Precisione')";
+        $stmt=$this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $info = array();
+        while($row = $result->fetch_assoc()){
+            $info[] = $row;
+        }
+        return $info;
+    }
+
+
  
 
 
