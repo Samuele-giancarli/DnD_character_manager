@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 02, 2024 alle 01:34
+-- Creato il: Giu 03, 2024 alle 16:01
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -450,7 +450,43 @@ INSERT INTO `abilita_personaggio` (`ID_Personaggio`, `Nome_Abilita`, `Valore`) V
 (23, 'Rapidità Di Mano', 2),
 (23, 'Religione', 3),
 (23, 'Sopravvivenza', 0),
-(23, 'Storia', 1);
+(23, 'Storia', 1),
+(24, 'Acrobazia', 1),
+(24, 'Addestrare Animali', 1),
+(24, 'Arcano', 4),
+(24, 'Atletica', -1),
+(24, 'Furtività', 3),
+(24, 'Indagare', 2),
+(24, 'Inganno', 2),
+(24, 'Intimidire', 4),
+(24, 'Intrattenere', 2),
+(24, 'Intuizione', 3),
+(24, 'Medicina', 1),
+(24, 'Natura', 2),
+(24, 'Percezione', 1),
+(24, 'Persuasione', 4),
+(24, 'Rapidità Di Mano', 1),
+(24, 'Religione', 2),
+(24, 'Sopravvivenza', 1),
+(24, 'Storia', 2),
+(25, 'Acrobazia', 2),
+(25, 'Addestrare Animali', 1),
+(25, 'Arcano', 2),
+(25, 'Atletica', 1),
+(25, 'Furtività', 4),
+(25, 'Indagare', 2),
+(25, 'Inganno', 1),
+(25, 'Intimidire', 1),
+(25, 'Intrattenere', -1),
+(25, 'Intuizione', 1),
+(25, 'Medicina', 1),
+(25, 'Natura', 2),
+(25, 'Percezione', 1),
+(25, 'Persuasione', 1),
+(25, 'Rapidità Di Mano', 2),
+(25, 'Religione', 2),
+(25, 'Sopravvivenza', 1),
+(25, 'Storia', 2);
 
 -- --------------------------------------------------------
 
@@ -588,7 +624,7 @@ CREATE TABLE `borsa` (
 --
 
 INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
-(3, 225, 0, 0, 0, 150, 0),
+(3, 225, 1, 2, 3, 154, 0),
 (4, 120, 0, 0, 0, 50, 0),
 (5, 120, 0, 0, 0, 90, 0),
 (6, 210, 0, 0, 0, 120, 0),
@@ -608,7 +644,9 @@ INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Ar
 (20, 225, 0, 0, 0, 135, 0),
 (21, 225, 0, 0, 0, 145, 0),
 (22, 225, 0, 0, 0, 195, 0),
-(23, 225, 0, 0, 0, 75, 0);
+(23, 225, 0, 0, 0, 75, 0),
+(24, 120, 20, 5, 0, 80, 0),
+(25, 180, 0, 5, 5, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1028,11 +1066,15 @@ CREATE TABLE `competenze_abilita` (
 INSERT INTO `competenze_abilita` (`Nome_Abilita`, `ID_Personaggio`) VALUES
 ('Acrobazia', 5),
 ('Acrobazia', 16),
+('Acrobazia', 25),
 ('Arcano', 23),
+('Arcano', 24),
 ('Atletica', 4),
 ('Atletica', 5),
 ('Furtività', 5),
 ('Furtività', 16),
+('Furtività', 24),
+('Furtività', 25),
 ('Inganno', 3),
 ('Inganno', 5),
 ('Inganno', 6),
@@ -1052,8 +1094,11 @@ INSERT INTO `competenze_abilita` (`Nome_Abilita`, `ID_Personaggio`) VALUES
 ('Inganno', 20),
 ('Inganno', 21),
 ('Inganno', 22),
+('Inganno', 25),
 ('Intimidire', 4),
 ('Intimidire', 16),
+('Intimidire', 24),
+('Intimidire', 25),
 ('Intrattenere', 3),
 ('Intrattenere', 6),
 ('Intrattenere', 7),
@@ -1075,6 +1120,7 @@ INSERT INTO `competenze_abilita` (`Nome_Abilita`, `ID_Personaggio`) VALUES
 ('Intuizione', 17),
 ('Intuizione', 18),
 ('Intuizione', 23),
+('Intuizione', 24),
 ('Percezione', 5),
 ('Persuasione', 3),
 ('Persuasione', 6),
@@ -1094,8 +1140,11 @@ INSERT INTO `competenze_abilita` (`Nome_Abilita`, `ID_Personaggio`) VALUES
 ('Persuasione', 20),
 ('Persuasione', 21),
 ('Persuasione', 22),
+('Persuasione', 24),
+('Persuasione', 25),
 ('Rapidità Di Mano', 5),
 ('Rapidità Di Mano', 16),
+('Rapidità Di Mano', 25),
 ('Religione', 8),
 ('Religione', 17),
 ('Religione', 18),
@@ -1159,29 +1208,38 @@ CREATE TABLE `contiene` (
 --
 
 INSERT INTO `contiene` (`ID_Borsa`, `Nome_Oggetto`, `Quantita`) VALUES
+(25, 'Abiti Comuni con Cappuccio', 5),
 (19, 'Abiti Pregiati', 1),
 (20, 'Abiti Pregiati', 1),
 (21, 'Abiti Pregiati', 1),
 (22, 'Abiti Pregiati', 1),
+(24, 'Ametista', 4),
 (19, 'Anello con Sigillo', 1),
 (20, 'Anello con Sigillo', 1),
 (21, 'Anello con Sigillo', 1),
 (22, 'Anello con Sigillo', 1),
-(23, 'Balestra Leggera', 1),
+(23, 'Balestra Leggera', 2),
+(24, 'Balestra Leggera', 1),
 (22, 'Cotta Di Maglia', 1),
+(25, 'Cotta Di Maglia', 1),
 (3, 'Diamante', 7),
 (3, 'Disco Di Pietra Multicolore', 1),
+(24, 'Focus Arcano', 1),
 (18, 'Libro di Preghiere', 1),
 (23, 'Libro di Preghiere', 1),
 (22, 'Lira', 1),
 (22, 'Pacchetto da Diplomatico', 1),
 (23, 'Pacchetto da Esploratore', 1),
+(24, 'Pacchetto da Esploratore', 1),
+(25, 'Pacchetto da Scassinatore', 1),
 (18, 'Paramenti', 1),
 (23, 'Paramenti', 1),
 (19, 'Pergamena di Attestato', 1),
 (20, 'Pergamena di Attestato', 1),
 (21, 'Pergamena di Attestato', 1),
 (22, 'Pergamena di Attestato', 1),
+(24, 'Piede di Porco', 1),
+(25, 'Piede di Porco', 1),
 (3, 'Pugnale', 5),
 (23, 'Sacchetto di Componenti', 1),
 (18, 'Simbolo Sacro', 1),
@@ -2181,7 +2239,9 @@ INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_
 (20, 15, 14, 13, 12, 10, 8, 9, 'ProvaOrigine2', 'oh', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Buono', 'Elfo', 'Elfo Dei Boschi', 20),
 (21, 15, 14, 13, 12, 10, 8, 9, 'Ev', 'Aaaa', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Legale Neutrale', 'Elfo', 'Elfo Scuro', 21),
 (22, 15, 14, 13, 12, 10, 8, 9, 'Ev', 'Aaaa', 12, 14, 0, 4, 'Cavaliere', 'Cotta Di Maglia', NULL, 'Legale Neutrale', 'Elfo', 'Elfo Scuro', 22),
-(23, 15, 14, 13, 12, 10, 8, 7, 'ciccio', 'bono', 12, 14, 0, 4, 'Accolito', NULL, NULL, 'Caotico Buono', 'Nano', 'Nano Delle Montagne', 23);
+(23, 15, 14, 13, 12, 10, 8, 7, 'ciccio', 'bono', 12, 14, 0, 4, 'Accolito', NULL, NULL, 'Caotico Buono', 'Nano', 'Nano Delle Montagne', 23),
+(24, 8, 13, 10, 15, 12, 14, 6, 'Evi', 'Ha le orecchie a punta: è molto bella, ha i capelli lunghissimi.', 11, 13, 0, 5, 'Criminale', NULL, NULL, 'Neutrale', 'Elfo', 'Elfo Scuro', 24),
+(25, 12, 10, 15, 14, 13, 8, 10, 'Zeta', 'qaaa', 10, 10, 0, 5, 'Criminale', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Dei Boschi', 25);
 
 -- --------------------------------------------------------
 
@@ -2219,7 +2279,9 @@ INSERT INTO `possiede` (`ID_Utente`, `ID_Personaggio`) VALUES
 (4, 20),
 (4, 21),
 (4, 22),
-(4, 23);
+(4, 23),
+(5, 24),
+(5, 25);
 
 -- --------------------------------------------------------
 
@@ -2340,28 +2402,6 @@ INSERT INTO `razza` (`Descrizione`, `Nome`, `Aum_Nome_Caratteristica`, `Aum_Valo
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `sblocca_bardo`
---
-
-CREATE TABLE `sblocca_bardo` (
-  `ID_Bardo` int(11) NOT NULL,
-  `Nome_Incantesimo` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `sblocca_mago`
---
-
-CREATE TABLE `sblocca_mago` (
-  `ID_Mago` int(11) NOT NULL,
-  `Nome_Incantesimo` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `scelta_barbaro`
 --
 
@@ -2452,6 +2492,7 @@ CREATE TABLE `scelta_classe` (
 --
 
 INSERT INTO `scelta_classe` (`Nome_Classe`, `Livello_Classe`, `ID_Personaggio`) VALUES
+('Barbaro', 3, 23),
 ('Bardo', 1, 6),
 ('Bardo', 1, 7),
 ('Bardo', 1, 8),
@@ -2468,9 +2509,13 @@ INSERT INTO `scelta_classe` (`Nome_Classe`, `Livello_Classe`, `ID_Personaggio`) 
 ('Bardo', 1, 20),
 ('Bardo', 1, 21),
 ('Bardo', 1, 22),
+('Bardo', 1, 23),
 ('Ladro', 1, 5),
 ('Ladro', 1, 16),
-('Mago', 1, 23);
+('Ladro', 1, 25),
+('Ladro', 11, 23),
+('Mago', 1, 23),
+('Mago', 1, 24);
 
 -- --------------------------------------------------------
 
@@ -2566,7 +2611,9 @@ CREATE TABLE `scelta_sottoclasse` (
 
 INSERT INTO `scelta_sottoclasse` (`ID_Personaggio`, `Nome_Sottoclasse`, `Livello_Sottoclasse`) VALUES
 (16, 'Assassino', 1),
-(5, 'Berserker', 1);
+(5, 'Berserker', 1),
+(23, 'Berserker', 2),
+(23, 'Collegio della Creazione', 1);
 
 -- --------------------------------------------------------
 
@@ -2760,7 +2807,11 @@ INSERT INTO `tiri_salvezza_personaggio` (`ID_Personaggio`, `Nome_Caratteristica`
 (22, 'Carisma', 1),
 (22, 'Destrezza', 4),
 (23, 'Intelligenza', 3),
-(23, 'Saggezza', 2);
+(23, 'Saggezza', 2),
+(24, 'Intelligenza', 4),
+(24, 'Saggezza', 3),
+(25, 'Destrezza', 2),
+(25, 'Intelligenza', 4);
 
 -- --------------------------------------------------------
 
@@ -2877,7 +2928,8 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`ID_Utente`, `Username`, `Password`, `E_mail`) VALUES
-(4, 'Aisja', 'a', 'a@a.it');
+(4, 'Aisja', 'a', 'a@a.it'),
+(5, 'Cattyva', 'cat', 'c@cattyva.com');
 
 --
 -- Indici per le tabelle scaricate
@@ -3242,20 +3294,6 @@ ALTER TABLE `razza`
   ADD UNIQUE KEY `ID_RAZZA_IND` (`Nome`);
 
 --
--- Indici per le tabelle `sblocca_bardo`
---
-ALTER TABLE `sblocca_bardo`
-  ADD PRIMARY KEY (`Nome_Incantesimo`,`ID_Bardo`),
-  ADD KEY `ID_Bardo` (`ID_Bardo`,`Nome_Incantesimo`);
-
---
--- Indici per le tabelle `sblocca_mago`
---
-ALTER TABLE `sblocca_mago`
-  ADD PRIMARY KEY (`Nome_Incantesimo`,`ID_Mago`),
-  ADD KEY `ID_Mago` (`ID_Mago`,`Nome_Incantesimo`);
-
---
 -- Indici per le tabelle `scelta_barbaro`
 --
 ALTER TABLE `scelta_barbaro`
@@ -3396,13 +3434,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `borsa`
 --
 ALTER TABLE `borsa`
-  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT per la tabella `personaggio`
 --
 ALTER TABLE `personaggio`
-  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT per la tabella `scelta_barbaro`
@@ -3432,7 +3470,7 @@ ALTER TABLE `scelta_mago`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Limiti per le tabelle scaricate
@@ -3675,20 +3713,6 @@ ALTER TABLE `possiede`
 ALTER TABLE `proprieta_arma`
   ADD CONSTRAINT `FK_armapro` FOREIGN KEY (`Nome_Arma`) REFERENCES `oggetto` (`Nome`),
   ADD CONSTRAINT `FK_proprietapro` FOREIGN KEY (`Nome_Proprieta`) REFERENCES `proprieta` (`Nome`);
-
---
--- Limiti per la tabella `sblocca_bardo`
---
-ALTER TABLE `sblocca_bardo`
-  ADD CONSTRAINT `FK_idbardosb` FOREIGN KEY (`ID_Bardo`) REFERENCES `bardo` (`ID_Bardo`),
-  ADD CONSTRAINT `FK_incantesimosb` FOREIGN KEY (`Nome_Incantesimo`) REFERENCES `incantesimo` (`Nome`);
-
---
--- Limiti per la tabella `sblocca_mago`
---
-ALTER TABLE `sblocca_mago`
-  ADD CONSTRAINT `FK_idmagosb` FOREIGN KEY (`ID_Mago`) REFERENCES `mago` (`ID_Mago`),
-  ADD CONSTRAINT `FK_incantesimosbm` FOREIGN KEY (`Nome_Incantesimo`) REFERENCES `incantesimo` (`Nome`);
 
 --
 -- Limiti per la tabella `scelta_barbaro`

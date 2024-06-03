@@ -78,18 +78,26 @@
             <div class="character-info">
                 <?php 
                 $race=$dbh->getRaceName($IDpersonaggio);
-                $class=$dbh->getClassName($IDpersonaggio);
+                $classes=$dbh->getClassesInfo($IDpersonaggio);
                 $subrace=$dbh->getSubraceName($IDpersonaggio);
-                $subclass=$dbh->getSubclassName($IDpersonaggio);
-                $livelloclasse=$dbh->getClassLevel($IDpersonaggio);
-                $origini=$dbh->getOriginName($IDpersonaggio);
+                $subclasses=$dbh->getSubclassesInfo($IDpersonaggio);
+                $origini=$dbh->getOriginName($IDpersonaggio); 
+                echo "<b><p>Nome:</p></b>";
                 echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
+                echo "<b><p>Razza:</p></b>";
                 echo "<p>".htmlentities($race)."</p>"; 
+                echo "<b><p>Sottorazza:</p></b>";
                 echo "<p>".htmlentities($subrace)."</p>";
-                echo "<p>".htmlentities($class)."</p>";
-                if (!is_null($subclass)){
-                $livellosottoclasse=$dbh->getSubclassLevel($IDpersonaggio);
-                echo "<p>".htmlentities($subclass)."</p>"; }?>
+                echo "<b><p>Classe/i:</p></b>";
+                foreach ($classes as $class)
+                echo "<p>".htmlentities($class["Nome_Classe"]).": Livello ".$class["Livello_Classe"]."</p>";
+                echo "<b><p>Sottoclasse/i:</p></b>";
+                if (!is_null($subclasses)){
+                foreach ($subclasses as $subclass){
+                echo "<p>".htmlentities($subclass["Nome_Sottoclasse"]).": Livello ".$subclass["Livello_Sottoclasse"]."</p>"; 
+                }
+            }?>
+                
             </div>
         </section>
         <section class="half-width">
@@ -190,15 +198,18 @@
         </section>
         <section class="full-width">
             <h2>Bonus di competenza</h2>
-            <?php $bonus=$dbh->getClassBonus($class, $livelloclasse);
+            <?php 
+            $bonus=$dbh->getClassBonus($IDpersonaggio);
             echo "<p>+ ".$bonus."</p>";?>
         </section>
         <section class="full-width">
             <h2>Competenze</h2>
             <?php
-            $armors=$dbh->getArmorProficiencies($class);
-            $weapons=$dbh->getWeaponProficiencies($class);
-            $tools=$dbh->getToolProficiencies($class,$origini);
+            foreach ($classes as $class){
+            echo "<b><p>Per la Classe: ".$class["Nome_Classe"]."</p></b>";
+            $armors=$dbh->getArmorProficiencies($class["Nome_Classe"]);
+            $weapons=$dbh->getWeaponProficiencies($class["Nome_Classe"]);
+            $tools=$dbh->getToolProficiencies($class["Nome_Classe"],$origini);
             echo "<p>Competenze in armature: ";
             foreach ($armors as $armor){
             echo htmlentities($armor["Nome_Armatura"]).", ";
@@ -210,29 +221,37 @@
             echo "<p>Competenze in strumenti: ";
             foreach ($tools as $tool){
                 echo htmlentities($tool["Nome_Strumento"]).", ";}
-            echo "</p>";
+            echo "</p><br>";
+            }
             ?>
         </section>
+
         <section class="full-width">
             <h2>Capacità di Classe</h2>
             <?php
-            $classcap=$dbh->getCapacitiesOfClassAndLevel($class, $livelloclasse);
+            foreach ($classes as $class){
+            echo "<b><p>Per la Classe: ".$class["Nome_Classe"]."</p></b>";
+            $classcap=$dbh->getCapacitiesOfClassAndLevel($class["Nome_Classe"], $class["Livello_Classe"]);
             echo "<p>";
             foreach ($classcap as $cap){
                 echo $cap["Livello_Classe"].": ".htmlentities($cap["Nome_Capacita"])."<br>";
             }
-            echo "</p>";
+            echo "</p><br>";
+        }
             ?>
         </section>
         <section class="full-width">
             <h2>Capacità di Sottoclasse</h2>
             <?php
-            $subclasscap=$dbh->getCapacitiesOfSubclassAndLevel($subclass, $livelloclasse);
+            foreach ($subclasses as $subclass){
+                echo "<b><p>Per la Sottoclasse: ".$subclass["Nome_Sottoclasse"]."</p></b>";
+            $subclasscap=$dbh->getCapacitiesOfSubclassAndLevel($subclass["Nome_Sottoclasse"], $subclass["Livello_Sottoclasse"]);
             echo "<p>";
             foreach ($subclasscap as $cap){
                 echo $cap["Livello_Sottoclasse"].": ".htmlentities($cap["Nome_Capacita"])."<br>";
             }
-            echo "</p>";
+            echo "</p><br>";
+        }
             ?>
         </section>
         <section class="full-width">

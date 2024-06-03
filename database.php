@@ -143,17 +143,19 @@ class DatabaseHelper{
 
     
 
-    public function getSubclassName($ID){
-        $query="SELECT Nome_Sottoclasse FROM scelta_sottoclasse WHERE ID_Personaggio=?";
+    public function getSubclassesInfo($ID){
+        $query="SELECT * FROM scelta_sottoclasse WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $ID);
         $stmt->execute();
         $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        if (!is_null($row)){
-        return $row["Nome_Sottoclasse"];
+        $info = array();
+        while($row = $result->fetch_assoc()){
+            $info[] = $row;
         }
+        return $info;
     }
+    
 
     public function getSubraceInfo($subrace){
         $query="SELECT * FROM sottorazza WHERE Nome=?";
@@ -244,7 +246,7 @@ class DatabaseHelper{
 }
 
 public function getCapacitiesOfClassAndLevel($class, $level){
-    $query="SELECT * FROM impara_classe WHERE Nome_Classe=? AND Livello_Classe=?";
+    $query="SELECT * FROM impara_classe WHERE Nome_Classe=? AND Livello_Classe<=?";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param("si", $class, $level);
     $stmt->execute();
@@ -257,7 +259,7 @@ public function getCapacitiesOfClassAndLevel($class, $level){
 }
 
 public function getCapacitiesOfSubclassAndLevel($subclass, $level){
-    $query="SELECT * FROM impara_sottoclasse WHERE Nome_Sottoclasse=? AND Livello_Sottoclasse=?";
+    $query="SELECT * FROM impara_sottoclasse WHERE Nome_Sottoclasse=? AND Livello_Sottoclasse<=?";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param("si", $subclass, $level);
     $stmt->execute();
@@ -794,6 +796,14 @@ public function getSubclassesFromClass($classe){
         return false;
     }
 
+
+    public function updateSavingThrows($valore, $idpersonaggio){
+        $query="UPDATE tiri_salvezza_personaggio SET Valore=Valore+? WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii", $idpersonaggio, $valore);
+        $stmt->execute();
+    }
+
     public function getSavingThrowsName($classe){
         $query="SELECT Nome_TiroSalvezza FROM competenza WHERE Nome_Classe=?";
         $stmt = $this->db->prepare($query);
@@ -953,15 +963,17 @@ public function getSubclassesFromClass($classe){
         return $row["Nome"];
     }
 
-    public function getClassBonus($classe, $livello){
-        $query="SELECT Bonus_Competenza FROM classe WHERE Nome=? AND Livello=?";
+    public function getClassBonus($IDpersonaggio){
+        $query="SELECT MAX(Bonus_Competenza) AS Bonus FROM classe JOIN scelta_classe ON classe.Nome=scelta_classe.Nome_Classe AND classe.Livello=scelta_classe.Livello_Classe WHERE ID_Personaggio=?";
         $stmt=$this->db->prepare($query);
-        $stmt->bind_param("si", $classe, $livello);
+        $stmt->bind_param("i", $IDpersonaggio);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        return $row["Bonus_Competenza"];
+        return $row["Bonus"];
     }
+
+    //join tra classe e scelta_classe in cui prendiamo il max tra classe.Bonus_Competenza
 
     public function getDescription($ID){
         $query="SELECT Descrizione_Aspetto FROM personaggio WHERE ID_Personaggio=?";
@@ -1101,15 +1113,19 @@ public function getSubclassesFromClass($classe){
  
 
 
-    public function getClassName($ID){
-        $query="SELECT Nome_Classe FROM scelta_classe WHERE ID_Personaggio=?";
+    public function getClassesInfo($ID){
+        $query="SELECT * FROM scelta_classe WHERE ID_Personaggio=?";
         $stmt=$this->db->prepare($query);
         $stmt->bind_param("i", $ID);
         $stmt->execute();
         $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        return $row["Nome_Classe"];
+        $info = array();
+        while($row = $result->fetch_assoc()){
+            $info[] = $row;
+        }
+        return $info;
     }
+
 
     public function getClassLevel($ID){
         $query="SELECT Livello_Classe FROM scelta_classe WHERE ID_Personaggio=?";

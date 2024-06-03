@@ -118,7 +118,7 @@ if ($myvalues==$reference){
     $dbh->insertClassChoice($idpersonaggio, $classe);
     $tirisalvezza=$dbh->getSavingThrowsName($classe);
     $livelloclasse=$dbh->getClassLevel($idpersonaggio);
-    $bonuscompetenza=$dbh->getClassBonus($classe, $livelloclasse);
+    $bonuscompetenza=$dbh->getClassBonus($idpersonaggio);
 
     //sono un Bardo lvl 1: ho +2 di bonus_competenza
     //in Carisma e Destrezza
