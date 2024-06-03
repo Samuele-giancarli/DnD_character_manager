@@ -115,7 +115,7 @@ if ($myvalues==$reference){
     $valore=0;
     }
     //$classe
-    $dbh->insertClassChoice($idpersonaggio, $classe);
+    $dbh->insertClassChoice($idpersonaggio, $classe, 1);
     $tirisalvezza=$dbh->getSavingThrowsName($classe);
     $livelloclasse=$dbh->getClassLevel($idpersonaggio);
     $bonuscompetenza=$dbh->getClassBonus($idpersonaggio);

@@ -791,14 +791,21 @@ public function getSubclassesFromClass($classe){
        return false;
     }
     
-    public function insertClassChoice($idpersonaggio, $classe){
-        $query="INSERT INTO scelta_classe(ID_Personaggio, Nome_Classe, Livello_Classe) VALUES(?, ?, 1)";
+    public function insertClassChoice($idpersonaggio, $classe, $livello){
+        $query="INSERT INTO scelta_classe(ID_Personaggio, Nome_Classe, Livello_Classe) VALUES(?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("is", $idpersonaggio,$classe);
+        $stmt->bind_param("isi", $idpersonaggio,$classe, $livello);
         if ($stmt->execute()){
             return true;
         }
         return false;
+    }
+
+    public function removeOldChoice($idpersonaggio, $classe){
+        $query="DELETE FROM scelta_classe WHERE ID_Personaggio=? AND Nome_Classe=? AND Livello_Classe=(SELECT MIN(Livello_Classe) FROM scelta_classe WHERE ID_Personaggio=? AND Nome_Classe=?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isis", $idpersonaggio,$classe,$idpersonaggio, $classe);
+        $stmt->execute();
     }
 
     public function insertSubclassChoice($idpersonaggio, $sottoclasse){
@@ -1107,6 +1114,16 @@ public function getSubclassesFromClass($classe){
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         return $row["Prodotto"];
+    }
+
+    public function getSumOfLevels($idpersonaggio){
+        $query="SELECT SUM(Livello_Classe) AS Somma FROM scelta_classe WHERE ID_Personaggio=?";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("i", $idpersonaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row["Somma"];
     }
 
     public function getBagInfo($IDborsa){

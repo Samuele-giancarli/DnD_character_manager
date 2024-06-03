@@ -82,8 +82,11 @@
                 $subrace=$dbh->getSubraceName($IDpersonaggio);
                 $subclasses=$dbh->getSubclassesInfo($IDpersonaggio);
                 $origini=$dbh->getOriginName($IDpersonaggio); 
+                $livellopersonaggio=$dbh->getSumOfLevels($IDpersonaggio);
                 echo "<b><p>Nome:</p></b>";
                 echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
+                echo "<b><p>Livello:</p></b>";
+                echo "<p>".$livellopersonaggio."</p>";
                 echo "<b><p>Razza:</p></b>";
                 echo "<p>".htmlentities($race)."</p>"; 
                 echo "<b><p>Sottorazza:</p></b>";
@@ -95,9 +98,15 @@
                 if (!is_null($subclasses)){
                 foreach ($subclasses as $subclass){
                 echo "<p>".htmlentities($subclass["Nome_Sottoclasse"]).": Livello ".$subclass["Livello_Sottoclasse"]."</p>"; 
-                }
-            }?>
-                
+                }  
+            }
+            ?>  
+        <form action="levelup.php" method="GET">
+        <label for="levelup"></label>
+        <input id="levelup" name="levelup" type="submit" value="Level Up"/> 
+        <input id="idpersonaggio" name="idpersonaggio" type="hidden" value="<?php echo $IDpersonaggio?>"/>
+        <input id="livellopersonaggio" name="livellopersonaggio" type="hidden" value="<?php echo $livellopersonaggio?>"/>
+        </form>
             </div>
         </section>
         <section class="half-width">
@@ -203,6 +212,8 @@
         <section class="third-width">
             <h2><a href="borsa.php?ID=<?php echo $IDpersonaggio;?>">Borsa</a></h2>
         </section>
+    
+    
         <section class="full-width">
             <h2>Tiri salvezza</h2>
             <?php
