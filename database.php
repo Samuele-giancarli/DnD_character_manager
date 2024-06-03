@@ -197,7 +197,7 @@ class DatabaseHelper{
     }
 
     public function getPrivilegeFromBackground($origini){
-        $query="SELECT Nome_Privilegio FROM origine WHERE Nome=?";
+        $query="SELECT origine.Nome_Privilegio, privilegio.Descrizione FROM origine LEFT JOIN privilegio ON origine.Nome_Privilegio=privilegio.Nome WHERE origine.Nome=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("s", $origini);
         $stmt->execute();
@@ -246,7 +246,7 @@ class DatabaseHelper{
 }
 
 public function getCapacitiesOfClassAndLevel($class, $level){
-    $query="SELECT * FROM impara_classe WHERE Nome_Classe=? AND Livello_Classe<=?";
+    $query="SELECT * FROM impara_classe LEFT JOIN capacita_di_classe ON impara_classe.Nome_Capacita=capacita_di_classe.Nome WHERE Nome_Classe=? AND Livello_Classe<=?";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param("si", $class, $level);
     $stmt->execute();
@@ -258,8 +258,16 @@ public function getCapacitiesOfClassAndLevel($class, $level){
     return $capacities;
 }
 
+public function getCapacityInfo($cap){
+    $query="SELECT * FROM capacita_di_classe WHERE Nome=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("si", $class, $level);
+    $stmt->execute();
+    $result = $stmt->get_result();
+}
+
 public function getCapacitiesOfSubclassAndLevel($subclass, $level){
-    $query="SELECT * FROM impara_sottoclasse WHERE Nome_Sottoclasse=? AND Livello_Sottoclasse<=?";
+    $query="SELECT * FROM impara_sottoclasse LEFT JOIN capacita_di_sottoclasse ON impara_sottoclasse.Nome_Capacita=capacita_di_sottoclasse.Nome WHERE Nome_Sottoclasse=? AND Livello_Sottoclasse<=?";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param("si", $subclass, $level);
     $stmt->execute();
@@ -333,7 +341,7 @@ public function getSpells(){
 }
 
 public function getSpellsByID($ID){
-    $query="SELECT * FROM conosce WHERE ID_Personaggio=?";
+    $query="SELECT * FROM conosce LEFT JOIN incantesimo on conosce.Nome_Incantesimo=incantesimo.Nome WHERE ID_Personaggio=?";
     $stmt = $this->db->prepare($query);
     $stmt->bind_param("i", $ID);
     $stmt->execute();
@@ -662,7 +670,7 @@ public function getSubclassesFromClass($classe){
     }
 
     public function getAllTraits($razza, $sottorazza){
-        $query="SELECT DISTINCT Nome_Tratto FROM tratti_della_razza WHERE Nome_Razza=? UNION SELECT DISTINCT Nome_Tratto FROM tratti_della_sottorazza WHERE Nome_Sottorazza=?";
+        $query="SELECT DISTINCT tratti_della_razza.Nome_Tratto, tratti_razziali.Descrizione FROM tratti_della_razza LEFT JOIN tratti_razziali ON tratti_della_razza.Nome_Tratto=tratti_razziali.Nome WHERE tratti_della_razza.Nome_Razza=? UNION SELECT DISTINCT tratti_della_sottorazza.Nome_Tratto, tratti_razziali.Descrizione FROM tratti_della_sottorazza LEFT JOIN tratti_razziali ON tratti_della_sottorazza.Nome_Tratto=tratti_razziali.Nome WHERE tratti_della_sottorazza.Nome_Sottorazza=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ss", $razza, $sottorazza);
         $stmt->execute();

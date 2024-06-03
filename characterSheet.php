@@ -234,7 +234,7 @@
             $classcap=$dbh->getCapacitiesOfClassAndLevel($class["Nome_Classe"], $class["Livello_Classe"]);
             echo "<p>";
             foreach ($classcap as $cap){
-                echo $cap["Livello_Classe"].": ".htmlentities($cap["Nome_Capacita"])."<br>";
+                echo "<p title=\"".$cap["Descrizione"]."\">".$cap["Livello_Classe"].": ".htmlentities($cap["Nome_Capacita"])."</p><br>";
             }
             echo "</p><br>";
         }
@@ -248,7 +248,7 @@
             $subclasscap=$dbh->getCapacitiesOfSubclassAndLevel($subclass["Nome_Sottoclasse"], $subclass["Livello_Sottoclasse"]);
             echo "<p>";
             foreach ($subclasscap as $cap){
-                echo $cap["Livello_Sottoclasse"].": ".htmlentities($cap["Nome_Capacita"])."<br>";
+                echo "<p title=\"".$cap["Descrizione"]."\">".$cap["Livello_Sottoclasse"].": ".htmlentities($cap["Nome_Capacita"])."</p><br>";
             }
             echo "</p><br>";
         }
@@ -260,7 +260,7 @@
             $spells=$dbh->getSpellsByID($IDpersonaggio);
             echo "<p>";
             foreach ($spells as $spell){
-                echo htmlentities($spell["Nome_Incantesimo"])."<br>";
+                echo "<p title=\"".$spell["Descrizione"]."\">".htmlentities($spell["Nome_Incantesimo"])."<br>";
             }
             echo "</p>";
             ?>
@@ -270,12 +270,12 @@
             <?php
             $privilegi=$dbh->getPrivilegeFromBackground($origini);
             $trattirazziali=$dbh->getAllTraits($race, $subrace);
-            echo "<p>Privilegio: ".htmlentities($privilegi["Nome_Privilegio"])."</p>";
-            echo "<p>Tratti Razziali: ";
+            echo "<p title=\"".$privilegi["Descrizione"]."\">Privilegio: ".htmlentities($privilegi["Nome_Privilegio"])."</p><br>";
+            echo "<b>Tratti Razziali: </b>";
             foreach ($trattirazziali as $tratto){
-                echo htmlentities($tratto["Nome_Tratto"]).", ";
+                echo "<p title=\"".$tratto["Descrizione"]."\">".htmlentities($tratto["Nome_Tratto"])."</p>";
             }
-            echo "</p>";
+            echo "<br>";
             ?>
         </section>
         <section class="full-width">
