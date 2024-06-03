@@ -143,6 +143,7 @@
 
                     $sottoclassiGiaScelte=$dbh->chosenSubclassesFromClasses($idpersonaggio);
                     $flattenedScelte=array_map("Flatten2", $sottoclassiGiaScelte);
+                    $cansubmit = false;
                     foreach ($classiottenute as $classe){
                         if(in_array($classe["Nome_Classe"], $flattenedScelte)) {
                             continue;
@@ -154,12 +155,13 @@
                         echo  "<select name=\"subclasschoice\">";
                         foreach ($sottoclassiottenibili as $sottoclasse){
                             echo '<option value="'.$sottoclasse["Nome_Sottoclasse"].'">' . $sottoclasse["Nome_Sottoclasse"]. '</option>';
+                            $cansubmit = true;
                         }
                         echo "</select><br>";
                     }
                 }
                     ?>
-                    <input type="submit"/>
+                    <input type="submit" <?php if (!$cansubmit){echo "disabled";}?>/>
                     <input id="idpersonaggio" name="idpersonaggio" type="hidden" value="<?php echo $idpersonaggio?>"/>
                     <input id="livellopersonaggio" name="livellopersonaggio" type="hidden" value="<?php echo $livellopersonaggio?>"/>
                     </form>
@@ -180,8 +182,8 @@
                         foreach ($classiottenute as $classe){
                         $sumlivello+=$classe["Livello_Classe"];
                         }
-
-                        if ($sumlivello+1<=20||$livellopersonaggio!=20){
+                        $candomore = $sumlivello+1<=20||$livellopersonaggio!=20;
+                        if ($candomore){
                         foreach ($classiottenute as $classe){
                         //se $sumlivello+1>20 non puoi, se il livello della classe è già 20 non puo
                             echo '<option value="' . $classe["Nome_Classe"]." ".($classe["Livello_Classe"]+1) . '">' . $classe["Nome_Classe"]." ".($classe["Livello_Classe"]+1) . '</option>';
@@ -196,7 +198,7 @@
                         ?>
                     </select>
                 
-                    <input type="submit" name="levelpg"/>
+                    <input type="submit" name="levelpg" <?php if (!$candomore) { echo "disabled"; } ?>/>
                     <input id="idpersonaggio" name="idpersonaggio" type="hidden" value="<?php echo $idpersonaggio?>"/>
                     <input id="livellopersonaggio" name="livellopersonaggio" type="hidden" value="<?php echo $livellopersonaggio?>"/>
                     </form>
