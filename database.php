@@ -1180,6 +1180,16 @@ public function getSubclassesFromClass($classe){
         return $row;
     }
 
+    public function getAumFromCapacity($class, $level){
+        $query="SELECT impara_classe.Nome_Capacita, capacita_di_classe.Aum_Nome_Caratteristica, capacita_di_classe.Aum_Valore_Aggiuntivo FROM impara_classe LEFT JOIN capacita_di_classe ON impara_classe.Nome_Capacita=capacita_di_classe.Nome WHERE impara_classe.Nome_Classe=? AND impara_classe.Livello_Classe=? AND impara_classe.Nome_Capacita LIKE '%Aumento%'";
+        $stmt=$this->db->prepare($query);
+        $stmt->bind_param("si", $class, $level);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row;
+    }
+
     
     public function getCurrentWeight($idborsa){
         $query="SELECT SUM(oggetto.Peso * contiene.Quantita) AS Prodotto FROM contiene JOIN oggetto ON contiene.Nome_Oggetto=oggetto.Nome WHERE contiene.ID_Borsa=?";

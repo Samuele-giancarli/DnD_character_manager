@@ -30,6 +30,15 @@
 
         //abbiamo preso nome e livello della classe di cui stiamo aumentando il lvl
         $dbh->insertClassChoice($idpersonaggio, $nomeclasse, $livelloclasse);
+        //if nome classe e livello classe -> aumento * in capacita_di_classe join impara_classe
+        //allora prendo Nome Caratteristica e Valore, e lo aumento con updateCharacterSkills
+
+        if (!is_null($dbh->getAumFromCapacity($nomeclasse, $livelloclasse))){
+            $nomecaratteristica=$dbh->getAumFromCapacity($nomeclasse, $livelloclasse)["Aum_Nome_Caratteristica"];
+            $valorecaratteristica=$dbh->getAumFromCapacity($nomeclasse, $livelloclasse)["Aum_Valore_Aggiuntivo"];
+            $dbh->updateCharacterSkills($idpersonaggio, $nomecaratteristica, $valorecaratteristica);
+        }
+        
         // aumento il lvl della classe
         $sottoclassiGiaScelte=$dbh->chosenSubclassesFromClasses($idpersonaggio);
         // ho la lista delle classi che ho già specializzato "first time"
