@@ -98,17 +98,6 @@ function classDescription(e){
     xhr.send();
 }
 
-function inventoryChoice(e){
-    const classe=e.value;
-    let xhr=new XMLHttpRequest();
-    xhr.onreadystatechange=function(){
-    if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("inventorychoice").innerHTML= xhr.responseText;
-        }
-    };
-    xhr.open("GET", `inventorychoice.php?classe=${classe}`);
-    xhr.send();
-}
 
 </script>
 
@@ -248,9 +237,7 @@ function inventoryChoice(e){
                                 <label for="carisma">Carisma: </label>
                                 <input name="carisma" type="number"> 
 
-                                <legend>Scegli il tuo inventario:</legend>
-                                <div id="inventorychoice">
-                                </div>
+            
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>

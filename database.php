@@ -916,8 +916,21 @@ public function getSubclassesFromClass($classe){
         return $throws;
     }
 
-    public function addBackgroundInventory($idborsa, $nome){
-        $query="INSERT INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,1)";
+    public function getClassInventoryC($classe){
+        $query="SELECT Nome_Oggetto FROM oggetti_di_classe WHERE Nome_Classe=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $classe);
+        $stmt->execute();
+        $throws = array();
+        $result = $stmt->get_result();
+        while($row = $result->fetch_assoc()){
+            $throws[] = $row;
+        }
+        return $throws;
+    }
+
+    public function addBackgroundClassInventory($idborsa, $nome){
+        $query="INSERT IGNORE INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,1)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("is", $idborsa, $nome);
         if ($stmt->execute()){
@@ -927,7 +940,7 @@ public function getSubclassesFromClass($classe){
     }
     
     public function insertClassChoice($idpersonaggio, $classe, $livello){
-        $query="INSERT INTO scelta_classe(ID_Personaggio, Nome_Classe, Livello_Classe) VALUES(?, ?, ?)";
+        $query="INSERT IGNORE INTO scelta_classe(ID_Personaggio, Nome_Classe, Livello_Classe) VALUES(?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("isi", $idpersonaggio,$classe, $livello);
         if ($stmt->execute()){

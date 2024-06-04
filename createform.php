@@ -161,9 +161,9 @@ if ($myvalues==$reference){
     }
 
         $oggettiorigine=$dbh->getBackgroundInventoryO($origine);
-        var_dump($oggettiorigine);
+        //var_dump($oggettiorigine);
         foreach ($oggettiorigine as $oggetto){
-            $dbh->addBackgroundInventory($idborsa, $oggetto["Nome_Oggetto"]);
+            $dbh->addBackgroundClassInventory($idborsa, $oggetto["Nome_Oggetto"]);
         }
         
         $backgroundgold=0;
@@ -188,16 +188,12 @@ if ($myvalues==$reference){
         }
 
     $dbh->updateGold($backgroundgold, $idborsa);
-    $nchoices=$_GET["choicen"];
-    $choices=array();
-    for ($i=0;$i<$nchoices;$i++){
-        array_push($choices, urldecode($_GET["choice".$i]));
+    $oggetticlasse=$dbh->getClassInventoryC($classe);
+    foreach ($oggetticlasse as $oggetto){
+        $dbh->addBackgroundClassInventory($idborsa, $oggetto["Nome_Oggetto"]);
     }
-    foreach ($choices as $object){
-        $dbh->addSingleObjectToInventory($idborsa, $object);
-    }
-   // header("Location: index.php");
-} else{
-   // header("Location: create.php");
+   header("Location: index.php");
+}else{
+   header("Location: create.php");
 }
 ?>
