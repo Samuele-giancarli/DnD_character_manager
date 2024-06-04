@@ -10,20 +10,6 @@ class DatabaseHelper{
         }
     }
 
-    public function getObject($tabella, $keyname, $keytype, $key) {
-        $query="SELECT * FROM ".$tabella." WHERE ".$keyname."=?";
-        $stmt=$this->db->prepare($query);   
-        $stmt->bind_param($keytype, $key);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        if (is_null($row)){
-            die("Cannot find ".$key." as ".$keyname." in ".$tabella);
-        }else{
-            return $row;
-        }
-    }
-
     public function aggiungiUtente($email, $password, $username){
         $query = "INSERT INTO utente (E_mail, Password, Username) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
@@ -33,13 +19,6 @@ class DatabaseHelper{
         } else {
             return null;
         }
-    }
-
-    public function rimuoviUtente($ID){
-        $query = "DELETE FROM utente WHERE ID_Utente = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $ID);
-        $stmt->execute();
     }
 
 
@@ -304,13 +283,6 @@ public function getCapacitiesOfClassAndLevel($class, $level){
     return $capacities;
 }
 
-public function getCapacityInfo($cap){
-    $query="SELECT * FROM capacita_di_classe WHERE Nome=?";
-    $stmt = $this->db->prepare($query);
-    $stmt->bind_param("si", $class, $level);
-    $stmt->execute();
-    $result = $stmt->get_result();
-}
 
 public function getCapacitiesOfSubclassAndLevel($subclass, $level){
     $query="SELECT * FROM impara_sottoclasse LEFT JOIN capacita_di_sottoclasse ON impara_sottoclasse.Nome_Capacita=capacita_di_sottoclasse.Nome WHERE Nome_Sottoclasse=? AND Livello_Sottoclasse<=?";
@@ -589,18 +561,6 @@ public function spokenByBackground($lingua){
     }
     return $origini;
 }
-public function getSubclassesFromClass($classe){
-    $query="SELECT Nome_Sottoclasse FROM specializzazione WHERE Nome_Classe=?";
-    $stmt = $this->db->prepare($query);
-    $stmt->bind_param("s", $classe);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $sottoclassi=array();
-    while ($row = $result->fetch_assoc()){
-        $sottoclassi[]=$row["Nome_Sottoclasse"];
-    }
-    return $sottoclassi;
-}
 
     public function getAlignments(){
         $query="SELECT * FROM allineamento";
@@ -746,13 +706,6 @@ public function getSubclassesFromClass($classe){
         $stmt->execute();
     }
 
-    public function addSingleObjectToInventory($idborsa, $nomeoggetto){
-        $query="INSERT INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,1)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("is", $idborsa,$nomeoggetto);
-        $stmt->execute();
-    }
-
     public function getArmorProficiencies($class){
         $query="SELECT Nome_Armatura FROM competenza_della_classe_in_armature WHERE Nome_Classe=?";
         $stmt = $this->db->prepare($query);
@@ -841,13 +794,6 @@ public function getSubclassesFromClass($classe){
         $stmt->execute();
     }
 
-    public function updateCharacterInitiative($idpersonaggio, $valore){
-        $query="UPDATE personaggio SET Iniziativa=? WHERE ID_Personaggio=?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ii",$valore, $idpersonaggio);
-        $stmt->execute();
-    }
-
 
     public function updateEquipment($idpersonaggio, $arma, $armatura){
         $query="UPDATE personaggio SET Arma_Equipaggiata=?, Armatura_Equipaggiata=? WHERE ID_Personaggio=?";
@@ -910,44 +856,8 @@ public function getSubclassesFromClass($classe){
     }
 
 
-    public function getBackgroundInventoryO($origine){
-        $query="SELECT Nome_Oggetto FROM oggetti_dell_origine WHERE Nome_Origine=?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("s", $origine);
-        $stmt->execute();
-        $throws = array();
-        $result = $stmt->get_result();
-        while($row = $result->fetch_assoc()){
-            $throws[] = $row;
-        }
-        return $throws;
-    }
-
-    public function getClassInventoryC($classe){
-        $query="SELECT Nome_Oggetto FROM oggetti_di_classe WHERE Nome_Classe=?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("s", $classe);
-        $stmt->execute();
-        $throws = array();
-        $result = $stmt->get_result();
-        while($row = $result->fetch_assoc()){
-            $throws[] = $row;
-        }
-        return $throws;
-    }
-
-    public function addBackgroundClassInventory($idborsa, $nome){
-        $query="INSERT IGNORE INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,1)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("is", $idborsa, $nome);
-        if ($stmt->execute()){
-        return true;
-       }
-       return false;
-    }
-    
     public function insertClassChoice($idpersonaggio, $classe, $livello){
-        $query="INSERT IGNORE INTO scelta_classe(ID_Personaggio, Nome_Classe, Livello_Classe) VALUES(?, ?, ?)";
+        $query="INSERT INTO scelta_classe(ID_Personaggio, Nome_Classe, Livello_Classe) VALUES(?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("isi", $idpersonaggio,$classe, $livello);
         if ($stmt->execute()){
@@ -1001,13 +911,6 @@ public function getSubclassesFromClass($classe){
             return true;
         }
         return false;
-    }
-
-    public function updateSavingThrows($valore, $idpersonaggio){
-        $query="UPDATE tiri_salvezza_personaggio SET Valore=Valore+? WHERE ID_Personaggio=?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ii", $idpersonaggio, $valore);
-        $stmt->execute();
     }
 
     public function getSavingThrowsName($classe){
@@ -1158,16 +1061,6 @@ public function getSubclassesFromClass($classe){
         return $row["Car_Carisma"];
     }
 
-    public function getHitPoints($ID){
-        $query="SELECT Punti_Ferita FROM personaggio WHERE ID_Personaggio=?";
-        $stmt=$this->db->prepare($query);
-        $stmt->bind_param("i", $ID);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        return $row["Punti_Ferita"];
-    }
-
     public function getName($ID){
         $query="SELECT Nome FROM personaggio WHERE ID_Personaggio=?";
         $stmt=$this->db->prepare($query);
@@ -1218,16 +1111,6 @@ public function getSubclassesFromClass($classe){
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         return $row["Iniziativa"];
-    }
-
-    public function getExperiencePoints($ID){
-        $query="SELECT Punti_Esperienza FROM personaggio WHERE ID_Personaggio=?";
-        $stmt=$this->db->prepare($query);
-        $stmt->bind_param("i", $ID);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        return $row["Punti_Esperienza"];
     }
 
     public function getOriginName($ID){
@@ -1443,26 +1326,10 @@ public function getSubclassesFromClass($classe){
     }
 
 
-    public function getLevel($ID){
-        $query="SELECT Livello FROM personaggio WHERE ID_Personaggio=?";
-        $stmt=$this->db->prepare($query);
-        $stmt->bind_param("i", $ID);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        return $row["Livello"];
-    }
-
-    public function removeCharacter($ID){
-        $query = "DELETE FROM personaggio WHERE ID_Personaggio = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $ID);
-        $stmt->execute();
-    }
-
 
     public function getCharacterItems($ID) {
-        $stmt = $this->db->prepare("SELECT * FROM Contiene WHERE ID_Borsa = ?");
+        $query="SELECT * FROM Contiene WHERE ID_Borsa = ?";
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param("i", $ID);
         $stmt->execute();
         $result = $stmt->get_result();
