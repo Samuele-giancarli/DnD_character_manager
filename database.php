@@ -903,11 +903,24 @@ public function getSubclassesFromClass($classe){
     }
 
 
-    public function addBackgroundInventory($idborsa, $nome, $quantita){
-        $query="INSERT INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,?)";
+    public function getBackgroundInventoryO($origine){
+        $query="SELECT Nome_Oggetto FROM oggetti_dell_origine WHERE Nome_Origine=?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("isi", $idborsa,$nome, $quantita);
-       if ($stmt->execute()){
+        $stmt->bind_param("s", $origine);
+        $stmt->execute();
+        $throws = array();
+        $result = $stmt->get_result();
+        while($row = $result->fetch_assoc()){
+            $throws[] = $row;
+        }
+        return $throws;
+    }
+
+    public function addBackgroundInventory($idborsa, $nome){
+        $query="INSERT INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,1)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $idborsa, $nome);
+        if ($stmt->execute()){
         return true;
        }
        return false;

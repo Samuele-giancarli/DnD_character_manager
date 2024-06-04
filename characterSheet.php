@@ -205,7 +205,7 @@
                 if (in_array($qarma,$dexterityweapons)&&in_array($qarma, $strengthweapons)){
                     $tiro="Destrezza o Forza";
                 }
-                echo "<p title=\"".$weaponinfo["Danno"]." ".$tiro."\">".$arma."</p>"; 
+                echo "<p title=\"".$weaponinfo["Danno"]." ".$tiro." ".$weaponinfo["Tipo_Danno"]."\"/>".$arma."</p>"; 
             }
             ?>
         
@@ -290,7 +290,11 @@
             $spells=$dbh->getSpellsByID($IDpersonaggio);
             echo "<p>";
             foreach ($spells as $spell){
-                echo "<p title=\"".$spell["Descrizione"]."\">".htmlentities($spell["Nome_Incantesimo"])."<br>";
+                $rituale=null;
+                if ($spell["Rituale"]==1){
+                    $rituale=" - rituale";
+                }
+                echo "<p title=\"".$spell["Descrizione"]."\">".htmlentities($spell["Nome_Incantesimo"])." ".$rituale."<br>";
             }
             echo "</p>";
             ?>
