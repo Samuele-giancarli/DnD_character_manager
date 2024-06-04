@@ -841,6 +841,13 @@ public function getSubclassesFromClass($classe){
         $stmt->execute();
     }
 
+    public function updateCharacterInitiative($idpersonaggio, $valore){
+        $query="UPDATE personaggio SET Iniziativa=? WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii",$valore, $idpersonaggio);
+        $stmt->execute();
+    }
+
 
     public function updateEquipment($idpersonaggio, $arma, $armatura){
         $query="UPDATE personaggio SET Arma_Equipaggiata=?, Armatura_Equipaggiata=? WHERE ID_Personaggio=?";

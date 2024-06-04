@@ -37,6 +37,10 @@
             $nomecaratteristica=$dbh->getAumFromCapacity($nomeclasse, $livelloclasse)["Aum_Nome_Caratteristica"];
             $valorecaratteristica=$dbh->getAumFromCapacity($nomeclasse, $livelloclasse)["Aum_Valore_Aggiuntivo"];
             $dbh->updateCharacterSkills($idpersonaggio, $nomecaratteristica, $valorecaratteristica);
+            if ($nomecaratteristica="Destrezza"){
+                $nuovadestrezza=$dbh->getCharacterInfo($idpersonaggio)["Car_Destrezza"];
+                $dbh->updateCharacterInitiative($idpersonaggio, $nuovadestrezza);
+            }
         }
 
         // aumento il lvl della classe

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 03, 2024 alle 16:01
+-- Creato il: Giu 04, 2024 alle 12:59
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -68,426 +68,6 @@ CREATE TABLE `abilita_personaggio` (
   `Valore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dump dei dati per la tabella `abilita_personaggio`
---
-
-INSERT INTO `abilita_personaggio` (`ID_Personaggio`, `Nome_Abilita`, `Valore`) VALUES
-(3, 'Acrobazia', 2),
-(3, 'Addestrare Animali', -1),
-(3, 'Arcano', 1),
-(3, 'Atletica', 2),
-(3, 'Furtività', 2),
-(3, 'Indagare', 1),
-(3, 'Inganno', 2),
-(3, 'Intimidire', 0),
-(3, 'Intrattenere', 2),
-(3, 'Intuizione', -1),
-(3, 'Medicina', -1),
-(3, 'Natura', 1),
-(3, 'Percezione', -1),
-(3, 'Persuasione', 2),
-(3, 'Rapidità Di Mano', 2),
-(3, 'Religione', 1),
-(3, 'Sopravvivenza', -1),
-(3, 'Storia', 3),
-(4, 'Acrobazia', 2),
-(4, 'Addestrare Animali', 1),
-(4, 'Arcano', 2),
-(4, 'Atletica', 1),
-(4, 'Furtività', 2),
-(4, 'Indagare', 2),
-(4, 'Inganno', 1),
-(4, 'Intimidire', 3),
-(4, 'Intrattenere', 1),
-(4, 'Intuizione', 1),
-(4, 'Medicina', 1),
-(4, 'Natura', 2),
-(4, 'Percezione', 1),
-(4, 'Persuasione', 1),
-(4, 'Rapidità Di Mano', 2),
-(4, 'Religione', 2),
-(4, 'Sopravvivenza', 1),
-(4, 'Storia', 4),
-(5, 'Acrobazia', 2),
-(5, 'Addestrare Animali', 1),
-(5, 'Arcano', 2),
-(5, 'Atletica', 1),
-(5, 'Furtività', 2),
-(5, 'Indagare', 2),
-(5, 'Inganno', 3),
-(5, 'Intimidire', 1),
-(5, 'Intrattenere', 1),
-(5, 'Intuizione', 1),
-(5, 'Medicina', 1),
-(5, 'Natura', 2),
-(5, 'Percezione', 3),
-(5, 'Persuasione', 1),
-(5, 'Rapidità Di Mano', 2),
-(5, 'Religione', 2),
-(5, 'Sopravvivenza', 1),
-(5, 'Storia', 2),
-(6, 'Acrobazia', 0),
-(6, 'Addestrare Animali', -1),
-(6, 'Arcano', 1),
-(6, 'Atletica', 2),
-(6, 'Furtività', 0),
-(6, 'Indagare', 1),
-(6, 'Inganno', 4),
-(6, 'Intimidire', 2),
-(6, 'Intrattenere', 4),
-(6, 'Intuizione', -1),
-(6, 'Medicina', -1),
-(6, 'Natura', 1),
-(6, 'Percezione', -1),
-(6, 'Persuasione', 4),
-(6, 'Rapidità Di Mano', 0),
-(6, 'Religione', 1),
-(6, 'Sopravvivenza', -1),
-(6, 'Storia', 3),
-(7, 'Acrobazia', 0),
-(7, 'Addestrare Animali', -1),
-(7, 'Arcano', 1),
-(7, 'Atletica', 2),
-(7, 'Furtività', 0),
-(7, 'Indagare', 1),
-(7, 'Inganno', 4),
-(7, 'Intimidire', 2),
-(7, 'Intrattenere', 4),
-(7, 'Intuizione', -1),
-(7, 'Medicina', -1),
-(7, 'Natura', 1),
-(7, 'Percezione', -1),
-(7, 'Persuasione', 4),
-(7, 'Rapidità Di Mano', 0),
-(7, 'Religione', 1),
-(7, 'Sopravvivenza', -1),
-(7, 'Storia', 3),
-(8, 'Acrobazia', 0),
-(8, 'Addestrare Animali', -1),
-(8, 'Arcano', 1),
-(8, 'Atletica', 2),
-(8, 'Furtività', 0),
-(8, 'Indagare', 1),
-(8, 'Inganno', 4),
-(8, 'Intimidire', 2),
-(8, 'Intrattenere', 4),
-(8, 'Intuizione', 1),
-(8, 'Medicina', -1),
-(8, 'Natura', 1),
-(8, 'Percezione', -1),
-(8, 'Persuasione', 4),
-(8, 'Rapidità Di Mano', 0),
-(8, 'Religione', 3),
-(8, 'Sopravvivenza', -1),
-(8, 'Storia', 1),
-(9, 'Acrobazia', 0),
-(9, 'Addestrare Animali', -1),
-(9, 'Arcano', 1),
-(9, 'Atletica', 2),
-(9, 'Furtività', 0),
-(9, 'Indagare', 1),
-(9, 'Inganno', 4),
-(9, 'Intimidire', 2),
-(9, 'Intrattenere', 4),
-(9, 'Intuizione', -1),
-(9, 'Medicina', -1),
-(9, 'Natura', 1),
-(9, 'Percezione', -1),
-(9, 'Persuasione', 4),
-(9, 'Rapidità Di Mano', 0),
-(9, 'Religione', 1),
-(9, 'Sopravvivenza', 1),
-(9, 'Storia', 3),
-(10, 'Acrobazia', 0),
-(10, 'Addestrare Animali', -1),
-(10, 'Arcano', 1),
-(10, 'Atletica', 2),
-(10, 'Furtività', 0),
-(10, 'Indagare', 1),
-(10, 'Inganno', 4),
-(10, 'Intimidire', 2),
-(10, 'Intrattenere', 4),
-(10, 'Intuizione', -1),
-(10, 'Medicina', -1),
-(10, 'Natura', 1),
-(10, 'Percezione', -1),
-(10, 'Persuasione', 4),
-(10, 'Rapidità Di Mano', 0),
-(10, 'Religione', 1),
-(10, 'Sopravvivenza', 1),
-(10, 'Storia', 3),
-(11, 'Acrobazia', 0),
-(11, 'Addestrare Animali', -1),
-(11, 'Arcano', 1),
-(11, 'Atletica', 2),
-(11, 'Furtività', 0),
-(11, 'Indagare', 1),
-(11, 'Inganno', 4),
-(11, 'Intimidire', 2),
-(11, 'Intrattenere', 4),
-(11, 'Intuizione', -1),
-(11, 'Medicina', -1),
-(11, 'Natura', 1),
-(11, 'Percezione', -1),
-(11, 'Persuasione', 4),
-(11, 'Rapidità Di Mano', 0),
-(11, 'Religione', 1),
-(11, 'Sopravvivenza', 1),
-(11, 'Storia', 3),
-(12, 'Acrobazia', 0),
-(12, 'Addestrare Animali', -1),
-(12, 'Arcano', 1),
-(12, 'Atletica', 2),
-(12, 'Furtività', 0),
-(12, 'Indagare', 1),
-(12, 'Inganno', 4),
-(12, 'Intimidire', 2),
-(12, 'Intrattenere', 4),
-(12, 'Intuizione', -1),
-(12, 'Medicina', -1),
-(12, 'Natura', 1),
-(12, 'Percezione', -1),
-(12, 'Persuasione', 4),
-(12, 'Rapidità Di Mano', 0),
-(12, 'Religione', 1),
-(12, 'Sopravvivenza', 1),
-(12, 'Storia', 3),
-(13, 'Acrobazia', 0),
-(13, 'Addestrare Animali', -1),
-(13, 'Arcano', 1),
-(13, 'Atletica', 2),
-(13, 'Furtività', 0),
-(13, 'Indagare', 1),
-(13, 'Inganno', 4),
-(13, 'Intimidire', 2),
-(13, 'Intrattenere', 4),
-(13, 'Intuizione', -1),
-(13, 'Medicina', -1),
-(13, 'Natura', 1),
-(13, 'Percezione', -1),
-(13, 'Persuasione', 4),
-(13, 'Rapidità Di Mano', 0),
-(13, 'Religione', 1),
-(13, 'Sopravvivenza', 1),
-(13, 'Storia', 3),
-(14, 'Acrobazia', 0),
-(14, 'Addestrare Animali', -1),
-(14, 'Arcano', 1),
-(14, 'Atletica', 2),
-(14, 'Furtività', 0),
-(14, 'Indagare', 1),
-(14, 'Inganno', 4),
-(14, 'Intimidire', 2),
-(14, 'Intrattenere', 4),
-(14, 'Intuizione', -1),
-(14, 'Medicina', -1),
-(14, 'Natura', 1),
-(14, 'Percezione', -1),
-(14, 'Persuasione', 4),
-(14, 'Rapidità Di Mano', 0),
-(14, 'Religione', 1),
-(14, 'Sopravvivenza', 1),
-(14, 'Storia', 3),
-(15, 'Acrobazia', 0),
-(15, 'Addestrare Animali', -1),
-(15, 'Arcano', 1),
-(15, 'Atletica', 2),
-(15, 'Furtività', 0),
-(15, 'Indagare', 1),
-(15, 'Inganno', 4),
-(15, 'Intimidire', 2),
-(15, 'Intrattenere', 4),
-(15, 'Intuizione', -1),
-(15, 'Medicina', -1),
-(15, 'Natura', 1),
-(15, 'Percezione', -1),
-(15, 'Persuasione', 4),
-(15, 'Rapidità Di Mano', 0),
-(15, 'Religione', 1),
-(15, 'Sopravvivenza', 1),
-(15, 'Storia', 3),
-(16, 'Acrobazia', 4),
-(16, 'Addestrare Animali', 2),
-(16, 'Arcano', 1),
-(16, 'Atletica', 1),
-(16, 'Furtività', 6),
-(16, 'Indagare', 1),
-(16, 'Inganno', 2),
-(16, 'Intimidire', 2),
-(16, 'Intrattenere', 0),
-(16, 'Intuizione', 2),
-(16, 'Medicina', 2),
-(16, 'Natura', 1),
-(16, 'Percezione', 2),
-(16, 'Persuasione', 2),
-(16, 'Rapidità Di Mano', 4),
-(16, 'Religione', 1),
-(16, 'Sopravvivenza', 2),
-(16, 'Storia', 1),
-(17, 'Acrobazia', 1),
-(17, 'Addestrare Animali', 0),
-(17, 'Arcano', 1),
-(17, 'Atletica', 2),
-(17, 'Furtività', 1),
-(17, 'Indagare', 1),
-(17, 'Inganno', 1),
-(17, 'Intimidire', -1),
-(17, 'Intrattenere', 1),
-(17, 'Intuizione', 2),
-(17, 'Medicina', 0),
-(17, 'Natura', 1),
-(17, 'Percezione', 0),
-(17, 'Persuasione', 1),
-(17, 'Rapidità Di Mano', 1),
-(17, 'Religione', 3),
-(17, 'Sopravvivenza', 0),
-(17, 'Storia', 1),
-(18, 'Acrobazia', 1),
-(18, 'Addestrare Animali', 0),
-(18, 'Arcano', 1),
-(18, 'Atletica', 2),
-(18, 'Furtività', 1),
-(18, 'Indagare', 1),
-(18, 'Inganno', 1),
-(18, 'Intimidire', -1),
-(18, 'Intrattenere', 1),
-(18, 'Intuizione', 2),
-(18, 'Medicina', 0),
-(18, 'Natura', 1),
-(18, 'Percezione', 0),
-(18, 'Persuasione', 1),
-(18, 'Rapidità Di Mano', 1),
-(18, 'Religione', 3),
-(18, 'Sopravvivenza', 0),
-(18, 'Storia', 1),
-(19, 'Acrobazia', 2),
-(19, 'Addestrare Animali', 0),
-(19, 'Arcano', 1),
-(19, 'Atletica', 2),
-(19, 'Furtività', 2),
-(19, 'Indagare', 1),
-(19, 'Inganno', 1),
-(19, 'Intimidire', -1),
-(19, 'Intrattenere', 1),
-(19, 'Intuizione', 0),
-(19, 'Medicina', 0),
-(19, 'Natura', 1),
-(19, 'Percezione', 0),
-(19, 'Persuasione', 1),
-(19, 'Rapidità Di Mano', 2),
-(19, 'Religione', 1),
-(19, 'Sopravvivenza', 0),
-(19, 'Storia', 3),
-(20, 'Acrobazia', 2),
-(20, 'Addestrare Animali', 0),
-(20, 'Arcano', 1),
-(20, 'Atletica', 2),
-(20, 'Furtività', 2),
-(20, 'Indagare', 1),
-(20, 'Inganno', 1),
-(20, 'Intimidire', -1),
-(20, 'Intrattenere', 1),
-(20, 'Intuizione', 0),
-(20, 'Medicina', 0),
-(20, 'Natura', 1),
-(20, 'Percezione', 0),
-(20, 'Persuasione', 1),
-(20, 'Rapidità Di Mano', 2),
-(20, 'Religione', 1),
-(20, 'Sopravvivenza', 0),
-(20, 'Storia', 3),
-(21, 'Acrobazia', 2),
-(21, 'Addestrare Animali', 0),
-(21, 'Arcano', 1),
-(21, 'Atletica', 2),
-(21, 'Furtività', 2),
-(21, 'Indagare', 1),
-(21, 'Inganno', 1),
-(21, 'Intimidire', -1),
-(21, 'Intrattenere', 1),
-(21, 'Intuizione', 0),
-(21, 'Medicina', 0),
-(21, 'Natura', 1),
-(21, 'Percezione', 0),
-(21, 'Persuasione', 1),
-(21, 'Rapidità Di Mano', 2),
-(21, 'Religione', 1),
-(21, 'Sopravvivenza', 0),
-(21, 'Storia', 3),
-(22, 'Acrobazia', 2),
-(22, 'Addestrare Animali', 0),
-(22, 'Arcano', 1),
-(22, 'Atletica', 2),
-(22, 'Furtività', 2),
-(22, 'Indagare', 1),
-(22, 'Inganno', 1),
-(22, 'Intimidire', -1),
-(22, 'Intrattenere', 1),
-(22, 'Intuizione', 0),
-(22, 'Medicina', 0),
-(22, 'Natura', 1),
-(22, 'Percezione', 0),
-(22, 'Persuasione', 1),
-(22, 'Rapidità Di Mano', 2),
-(22, 'Religione', 1),
-(22, 'Sopravvivenza', 0),
-(22, 'Storia', 3),
-(23, 'Acrobazia', 2),
-(23, 'Addestrare Animali', 0),
-(23, 'Arcano', 3),
-(23, 'Atletica', 2),
-(23, 'Furtività', 2),
-(23, 'Indagare', 1),
-(23, 'Inganno', -1),
-(23, 'Intimidire', -1),
-(23, 'Intrattenere', -1),
-(23, 'Intuizione', 4),
-(23, 'Medicina', 0),
-(23, 'Natura', 1),
-(23, 'Percezione', 0),
-(23, 'Persuasione', -1),
-(23, 'Rapidità Di Mano', 2),
-(23, 'Religione', 3),
-(23, 'Sopravvivenza', 0),
-(23, 'Storia', 1),
-(24, 'Acrobazia', 1),
-(24, 'Addestrare Animali', 1),
-(24, 'Arcano', 4),
-(24, 'Atletica', -1),
-(24, 'Furtività', 3),
-(24, 'Indagare', 2),
-(24, 'Inganno', 2),
-(24, 'Intimidire', 4),
-(24, 'Intrattenere', 2),
-(24, 'Intuizione', 3),
-(24, 'Medicina', 1),
-(24, 'Natura', 2),
-(24, 'Percezione', 1),
-(24, 'Persuasione', 4),
-(24, 'Rapidità Di Mano', 1),
-(24, 'Religione', 2),
-(24, 'Sopravvivenza', 1),
-(24, 'Storia', 2),
-(25, 'Acrobazia', 2),
-(25, 'Addestrare Animali', 1),
-(25, 'Arcano', 2),
-(25, 'Atletica', 1),
-(25, 'Furtività', 4),
-(25, 'Indagare', 2),
-(25, 'Inganno', 1),
-(25, 'Intimidire', 1),
-(25, 'Intrattenere', -1),
-(25, 'Intuizione', 1),
-(25, 'Medicina', 1),
-(25, 'Natura', 2),
-(25, 'Percezione', 1),
-(25, 'Persuasione', 1),
-(25, 'Rapidità Di Mano', 2),
-(25, 'Religione', 2),
-(25, 'Sopravvivenza', 1),
-(25, 'Storia', 2);
-
 -- --------------------------------------------------------
 
 --
@@ -512,17 +92,6 @@ INSERT INTO `allineamento` (`Nome`) VALUES
 ('Neutrale'),
 ('Neutrale Buono'),
 ('Neutrale Malvagio');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `appartiene`
---
-
-CREATE TABLE `appartiene` (
-  `Nome_Razza` varchar(30) NOT NULL,
-  `ID_Personaggio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -618,35 +187,6 @@ CREATE TABLE `borsa` (
   `Monete_Oro` int(11) NOT NULL,
   `Monete_Platino` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `borsa`
---
-
-INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
-(3, 225, 1, 2, 3, 154, 0),
-(4, 120, 0, 0, 0, 50, 0),
-(5, 120, 0, 0, 0, 90, 0),
-(6, 210, 0, 0, 0, 120, 0),
-(7, 210, 0, 0, 0, 130, 0),
-(8, 210, 0, 0, 0, 130, 0),
-(9, 210, 0, 0, 0, 130, 0),
-(10, 210, 0, 0, 0, 120, 0),
-(11, 210, 0, 0, 0, 160, 0),
-(12, 210, 0, 0, 0, 70, 0),
-(13, 210, 0, 0, 0, 110, 0),
-(14, 210, 0, 0, 0, 80, 0),
-(15, 210, 0, 0, 0, 80, 0),
-(16, 195, 0, 0, 0, 120, 0),
-(17, 225, 0, 0, 0, 110, 0),
-(18, 225, 0, 0, 0, 140, 0),
-(19, 225, 0, 0, 0, 110, 0),
-(20, 225, 0, 0, 0, 135, 0),
-(21, 225, 0, 0, 0, 145, 0),
-(22, 225, 0, 0, 0, 195, 0),
-(23, 225, 0, 0, 0, 75, 0),
-(24, 120, 20, 5, 0, 80, 0),
-(25, 180, 0, 5, 5, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -765,17 +305,6 @@ INSERT INTO `capacita_di_sottoclasse` (`Nome`, `Descrizione`) VALUES
 ('Stile di combattimento', 'Al 3° livello, adotti uno stile di combattimento particolare come tua specialità. Scegli una delle seguenti opzioni. Non puoi scegliere un\'opzione di Stile di Combattimento più di una volta, anche se in seguito potrai sceglierla nuovamente.\r\n\r\nDuello. Quando impugni un\'arma da mischia in una mano e nessun\'altra arma, ottieni bonus +2 ai tiri per i danni con quell\'arma.\r\nCombattimento con due armi. Quando combatti con due armi, puoi aggiungere il tuo modificatore di abilità al danno del secondo attacco.'),
 ('Super Canalizzazione', 'A partire dal 14° livello, puoi aumentare la potenza dei tuoi incantesimi più semplici. Quando lanci un incantesimo da mago dal 1° al 5° livello che infligge danni, puoi infliggere il massimo danno con quell\'incantesimo.\r\n\r\nLa prima volta che lo fai, non subisci alcun effetto negativo. Se usi nuovamente questo privilegio prima di terminare un riposo lungo, subisci 2d12 danni necrotici per ogni livello dell\'incantesimo, immediatamente dopo averlo lanciato. Ogni volta che si utilizza nuovamente questo privilegio prima di terminare un riposo lungo, il danno necrotico per livello dell\'incantesimo aumenta di 1d12. Questo danno ignora la resistenza e l\'immunità.'),
 ('Trucchetto potente', 'A partire dal 6° livello, i tuoi trucchetti dannosi colpiscono anche le creature che evitano il peso dell\'effetto. Quando una creatura supera un tiro salvezza contro il trucchetto, la creatura subisce la metà dei danni del trucchetto (se presenti) ma non subisce alcun effetto aggiuntivo dal trucchetto.');
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `caratterizza`
---
-
-CREATE TABLE `caratterizza` (
-  `Nome_Allineamento` varchar(20) NOT NULL,
-  `ID_Personaggio` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -1059,119 +588,6 @@ CREATE TABLE `competenze_abilita` (
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dump dei dati per la tabella `competenze_abilita`
---
-
-INSERT INTO `competenze_abilita` (`Nome_Abilita`, `ID_Personaggio`) VALUES
-('Acrobazia', 5),
-('Acrobazia', 16),
-('Acrobazia', 25),
-('Arcano', 23),
-('Arcano', 24),
-('Atletica', 4),
-('Atletica', 5),
-('Furtività', 5),
-('Furtività', 16),
-('Furtività', 24),
-('Furtività', 25),
-('Inganno', 3),
-('Inganno', 5),
-('Inganno', 6),
-('Inganno', 7),
-('Inganno', 8),
-('Inganno', 9),
-('Inganno', 10),
-('Inganno', 11),
-('Inganno', 12),
-('Inganno', 13),
-('Inganno', 14),
-('Inganno', 15),
-('Inganno', 16),
-('Inganno', 17),
-('Inganno', 18),
-('Inganno', 19),
-('Inganno', 20),
-('Inganno', 21),
-('Inganno', 22),
-('Inganno', 25),
-('Intimidire', 4),
-('Intimidire', 16),
-('Intimidire', 24),
-('Intimidire', 25),
-('Intrattenere', 3),
-('Intrattenere', 6),
-('Intrattenere', 7),
-('Intrattenere', 8),
-('Intrattenere', 9),
-('Intrattenere', 10),
-('Intrattenere', 11),
-('Intrattenere', 12),
-('Intrattenere', 13),
-('Intrattenere', 14),
-('Intrattenere', 15),
-('Intrattenere', 17),
-('Intrattenere', 18),
-('Intrattenere', 19),
-('Intrattenere', 20),
-('Intrattenere', 21),
-('Intrattenere', 22),
-('Intuizione', 8),
-('Intuizione', 17),
-('Intuizione', 18),
-('Intuizione', 23),
-('Intuizione', 24),
-('Percezione', 5),
-('Persuasione', 3),
-('Persuasione', 6),
-('Persuasione', 7),
-('Persuasione', 8),
-('Persuasione', 9),
-('Persuasione', 10),
-('Persuasione', 11),
-('Persuasione', 12),
-('Persuasione', 13),
-('Persuasione', 14),
-('Persuasione', 15),
-('Persuasione', 16),
-('Persuasione', 17),
-('Persuasione', 18),
-('Persuasione', 19),
-('Persuasione', 20),
-('Persuasione', 21),
-('Persuasione', 22),
-('Persuasione', 24),
-('Persuasione', 25),
-('Rapidità Di Mano', 5),
-('Rapidità Di Mano', 16),
-('Rapidità Di Mano', 25),
-('Religione', 8),
-('Religione', 17),
-('Religione', 18),
-('Religione', 23),
-('Sopravvivenza', 9),
-('Sopravvivenza', 10),
-('Sopravvivenza', 11),
-('Sopravvivenza', 12),
-('Sopravvivenza', 13),
-('Sopravvivenza', 14),
-('Sopravvivenza', 15),
-('Storia', 3),
-('Storia', 4),
-('Storia', 6),
-('Storia', 7),
-('Storia', 9),
-('Storia', 10),
-('Storia', 11),
-('Storia', 12),
-('Storia', 13),
-('Storia', 14),
-('Storia', 15),
-('Storia', 19),
-('Storia', 20),
-('Storia', 21),
-('Storia', 22);
-
 -- --------------------------------------------------------
 
 --
@@ -1183,14 +599,6 @@ CREATE TABLE `conosce` (
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dump dei dati per la tabella `conosce`
---
-
-INSERT INTO `conosce` (`Nome_Incantesimo`, `ID_Personaggio`) VALUES
-('Confusione', 16),
-('Telepatia', 16);
-
 -- --------------------------------------------------------
 
 --
@@ -1201,66 +609,6 @@ CREATE TABLE `contiene` (
   `ID_Borsa` int(11) NOT NULL,
   `Nome_Oggetto` varchar(30) NOT NULL,
   `Quantita` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `contiene`
---
-
-INSERT INTO `contiene` (`ID_Borsa`, `Nome_Oggetto`, `Quantita`) VALUES
-(25, 'Abiti Comuni con Cappuccio', 5),
-(19, 'Abiti Pregiati', 1),
-(20, 'Abiti Pregiati', 1),
-(21, 'Abiti Pregiati', 1),
-(22, 'Abiti Pregiati', 1),
-(24, 'Ametista', 4),
-(19, 'Anello con Sigillo', 1),
-(20, 'Anello con Sigillo', 1),
-(21, 'Anello con Sigillo', 1),
-(22, 'Anello con Sigillo', 1),
-(23, 'Balestra Leggera', 2),
-(24, 'Balestra Leggera', 1),
-(22, 'Cotta Di Maglia', 1),
-(25, 'Cotta Di Maglia', 1),
-(3, 'Diamante', 7),
-(3, 'Disco Di Pietra Multicolore', 1),
-(24, 'Focus Arcano', 1),
-(18, 'Libro di Preghiere', 1),
-(23, 'Libro di Preghiere', 1),
-(22, 'Lira', 1),
-(22, 'Pacchetto da Diplomatico', 1),
-(23, 'Pacchetto da Esploratore', 1),
-(24, 'Pacchetto da Esploratore', 1),
-(25, 'Pacchetto da Scassinatore', 1),
-(18, 'Paramenti', 1),
-(23, 'Paramenti', 1),
-(19, 'Pergamena di Attestato', 1),
-(20, 'Pergamena di Attestato', 1),
-(21, 'Pergamena di Attestato', 1),
-(22, 'Pergamena di Attestato', 1),
-(24, 'Piede di Porco', 1),
-(25, 'Piede di Porco', 1),
-(3, 'Pugnale', 5),
-(23, 'Sacchetto di Componenti', 1),
-(18, 'Simbolo Sacro', 1),
-(23, 'Simbolo Sacro', 1),
-(21, 'Spadone', 1),
-(18, 'Stecca d\'Incenso', 5),
-(23, 'Stecca d\'Incenso', 5),
-(3, 'Turchese', 10),
-(3, 'Veleno Di Serpente', 1),
-(18, 'Vestiti Comuni', 1),
-(23, 'Vestiti Comuni', 1);
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `ha_origine`
---
-
-CREATE TABLE `ha_origine` (
-  `Nome_Origine` varchar(30) NOT NULL,
-  `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -2053,7 +1401,7 @@ INSERT INTO `oggetto` (`Peso`, `Valore`, `Nome`, `Descrizione`, `Contenuto`, `Da
 (4, 5, 'Armatura Imbottita', NULL, NULL, NULL, NULL, '11 + Destrezza', 0, 1, 'Armatura Leggera'),
 (1, 5, 'Ascia', NULL, NULL, '1d6', 'Tagliente', NULL, NULL, NULL, 'Arma Semplice Ravvicinata'),
 (0, 10, 'Azzurrite', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Gemma'),
-(2, 25, 'Balestra Leggera', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Arma Semplice A Distanza'),
+(2, 25, 'Balestra Leggera', NULL, NULL, '1d8', 'Perforante', NULL, NULL, NULL, 'Arma Semplice A DIstanza'),
 (8, 50, 'Balestra Pesante', NULL, NULL, '1d10', 'Perforante', NULL, NULL, NULL, 'Arma Marziale A DIstanza'),
 (27, 200, 'Corazza', NULL, NULL, NULL, NULL, '17', 15, 1, 'Armatura Pesante'),
 (20, 50, 'Corazza A Scaglie', NULL, NULL, NULL, NULL, '14 + Destrezza', 0, 1, 'Armatura Media'),
@@ -2203,7 +1551,6 @@ CREATE TABLE `personaggio` (
   `Descrizione_Aspetto` varchar(1000) NOT NULL,
   `Classe_Armatura` int(11) NOT NULL,
   `Iniziativa` int(11) NOT NULL,
-  `Punti_Esperienza` int(11) NOT NULL,
   `ID_Utente` int(11) NOT NULL,
   `Nome_Origine` varchar(30) NOT NULL,
   `Armatura_Equipaggiata` varchar(30) DEFAULT NULL,
@@ -2213,35 +1560,6 @@ CREATE TABLE `personaggio` (
   `Nome_Sottorazza` varchar(30) NOT NULL,
   `ID_Borsa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `personaggio`
---
-
-INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `Punti_Esperienza`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `Nome_Sottorazza`, `ID_Borsa`) VALUES
-(3, 15, 14, 13, 12, 8, 10, 9, 'Zeta', 'Bella', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Neutrale', 'Umano', 'Nephalia', 3),
-(4, 8, 15, 10, 14, 13, 12, 12, 'Evi', 'Ooooo', 12, 15, 0, 4, 'Cavaliere', NULL, NULL, 'Neutrale Malvagio', 'Elfo', 'Elfo Dei Boschi', 4),
-(5, 8, 10, 15, 14, 13, 12, 10, 'Gianfranco', 'Oooo', 10, 10, 0, 4, 'Marinaio', NULL, NULL, 'Legale Buono', 'Umano', 'Nephalia', 5),
-(6, 14, 10, 13, 12, 8, 15, 9, 'Tiro', 'oooo', 10, 10, 0, 4, 'Cavaliere', NULL, NULL, 'Legale Buono', 'Nano', 'Nano Delle Colline', 6),
-(7, 14, 10, 13, 12, 8, 15, 9, 'Tiro', 'oooo', 10, 10, 0, 4, 'Cavaliere', NULL, NULL, 'Legale Buono', 'Nano', 'Nano Delle Colline', 7),
-(8, 14, 10, 13, 12, 8, 15, 9, 'Ooo', 'Fico', 10, 10, 0, 4, 'Accolito', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Dei Boschi', 8),
-(9, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 9),
-(10, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 10),
-(11, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 11),
-(12, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 12),
-(13, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 13),
-(14, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 14),
-(15, 14, 10, 13, 12, 8, 15, 9, 'aaa', 'aaaa', 10, 10, 0, 4, 'Archeologo', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 15),
-(16, 13, 14, 8, 12, 15, 10, 7, 'Prova0', 'Questa è la sua descrizione aspetto', 12, 14, 0, 4, 'Criminale', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Scuro', 16),
-(17, 15, 13, 14, 12, 10, 8, 10, 'ProvaOrigine', 'eeee', 11, 13, 0, 4, 'Accolito', NULL, NULL, 'Caotico Malvagio', 'Elfo', 'Elfo Dei Boschi', 17),
-(18, 15, 13, 14, 12, 10, 8, 10, 'ProvaOrigine', 'eeee', 11, 13, 0, 4, 'Accolito', NULL, NULL, 'Caotico Malvagio', 'Elfo', 'Elfo Dei Boschi', 18),
-(19, 15, 14, 13, 12, 10, 8, 9, 'ProvaOrigine2', 'oh', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Buono', 'Elfo', 'Elfo Dei Boschi', 19),
-(20, 15, 14, 13, 12, 10, 8, 9, 'ProvaOrigine2', 'oh', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Caotico Buono', 'Elfo', 'Elfo Dei Boschi', 20),
-(21, 15, 14, 13, 12, 10, 8, 9, 'Ev', 'Aaaa', 12, 14, 0, 4, 'Cavaliere', NULL, NULL, 'Legale Neutrale', 'Elfo', 'Elfo Scuro', 21),
-(22, 15, 14, 13, 12, 10, 8, 9, 'Ev', 'Aaaa', 12, 14, 0, 4, 'Cavaliere', 'Cotta Di Maglia', NULL, 'Legale Neutrale', 'Elfo', 'Elfo Scuro', 22),
-(23, 15, 14, 13, 12, 10, 8, 7, 'ciccio', 'bono', 12, 14, 0, 4, 'Accolito', NULL, NULL, 'Caotico Buono', 'Nano', 'Nano Delle Montagne', 23),
-(24, 8, 13, 10, 15, 12, 14, 6, 'Evi', 'Ha le orecchie a punta: è molto bella, ha i capelli lunghissimi.', 11, 13, 0, 5, 'Criminale', NULL, NULL, 'Neutrale', 'Elfo', 'Elfo Scuro', 24),
-(25, 12, 10, 15, 14, 13, 8, 10, 'Zeta', 'qaaa', 10, 10, 0, 5, 'Criminale', NULL, NULL, 'Legale Buono', 'Elfo', 'Elfo Dei Boschi', 25);
 
 -- --------------------------------------------------------
 
@@ -2253,35 +1571,6 @@ CREATE TABLE `possiede` (
   `ID_Utente` int(11) NOT NULL,
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `possiede`
---
-
-INSERT INTO `possiede` (`ID_Utente`, `ID_Personaggio`) VALUES
-(4, 3),
-(4, 4),
-(4, 5),
-(4, 6),
-(4, 7),
-(4, 8),
-(4, 9),
-(4, 10),
-(4, 11),
-(4, 12),
-(4, 13),
-(4, 14),
-(4, 15),
-(4, 16),
-(4, 17),
-(4, 18),
-(4, 19),
-(4, 20),
-(4, 21),
-(4, 22),
-(4, 23),
-(5, 24),
-(5, 25);
 
 -- --------------------------------------------------------
 
@@ -2370,9 +1659,7 @@ INSERT INTO `proprieta_arma` (`Nome_Proprieta`, `Nome_Arma`) VALUES
 ('Portata', 'Arco Lungo'),
 ('Portata', 'Balestra Leggera'),
 ('Portata', 'Balestra Pesante'),
-('Precisione', 'Pugnale'),
-('Versatile', 'Martello Da Guerra'),
-('Versatile', 'Spada Lunga');
+('Precisione', 'Pugnale');
 
 -- --------------------------------------------------------
 
@@ -2487,36 +1774,6 @@ CREATE TABLE `scelta_classe` (
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dump dei dati per la tabella `scelta_classe`
---
-
-INSERT INTO `scelta_classe` (`Nome_Classe`, `Livello_Classe`, `ID_Personaggio`) VALUES
-('Barbaro', 3, 23),
-('Bardo', 1, 6),
-('Bardo', 1, 7),
-('Bardo', 1, 8),
-('Bardo', 1, 9),
-('Bardo', 1, 10),
-('Bardo', 1, 11),
-('Bardo', 1, 12),
-('Bardo', 1, 13),
-('Bardo', 1, 14),
-('Bardo', 1, 15),
-('Bardo', 1, 17),
-('Bardo', 1, 18),
-('Bardo', 1, 19),
-('Bardo', 1, 20),
-('Bardo', 1, 21),
-('Bardo', 1, 22),
-('Bardo', 1, 23),
-('Ladro', 1, 5),
-('Ladro', 1, 16),
-('Ladro', 1, 25),
-('Ladro', 11, 23),
-('Mago', 1, 23),
-('Mago', 1, 24);
-
 -- --------------------------------------------------------
 
 --
@@ -2604,16 +1861,6 @@ CREATE TABLE `scelta_sottoclasse` (
   `Nome_Sottoclasse` varchar(30) NOT NULL,
   `Livello_Sottoclasse` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dump dei dati per la tabella `scelta_sottoclasse`
---
-
-INSERT INTO `scelta_sottoclasse` (`ID_Personaggio`, `Nome_Sottoclasse`, `Livello_Sottoclasse`) VALUES
-(16, 'Assassino', 1),
-(5, 'Berserker', 1),
-(23, 'Berserker', 2),
-(23, 'Collegio della Creazione', 1);
 
 -- --------------------------------------------------------
 
@@ -2776,43 +2023,6 @@ CREATE TABLE `tiri_salvezza_personaggio` (
   `Valore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dump dei dati per la tabella `tiri_salvezza_personaggio`
---
-
-INSERT INTO `tiri_salvezza_personaggio` (`ID_Personaggio`, `Nome_Caratteristica`, `Valore`) VALUES
-(10, 'Carisma', 0),
-(10, 'Destrezza', 0),
-(11, 'Carisma', 0),
-(11, 'Destrezza', 0),
-(12, 'Carisma', 4),
-(12, 'Destrezza', 2),
-(13, 'Carisma', 4),
-(13, 'Destrezza', 2),
-(14, 'Carisma', 4),
-(14, 'Destrezza', 2),
-(15, 'Carisma', 4),
-(15, 'Destrezza', 2),
-(16, 'Destrezza', 4),
-(16, 'Intelligenza', 3),
-(17, 'Carisma', 1),
-(18, 'Carisma', 1),
-(18, 'Destrezza', 3),
-(19, 'Carisma', 1),
-(19, 'Destrezza', 4),
-(20, 'Carisma', 1),
-(20, 'Destrezza', 4),
-(21, 'Carisma', 1),
-(21, 'Destrezza', 4),
-(22, 'Carisma', 1),
-(22, 'Destrezza', 4),
-(23, 'Intelligenza', 3),
-(23, 'Saggezza', 2),
-(24, 'Intelligenza', 4),
-(24, 'Saggezza', 3),
-(25, 'Destrezza', 2),
-(25, 'Intelligenza', 4);
-
 -- --------------------------------------------------------
 
 --
@@ -2924,14 +2134,6 @@ CREATE TABLE `utente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `utente`
---
-
-INSERT INTO `utente` (`ID_Utente`, `Username`, `Password`, `E_mail`) VALUES
-(4, 'Aisja', 'a', 'a@a.it'),
-(5, 'Cattyva', 'cat', 'c@cattyva.com');
-
---
 -- Indici per le tabelle scaricate
 --
 
@@ -2956,14 +2158,6 @@ ALTER TABLE `abilita_personaggio`
 ALTER TABLE `allineamento`
   ADD PRIMARY KEY (`Nome`),
   ADD UNIQUE KEY `ID_ALLINEAMENTO_IND` (`Nome`);
-
---
--- Indici per le tabelle `appartiene`
---
-ALTER TABLE `appartiene`
-  ADD PRIMARY KEY (`Nome_Razza`,`ID_Personaggio`),
-  ADD KEY `Nome_Razza` (`Nome_Razza`,`ID_Personaggio`),
-  ADD KEY `personaggio_FK` (`ID_Personaggio`);
 
 --
 -- Indici per le tabelle `barbaro`
@@ -3003,14 +2197,6 @@ ALTER TABLE `capacita_di_classe`
 ALTER TABLE `capacita_di_sottoclasse`
   ADD PRIMARY KEY (`Nome`),
   ADD UNIQUE KEY `ID_CAPACITA_DI_SOTTOCLASSE_IND` (`Nome`);
-
---
--- Indici per le tabelle `caratterizza`
---
-ALTER TABLE `caratterizza`
-  ADD PRIMARY KEY (`Nome_Allineamento`,`ID_Personaggio`),
-  ADD KEY `Nome_Allineamento` (`Nome_Allineamento`,`ID_Personaggio`),
-  ADD KEY `FK_idpersonaggiocara` (`ID_Personaggio`);
 
 --
 -- Indici per le tabelle `classe`
@@ -3098,14 +2284,6 @@ ALTER TABLE `contiene`
   ADD PRIMARY KEY (`Nome_Oggetto`,`ID_Borsa`),
   ADD UNIQUE KEY `ID_Contiene_IND` (`Nome_Oggetto`,`ID_Borsa`),
   ADD KEY `FKCon_BOR_IND` (`ID_Borsa`);
-
---
--- Indici per le tabelle `ha_origine`
---
-ALTER TABLE `ha_origine`
-  ADD PRIMARY KEY (`Nome_Origine`,`ID_Personaggio`),
-  ADD KEY `Nome_Origine` (`Nome_Origine`,`ID_Personaggio`),
-  ADD KEY `idpersonaggio_FK` (`ID_Personaggio`);
 
 --
 -- Indici per le tabelle `identifica`
@@ -3434,13 +2612,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `borsa`
 --
 ALTER TABLE `borsa`
-  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT per la tabella `personaggio`
 --
 ALTER TABLE `personaggio`
-  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT per la tabella `scelta_barbaro`
@@ -3470,7 +2648,7 @@ ALTER TABLE `scelta_mago`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Limiti per le tabelle scaricate
@@ -3482,13 +2660,6 @@ ALTER TABLE `utente`
 ALTER TABLE `abilita_personaggio`
   ADD CONSTRAINT `FK_abilita` FOREIGN KEY (`Nome_Abilita`) REFERENCES `abilita` (`Nome`),
   ADD CONSTRAINT `FK_idpers` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`);
-
---
--- Limiti per la tabella `appartiene`
---
-ALTER TABLE `appartiene`
-  ADD CONSTRAINT `FK_idpersonaggio_FK` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
-  ADD CONSTRAINT `FK_nomerazza` FOREIGN KEY (`Nome_Razza`) REFERENCES `razza` (`Nome`);
 
 --
 -- Limiti per la tabella `barbaro`
@@ -3503,13 +2674,6 @@ ALTER TABLE `barbaro`
 ALTER TABLE `bardo`
   ADD CONSTRAINT `FK_livelloclassebardo` FOREIGN KEY (`Livello_Classe`) REFERENCES `classe` (`Livello`),
   ADD CONSTRAINT `FK_nomeclassebardo` FOREIGN KEY (`Nome_Classe`) REFERENCES `classe` (`Nome`);
-
---
--- Limiti per la tabella `caratterizza`
---
-ALTER TABLE `caratterizza`
-  ADD CONSTRAINT `FK_idpersonaggiocara` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
-  ADD CONSTRAINT `FK_nomeallineamentocara` FOREIGN KEY (`Nome_Allineamento`) REFERENCES `allineamento` (`Nome`);
 
 --
 -- Limiti per la tabella `classe_migliora`
@@ -3578,13 +2742,6 @@ ALTER TABLE `conosce`
 ALTER TABLE `contiene`
   ADD CONSTRAINT `FK_idborsacon` FOREIGN KEY (`ID_Borsa`) REFERENCES `borsa` (`ID_Borsa`),
   ADD CONSTRAINT `FK_nomeoggettocon` FOREIGN KEY (`Nome_Oggetto`) REFERENCES `oggetto` (`Nome`);
-
---
--- Limiti per la tabella `ha_origine`
---
-ALTER TABLE `ha_origine`
-  ADD CONSTRAINT `FK_idpersonaggioha` FOREIGN KEY (`ID_Personaggio`) REFERENCES `personaggio` (`ID_Personaggio`),
-  ADD CONSTRAINT `FK_nomeorigineha` FOREIGN KEY (`Nome_Origine`) REFERENCES `origine` (`Nome`);
 
 --
 -- Limiti per la tabella `identifica`
