@@ -1239,7 +1239,7 @@ public function spokenByBackground($lingua){
         return $row["Prodotto"];
     }
 
-    public function getSumOfLevels($idpersonaggio){
+    public function getCharacterLevel($idpersonaggio){
         $query="SELECT SUM(Livello_Classe) AS Somma FROM scelta_classe WHERE ID_Personaggio=?";
         $stmt=$this->db->prepare($query);
         $stmt->bind_param("i", $idpersonaggio);
@@ -1501,6 +1501,7 @@ public function spokenByBackground($lingua){
         $stmt->bind_param("ii",$valore, $idpersonaggio);
         $stmt->execute();
     }
+    
 }
 
 ?>

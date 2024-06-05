@@ -83,7 +83,7 @@
                 $subrace=$dbh->getSubraceName($IDpersonaggio);
                 $subclasses=$dbh->getSubclassesInfo($IDpersonaggio);
                 $origini=$dbh->getOriginName($IDpersonaggio); 
-                $livellopersonaggio=$dbh->getSumOfLevels($IDpersonaggio);
+                $livellopersonaggio=$dbh->getCharacterLevel($IDpersonaggio);
                 echo "<b><p>Nome:</p></b>";
                 echo "<p>".$dbh->getName($IDpersonaggio)."</p>"; 
                 echo "<b><p>Livello:</p></b>";
