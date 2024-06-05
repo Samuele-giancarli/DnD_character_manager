@@ -73,6 +73,8 @@
     if (isset($_GET["subclasschoice"])){
         $scelta=$_GET["subclasschoice"];
         $dbh->insertSubclassChoice($idpersonaggio, $scelta, 1);
+        header("Location: levelup.php?idpersonaggio=".$idpersonaggio."&livellopersonaggio=".$livellopersonaggio);
+        exit();
     }
 
     if (isset($_POST["newspell"])){
