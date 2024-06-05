@@ -34,12 +34,51 @@
         //allora prendo Nome Caratteristica e Valore, e lo aumento con updateCharacterSkills
 
         if (!is_null($dbh->getAumFromCapacity($nomeclasse, $livelloclasse))){
+            $valore=0;
+            $origine=$dbh->getCharacterInfo($idpersonaggio)["Nome_Origine"];
+            $abilita=$dbh->abilityMatches($nomeclasse, $origine);
             $nomecaratteristica=$dbh->getAumFromCapacity($nomeclasse, $livelloclasse)["Aum_Nome_Caratteristica"];
             $valorecaratteristica=$dbh->getAumFromCapacity($nomeclasse, $livelloclasse)["Aum_Valore_Aggiuntivo"];
             $dbh->updateCharacterSkills($idpersonaggio, $nomecaratteristica, $valorecaratteristica);
             if ($nomecaratteristica="Destrezza"){
                 $nuovadestrezza=$dbh->getCharacterInfo($idpersonaggio)["Car_Destrezza"];
                 $dbh->updateCharacterInitiative($idpersonaggio, $nuovadestrezza);
+            }
+            foreach ($abilita as $singolabilita){
+                $car_associata=$singolabilita["Caratteristica_Associata"];
+                switch ($car_associata){
+                    case "Destrezza":
+                        $valore=intdiv($dbh->getCharacterInfo($idpersonaggio)["Car_Destrezza"],2)-5;
+                        break;
+                    case "Intelligenza":
+                        $valore=intdiv($dbh->getCharacterInfo($idpersonaggio)["Car_Intelligenza"],2)-5;
+                        break;
+                    case "Saggezza":
+                        $valore=intdiv($dbh->getCharacterInfo($idpersonaggio)["Car_Saggezza"],2)-5;
+                        break;
+                    case "Carisma":
+                        $valore=intdiv($dbh->getCharacterInfo($idpersonaggio)["Car_Carisma"],2)-5;;
+                        break;
+                    case "Costituzione":
+                        $valore=intdiv($dbh->getCharacterInfo($idpersonaggio)["Car_Costituzione"],2)-5;
+                        break;
+                    case "Forza":
+                        $valore=intdiv($dbh->getCharacterInfo($idpersonaggio)["Car_Forza"],2)-5;
+                        break;
+                    default:
+                        die("Mod not valid");
+                }   
+                $nomeabilita=$singolabilita["Nome"];
+                if (!is_null($singolabilita["Nome_Classe"])){
+                    $dbh->addCompetenzeAbilita($idpersonaggio, $nomeabilita);
+                    $valore+=2; 
+                }
+                if (!is_null($singolabilita["Nome_Origine"])){
+                    $dbh->addCompetenzeAbilita($idpersonaggio, $nomeabilita);
+                    $valore+=2;
+                }
+            $dbh->updateAbilita($idpersonaggio, $nomeabilita, $valore);
+            $valore=0;
             }
         }
 
@@ -65,7 +104,6 @@
         if ($livelloclasse>=2){
         $dbh->removeOldChoice($idpersonaggio, $nomeclasse);
         }
-
         header("Location: levelup.php?idpersonaggio=".$idpersonaggio."&livellopersonaggio=".$livellopersonaggio);
         exit();
     }

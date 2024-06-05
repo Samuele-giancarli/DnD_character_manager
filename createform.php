@@ -115,7 +115,7 @@ if ($myvalues==$reference){
             $dbh->addCompetenzeAbilita($idpersonaggio, $nomeabilita);
             $valore+=2;
         }
-    $dbh->updateAbilita($idpersonaggio, $nomeabilita, $valore);
+    $dbh->insertAbilita($idpersonaggio, $nomeabilita, $valore);
     $valore=0;
     }
 

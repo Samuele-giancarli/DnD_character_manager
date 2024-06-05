@@ -1026,10 +1026,18 @@ public function spokenByBackground($lingua){
         $stmt->execute();
     }
 
-    public function updateAbilita($idpersonaggio, $nomeabilita, $valore){
+    public function insertAbilita($idpersonaggio, $nomeabilita, $valore){
         $query="INSERT INTO abilita_personaggio(ID_Personaggio, Nome_Abilita, Valore) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("isi", $idpersonaggio, $nomeabilita, $valore);
+        $stmt->execute();
+    }
+
+    
+    public function updateAbilita($idpersonaggio, $nomeabilita, $valore){
+        $query="UPDATE abilita_personaggio SET Valore=? WHERE ID_Personaggio=? AND Nome_Abilita=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("iis", $valore, $idpersonaggio, $nomeabilita);
         $stmt->execute();
     }
 
