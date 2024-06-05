@@ -10,6 +10,35 @@ class DatabaseHelper{
         }
     }
 
+
+    public function checkEmailExists($email){
+    $query="SELECT * FROM utente WHERE E_mail=?";
+    $stmt = $this->db->prepare($query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    if (is_null($row)){
+        return null;
+    }else{
+        return $row;
+    }
+}
+
+    public function checkUsernameExists($username){
+        $query="SELECT * FROM utente WHERE Username=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if (is_null($row)){
+            return null;
+        }else{
+            return $row;
+    }
+}
+
     public function aggiungiUtente($email, $password, $username){
         $query = "INSERT INTO utente (E_mail, Password, Username) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);

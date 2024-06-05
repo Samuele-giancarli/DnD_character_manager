@@ -8,9 +8,14 @@
         $password = $_POST["password"];
         $username = $_POST["username"];
 
+        if (!is_null($dbh->checkEmailExists($email))){
+            header("Location: register.php");
+        }
+        if (!is_null($dbh->checkUsernameExists($username))){
+            header("Location: register.php");
+        }
        // var_dump($email);
        // var_dump($password);
-
         $dbh->aggiungiUtente($email, $password, $username);
     }
 ?>

@@ -2602,7 +2602,8 @@ ALTER TABLE `tratti_razziali`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`Username`),
-  ADD KEY `ID_Utente` (`ID_Utente`);
+  ADD KEY `ID_Utente` (`ID_Utente`),
+  ADD UNIQUE(`E_mail`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
