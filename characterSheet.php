@@ -174,7 +174,7 @@
         </section>
         <section class="third-width">
             <h2>Punti iniziativa</h2>
-            <?php echo "<p>".$dbh->getInitiative($IDpersonaggio)."</p>"; ?>
+            <?php echo "<p>".((intdiv($dbh->getInitiative($IDpersonaggio),2))-5)."</p>"; ?>
         </section>
         <section class="third-width">
             <h2>Origini</h2>

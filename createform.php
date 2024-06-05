@@ -192,6 +192,8 @@ if ($myvalues==$reference){
     foreach ($oggetticlasse as $oggetto){
         $dbh->addBackgroundClassInventory($idborsa, $oggetto["Nome_Oggetto"]);
     }
+    $nuovadestrezza=$dbh->getCharacterInfo($idpersonaggio)["Car_Destrezza"];
+    $dbh->updateCharacterInitiative($idpersonaggio, $nuovadestrezza);
    header("Location: index.php");
 }else{
    header("Location: create.php");
