@@ -135,6 +135,7 @@ if ($myvalues==$reference){
     foreach ($tirisalvezza as $tirosalvezza){
         $nomecaratteristica=$tirosalvezza["Nome_TiroSalvezza"];
         $valoretiro=0;
+        $moddex=intdiv($dbh->getCharacterInfo($idpersonaggio)["Car_Destrezza"],2)-5;
         switch ($nomecaratteristica){
             case "Destrezza":
                 $valoretiro=$moddex+$bonuscompetenza;
