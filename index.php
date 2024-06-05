@@ -114,6 +114,43 @@ if (isset($_SESSION["ID"])){
             </div>
         </div>
     </div>
+
+    <?php
+// Supponiamo che $dbh sia il tuo oggetto contenente il metodo getCharactersRanking
+// e che tu abbia già incluso il codice della funzione getCharactersRanking()
+
+$charactersByLeague = $dbh->getCharactersRanking();
+?>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Leghe</div>
+                <div class="card-body">
+                    <?php foreach ($charactersByLeague as $league => $characters): ?>
+                        <h3>Lega: <?php echo htmlspecialchars($league); ?></h3>
+                        <table>
+                            <tr>
+                                <th>Personaggio</th>
+                                <th>Livello</th>
+                            </tr>
+                            <?php foreach ($characters as $character): ?>
+                                <tr>
+                                    <td><?php $info = $dbh->getCharacterInfo($character['ID_Personaggio']);
+                                      echo $info['Nome'];
+                                    ?></td>
+                                    <td><?php echo htmlspecialchars($character['Livello']); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php
 }else{
     header("Location: login.php");

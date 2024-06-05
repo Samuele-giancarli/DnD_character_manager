@@ -1495,6 +1495,37 @@ public function spokenByBackground($lingua){
         return $classesWithPercentage;
     }
 
+    public function getCharactersRanking() {
+        $charactersByLeague = array(
+            'Bronzo' => array(),
+            'Argento' => array(),
+            'Oro' => array()
+        );
+    
+        $queries = array(
+            'Bronzo' => "SELECT ID_Personaggio, SUM(Livello_Classe) AS Livello FROM scelta_classe GROUP BY ID_Personaggio HAVING Livello <= 5 ORDER BY Livello DESC LIMIT 10",
+            'Argento' => "SELECT ID_Personaggio, SUM(Livello_Classe) AS Livello FROM scelta_classe GROUP BY ID_Personaggio HAVING Livello > 5 AND Livello < 10 ORDER BY Livello DESC LIMIT 10",
+            'Oro' => "SELECT ID_Personaggio, SUM(Livello_Classe) AS Livello FROM scelta_classe GROUP BY ID_Personaggio HAVING Livello >= 10 ORDER BY Livello DESC LIMIT 10"
+        );
+    
+        foreach ($queries as $league => $query) {
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $row['Lega'] = $league;
+                $charactersByLeague[$league][] = $row;
+            }
+        }
+    
+        return $charactersByLeague;
+    }
+    
+    
+    
+    
+    
+   
     public function updateCharacterInitiative($idpersonaggio, $valore){
         $query="UPDATE personaggio SET Iniziativa=? WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
