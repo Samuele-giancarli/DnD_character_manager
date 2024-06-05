@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 04, 2024 alle 12:59
+-- Creato il: Giu 06, 2024 alle 01:12
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -67,6 +67,30 @@ CREATE TABLE `abilita_personaggio` (
   `Nome_Abilita` varchar(20) NOT NULL,
   `Valore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `abilita_personaggio`
+--
+
+INSERT INTO `abilita_personaggio` (`ID_Personaggio`, `Nome_Abilita`, `Valore`) VALUES
+(36, 'Acrobazia', 2),
+(36, 'Addestrare Animali', 0),
+(36, 'Arcano', 1),
+(36, 'Atletica', 4),
+(36, 'Furtività', 2),
+(36, 'Indagare', 1),
+(36, 'Inganno', -1),
+(36, 'Intimidire', 1),
+(36, 'Intrattenere', -1),
+(36, 'Intuizione', 0),
+(36, 'Medicina', 0),
+(36, 'Natura', 1),
+(36, 'Percezione', 0),
+(36, 'Persuasione', -1),
+(36, 'Rapidità Di Mano', 2),
+(36, 'Religione', 1),
+(36, 'Sopravvivenza', 2),
+(36, 'Storia', 3);
 
 -- --------------------------------------------------------
 
@@ -187,6 +211,13 @@ CREATE TABLE `borsa` (
   `Monete_Oro` int(11) NOT NULL,
   `Monete_Platino` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `borsa`
+--
+
+INSERT INTO `borsa` (`ID_Borsa`, `Peso_Trasportabile`, `Monete_Rame`, `Monete_Argento`, `Monete_Electrum`, `Monete_Oro`, `Monete_Platino`) VALUES
+(37, 225, 0, 0, 0, 45, 0);
 
 -- --------------------------------------------------------
 
@@ -588,6 +619,16 @@ CREATE TABLE `competenze_abilita` (
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `competenze_abilita`
+--
+
+INSERT INTO `competenze_abilita` (`Nome_Abilita`, `ID_Personaggio`) VALUES
+('Atletica', 36),
+('Intimidire', 36),
+('Sopravvivenza', 36),
+('Storia', 36);
+
 -- --------------------------------------------------------
 
 --
@@ -610,6 +651,18 @@ CREATE TABLE `contiene` (
   `Nome_Oggetto` varchar(30) NOT NULL,
   `Quantita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `contiene`
+--
+
+INSERT INTO `contiene` (`ID_Borsa`, `Nome_Oggetto`, `Quantita`) VALUES
+(37, 'Martello Da Guerra', 1),
+(37, 'Orologio Rotto', 1),
+(37, 'Pacchetto Da Esploratore', 1),
+(37, 'Set Di Carte Da Gioco', 1),
+(37, 'Spadone', 1),
+(37, 'Topazio', 1);
 
 -- --------------------------------------------------------
 
@@ -1561,6 +1614,13 @@ CREATE TABLE `personaggio` (
   `ID_Borsa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `personaggio`
+--
+
+INSERT INTO `personaggio` (`ID_Personaggio`, `Car_Forza`, `Car_Destrezza`, `Car_Costituzione`, `Car_Intelligenza`, `Car_Saggezza`, `Car_Carisma`, `Punti_Ferita`, `Nome`, `Descrizione_Aspetto`, `Classe_Armatura`, `Iniziativa`, `ID_Utente`, `Nome_Origine`, `Armatura_Equipaggiata`, `Arma_Equipaggiata`, `Nome_Allineamento`, `Nome_Razza`, `Nome_Sottorazza`, `ID_Borsa`) VALUES
+(36, 17, 14, 15, 12, 10, 8, 13, 'Bob', 'Bello', 12, 14, 8, 'Archeologo', NULL, 'Martello Da Guerra', 'Caotico Malvagio', 'Nano', 'Nano Delle Montagne', 37);
+
 -- --------------------------------------------------------
 
 --
@@ -1571,6 +1631,13 @@ CREATE TABLE `possiede` (
   `ID_Utente` int(11) NOT NULL,
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `possiede`
+--
+
+INSERT INTO `possiede` (`ID_Utente`, `ID_Personaggio`) VALUES
+(8, 36);
 
 -- --------------------------------------------------------
 
@@ -1773,6 +1840,13 @@ CREATE TABLE `scelta_classe` (
   `Livello_Classe` int(11) NOT NULL,
   `ID_Personaggio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `scelta_classe`
+--
+
+INSERT INTO `scelta_classe` (`Nome_Classe`, `Livello_Classe`, `ID_Personaggio`) VALUES
+('Barbaro', 1, 36);
 
 -- --------------------------------------------------------
 
@@ -2023,6 +2097,14 @@ CREATE TABLE `tiri_salvezza_personaggio` (
   `Valore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `tiri_salvezza_personaggio`
+--
+
+INSERT INTO `tiri_salvezza_personaggio` (`ID_Personaggio`, `Nome_Caratteristica`, `Valore`) VALUES
+(36, 'Costituzione', 3),
+(36, 'Forza', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -2132,6 +2214,13 @@ CREATE TABLE `utente` (
   `Password` varchar(100) NOT NULL,
   `E_mail` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `utente`
+--
+
+INSERT INTO `utente` (`ID_Utente`, `Username`, `Password`, `E_mail`) VALUES
+(8, 'Palikko', 'ciao', 'ciao@djhdj.it');
 
 --
 -- Indici per le tabelle scaricate
@@ -2602,8 +2691,8 @@ ALTER TABLE `tratti_razziali`
 --
 ALTER TABLE `utente`
   ADD PRIMARY KEY (`Username`),
-  ADD KEY `ID_Utente` (`ID_Utente`),
-  ADD UNIQUE(`E_mail`);
+  ADD UNIQUE KEY `E_mail` (`E_mail`),
+  ADD KEY `ID_Utente` (`ID_Utente`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -2613,13 +2702,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `borsa`
 --
 ALTER TABLE `borsa`
-  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `ID_Borsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT per la tabella `personaggio`
 --
 ALTER TABLE `personaggio`
-  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `ID_Personaggio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT per la tabella `scelta_barbaro`
@@ -2649,7 +2738,7 @@ ALTER TABLE `scelta_mago`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Utente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Limiti per le tabelle scaricate
