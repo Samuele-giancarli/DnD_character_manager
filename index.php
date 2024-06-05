@@ -89,6 +89,31 @@ if (isset($_SESSION["ID"])){
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Statistiche generali</div>
+                    <div class="card-body">
+                      <?php
+                      // Supponendo che tu abbia una classe o un'istanza con il metodo getClassesPercentage definito
+                      $results = $dbh->getClassesPercentage();
+
+                      // Stampiamo i valori
+                      foreach($results as $class) {
+                          echo "<p>". $class['Nome_Classe']. ": ";
+                          //echo $class['Conteggio'] . "\n";
+                          echo number_format($class['Percentuale'], 2). "% </p>"; // Formattiamo la percentuale con 2 decimali
+                      }
+
+                      
+                      ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php
 }else{
     header("Location: login.php");

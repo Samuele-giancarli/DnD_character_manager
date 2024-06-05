@@ -198,6 +198,42 @@ class DatabaseHelper{
         return $backgrounds;
     }
 
+    public function getBackgroundInventoryO($origine){
+        $query="SELECT Nome_Oggetto FROM oggetti_dell_origine WHERE Nome_Origine=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $origine);
+        $stmt->execute();
+        $throws = array();
+        $result = $stmt->get_result();
+        while($row = $result->fetch_assoc()){
+            $throws[] = $row;
+        }
+        return $throws;
+    }
+
+    public function getClassInventoryC($classe){
+        $query="SELECT Nome_Oggetto FROM oggetti_di_classe WHERE Nome_Classe=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $classe);
+        $stmt->execute();
+        $throws = array();
+        $result = $stmt->get_result();
+        while($row = $result->fetch_assoc()){
+            $throws[] = $row;
+        }
+        return $throws;
+    }
+
+    public function addBackgroundClassInventory($idborsa, $nome){
+        $query="INSERT IGNORE INTO contiene(ID_Borsa, Nome_Oggetto, Quantita) VALUES(?,?,1)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("is", $idborsa, $nome);
+        if ($stmt->execute()){
+        return true;
+       }
+       return false;
+    }
+
     public function getCharacterInfo($idpersonaggio){
         $query="SELECT * FROM personaggio WHERE ID_Personaggio=?";
         $stmt = $this->db->prepare($query);
@@ -1433,6 +1469,37 @@ public function spokenByBackground($lingua){
             $abilities[] = $row;
         }
         return $abilities;
+    }
+
+    public function getClassesPercentage(){
+        $query="SELECT Nome_Classe, COUNT(Nome_Classe) AS Conteggio FROM scelta_classe GROUP BY Nome_Classe";
+        $stmt=$this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $classes = array();
+        while($row = $result->fetch_assoc()){
+            $classes[] = $row;
+        }
+
+        $total=0;
+        foreach($classes as $class){
+            $total+=$class["Conteggio"];
+        }
+
+        $classesWithPercentage = array();
+        foreach($classes as $class){
+            $class["Percentuale"]=($class["Conteggio"]/$total)*100;
+            $classesWithPercentage[] = $class;
+        }
+    
+        return $classesWithPercentage;
+    }
+
+    public function updateCharacterInitiative($idpersonaggio, $valore){
+        $query="UPDATE personaggio SET Iniziativa=? WHERE ID_Personaggio=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ii",$valore, $idpersonaggio);
+        $stmt->execute();
     }
 }
 

@@ -194,6 +194,7 @@
                     //var_dump($tutteclassi);
                     //var_dump($classiottenute);
                     ?>
+
                     <select id="classlevel" name="classlevel">
                         <?php
 
@@ -202,23 +203,27 @@
                         $differenza=array_diff($flattenedtutte, $flattenedottenute);
                         $sumlivello=0;
                         foreach ($classiottenute as $classe){
-                        $sumlivello+=$classe["Livello_Classe"];
+                            $sumlivello+=$classe["Livello_Classe"];
                         }
                         $candomore = $sumlivello+1<=20||$livellopersonaggio!=20;
                         if ($candomore){
-                        foreach ($classiottenute as $classe){
-                        //se $sumlivello+1>20 non puoi, se il livello della classe è già 20 non puo
-                            echo '<option value="' . $classe["Nome_Classe"]." ".($classe["Livello_Classe"]+1) . '">' . $classe["Nome_Classe"]." ".($classe["Livello_Classe"]+1) . '</option>';
-                        }
-                        foreach ($differenza as $classe){
-                            echo "<option value=\"".$classe." 1\">".$classe." 1 </option>";
-                        }
-                        }else{
-                            echo "<option>Non puoi salire ulteriormente di livello</option>";
+                            foreach ($classiottenute as $classe){
+                                //se $sumlivello+1>20 non puoi, se il livello della classe è già 20 non puo
+                                echo '<option value="' . $classe["Nome_Classe"]." ".($classe["Livello_Classe"]+1) . '">' . $classe["Nome_Classe"]." ".($classe["Livello_Classe"]+1) . '</option>';
+                            }
+                            foreach ($differenza as $classe){
+                                echo "<option value=\"".$classe." 1\">".$classe." 1 </option>";
+                            }
+                        } else {
+                                echo "<option>Non puoi salire ulteriormente di livello</option>";
                         }
                         
                         ?>
                     </select>
+
+                    <?php echo "<p> SEI AL LIVELLO ".$sumlivello."</p>"; ?>
+
+                
                 
                     <input type="submit" name="levelpg" <?php if (!$candomore) { echo "disabled"; } ?>/>
                     <input id="idpersonaggio" name="idpersonaggio" type="hidden" value="<?php echo $idpersonaggio?>"/>
